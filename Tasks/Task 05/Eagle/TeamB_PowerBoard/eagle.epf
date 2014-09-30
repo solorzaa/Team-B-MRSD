@@ -347,6 +347,9 @@ UsedLibrary="C:/EAGLE-7.1.0/lbr/xilinx-xcv.lbr"
 UsedLibrary="C:/EAGLE-7.1.0/lbr/zetex.lbr"
 UsedLibrary="C:/EAGLE-7.1.0/lbr/zilog.lbr"
 UsedLibrary="C:/Users/solorzaa/Documents/GitHub/Team-B-MRSD/Tasks/Task 05/Eagle/Libs/TVS_Diode.lbr"
+UsedLibrary="C:/Users/solorzaa/Documents/GitHub/Team-B-MRSD/Tasks/Task 05/Eagle/Libs/MIC2930012WU.lbr"
+UsedLibrary="C:/Users/solorzaa/Documents/GitHub/Team-B-MRSD/Tasks/Task 05/Eagle/Libs/MIC2930033WU.lbr"
+UsedLibrary="C:/Users/solorzaa/Documents/GitHub/Team-B-MRSD/Tasks/Task 05/Eagle/Libs/MIC2930050WU.lbr"
 
 [Win_1]
 Type="Control Panel"

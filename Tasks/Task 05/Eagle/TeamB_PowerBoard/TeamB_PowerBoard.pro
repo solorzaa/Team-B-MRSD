@@ -2,24 +2,24 @@ EAGLE AutoRouter Statistics:
 
 Job           : C:/Users/solorzaa/Documents/GitHub/Team-B-MRSD/Tasks/Task 05/Eagle/TeamB_PowerBoard/TeamB_PowerBoard.brd
 
-Start at      : 22:36:11 (9/28/2014)
-End at        : 22:36:40 (9/28/2014)
-Elapsed time  : 00:00:28
+Start at      : 22:25:34 (9/29/2014)
+End at        : 22:25:41 (9/29/2014)
+Elapsed time  : 00:00:06
 
-Signals       :    22   RoutingGrid: 10 mil  Layers: 2
-Connections   :    61   predefined:  0 ( 0 Vias )
+Signals       :    16   RoutingGrid: 18 mil  Layers: 2
+Connections   :    66   predefined:  0 ( 0 Vias )
 
-Router memory :   418200
+Router memory :   122580
 
-Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4 Optimize5 Optimize6 Optimize7 Optimize8 Optimize9Optimize10Optimize11Optimize12
+Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4
 
-Time per pass     :  00:00:06  00:00:02  00:00:01  00:00:02  00:00:02  00:00:02  00:00:01  00:00:02  00:00:02  00:00:02  00:00:01  00:00:02  00:00:01  00:00:02
-Number of Ripups  :         0         0         0         0         0         0         0         0         0         0         0         0         0         0
-max. Level        :         0         0         0         0         0         0         0         0         0         0         0         0         0         0
-max. Total        :         0         0         0         0         0         0         0         0         0         0         0         0         0         0
+Time per pass     :  00:00:04  00:00:01  00:00:00  00:00:00  00:00:00  00:00:01
+Number of Ripups  :         0         0         0         0         0         0
+max. Level        :         0         0         0         0         0         0
+max. Total        :         0         0         0         0         0         0
 
-Routed            :        25        61        61        61        61        61        61        61        61        61        61        61        61        61
-Vias              :         0        16        24        21        18        18        18        18        15        14        16        16        16        16
-Resolution        :    41.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %
+Routed            :        30        66        66        66        66        66
+Vias              :         0         4         5         5         5         4
+Resolution        :    45.5 %   100.0 %   100.0 %   100.0 %   100.0 %   100.0 %
 
 Final             : 100.0% finished
