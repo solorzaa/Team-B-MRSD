@@ -144,35 +144,35 @@ void keyLoop()
       case KEYCODE_L:
         cout<<"LEFT\r";
     //When the left arrow is pressed, motor 1 is set to move
-    //an increment of value 150 and motor 2 is set to move
-    //an increment of value -150 
-        device.SetCommand(_GO, 1, -150);
-	device.SetCommand(_GO, 2, 150);
+    //an increment of value 50 and motor 2 is set to move
+    //an increment of value -50 
+        device.SetCommand(_GO, 1, -50);
+	device.SetCommand(_GO, 2, 50);
         dirty = true;
         break;
       case KEYCODE_R:
         cout<<"RIGHT\r";
     //When the right arrow is pressed, motor 1 is set to move
-    //an increment of value -150 and motor 2 is set to move
-    //an increment of value 150 
-        device.SetCommand(_GO, 1, 150);
-        device.SetCommand(_GO, 2, -150);
+    //an increment of value -50 and motor 2 is set to move
+    //an increment of value 50 
+        device.SetCommand(_GO, 1, 50);
+        device.SetCommand(_GO, 2, -50);
         dirty = true;
         break;
       case KEYCODE_U:
         cout<<"UP\r";
     //When up arrow is pressed, both motors are set to move a
-    // single increment of value 150
-	device.SetCommand(_GO, 1, 150);
-        device.SetCommand(_GO, 2, 150);
+    // single increment of value 50
+	device.SetCommand(_GO, 1, 50);
+        device.SetCommand(_GO, 2, 50);
         dirty = true;
         break;
       case KEYCODE_D:
         cout<<"DOWN\r";
     //When down arrow is pressed, both motors are set to move a
-    // single increment of value -150
-        device.SetCommand(_GO, 1, -150);
-	device.SetCommand(_GO, 2, -150);
+    // single increment of value -50
+        device.SetCommand(_GO, 1, -50);
+	device.SetCommand(_GO, 2, -50);
         dirty = true;
         break;
  
