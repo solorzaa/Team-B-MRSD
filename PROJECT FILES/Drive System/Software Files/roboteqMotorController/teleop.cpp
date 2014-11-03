@@ -29,7 +29,8 @@
 #define KEYCODE_U 0x41
 #define KEYCODE_D 0x42
 #define KEYCODE_Q 0x71
- 
+#define KEYCODE_S 0x73
+#define KEYCODE_E 0x65
  
  
 using namespace std;
@@ -175,7 +176,20 @@ void keyLoop()
 	device.SetCommand(_GO, 2, -150);
         dirty = true;
         break;
- 
+       case KEYCODE_S:
+        cout<<"STOP\r";
+    //When the "s" key is pressed, both motors stop
+        device.SetCommand(_GO, 1, 0);
+	device.SetCommand(_GO, 2, 0);
+        dirty = true;
+        break;
+       case KEYCODE_E:
+        cout<<"EMERGENCY STOP\r";
+    //When the "s" key is pressed, both motors stop
+        device.SetCommand(_ESTOP);
+        dirty = true;
+        break;
+
       case KEYCODE_Q:
     cout<<endl<<"You have Quit interacting with the Roboteq Motor Controller\r"<<endl;
     dirty = true;
