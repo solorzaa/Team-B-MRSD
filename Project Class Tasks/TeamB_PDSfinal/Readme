@@ -1,0 +1,9 @@
+This folder has following files:
+
+
+1. *.sch file is the schematic file of Power Board
+2. *.brd file is the layout file
+3. *.lbr contains the library of voltage-regulators
+4. *.txt lists all the components used in the board, Bill of Material(BOM)
+5. *.pdf contains all the relevant links of the components and also the figure showing where we are mounting the board
+
