@@ -29,7 +29,8 @@
 #define KEYCODE_U 0x41
 #define KEYCODE_D 0x42
 #define KEYCODE_Q 0x71
- 
+#define KEYCODE_S 0x73
+#define KEYCODE_E 0x65
  
  
 using namespace std;
@@ -144,38 +145,51 @@ void keyLoop()
       case KEYCODE_L:
         cout<<"LEFT\r";
     //When the left arrow is pressed, motor 1 is set to move
-    //an increment of value 50 and motor 2 is set to move
-    //an increment of value -50 
-        device.SetCommand(_GO, 1, -50);
-	device.SetCommand(_GO, 2, 50);
+    //an increment of value 150 and motor 2 is set to move
+    //an increment of value -150 
+        device.SetCommand(_GO, 1, -150);
+	device.SetCommand(_GO, 2, 150);
         dirty = true;
         break;
       case KEYCODE_R:
         cout<<"RIGHT\r";
     //When the right arrow is pressed, motor 1 is set to move
-    //an increment of value -50 and motor 2 is set to move
-    //an increment of value 50 
-        device.SetCommand(_GO, 1, 50);
-        device.SetCommand(_GO, 2, -50);
+    //an increment of value -150 and motor 2 is set to move
+    //an increment of value 150 
+        device.SetCommand(_GO, 1, 150);
+        device.SetCommand(_GO, 2, -150);
         dirty = true;
         break;
       case KEYCODE_U:
         cout<<"UP\r";
     //When up arrow is pressed, both motors are set to move a
-    // single increment of value 50
-	device.SetCommand(_GO, 1, 50);
-        device.SetCommand(_GO, 2, 50);
+    // single increment of value 150
+	device.SetCommand(_GO, 1, 150);
+        device.SetCommand(_GO, 2, 150);
         dirty = true;
         break;
       case KEYCODE_D:
         cout<<"DOWN\r";
     //When down arrow is pressed, both motors are set to move a
-    // single increment of value -50
-        device.SetCommand(_GO, 1, -50);
-	device.SetCommand(_GO, 2, -50);
+    // single increment of value -150
+        device.SetCommand(_GO, 1, -150);
+	device.SetCommand(_GO, 2, -150);
         dirty = true;
         break;
- 
+       case KEYCODE_S:
+        cout<<"STOP\r";
+    //When the "s" key is pressed, both motors stop
+        device.SetCommand(_GO, 1, 0);
+	device.SetCommand(_GO, 2, 0);
+        dirty = true;
+        break;
+       case KEYCODE_E:
+        cout<<"EMERGENCY STOP\r";
+    //When the "s" key is pressed, both motors stop
+        device.SetCommand(_ESTOP);
+        dirty = true;
+        break;
+
       case KEYCODE_Q:
     cout<<endl<<"You have Quit interacting with the Roboteq Motor Controller\r"<<endl;
     dirty = true;
