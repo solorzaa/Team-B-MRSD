@@ -209,17 +209,6 @@ void moveSquare(RoboteqDevice motorDevice){
 	elapsedTime = clock() - initialTime;
 	}
 
-	//turn right
-	initialTime = clock();
-	elapsedTime = 0;
-
-	while(elapsedTime < turnTime){
-	motorDevice.SetCommand(_GO, 1, 150);
-	motorDevice.SetCommand(_GO, 2, -150);
-	cout << elapsedTime << "    " << CLOCKS_PER_SEC << endl;
-	elapsedTime = clock() - initialTime;
-	}
-
 	motorDevice.SetCommand(_GO, 1, 0);
 	motorDevice.SetCommand(_GO, 2, 0);
 
