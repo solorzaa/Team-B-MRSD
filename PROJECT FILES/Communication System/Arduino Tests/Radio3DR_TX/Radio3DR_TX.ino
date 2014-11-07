@@ -23,7 +23,8 @@ void loop() {
 //      byteSent = 0;     
 //   }
 //   byteSent = byteSent + 1;
-   Serial.write(byteSent);
+   Serial.print(byteSent);
+   Serial.write("\n");
    delay(1000);
    byteSent++;
 }
