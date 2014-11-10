@@ -1,6 +1,0 @@
- sudo ./GeoCOM_Test /dev/ttyUSB0
-
-termios: struct for serial parameters
-initialize serial port
-make string
-publish on port
