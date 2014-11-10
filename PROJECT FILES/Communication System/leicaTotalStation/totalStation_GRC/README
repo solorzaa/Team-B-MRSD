@@ -1,0 +1,85 @@
+GeoCOM library for interfacing to the Leica Survey instruments.
+
+Carnegie Mellon University
+Joshua Anhalt: anhalt@cmu.edu
+2007.May.25
+
+Updated Apr 2009
+Dominic Jonak dom@cmu.edu
+
+
+Modified again by David K dkohanba@cmu.edu 2011 and 2012
+
+--------------------------------------------------------------------------------------------------
+
+Currently tested for use with TPS1100 series devices.  Limited testing with TPS1200 series devices.
+This library tries to implment version 1.07 of the GeoCOM RPC interface.
+
+-------------
+
+This also has limited testing with TS15 series (instructions are different than below). 
+on TS15 use Continous + mode (opperates at 1Hz, the non + operates at 0.5 Hz)
+
+This new firmware you need to enable the serial geo com mode but then you do not need
+to switch into it.
+
+-----------------
+
+set baud rate on computer and total station to be the same
+
+
+Level the instrument:
+ - press shift
+ - press the level button
+   (underneath F2, between CODE and PROG)
+ - turn on the laser and adjust the three screws until level
+
+Set the precision (EDM):
+ - Standard is the default
+ - Rapid tracking is less accurate but keeps lock better
+
+Prism tracking/Automatic Target Recognition (ATR)
+ - enable ATR
+   press FNC
+   The bottom left box should be either "ATR -" or "ATR +"
+   If it is labelled "ATR +" then press F1 to enable ATR mode
+   Once enabled, you should see an icon on the right (a circle with a check)
+ - enable LOCK and L.GO also
+
+Take an initial measurement
+ - point at the prism
+ - press F6 (when labeled "MEAS")
+ - press F2 (when labeled "DIST")
+ - the device should adjust a bit and then report data
+
+Enable comms:
+ - press 5 "Configuration"
+ - press 2 "Communications mode"
+ - press 3 "GeoCOM On-Line mode"
+ - press F4 "YES"
+
+Run the code:
+  ./GeoCOM /dev/ttyUSB0
+
+Will query device for
+	Serial Number
+	Name
+	Capabilities
+	Software Version
+	Date
+	Battery Level (Not Accurate)
+	Power Source
+	Memory Format (when logging data manually)
+
+The program then goes into an infinite loop taking measurements
+
+If successful, it will print out the raw Horizontal/Vertical Angles and Distance
+it will also print out the Cartesian Coordinates if a proper survey instrument station was manually setup prioor to starting GeoCOM.
+
+KNOWN PROBLEMS
+	If the battery needs to be replaced, the survey gun does not properly return to GeoCOM Communications Mode.  The exact events haven't been documented, but the library will return garbage data.  The unit needs to be power cycled again, and possibly have the serial cable unplugged/replugged.  It may be solved by taking the unit out of GeoCOM mode prior to power down. (This problem has been seen when the survey gun shuts itself off due to low battery.)
+
+	The device looses lock easily.
+
+TODO
+	Only a small portion of the GeoCOM spec has been implemented.  Currently only basic measurements and Cartesian transforms have been implemented.  There are a number of automated motor commands that may be of interest.

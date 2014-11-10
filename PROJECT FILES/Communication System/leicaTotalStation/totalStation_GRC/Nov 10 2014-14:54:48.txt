@@ -1,0 +1,17 @@
+%TakeMeasurement() failed, code 4
+%timestamp count  distance(m) hor(deg) ver(deg)
+1415649290.917601 0  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649292.966455 1  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649295.031080 2  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649297.122729 3  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649299.180085 4  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649301.269582 5  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649303.318263 6  0.000 142.77 110.81
+%TakeMeasurement() failed, code 4
+1415649305.385707 7  0.000 142.77 110.81
