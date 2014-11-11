@@ -28,14 +28,22 @@ def init_serial():
 	
 	#you must specify a timeout (in seconds) so that the
 	# serial port doesn't hang
-	ser.timeout = 1
+	ser.timeout = 3
 	ser.open() #open the serial port
 
 	# print port open or closed
 	if ser.isOpen():
 		print 'Open: ' + ser.portstr
-
-
+####################################################
+#def readlineCR(port):
+ #   rv = ""
+  #  while True:
+   #     ch = port.read()
+    #    rv += ch
+     #   if ch=='\n':
+      #      return rv
+#########################################################
+	
 #####SETUP################################################
 #this is a good spot to run your initializations 
 init_serial()
@@ -50,12 +58,15 @@ init_serial()
 	#break #jump out of loop 
 
 while 1:
-	#line = ser.readline().decode('utf-8')[:-1]
+	#line = serSG.readline().decode('utf-8')[:-1]
 	line = serSG.readline()[:-1]
 	print(line)
-        ser.write(line+'\n') #write to the serial port
+        ser.write(line+'\n') #write to the serial port	
+	#rcv=readlineCR(serSG)
+	#print(rcv)
+	#ser.write(repr(rcv)+'\n')
 	bytes = ser.readline()
-	#print  bytes #print to the console
+	print  bytes #print to the console
       	if line=='exit':
 		break
 ser.close()
