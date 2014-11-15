@@ -1,7 +1,7 @@
 CC=g++
 
 
-all: sample.o teleop.o square.o
+all: sample.o teleop.o square.o encoderSample.o
 
 sample.o: RoboteqDevice.o
 	$(CC) RoboteqDevice.o sample.cpp -o sample.o
@@ -14,6 +14,9 @@ square.o: RoboteqDevice.o
 
 RoboteqDevice.o: RoboteqDevice.cpp
 	$(CC) -c RoboteqDevice.cpp
+
+encoderSample.o: RoboteqDevice.o
+	$(CC) RoboteqDevice.o encoderSample.cpp -o encoderSample.o
 
 clean:
 	rm *.o
