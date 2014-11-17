@@ -54,10 +54,13 @@ int leftEncoderCount;
 int rightEncoderCount;
 
 //PID Settings
-float KPX = 1;
-float KPY = 1;
-float KPTheta = 30;
+float KPX = 0;//1.5;
+float KPY = 0;//.5;
+float KPTheta = 35;
 
+int errorXThresh = 100;
+int errorYThresh = 100;
+int errorThetaThresh = 1.2;
 
 
 
@@ -107,8 +110,90 @@ int main(int argc, char *argv[])
 	//Update encoder counts
 	readAbsoluteEncoderCount(leftEncoderCount, 2);
 	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+			
+	errorXThresh = 100;
+	errorYThresh = 100;
+	errorThetaThresh = 1.2;
+	KPX = 3;
+	KPY = 1;
+	poseControl(0, 200, 0);
 
-	poseControl(0, 500, 0);
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+	//sleep(2);
+
+	errorXThresh = 200;
+	errorYThresh = 200;
+	KPX = 0;
+	KPY = 0;
+	poseControl(0, 0, 2.67*5.8);
+
+	//sleep(2);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+
+	errorXThresh = 100;
+	errorYThresh = 100;
+	errorThetaThresh = 1.2;
+	KPX = 3;
+	KPY = 1;
+	poseControl(0, 200, 0);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+	//sleep(2);
+
+	errorXThresh = 200;
+	errorYThresh = 200;
+	KPX = 0;
+	KPY = 0;
+	poseControl(0, 0, 2.67*5.8);
+
+	//sleep(2);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+
+	errorXThresh = 100;
+	errorYThresh = 100;
+	errorThetaThresh = 1.2;
+	KPX = 3;
+	KPY = 1;
+	poseControl(0, 200, 0);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+	//sleep(2);
+
+	errorXThresh = 200;
+	errorYThresh = 200;
+	KPX = 0;
+	KPY = 0;
+	poseControl(0, 0, 2.67*5.8);
+
+	//sleep(2);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+
+	errorXThresh = 100;
+	errorYThresh = 100;
+	errorThetaThresh = 1.2;
+	KPX = 3;
+	KPY = 1;
+	poseControl(0, 200, 0);
+
+	readAbsoluteEncoderCount(leftEncoderCount, 2);
+	readAbsoluteEncoderCount(rightEncoderCount, 1);	
+	//sleep(2);
+
+	errorXThresh = 200;
+	errorYThresh = 200;
+	KPX = 0;
+	KPY = 0;
+	poseControl(0, 0, 2.67*5.8);
+
 	
 	device.Disconnect();
 	return 0;
@@ -487,11 +572,18 @@ bool poseControl(double desiredX, double desiredY, double desiredTheta)
 	int rightOutputPower;
 
 
+	absoluteX = 0;
+	absoluteY = 0;
+	absoluteTheta = 0;
+
 	while(1)
 	{
 		//Grab absolute number of encoder counts
 		readAbsoluteEncoderCount(currRightEncoder, 1);
 		readAbsoluteEncoderCount(currLeftEncoder, 2);
+
+		cout << "rightEncoder: " << currRightEncoder << endl;
+		cout << "leftEncoder: " << currLeftEncoder << endl;
 
 		//Calculate the current angle of rotation for each wheel
 		rightDeltaPhi = (double) (currRightEncoder - prevRightEncoder) * 2 * M_PI/counts_per_revolution;
@@ -519,31 +611,57 @@ bool poseControl(double desiredX, double desiredY, double desiredTheta)
 			rightTurningRadius = botRadius;
 		if(leftTurningRadius != leftTurningRadius)
 			leftTurningRadius = botRadius;
-	
+
 		cout << "rightTurningRadius: " << rightTurningRadius << endl;
 		cout << "leftTurningRadius: " << leftTurningRadius << endl;
 		
 		//Find the change in theta
-		if(rightArcLength > leftArcLength) //Bot is making a Left Turn (positive change in theta)
+		if(abs(rightArcLength) > abs(leftArcLength)) //Bot is making a Left Turn (positive change in x)
 		{
+			//Is it turning about one wheel
 			if(leftTurningRadius == 0)
 				deltaTheta = rightTurningRadius/ (2*botRadius);
 			else
 				deltaTheta = leftArcLength / leftTurningRadius;
 
-			deltaX = -(leftTurningRadius + botRadius) * (1 - cos(deltaTheta));
-			deltaY = (leftTurningRadius + botRadius) * sin(deltaTheta);
+			//If the center of rotation is inside the bot, else...
+			if( (rightArcLength/abs(rightArcLength)) != leftArcLength/abs(leftArcLength) )
+			{
+				deltaX = (leftTurningRadius + botRadius) * (1 - cos(deltaTheta));
+				deltaY = -(leftTurningRadius + botRadius) * sin(deltaTheta);
+			}
+			else
+			{
+				deltaX = -(leftTurningRadius + botRadius) * (1 - cos(deltaTheta));
+				deltaY = (leftTurningRadius + botRadius) * sin(deltaTheta);
+			}
 		}
-		else if(leftArcLength > rightArcLength) //Bot is making a Right Turn (negative change in theta)
+		else if(abs(leftArcLength) > abs(rightArcLength)) //Bot is making a Right Turn (negative change in x)
 		{
+			//Is it turning about one wheel
 			if(rightTurningRadius == 0)
-				deltaTheta = leftTurningRadius/ (2*botRadius);
+				deltaTheta = -leftTurningRadius/ (2*botRadius);
 			else 
 				deltaTheta = -rightArcLength / rightTurningRadius;
 
-			deltaX = (rightTurningRadius + botRadius) * (1 - cos(deltaTheta));
-			deltaY = -(rightTurningRadius + botRadius) * sin(deltaTheta);
+			//If the center of rotation is inside the bot, else...
+			if( (rightArcLength/abs(rightArcLength)) != leftArcLength/abs(leftArcLength) )
+			{
+				deltaX = -(leftTurningRadius + botRadius) * (1 - cos(deltaTheta));
+				deltaY = (leftTurningRadius + botRadius) * sin(deltaTheta);
+			}
+			else
+			{
+				deltaX = (rightTurningRadius + botRadius) * (1 - cos(deltaTheta));
+				deltaY = -(rightTurningRadius + botRadius) * sin(deltaTheta);
+			}
 		}
+		else // bot is going straight
+		{
+			deltaTheta = 0;
+			deltaX = 0;
+			deltaY = wheelRadius * rightDeltaPhi;
+		}	
 
 		cout << "delta Theta: " << deltaTheta << endl;
 		cout << "delta X: " << deltaX << endl;
@@ -563,14 +681,24 @@ bool poseControl(double desiredX, double desiredY, double desiredTheta)
 		cout << "Absolute X: " << absoluteX << endl;
 		cout << "Absolute Y: " << absoluteY << endl;
 
+		cout << "Error x: " << errorX << endl;
+		cout << "Error y: " << errorY << endl;
+		cout << "Error Theta: " << errorTheta << endl;
+
+		cout << "-KPX*errorX: " << -KPX*errorX << endl;
+		cout << "-KPY*errorY: " << -KPY*errorY << endl;
+		cout << "-KPTheta*errorTheta: " << -KPTheta*errorTheta << endl;
+
 		//Calculate the proportional feedback response
 		leftProportional = (-KPX * errorX - KPY * errorY + KPTheta * errorTheta);
-		rightProportional = (-KPX * errorX - KPY * errorY - KPTheta * errorTheta);
+		rightProportional = (KPX * errorX - KPY * errorY - KPTheta * errorTheta);
 
 		//Calculate the feedback response
 		leftOutputPower = (int) leftProportional;
 		rightOutputPower = (int) rightProportional;
 
+		cout << "leftOutputPower: " << leftOutputPower << endl;
+		cout << "rightOutputPower: " << rightOutputPower << endl;
 /*
 		if(abs(leftOutputPower) > 150)
 		{
@@ -589,9 +717,9 @@ bool poseControl(double desiredX, double desiredY, double desiredTheta)
 		//cout << "error Theta: " << errorTheta << endl;
 		//cout << "error X: " << errorX << endl;
 		//cout << "error Y: " << errorY << endl;
-		
+
 		//Stop when the bot is within an inch
-		if(abs(errorX) < 100 && abs(errorY) < 100 && abs(errorTheta) < 0.1)
+		if(abs(errorX) < errorXThresh && abs(errorY) < errorYThresh && abs(errorTheta) < errorThetaThresh)
 		{	
 			device.SetCommand(_GO, 2, 0);
 			device.SetCommand(_GO, 1, 0);
