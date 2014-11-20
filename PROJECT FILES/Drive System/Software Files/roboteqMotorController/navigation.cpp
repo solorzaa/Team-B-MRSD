@@ -31,7 +31,7 @@ int motorSpeed = 0;
 int status;
 int result;
 RoboteqDevice device;
-string motorControllerPort = "/dev/ttyACM2";
+string motorControllerPort = "/dev/ttyACM0";
 int counts_per_revolution = 5500;
 float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
@@ -53,13 +53,13 @@ double sumErrorY = 0;
 double sumErrorTheta = 0;
 
 //PID Settings
-float KPX = 0.5;
-float KPY = 1.5;
-float KPTheta = 75;  // Stephen thinks 100
+float KPX = 30;		//40;//40;
+float KPY = 14;		//8;//8;
+float KPTheta = 200;	//200;  // Stephen thinks 100
 
-float KIX = 2.5;
-float KIY = 7.5;
-float KITheta = 150;
+float KIX = 48;		//48;
+float KIY = 80;		//80;
+float KITheta = 32000;	//32000;
 
 double errorXThresh = 5;
 double errorYThresh = 5;
@@ -97,71 +97,46 @@ int main(int argc, char *argv[])
 	prevTime = clock();
 	
 	bool done = false;
-	
-	while(!done) {
-		done = poseControl(getDeltaPose(), 0, 50, 0);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), 0, 100, 0);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), 0, 150, 0);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), 0, 200, 0);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -12.5, 225, M_PI/8);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -25, 250, M_PI/4);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -37.5, 275, 3*M_PI/8);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -50, 300, M_PI/2);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -62.5, 275, 5*M_PI/8);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -75, 250, 3*M_PI/4);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -87.5, 225, 7*M_PI/8);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -100, 200, M_PI);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -100, 150, M_PI);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -100, 100, M_PI);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -100, 50, M_PI);		
-	}
-	done = false;
-	while(!done) {
-		done = poseControl(getDeltaPose(), -100, 0, M_PI);		
-	}
 
+	while(!done) {
+		done = poseControl(getDeltaPose(), -0.96, 14.4, 0.13);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -8.4, 40.8, .4);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -22.56, 67.2, .66);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -42.48, 86.4, 0.92);		
+	}	
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -66.96, 100.8, 1.18);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -94.32, 108.0, 1.44);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -122.4, 108.0, 1.71);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -149.76, 100.8, 1.97);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -173.76, 86.4, 2.23);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -193.92, 64.8, 2.49);		
+	}
 
 	//disconnect roboteq
 	device.Disconnect();
@@ -248,6 +223,12 @@ double * getDeltaPose()
 	//Grab absolute number of encoder counts
 	readAbsoluteEncoderCount(currRightEncoder, 1);
 	readAbsoluteEncoderCount(currLeftEncoder, 2);
+	
+	if(abs(currRightEncoder-prevRightEncoder) > 500 ||abs(currLeftEncoder-prevLeftEncoder)>500) {
+		double deltas[3] = {0, 0, 0};
+		double* frame = deltas;
+		return frame;
+	}
 
 	cout << "rightEncoder: " << currRightEncoder << endl;
 	cout << "leftEncoder: " << currLeftEncoder << endl;
