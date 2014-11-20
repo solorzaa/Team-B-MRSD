@@ -14,7 +14,7 @@ import time
 import os
 import Adafruit_BBIO.GPIO as GPIO
 import Adafruit_BBIO.UART as UART
-from math import cos, pi, sin, arctan
+from math import cos, pi, sin, atan
 #import serial
 
 ### Pins and Ports
@@ -75,11 +75,11 @@ def turnOffPump():
 def turnOnLED(led):
 	''' Turns on the led with numerical reference led.  0<=led<=3'''
 	os.system("echo none > /sys/class/leds/beaglebone:green:usr"+str(led)+"/trigger")
-	os.system("echo 1 > /sys/class/leds/beaglebone:green:usr"+str(led)+"/brightness")
+	os.system("echo 1 > /sys/class/leds/beaglebo	e:green:usr"+str(led)+"/brightness")
 
 def turnOffLED(led):
 	''' Turns off the led with numerical reference led.  0<=led<=3'''
-	os.system("echo none > /sys/clas/leds/beaglebone:green:usr"+str(led)+"/trigger")
+	os.system("echo none > /sys/class/leds/beaglebone:green:usr"+str(led)+"/trigger")
 	os.system("echo 0 > /sys/class/leds/beaglebone:green:usr"+str(led)+"/brightness")
 	
 def readPointsFile():
@@ -88,10 +88,10 @@ def readPointsFile():
 	with open(pointsFile,'rb') as f:
 		points = f.read()
 	points = points.split('\r\n')
-	paintPoints = [x[-1]=='t' for x in 	points]
+	global paintPoints = [x[-1]=='t' for x in 	points]
 	points = [x[0:-2].split() for x in points]
 	points = [[float(y) for y in x] for x in points]
-	goalPoints = points
+	global goalPoints = points
 	return True
 	
 def getTrackingStationData():
@@ -99,8 +99,8 @@ def getTrackingStationData():
 	Returns whether it succeeded
 	'''
 	# Update the previous position points to the current points
-	prevTrackingStationX = trackingStationX
-	prevTrackingStationY = trackingStationY
+	global prevTrackingStationX = trackingStationX
+	global prevTrackingStationY = trackingStationY
 	
 	# Get the most previous serial data from the tracking station
 	line = ''
@@ -114,18 +114,18 @@ def getTrackingStationData():
 	# Get exact values for count and time
 	if trackingStationCount != int(data[1])-1:
 		print "The newest tracking station data point's count is off..."
-	trackingStationCount = int(data[1])
+	global trackingStationCount = int(data[1])
 	if abs(trackingStationTime-data[0])<1.0: # not sure about this value - what value would be weird to have as a time difference?
 		print "The tracking station time stamp seems funny..."
-	trackingStationTime = data[0]
+	global trackingStationTime = data[0]
 	print 'Time Difference Between Entities: ' + str(checkTimeDifference())
 	
 	# x = R*cos(phi)*cos(theta) | y = R*cos(phi)*sin(theta)
-	trackingStationX = data[2]*cos((data[4]-90.)*pi/180.)*cos(data[3]*pi/180)
-	trackingStationY = data[2]*cos((data[4]-90.)*pi/180.)*sin(data[3]*pi/180)
+	global trackingStationX = data[2]*cos((data[4]-90.)*pi/180.)*cos(data[3]*pi/180)
+	global trackingStationY = data[2]*cos((data[4]-90.)*pi/180.)*sin(data[3]*pi/180)
 	# theta = arctan((new X - last X)/(new Y - last Y))
 	# might want to check for small changes in position, as this will throw off theta
-	trackingStationTheta = arctan((trackingStationX-prevTrackingStationX)/(trackingStationY-prevTrackingStationY))
+	global trackingStationTheta = atan((trackingStationX-prevTrackingStationX)/(trackingStationY-prevTrackingStationY))
 
 	# Exit with success
 	return True
@@ -142,9 +142,9 @@ def obtainErrors():
 	''' Obtain the error in, y, and z of the position and the next point based on
 	the localization data that is currently available.  This uses the timestamp to
 	determine relevancy of the information'''
-	# Calibrate the position for the 0,0,0 starting position
-	trackingStationX = trackingStationX-offsetTSX
-	trackingStationY = trackingStationY-offsetTSY
+	# Calibrate the position for the 0,0,0 starting position  ################################################## CHECK THIS
+	global trackingStationX = trackingStationX-offsetTSX
+	global trackingStationY = trackingStationY-offsetTSY
 	
 	#TODO: Check if deltaT is in seconds (i.e. most of the time it will be less than 1)
 	deltaT = checkTimeDifference()
@@ -153,14 +153,14 @@ def obtainErrors():
 	weightTS = (1.0-deltaT)
 	if weightTS<0.0:
 		weightTS = 0.0;
-	errorX = (currentGoalPoint[0]-trackingStationX)*weightTS+((currentGoalPoint[0]-encoderX)*(1-weightTS))
-	errorY = (currentGoalPoint[1]-trackingStationY)*weightTS+((currentGoalPoint[1]-encoderY)*(1-weightTS))
-	errorTheta = (currentGoalPoint[2]-trackingStationTheta)*weightTS+((currentGoalPoint[2]-encoderTheta)*(1-weightTS))
+	global errorX = (currentGoalPoint[0]-trackingStationX)*weightTS+((currentGoalPoint[0]-encoderX)*(1-weightTS))
+	global errorY = (currentGoalPoint[1]-trackingStationY)*weightTS+((currentGoalPoint[1]-encoderY)*(1-weightTS))
+	global errorTheta = (currentGoalPoint[2]-trackingStationTheta)*weightTS+((currentGoalPoint[2]-encoderTheta)*(1-weightTS))
 	return None
 	
 def checkTimeDifference():
 	''' Check the time difference between the beagle bone and the tracking station '''
-	BBBTime = time.time()-timeDifference
+	global BBBTime = time.time()-timeDifference
 	return (BBBTime - trackingStationTime)
 	
 def checkEStop():
@@ -168,9 +168,9 @@ def checkEStop():
 	if GPIO.event_detected(emergencyStopPin):
 		turnOffPump()
 		# STOP THE MOTORS!!!
-		while GPIO.input(emergencyStopPin)==False
+		while GPIO.input(emergencyStopPin)==False:
 			print 'Emergency Stop Button Pressed'
-	else
+	else:
 		return
 
 ### Turn Off All LEDS to Start
@@ -217,14 +217,7 @@ offsetTSY = trackingStationY;
 
 currentGoalPoint = goalPoints[1]
 obtainErrors()
-#Set initial position to (0,0,0,t) [first point in file]
 
-#Sync Time
-	#Read Tracknig Station Data
-	#Check Time Difference
-	#Read Encoder Data
-	#Read IMU Data
-	
 #Advance to next point
 	
 # getEncoderPosition()
