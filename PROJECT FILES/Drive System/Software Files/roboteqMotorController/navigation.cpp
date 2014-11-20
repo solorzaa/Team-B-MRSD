@@ -31,7 +31,7 @@ int motorSpeed = 0;
 int status;
 int result;
 RoboteqDevice device;
-string motorControllerPort = "/dev/ttyACM0";
+string motorControllerPort = "/dev/ttyACM2";
 int counts_per_revolution = 5500;
 float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
@@ -42,17 +42,28 @@ int stallPower = 40;
 double absoluteX = 0;
 double absoluteY = 0;
 double absoluteTheta = 0;
-int leftEncoderCount;
-int rightEncoderCount;
+int prevRightEncoder;
+int prevLeftEncoder;
+
+
+clock_t prevTime;
+clock_t currTime;
+double sumErrorX = 0;
+double sumErrorY = 0;
+double sumErrorTheta = 0;
 
 //PID Settings
-float KPX = 1.2/3;
-float KPY = 1.2/3;
-float KPTheta = 50;  // Stephen thinks 100
+float KPX = 0.5;
+float KPY = 1.5;
+float KPTheta = 75;  // Stephen thinks 100
 
-int errorXThresh = 100;
-int errorYThresh = 100;
-int errorThetaThresh = 1.2;
+float KIX = 2.5;
+float KIY = 7.5;
+float KITheta = 150;
+
+double errorXThresh = 5;
+double errorYThresh = 5;
+double errorThetaThresh = 0.1;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -76,22 +87,81 @@ int main(int argc, char *argv[])
 	return 1;
 	}
 
-	//This begins the code used to paint a square
+	device.SetCommand(_GO, 1, 0);
+	device.SetCommand(_GO, 2, 0);	
 
-	readAbsoluteEncoderCount(leftEncoderCount, 2);	// How much has each wheel turned 
-	readAbsoluteEncoderCount(rightEncoderCount, 1);		
+	sleep(1);
 
-	errorXThresh = 100;		//When are we close enough to the desired location
-	errorYThresh = 100;
-	errorThetaThresh = 1.2;
+	readAbsoluteEncoderCount(prevLeftEncoder, 2);	// Initialize the encoder counts 
+	readAbsoluteEncoderCount(prevRightEncoder, 1);		
+	prevTime = clock();
 	
-	done = false;
+	bool done = false;
 	
 	while(!done) {
-		
-		done = poseControl(getDeltaPose(), 0, 200, 0);		//Drive straight 200 inches
+		done = poseControl(getDeltaPose(), 0, 50, 0);		
 	}
-	//This ends the code used to draw a square
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), 0, 100, 0);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), 0, 150, 0);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), 0, 200, 0);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -12.5, 225, M_PI/8);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -25, 250, M_PI/4);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -37.5, 275, 3*M_PI/8);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -50, 300, M_PI/2);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -62.5, 275, 5*M_PI/8);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -75, 250, 3*M_PI/4);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -87.5, 225, 7*M_PI/8);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -100, 200, M_PI);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -100, 150, M_PI);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -100, 100, M_PI);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -100, 50, M_PI);		
+	}
+	done = false;
+	while(!done) {
+		done = poseControl(getDeltaPose(), -100, 0, M_PI);		
+	}
+
 
 	//disconnect roboteq
 	device.Disconnect();
@@ -164,8 +234,6 @@ double * getDeltaPose()
 {
 	int currRightEncoder;
 	int currLeftEncoder;
-	int prevRightEncoder = rightEncoderCount;
-	int prevLeftEncoder = leftEncoderCount;
 
 	double rightDeltaPhi;
 	double leftDeltaPhi;
@@ -221,45 +289,117 @@ double * getDeltaPose()
 		// Delta Y
 		deltaY = (rightTurningRadius-botRadius)*sin(deltaTheta);
 	}
-	double * frame = [deltaX,deltaY,deltaTheta];
+
+	cout << "deltaTheta" << deltaTheta << endl;
+	cout << "deltaX" << deltaX << endl;
+	cout << "deltaY" << deltaY << endl;
+
+	double deltas[3] = {deltaX, deltaY, deltaTheta};
+	double* frame = deltas;
 	return frame;
 }
 
 
-///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
 bool poseControl(double * pose, double desiredX, double desiredY, double desiredTheta) {
 	double deltaX = pose[0];
 	double deltaY = pose[1];
 	double deltaTheta = pose[2];
 	
-	double errorTheta;
-	double errorX;
-	double errorY;
+	double errorWorldTheta;
+	double errorWorldX;
+	double errorWorldY;
+	double errorBotTheta;
+	double errorBotX;
+	double errorBotY;
 	double leftProportional;
 	double rightProportional;
 	int leftOutputPower;
 	int rightOutputPower;
+	double diffTime;
+	double leftProportionalFeedback;
+	double leftIntegralFeedback;
+	double leftDerivativeFeedback;
+	double rightProportionalFeedback;
+	double rightIntegralFeedback;
+	double rightDerivativeFeedback;
 	
 	absoluteTheta += deltaTheta;
 	absoluteX += deltaX*cos(absoluteTheta) - deltaY*sin(absoluteTheta);
-	absoluteY += deltaX*sin(absoluteTheta) + deltaY*sin(absoluteTheta);
+	absoluteY += deltaX*sin(absoluteTheta) + deltaY*cos(absoluteTheta);
+
+	cout << "absoluteTheta: " << absoluteTheta << endl;
+	cout << "absoluteX: " << absoluteX << endl;	
+	cout << "absoluteY: " << absoluteY << endl;
 	
-	errorX = desiredX-absoluteX;
-	errorY = desiredY-absoluteY;
-	errorTheta = desiredTheta-absoluteTheta;
+	errorWorldX = desiredX-absoluteX;
+	errorWorldY = desiredY-absoluteY;
+	errorWorldTheta = desiredTheta-absoluteTheta;
+
+	//Transform absolute error in position into the robot's frame
+	errorBotX = errorWorldX*cos(absoluteTheta) + errorWorldY*sin(absoluteTheta);
+	errorBotY = -errorWorldX*sin(absoluteTheta) + errorWorldY*cos(absoluteTheta);
+	errorBotTheta = -errorWorldTheta;
+
+	cout << "deisredTheta: " << desiredTheta << endl;
+	cout << "desiredX: " << desiredX << endl;	
+	cout << "desiredY: " << desiredY << endl;
+
+	cout << "errorWorldTheta: " << errorWorldTheta << endl;
+	cout << "errorWorldX: " << errorWorldX << endl;	
+	cout << "errorWorldY: " << errorWorldY << endl;
 	
-	leftOutputPower = KPX*deltaX + KPY*deltaY - KPTheta*deltaTheta; //+ KIX*sumDeltaX + KIY*sumDeltaY - KITheta*sumDeltaTheta;
-	rightOutputPower = -KPX*deltaX + KPY*deltaY + KPTheta*deltaTheta; // - KIX*sumDeltaX + KIY*sumDeltaY + KITheta*sumDeltaTheta;
+	//Proportional Feedback
+	leftProportionalFeedback = KPX*errorBotX + KPY*errorBotY + KPTheta*errorBotTheta;
+	rightProportionalFeedback = - KPX*errorBotX + KPY*errorBotY - KPTheta*errorBotTheta;
+
+	//Integral Feedback
+	currTime = clock();
+	diffTime = (double) (currTime - prevTime)/CLOCKS_PER_SEC;
+
+	cout << "diffTime: " << diffTime << endl;
+
+	sumErrorX += errorBotX * diffTime;
+	sumErrorY += errorBotY * diffTime;
+	sumErrorTheta += errorBotTheta * diffTime;
+
+	cout << "sumErrorX: " << sumErrorX << endl;
+	cout << "sumErrorY: " << sumErrorY << endl;	
+	cout << "sumErrorTheta: " << sumErrorTheta << endl;
+
+	prevTime = currTime;
+
+	//cout << "    KIX: " << KIX <<endl;
+	//cout << "    KIY: " << KIY <<endl;
+	//cout << "    KITheta: " << KITheta <<endl;
+
+	leftIntegralFeedback = KIX*sumErrorX + KIY*sumErrorY + KITheta*sumErrorTheta;
+	rightIntegralFeedback = - KIX*sumErrorX + KIY*sumErrorY - KITheta*sumErrorTheta;
+
+	cout << " left integral: " << leftIntegralFeedback << endl;
+	cout << " right integral: " << rightIntegralFeedback << endl;
+
+	leftOutputPower = leftProportionalFeedback + leftIntegralFeedback;//KPX*errorBotX + KPY*errorBotY + KPTheta*errorBotTheta + KIX*sumErrorX + KIY*sumErrorY - KITheta*sumErrorTheta;
+	rightOutputPower = rightProportionalFeedback + rightIntegralFeedback;//-KPX*errorBotX + KPY*errorBotY - KPTheta*errorBotTheta - KIX*sumErrorX + KIY*sumErrorY + KITheta*sumErrorTheta;
 	
+	cout << "leftOutputPower: " << leftOutputPower << endl;	
+	cout << "rightOutputPower: " << rightOutputPower << endl;
+
 	// Send POWER
-	device.SetCommand(_GO, 2, leftOutputPower);
-	device.SetCommand(_GO, 1, rightOutputPower);
+	device.SetCommand(_GO, 2, -leftOutputPower);
+	device.SetCommand(_GO, 1, -rightOutputPower);
 	
 	//Stop when the bot is within an inch
-	if(abs(errorX) < errorXThresh && abs(errorY) < errorYThresh && abs(errorTheta) < errorThetaThresh)
+	if(abs(errorWorldX) < errorXThresh && abs(errorWorldY) < errorYThresh && abs(errorWorldTheta) < errorThetaThresh)
 	{	
 		device.SetCommand(_GO, 2, 0);
 		device.SetCommand(_GO, 1, 0);
+
+		//Reset integral fedback terms
+		sumErrorX = 0;
+		sumErrorY = 0;
+		sumErrorTheta = 0;
+
 		return true;
 	}
 	else {

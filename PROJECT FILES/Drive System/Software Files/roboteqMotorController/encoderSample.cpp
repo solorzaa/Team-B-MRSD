@@ -95,107 +95,14 @@ bool poseControl(double desiredX, double desiredY, double desiredTheta);
 /////////////////////////////////
 int main(int argc, char *argv[])
 {
-	device.Disconnect();
-	if(initialize() == false){
-	return 1;
-	}
+clock_t last = 0;
 
-	//cout<<"- SetCommand(_GO, 2, 150)...";
-	//if((status = device.SetCommand(_GO, 2, 150)) != RQ_SUCCESS)
-	//	cout<<"failed --> "<<status<<endl;
-	//else
-	//	cout<<"succeeded."<<endl;
-
-
-	//Update encoder counts
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-			
-	errorXThresh = 100;
-	errorYThresh = 100;
-	errorThetaThresh = 1.2;
-	KPX = 3;
-	KPY = 1;
-	poseControl(0, 200, 0);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-	//sleep(2);
-
-	errorXThresh = 200;
-	errorYThresh = 200;
-	KPX = 0;
-	KPY = 0;
-	poseControl(0, 0, 2.67*5.8);
-
-	//sleep(2);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-
-	errorXThresh = 100;
-	errorYThresh = 100;
-	errorThetaThresh = 1.2;
-	KPX = 3;
-	KPY = 1;
-	poseControl(0, 200, 0);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-	//sleep(2);
-
-	errorXThresh = 200;
-	errorYThresh = 200;
-	KPX = 0;
-	KPY = 0;
-	poseControl(0, 0, 2.67*5.8);
-
-	//sleep(2);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-
-	errorXThresh = 100;
-	errorYThresh = 100;
-	errorThetaThresh = 1.2;
-	KPX = 3;
-	KPY = 1;
-	poseControl(0, 200, 0);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-	//sleep(2);
-
-	errorXThresh = 200;
-	errorYThresh = 200;
-	KPX = 0;
-	KPY = 0;
-	poseControl(0, 0, 2.67*5.8);
-
-	//sleep(2);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-
-	errorXThresh = 100;
-	errorYThresh = 100;
-	errorThetaThresh = 1.2;
-	KPX = 3;
-	KPY = 1;
-	poseControl(0, 200, 0);
-
-	readAbsoluteEncoderCount(leftEncoderCount, 2);
-	readAbsoluteEncoderCount(rightEncoderCount, 1);	
-	//sleep(2);
-
-	errorXThresh = 200;
-	errorYThresh = 200;
-	KPX = 0;
-	KPY = 0;
-	poseControl(0, 0, 2.67*5.8);
-
+while(1){
+clock_t now = clock();
+	cout << now-last << endl;
+	last = now;
+}
 	
-	device.Disconnect();
 	return 0;
 }
 
