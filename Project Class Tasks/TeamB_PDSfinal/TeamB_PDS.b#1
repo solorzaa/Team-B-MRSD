@@ -356,7 +356,7 @@ design rules under a new name.</description>
 <param name="mdCopperDimension" value="40mil"/>
 <param name="mdDrill" value="8mil"/>
 <param name="mdSmdStop" value="0mil"/>
-<param name="msWidth" value="60mil"/>
+<param name="msWidth" value="24mil"/>
 <param name="msDrill" value="24mil"/>
 <param name="msMicroVia" value="9.99mm"/>
 <param name="msBlindViaRatio" value="0.5"/>
