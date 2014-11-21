@@ -57,9 +57,9 @@ double sumErrorY = 0;
 double sumErrorTheta = 0;
 
 //PID Settings
-float KPX = 30;		//40;//40;
-float KPY = 14;		//8;//8;
-float KPTheta = 200;	//200;  // Stephen thinks 100
+float KPX = 50;		//30;
+float KPY = 14;		//14;
+float KPTheta = 200;	//200;
 
 float KIX = 48;		//48;
 float KIY = 80;		//80;
@@ -101,8 +101,10 @@ int main(int argc, char *argv[])
 	prevTime = clock();
 	
 	for(int i=0;i<100;i++) {
+
 		bool done = false;
 		while(!done) {
+			cout << "            point #: " << i << endl << endl;
 			done = poseControl(getDeltaPose(),xPoints[i],yPoints[i],thetaPoints[i]);
 		}
 	}
@@ -315,6 +317,9 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	double rightIntegralFeedback;
 	double rightDerivativeFeedback;
 	
+	//Keep the theta between 2 pi
+	absoluteTheta = fmod(absoluteTheta + 2*M_PI, 2*M_PI);
+
 	absoluteTheta += deltaTheta;
 	absoluteX += deltaX*cos(absoluteTheta) - deltaY*sin(absoluteTheta);
 	absoluteY += deltaX*sin(absoluteTheta) + deltaY*cos(absoluteTheta);
@@ -326,6 +331,14 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	errorWorldX = desiredX-absoluteX;
 	errorWorldY = desiredY-absoluteY;
 	errorWorldTheta = desiredTheta-absoluteTheta;
+
+	//Don't spin all the way around the wrong direction when absolute theta crosses 2*M_PI
+	if(errorWorldTheta > M_PI){
+		errorWorldTheta = errorWorldTheta - 2*M_PI;	
+	}
+	if(errorWorldTheta < -M_PI){
+		errorWorldTheta = errorWorldTheta + 2*M_PI;	
+	}
 
 	//Transform absolute error in position into the robot's frame
 	errorBotX = errorWorldX*cos(absoluteTheta) + errorWorldY*sin(absoluteTheta);
@@ -353,6 +366,10 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	sumErrorX += errorBotX * diffTime;
 	sumErrorY += errorBotY * diffTime;
 	sumErrorTheta += errorBotTheta * diffTime;
+
+	cout << "errorBotX: " << errorBotX << endl;
+	cout << "errorBotY: " << errorBotY << endl;	
+	cout << "errorBotTheta: " << errorBotTheta << endl;
 
 	cout << "sumErrorX: " << sumErrorX << endl;
 	cout << "sumErrorY: " << sumErrorY << endl;	
