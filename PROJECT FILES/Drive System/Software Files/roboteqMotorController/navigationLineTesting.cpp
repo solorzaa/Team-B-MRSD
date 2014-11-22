@@ -51,6 +51,7 @@ float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
 float botRadius = 11.25; //radius from each wheel to the midpoint between wheels in inches
 int stallPower = 40;
+float distanceCorrection = 1;
 
 //Leica communication variables
 static int fd;
@@ -121,6 +122,10 @@ void sphericalToPlanar(float radius, float horAngle, float verAngle);
 /////////////////////////////////
 int main(int argc, char *argv[])
 {
+	// Correct the distance measurements
+	wheelRadius = wheelRadius * distanceCorrection;
+	botRadius = botRadius * distanceCorrection;
+	
 	// If you don't want motion
 	if(!dataOnly) {
 		// Set up the motor controller
