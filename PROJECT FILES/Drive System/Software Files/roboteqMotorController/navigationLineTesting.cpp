@@ -64,8 +64,9 @@ float * yPoints = new float[100]{0,16.2,32.4,48.6,64.8,81,97.2,113.4,129.6,145.8
 float * thetaPoints = new float[100]{0,0,0,0,0,0,0,0,0,0,0,0.134390352,0.39618974,0.657989128,0.919788516,1.181587904,1.443387291,1.705186679,1.966986067,2.228785455,2.490584843,2.75238423,3.014183618,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.558726345,3.865904293,4.204498168,4.454080251,4.672246408,4.890412564,5.08763477,5.335471523,5.626941508,5.831145031,5.955063408,6.051056517,6.201154832,0.105766953,0.347320521,0.663225116,1.0978121,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.857030324,2.141518992,2.42775299,2.713986987,2.998475655,3.284709652,3.56919832,3.855432318,4.141666315,4.426154983,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.426154983,4.141666315,3.855432318,3.56919832,3.284709652,2.998475655,2.713986987,2.42775299,2.141518992,1.857030324,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327};
 int * paintPoints = new int[100]{1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,};
 
-float location[3];
-float prevLocation[2];
+float location[3] = {0,0,0};
+float prevLocation[2] = {0,0};
+float calibrateTheta[2] = {0,0};
 float xOrigin = 0;
 float yOrigin = 0;
 float thetaOrigin = 0;
@@ -180,20 +181,37 @@ int main(int argc, char *argv[])
 		// Set robot origin to initial planar data
 		xOrigin = location[0];
 		yOrigin = location[1];
-		thetaOrigin = -testData[2]*M_PI/180; 
+		// thetaOrigin = testData[2]*M_PI/180;  // FIX THE ORIGIN WITH STEP CALIBRATION
 
 		// Initialize the previous Locations
 		prevLocation[0] = location[0];
 		prevLocation[1] = location[1];
+		calibrateTheta[0] = location[0];
+		calibrateTheta[1] = location[1];
 
 		while(readPort(full_string)==0){
-			printf("Calibrating Origin");
+			printf("Calibrating Origin\n");
 			usleep(1000000);
 		}
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
-		
-		
+
+		bool keepGoing = false;
+		while(!keepGoing) {
+			keepGoing = poseControl(getDeltaPose(),0,24,0);
+		}
+		while(readPort(full_string)==0) {
+			printf("Calibrating Theta\n");
+			usleep(100000);
+		}
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
+		thetaOrigin -= M_PI/2;
+		thetaOrigin *= -1;
+		// Reset the origin at the last data point from calibration.  
+		xOrigin = location[0];
+		yOrigin = location[1];
 		//cout << "xOrigin: " << xOrigin << endl;
 		//cout << "yOrigin: " << yOrigin << endl;
 

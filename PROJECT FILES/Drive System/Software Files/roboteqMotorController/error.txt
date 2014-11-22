@@ -5,1627 +5,1340 @@ Detecting device version...v1.2.
 comm port opened successfully
 Length of the string??? : -1
 
-Length of the string??? : 2
-no dataLength of the string??? : 88
-$1416690410.407029,1990,345.53,94.47,8.764!
-$1416690411.024427,1991,345.53,94.47,8.764!
+Length of the string??? : -1
 
-The vector: 1.41669e+09 1990 345.53 94.47 
-The vector: 1.41669e+09 1990 345.53 94.47 8.764 
-Horizontal Angle: 6.03064
-Vertical  Angle: 1.64881
-Radius: 8.764
+no dataLength of the string??? : 41
+$1416695711.310854,291,9.29,98.71,4.525!
+
+The vector: 1.4167e+09 291 9.29 98.71 
+The vector: 1.4167e+09 291 9.29 98.71 4.525 
+Horizontal Angle: 0.162141
+Vertical  Angle: 1.72281
+Radius: 4.525
 xOrigin: 0
 yOrigin: 0
 thetaOrigin: 0
 Length of the string??? : -1
 
-Calibrating OriginLength of the string??? : 44
-$1416690411.641334,1992,345.53,94.47,8.764!
+Calibrating OriginLength of the string??? : 82
+$1416695711.948455,292,9.29,98.71,4.525!
+$1416695712.590482,293,9.29,98.71,4.525!
 
-The vector: 1.41669e+09 1992 345.53 94.47 
-The vector: 1.41669e+09 1992 345.53 94.47 8.764 
-Horizontal Angle: 6.03064
-Vertical  Angle: 1.64881
-Radius: 8.764
-xOrigin: -333.078
-yOrigin: 85.9538
-thetaOrigin: -6.03064
-Encoder at beginning: 14122, 14270
-rightEncoder: 14270
-leftEncoder: 14122
+The vector: 1.4167e+09 292 9.29 98.71 
+The vector: 1.4167e+09 292 9.29 98.71 4.525 
+Horizontal Angle: 0.162141
+Vertical  Angle: 1.72281
+Radius: 4.525
+xOrigin: -173.786
+yOrigin: -28.4273
+thetaOrigin: 0
+rightEncoder: 2852
+leftEncoder: 2887
+rightArcLength: 20.6069
+leftArcLength: 20.8598
+rightTurningRadius: -1756.97
+deltaTheta-0.0117286
+deltaX0.121585
+deltaY20.7328
+absoluteTheta: -0.0117286
+absoluteX: 0.364739
+absoluteY: 20.73
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: 0.0117286
+errorWorldX: -0.364739
+errorWorldY: 3.27001
+diffTime: 0.004945
+errorBotX: -0.403065
+errorBotY: 3.26551
+errorBotTheta: -0.0117286
+sumErrorX: -0.00199316
+sumErrorY: 0.0161479
+sumErrorTheta: -5.7998e-05
+ left integral: -0.659773
+ right integral: 3.24344
+leftOutputPower: 22
+rightOutputPower: 71
+Length of the string??? : -1
+
+Calibrating ThetaLength of the string??? : -1
+
+Calibrating ThetaLength of the string??? : -1
+
+Calibrating ThetaLength of the string??? : -1
+
+Calibrating ThetaLength of the string??? : 41
+$1416695713.234100,294,9.29,98.71,4.525!
+
+The vector: 1.4167e+09 294 9.29 98.71 
+The vector: 1.4167e+09 294 9.29 98.71 4.525 
+Horizontal Angle: 0.162141
+Vertical  Angle: 1.72281
+Radius: 4.525
+xOrigin: -173.786
+yOrigin: -28.4273
+thetaOrigin: 0
+Encoder at beginning: 2887, 2853
+rightEncoder: 2853
+leftEncoder: 2887
 rightArcLength: 0
 leftArcLength: 0
 deltaTheta0
 deltaX0
 deltaY0
-absoluteTheta: 0
-absoluteX: 0
-absoluteY: 0
+absoluteTheta: 6.27146
+absoluteX: 0.364739
+absoluteY: 20.73
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 0
-errorWorldX: 0
-errorWorldY: 12
-diffTime: 0.000432
-errorBotX: 0
-errorBotY: 12
-errorBotTheta: -0
-sumErrorX: 0
-sumErrorY: 0.005184
-sumErrorTheta: 0
- left integral: 0.41472
- right integral: 0.41472
-leftOutputPower: 168
-rightOutputPower: 168
-Length of the string??? : 44
-$1416690412.256297,1993,345.53,94.47,8.764!
+errorWorldTheta: 0.0117286
+errorWorldX: -0.364739
+errorWorldY: -8.72999
+diffTime: 0.000457
+errorBotX: -0.262325
+errorBotY: -8.73367
+errorBotTheta: -0.0117286
+sumErrorX: -0.000119883
+sumErrorY: -0.00399129
+sumErrorTheta: -5.35998e-06
+ left integral: -0.496577
+ right integral: -0.142029
+leftOutputPower: -138
+rightOutputPower: -106
+Length of the string??? : -1
 
-The vector: 1.41669e+09 1993 345.53 94.47 
-The vector: 1.41669e+09 1993 345.53 94.47 8.764 
-Horizontal Angle: 6.03064
-Vertical  Angle: 1.64881
-Radius: 8.764
-xOrigin: -333.078
-yOrigin: 85.9538
-thetaOrigin: -6.03064
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14270
-leftEncoder: 14122
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2853
+leftEncoder: 2886
 rightArcLength: 0
-leftArcLength: 0
-deltaTheta0
-deltaX0
-deltaY0
-absoluteTheta: 0
-absoluteX: 0
-absoluteY: 0
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: 0
-errorWorldX: 0
-errorWorldY: 12
-diffTime: 0.000875
-errorBotX: 0
-errorBotY: 12
-errorBotTheta: -0
-sumErrorX: 0
-sumErrorY: 0.015684
-sumErrorTheta: 0
- left integral: 1.25472
- right integral: 1.25472
-leftOutputPower: 169
-rightOutputPower: 169
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14275
-leftEncoder: 14132
-rightArcLength: 0.0361271
-leftArcLength: 0.0722541
-rightTurningRadius: -21.5618
-deltaTheta-0.00167552
-deltaX4.53986e-05
-deltaY0.0541906
-absoluteTheta: -0.00167552
-absoluteX: 0.000136196
-absoluteY: 0.0541904
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: 0.00167552
-errorWorldX: -0.000136196
-errorWorldY: 11.9458
-diffTime: 0.00075
-errorBotX: -0.0201516
-errorBotY: 11.9458
-errorBotTheta: -0.00167552
-sumErrorX: -1.51137e-05
-sumErrorY: 0.0246433
-sumErrorTheta: -1.25664e-06
- left integral: 1.93053
- right integral: 2.01241
-leftOutputPower: 167
-rightOutputPower: 170
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14294
-leftEncoder: 14150
-rightArcLength: 0.137283
-leftArcLength: 0.130057
-rightTurningRadius: 409.673
+leftArcLength: -0.00722541
+rightTurningRadius: 0
 deltaTheta0.000335103
-deltaX-2.23966e-05
-deltaY0.13367
-absoluteTheta: 6.28184
-absoluteX: 0.000292972
-absoluteY: 0.18786
+deltaX6.05315e-07
+deltaY-0.00361271
+absoluteTheta: 6.27179
+absoluteX: 0.364698
+absoluteY: 20.7264
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 0.00134041
-errorWorldX: -0.000292972
-errorWorldY: 11.8121
-diffTime: 0.000833
-errorBotX: -0.0161261
-errorBotY: 11.8121
-errorBotTheta: -0.00134041
-sumErrorX: -2.85467e-05
-sumErrorY: 0.0344828
-sumErrorTheta: -2.3732e-06
- left integral: 2.68132
- right integral: 2.83594
-leftOutputPower: 166
-rightOutputPower: 169
+errorWorldTheta: 0.0113935
+errorWorldX: -0.364698
+errorWorldY: -8.72638
+diffTime: 0.000789
+errorBotX: -0.265253
+errorBotY: -8.72997
+errorBotTheta: -0.0113935
+sumErrorX: -0.000329167
+sumErrorY: -0.0108792
+sumErrorTheta: -1.43495e-05
+ left integral: -1.34532
+ right integral: -0.395356
+leftOutputPower: -139
+rightOutputPower: -107
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14317
-leftEncoder: 14166
-rightArcLength: 0.166184
-leftArcLength: 0.115607
-rightTurningRadius: 70.8458
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2844
+leftEncoder: 2873
+rightArcLength: -0.0650287
+leftArcLength: -0.0939304
+rightTurningRadius: -48.5139
+deltaTheta0.00134041
+deltaX5.32677e-05
+deltaY-0.0794795
+absoluteTheta: 6.27313
+absoluteX: 0.363952
+absoluteY: 20.6469
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: 0.0100531
+errorWorldX: -0.363952
+errorWorldY: -8.6469
+diffTime: 0.00077
+errorBotX: -0.277007
+errorBotY: -8.65013
+errorBotTheta: -0.0100531
+sumErrorX: -0.000542463
+sumErrorY: -0.0175398
+sumErrorTheta: -2.20903e-05
+ left integral: -2.13612
+ right integral: -0.670257
+leftOutputPower: -139
+rightOutputPower: -105
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2832
+leftEncoder: 2860
+rightArcLength: -0.0867049
+leftArcLength: -0.0939304
+rightTurningRadius: -258.741
+deltaTheta0.000335103
+deltaX1.51329e-05
+deltaY-0.0903176
+absoluteTheta: 6.27347
+absoluteX: 0.36309
+absoluteY: 20.5566
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: 0.00971799
+errorWorldX: -0.36309
+errorWorldY: -8.55659
+diffTime: 0.000822
+errorBotX: -0.279921
+errorBotY: -8.55971
+errorBotTheta: -0.00971799
+sumErrorX: -0.000772558
+sumErrorY: -0.0245759
+sumErrorTheta: -3.00785e-05
+ left integral: -2.96567
+ right integral: -0.966477
+leftOutputPower: -138
+rightOutputPower: -104
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2822
+leftEncoder: 2846
+rightArcLength: -0.0722541
+leftArcLength: -0.101156
+rightTurningRadius: -53.9044
+deltaTheta0.00134041
+deltaX5.81102e-05
+deltaY-0.0867049
+absoluteTheta: 6.27481
+absoluteX: 0.362422
+absoluteY: 20.4699
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: 0.00837758
+errorWorldX: -0.362422
+errorWorldY: -8.46989
+diffTime: 0.000755
+errorBotX: -0.291453
+errorBotY: -8.47263
+errorBotTheta: -0.00837758
+sumErrorX: -0.000992604
+sumErrorY: -0.0309727
+sumErrorTheta: -3.64036e-05
+ left integral: -3.69038
+ right integral: -1.26526
+leftOutputPower: -138
+rightOutputPower: -103
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2804
+leftEncoder: 2823
+rightArcLength: -0.130057
+leftArcLength: -0.166184
+rightTurningRadius: -77.6223
+deltaTheta0.00167552
+deltaX0.000124089
+deltaY-0.148121
+absoluteTheta: 6.27648
+absoluteX: 0.361553
+absoluteY: 20.3218
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: 0.00670206
+errorWorldX: -0.361553
+errorWorldY: -8.32177
+diffTime: 0.000747
+errorBotX: -0.305772
+errorBotY: -8.32401
+errorBotTheta: -0.00670206
+sumErrorX: -0.00122102
+sumErrorY: -0.0371908
+sumErrorTheta: -4.141e-05
+ left integral: -4.35899
+ right integral: -1.59153
+leftOutputPower: -137
+rightOutputPower: -101
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2782
+leftEncoder: 2796
+rightArcLength: -0.158959
+leftArcLength: -0.195086
+rightTurningRadius: -94.8717
+deltaTheta0.00167552
+deltaX0.000148302
+deltaY-0.177023
+absoluteTheta: 6.27816
+absoluteX: 0.360811
+absoluteY: 20.1447
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: 0.00502655
+errorWorldX: -0.360811
+errorWorldY: -8.14475
+diffTime: 0.000747
+errorBotX: -0.319867
+errorBotY: -8.14646
+errorBotTheta: -0.00502655
+sumErrorX: -0.00145996
+sumErrorY: -0.0432762
+sumErrorTheta: -4.51649e-05
+ left integral: -4.97745
+ right integral: -1.94674
+leftOutputPower: -136
+rightOutputPower: -98
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2758
+leftEncoder: 2765
+rightArcLength: -0.17341
+leftArcLength: -0.223988
+rightTurningRadius: -73.926
 deltaTheta0.00234572
-deltaX-0.000165251
-deltaY0.140895
-absoluteTheta: 6.28419
-absoluteX: -1.39221e-05
-absoluteY: 0.328756
+deltaX0.000233046
+deltaY-0.198699
+absoluteTheta: 6.2805
+absoluteX: 0.360512
+absoluteY: 19.946
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: -0.00100531
-errorWorldX: 1.39221e-05
-errorWorldY: 11.6712
-diffTime: 0.000757
-errorBotX: 0.0117471
-errorBotY: 11.6712
-errorBotTheta: 0.00100531
-sumErrorX: -1.96542e-05
-sumErrorY: 0.043318
-sumErrorTheta: -1.61218e-06
- left integral: 3.4129
- right integral: 3.51797
-leftOutputPower: 167
-rightOutputPower: 166
+errorWorldTheta: 0.00268083
+errorWorldX: -0.360512
+errorWorldY: -7.94605
+diffTime: 0.00079
+errorBotX: -0.339209
+errorBotY: -7.94699
+errorBotTheta: -0.00268083
+sumErrorX: -0.00172793
+sumErrorY: -0.0495543
+sumErrorTheta: -4.72827e-05
+ left integral: -5.56033
+ right integral: -2.36836
+leftOutputPower: -134
+rightOutputPower: -96
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14345
-leftEncoder: 14194
-rightArcLength: 0.202312
-leftArcLength: 0.202312
-deltaTheta0
-deltaX0
-deltaY0.202312
-absoluteTheta: 0.00100531
-absoluteX: -0.000217308
-absoluteY: 0.531067
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.00100531
-errorWorldX: 0.000217308
-errorWorldY: 11.4689
-diffTime: 0.000726
-errorBotX: 0.0117471
-errorBotY: 11.4689
-errorBotTheta: 0.00100531
-sumErrorX: -1.11257e-05
-sumErrorY: 0.0516444
-sumErrorTheta: -8.82327e-07
- left integral: 4.10278
- right integral: 4.16032
-leftOutputPower: 165
-rightOutputPower: 163
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14382
-leftEncoder: 14232
-rightArcLength: 0.26734
-leftArcLength: 0.274566
-rightTurningRadius: -797.785
-deltaTheta-0.000335103
-deltaX4.53986e-05
-deltaY0.270953
-absoluteTheta: 0.000670206
-absoluteX: -0.000353504
-absoluteY: 0.80202
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.000670206
-errorWorldX: 0.000353504
-errorWorldY: 11.198
-diffTime: 0.000765
-errorBotX: 0.00785846
-errorBotY: 11.198
-errorBotTheta: 0.000670206
-sumErrorX: -5.11401e-06
-sumErrorY: 0.0602109
-sumErrorTheta: -3.69619e-07
- left integral: 4.8048
- right integral: 4.82894
-leftOutputPower: 162
-rightOutputPower: 161
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14423
-leftEncoder: 14274
-rightArcLength: 0.296242
-leftArcLength: 0.303467
-rightTurningRadius: -884.032
-deltaTheta-0.000335103
-deltaX5.02411e-05
-deltaY0.299855
-absoluteTheta: 0.000335103
-absoluteX: -0.000403745
-absoluteY: 1.10187
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.000335103
-errorWorldX: 0.000403745
-errorWorldY: 10.8981
-diffTime: 0.000762
-errorBotX: 0.00405574
-errorBotY: 10.8981
-errorBotTheta: 0.000335103
-sumErrorX: -2.02354e-06
-sumErrorY: 0.0685152
-sumErrorTheta: -1.1427e-07
- left integral: 5.47747
- right integral: 5.48497
-leftOutputPower: 158
-rightOutputPower: 157
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14470
-leftEncoder: 14322
-rightArcLength: 0.339594
-leftArcLength: 0.34682
-rightTurningRadius: -1013.4
-deltaTheta-0.000335103
-deltaX5.75049e-05
-deltaY0.343207
-absoluteTheta: 3.26779e-16
-absoluteX: -0.00034624
-absoluteY: 1.44508
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -3.26779e-16
-errorWorldX: 0.00034624
-errorWorldY: 10.5549
-diffTime: 0.000698
-errorBotX: 0.00034624
-errorBotY: 10.5549
-errorBotTheta: 3.26779e-16
-sumErrorX: -1.78186e-06
-sumErrorY: 0.0758826
-sumErrorTheta: -1.1427e-07
- left integral: 6.06686
- right integral: 6.07435
-leftOutputPower: 153
-rightOutputPower: 153
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14520
-leftEncoder: 14372
-rightArcLength: 0.361271
-leftArcLength: 0.361271
-deltaTheta0
-deltaX0
-deltaY0.361271
-absoluteTheta: 0
-absoluteX: -0.00034624
-absoluteY: 1.80635
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: 0
-errorWorldX: 0.00034624
-errorWorldY: 10.1936
-diffTime: 0.000759
-errorBotX: 0.00034624
-errorBotY: 10.1936
-errorBotTheta: -0
-sumErrorX: -1.51907e-06
-sumErrorY: 0.0836196
-sumErrorTheta: -1.1427e-07
- left integral: 6.68583
- right integral: 6.69329
-leftOutputPower: 149
-rightOutputPower: 149
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14573
-leftEncoder: 14426
-rightArcLength: 0.382947
-leftArcLength: 0.390172
-rightTurningRadius: -1142.77
-deltaTheta-0.000335103
-deltaX6.47687e-05
-deltaY0.38656
-absoluteTheta: -0.000335103
-absoluteX: -0.000151934
-absoluteY: 2.19291
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: 0.000335103
-errorWorldX: 0.000151934
-errorWorldY: 9.80709
-diffTime: 0.000772
-errorBotX: -0.00313445
-errorBotY: 9.80709
-errorBotTheta: -0.000335103
-sumErrorX: -3.93886e-06
-sumErrorY: 0.0911906
-sumErrorTheta: -3.7297e-07
- left integral: 7.28313
- right integral: 7.30737
-leftOutputPower: 144
-rightOutputPower: 144
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14628
-leftEncoder: 14481
-rightArcLength: 0.397398
-leftArcLength: 0.397398
-deltaTheta0
-deltaX0
-deltaY0.397398
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2731
+leftEncoder: 2731
+rightArcLength: -0.195086
+leftArcLength: -0.245664
+rightTurningRadius: -83.1668
+deltaTheta0.00234572
+deltaX0.000258469
+deltaY-0.220375
 absoluteTheta: 6.28285
-absoluteX: -1.87646e-05
-absoluteY: 2.59031
+absoluteX: 0.360696
+absoluteY: 19.7257
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
 errorWorldTheta: 0.000335103
-errorWorldX: 1.87646e-05
-errorWorldY: 9.40969
-diffTime: 0.000733
-errorBotX: -0.00313445
-errorBotY: 9.40969
+errorWorldX: -0.360696
+errorWorldY: -7.72567
+diffTime: 0.000815
+errorBotX: -0.358108
+errorBotY: -7.72579
 errorBotTheta: -0.000335103
-sumErrorX: -6.23642e-06
-sumErrorY: 0.0980879
-sumErrorTheta: -6.18601e-07
- left integral: 7.82694
- right integral: 7.86713
-leftOutputPower: 139
-rightOutputPower: 139
+sumErrorX: -0.00201979
+sumErrorY: -0.0558508
+sumErrorTheta: -4.75558e-05
+ left integral: -6.0868
+ right integral: -2.84933
+leftOutputPower: -132
+rightOutputPower: -93
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14684
-leftEncoder: 14538
-rightArcLength: 0.404623
-leftArcLength: 0.411848
-rightTurningRadius: -1207.46
-deltaTheta-0.000335103
-deltaX6.84006e-05
-deltaY0.408236
-absoluteTheta: 6.28252
-absoluteX: 0.000323238
-absoluteY: 2.99854
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2702
+leftEncoder: 2696
+rightArcLength: -0.209537
+leftArcLength: -0.252889
+rightTurningRadius: -104.215
+deltaTheta0.00201062
+deltaX0.000232441
+deltaY-0.231213
+absoluteTheta: 6.28486
+absoluteX: 0.361316
+absoluteY: 19.4945
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 0.000670206
-errorWorldX: -0.000323238
-errorWorldY: 9.00146
-diffTime: 0.000756
-errorBotX: -0.00635607
-errorBotY: 9.00145
-errorBotTheta: -0.000670206
-sumErrorX: -1.10416e-05
-sumErrorY: 0.104893
-sumErrorTheta: -1.12528e-06
- left integral: 8.3549
- right integral: 8.42798
-leftOutputPower: 133
-rightOutputPower: 134
+errorWorldTheta: -0.00167552
+errorWorldX: -0.361316
+errorWorldY: -7.49446
+diffTime: 0.000754
+errorBotX: -0.373873
+errorBotY: -7.49385
+errorBotTheta: 0.00167552
+sumErrorX: -0.00230169
+sumErrorY: -0.0615012
+sumErrorTheta: -4.62925e-05
+ left integral: -6.51194
+ right integral: -3.32825
+leftOutputPower: -129
+rightOutputPower: -89
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14741
-leftEncoder: 14595
-rightArcLength: 0.411848
-leftArcLength: 0.411848
-deltaTheta0
-deltaX0
-deltaY0.411848
-absoluteTheta: 6.28252
-absoluteX: 0.000599262
-absoluteY: 3.41039
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2673
+leftEncoder: 2660
+rightArcLength: -0.209537
+leftArcLength: -0.260115
+rightTurningRadius: -89.3273
+deltaTheta0.00234572
+deltaX0.000275418
+deltaY-0.234826
+absoluteTheta: 0.00402124
+absoluteX: 0.362536
+absoluteY: 19.2596
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 0.000670206
-errorWorldX: -0.000599262
-errorWorldY: 8.58961
-diffTime: 0.000738
-errorBotX: -0.00635607
-errorBotY: 8.5896
-errorBotTheta: -0.000670206
-sumErrorX: -1.57324e-05
-sumErrorY: 0.111232
-sumErrorTheta: -1.61989e-06
- left integral: 8.84598
- right integral: 8.95116
-leftOutputPower: 128
-rightOutputPower: 129
+errorWorldTheta: -0.00402124
+errorWorldX: -0.362536
+errorWorldY: -7.25964
+diffTime: 0.000744
+errorBotX: -0.391726
+errorBotY: -7.25812
+errorBotTheta: 0.00402124
+sumErrorX: -0.00259313
+sumErrorY: -0.0669012
+sumErrorTheta: -4.33007e-05
+ left integral: -6.86219
+ right integral: -3.84201
+leftOutputPower: -127
+rightOutputPower: -86
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14798
-leftEncoder: 14652
-rightArcLength: 0.411848
-leftArcLength: 0.411848
-deltaTheta0
-deltaX0
-deltaY0.411848
-absoluteTheta: 6.28252
-absoluteX: 0.000875285
-absoluteY: 3.82224
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2641
+leftEncoder: 2622
+rightArcLength: -0.231213
+leftArcLength: -0.274566
+rightTurningRadius: -114.996
+deltaTheta0.00201062
+deltaX0.000254232
+deltaY-0.252889
+absoluteTheta: 0.00603186
+absoluteX: 0.364316
+absoluteY: 19.0068
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 0.000670206
-errorWorldX: -0.000875285
-errorWorldY: 8.17776
-diffTime: 0.000763
-errorBotX: -0.00635607
-errorBotY: 8.17776
-errorBotTheta: -0.000670206
-sumErrorX: -2.05821e-05
-sumErrorY: 0.117472
-sumErrorTheta: -2.13126e-06
- left integral: 9.32855
- right integral: 9.46693
-leftOutputPower: 123
-rightOutputPower: 124
+errorWorldTheta: -0.00603186
+errorWorldX: -0.364316
+errorWorldY: -7.00676
+diffTime: 0.000784
+errorBotX: -0.406572
+errorBotY: -7.00443
+errorBotTheta: 0.00603186
+sumErrorX: -0.00291189
+sumErrorY: -0.0723927
+sumErrorTheta: -3.85717e-05
+ left integral: -7.16548
+ right integral: -4.41735
+leftOutputPower: -124
+rightOutputPower: -83
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14856
-leftEncoder: 14708
-rightArcLength: 0.419074
-leftArcLength: 0.404623
-rightTurningRadius: 625.291
-deltaTheta0.000670206
-deltaX-0.000138012
-deltaY0.411848
-absoluteTheta: 6.28319
-absoluteX: 0.000737273
-absoluteY: 4.23409
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2610
+leftEncoder: 2583
+rightArcLength: -0.223988
+leftArcLength: -0.281791
+rightTurningRadius: -83.5518
+deltaTheta0.00268083
+deltaX0.000338976
+deltaY-0.252889
+absoluteTheta: 0.00871268
+absoluteX: 0.366858
+absoluteY: 18.7539
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: 8.88178e-16
-errorWorldX: -0.000737273
-errorWorldY: 7.76591
-diffTime: 0.00078
-errorBotX: -0.000737273
-errorBotY: 7.76591
-errorBotTheta: -8.88178e-16
-sumErrorX: -2.11571e-05
-sumErrorY: 0.123529
-sumErrorTheta: -2.13126e-06
- left integral: 9.81312
- right integral: 9.95155
-leftOutputPower: 118
-rightOutputPower: 118
+errorWorldTheta: -0.00871268
+errorWorldX: -0.366858
+errorWorldY: -6.75388
+diffTime: 0.000762
+errorBotX: -0.425688
+errorBotY: -6.75043
+errorBotTheta: 0.00871268
+sumErrorX: -0.00323626
+sumErrorY: -0.0775365
+sumErrorTheta: -3.19327e-05
+ left integral: -7.38011
+ right integral: -5.02574
+leftOutputPower: -121
+rightOutputPower: -79
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14913
-leftEncoder: 14764
-rightArcLength: 0.411848
-leftArcLength: 0.404623
-rightTurningRadius: 1229.02
-deltaTheta0.000335103
-deltaX-6.84006e-05
-deltaY0.408236
-absoluteTheta: 0.000335103
-absoluteX: 0.000532072
-absoluteY: 4.64233
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2580
+leftEncoder: 2545
+rightArcLength: -0.216762
+leftArcLength: -0.274566
+rightTurningRadius: -80.8566
+deltaTheta0.00268083
+deltaX0.000329291
+deltaY-0.245664
+absoluteTheta: 0.0113935
+absoluteX: 0.369986
+absoluteY: 18.5082
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: -0.000335103
-errorWorldX: -0.000532072
-errorWorldY: 7.35767
-diffTime: 0.00067
-errorBotX: 0.00193351
-errorBotY: 7.35767
-errorBotTheta: 0.000335103
-sumErrorX: -1.98617e-05
-sumErrorY: 0.128459
-sumErrorTheta: -1.90674e-06
- left integral: 10.2147
- right integral: 10.3387
-leftOutputPower: 113
-rightOutputPower: 113
-Length of the string??? : 23
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 14968
-leftEncoder: 14817
-rightArcLength: 0.397398
-leftArcLength: 0.382947
-rightTurningRadius: 592.948
-deltaTheta0.000670206
-deltaX-0.000130748
-deltaY0.390172
-absoluteTheta: 0.00100531
-absoluteX: 9.07996e-06
-absoluteY: 5.0325
+errorWorldTheta: -0.0113935
+errorWorldX: -0.369986
+errorWorldY: -6.50824
+diffTime: 0.000569
+errorBotX: -0.444112
+errorBotY: -6.5036
+errorBotTheta: 0.0113935
+sumErrorX: -0.00348896
+sumErrorY: -0.0812371
+sumErrorTheta: -2.54497e-05
+ left integral: -7.48083
+ right integral: -5.5171
+leftOutputPower: -118
+rightOutputPower: -76
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2549
+leftEncoder: 2506
+rightArcLength: -0.223988
+leftArcLength: -0.281791
+rightTurningRadius: -83.5518
+deltaTheta0.00268083
+deltaX0.000338976
+deltaY-0.252889
+absoluteTheta: 0.0140743
+absoluteX: 0.373884
+absoluteY: 18.2554
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: -0.00100531
-errorWorldX: -9.07996e-06
-errorWorldY: 6.9675
-diffTime: 0.000618
-errorBotX: 0.00699542
-errorBotY: 6.9675
-errorBotTheta: 0.00100531
-sumErrorX: -1.55385e-05
-sumErrorY: 0.132765
-sumErrorTheta: -1.28546e-06
- left integral: 10.5793
- right integral: 10.6631
-leftOutputPower: 108
-rightOutputPower: 107
-Length of the string??? : 21
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15022
-leftEncoder: 14868
-rightArcLength: 0.390172
-leftArcLength: 0.368496
-rightTurningRadius: 388.112
-deltaTheta0.00100531
-deltaX-0.000190674
-deltaY0.379334
-absoluteTheta: 0.00201062
-absoluteX: -0.00094429
-absoluteY: 5.41183
+errorWorldTheta: -0.0140743
+errorWorldX: -0.373884
+errorWorldY: -6.25538
+diffTime: 0.000555
+errorBotX: -0.461884
+errorBotY: -6.24949
+errorBotTheta: 0.0140743
+sumErrorX: -0.00374531
+sumErrorY: -0.0847055
+sumErrorTheta: -1.76385e-05
+ left integral: -7.52065
+ right integral: -6.03224
+leftOutputPower: -115
+rightOutputPower: -73
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2518
+leftEncoder: 2468
+rightArcLength: -0.223988
+leftArcLength: -0.274566
+rightTurningRadius: -95.4878
+deltaTheta0.00234572
+deltaX0.000292367
+deltaY-0.249276
+absoluteTheta: 0.0164201
+absoluteX: 0.378269
+absoluteY: 18.0061
 deisredTheta: 0
 desiredX: 0
 desiredY: 12
-errorWorldTheta: -0.00201062
-errorWorldX: 0.00094429
-errorWorldY: 6.58817
-diffTime: 0.000749
-errorBotX: 0.0141906
-errorBotY: 6.58815
-errorBotTheta: 0.00201062
-sumErrorX: -4.90978e-06
-sumErrorY: 0.137699
-sumErrorTheta: 2.20498e-07
- left integral: 11.0228
- right integral: 11.0091
-leftOutputPower: 104
+errorWorldTheta: -0.0164201
+errorWorldX: -0.378269
+errorWorldY: -6.00614
+diffTime: 0.000542
+errorBotX: -0.476835
+errorBotY: -5.99912
+errorBotTheta: 0.0164201
+sumErrorX: -0.00400375
+sumErrorY: -0.0879571
+sumErrorTheta: -8.73882e-06
+ left integral: -7.50839
+ right integral: -6.56474
+leftOutputPower: -112
+rightOutputPower: -69
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2488
+leftEncoder: 2429
+rightArcLength: -0.216762
+leftArcLength: -0.281791
+rightTurningRadius: -71.8725
+deltaTheta0.00301593
+deltaX0.0003759
+deltaY-0.249276
+absoluteTheta: 0.019436
+absoluteX: 0.38349
+absoluteY: 17.7569
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: -0.019436
+errorWorldX: -0.38349
+errorWorldY: -5.75692
+diffTime: 0.000542
+errorBotX: -0.495302
+errorBotY: -5.74838
+errorBotTheta: 0.019436
+sumErrorX: -0.0042722
+sumErrorY: -0.0910727
+sumErrorTheta: 1.79548e-06
+ left integral: -7.43343
+ right integral: -7.1382
+leftOutputPower: -108
+rightOutputPower: -66
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2461
+leftEncoder: 2391
+rightArcLength: -0.195086
+leftArcLength: -0.274566
+rightTurningRadius: -52.9243
+deltaTheta0.00368614
+deltaX0.000432799
+deltaY-0.234825
+absoluteTheta: 0.0231221
+absoluteX: 0.389352
+absoluteY: 17.5222
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: -0.0231221
+errorWorldX: -0.389352
+errorWorldY: -5.52216
+diffTime: 0.000551
+errorBotX: -0.51692
+errorBotY: -5.51169
+errorBotTheta: 0.0231221
+sumErrorX: -0.00455703
+sumErrorY: -0.0941096
+sumErrorTheta: 1.45358e-05
+ left integral: -7.28236
+ right integral: -7.77518
+leftOutputPower: -105
+rightOutputPower: -63
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2436
+leftEncoder: 2354
+rightArcLength: -0.180635
+leftArcLength: -0.26734
+rightTurningRadius: -44.9203
+deltaTheta0.00402124
+deltaX0.000450354
+deltaY-0.223987
+absoluteTheta: 0.0271434
+absoluteX: 0.395881
+absoluteY: 17.2983
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: -0.0271434
+errorWorldX: -0.395881
+errorWorldY: -5.29827
+diffTime: 0.000604
+errorBotX: -0.53953
+errorBotY: -5.28558
+errorBotTheta: 0.0271434
+sumErrorX: -0.0048829
+sumErrorY: -0.0973021
+sumErrorTheta: 3.09304e-05
+ left integral: -7.02878
+ right integral: -8.53956
+leftOutputPower: -102
+rightOutputPower: -60
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2412
+leftEncoder: 2316
+rightArcLength: -0.17341
+leftArcLength: -0.274566
+rightTurningRadius: -36.963
+deltaTheta0.00469144
+deltaX0.000525412
+deltaY-0.223987
+absoluteTheta: 0.0318348
+absoluteX: 0.403535
+absoluteY: 17.0744
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: -0.0318348
+errorWorldX: -0.403535
+errorWorldY: -5.07441
+diffTime: 0.000783
+errorBotX: -0.564847
+errorBotY: -5.059
+errorBotTheta: 0.0318348
+sumErrorX: -0.00532518
+sumErrorY: -0.101263
+sumErrorTheta: 5.5857e-05
+ left integral: -6.56925
+ right integral: -9.63288
+leftOutputPower: -99
+rightOutputPower: -58
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2389
+leftEncoder: 2281
+rightArcLength: -0.166184
+leftArcLength: -0.252889
+rightTurningRadius: -41.3267
+deltaTheta0.00402124
+deltaX0.000421298
+deltaY-0.209536
+absoluteTheta: 0.035856
+absoluteX: 0.411468
+absoluteY: 16.865
+deisredTheta: 0
+desiredX: 0
+desiredY: 12
+errorWorldTheta: -0.035856
+errorWorldX: -0.411468
+errorWorldY: -4.86503
+diffTime: 0.000785
+errorBotX: -0.585607
+errorBotY: -4.84715
+errorBotTheta: 0.035856
+sumErrorX: -0.00578488
+sumErrorY: -0.105068
+sumErrorTheta: 8.4004e-05
+ left integral: -5.99501
+ right integral: -10.8159
+leftOutputPower: -95
+rightOutputPower: -56
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+The first piece of data from the lecia: 1.4167e+09
+rightEncoder: 2353
+leftEncoder: 2233
+rightArcLength: -0.260115
+leftArcLength: -0.34682
+rightTurningRadius: -64.6853
+deltaTheta0.00402124
+deltaX0.000610156
+deltaY-0.303466
+absoluteTheta: 0.0398773
+absoluteX: 0.424176
+absoluteY: 16.5618
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0398773
+errorWorldX: -0.424176
+errorWorldY: 7.43817
+diffTime: 0.000931
+errorBotX: -0.127303
+errorBotY: 7.44917
+errorBotTheta: 0.0398773
+sumErrorX: -0.000118519
+sumErrorY: 0.00693518
+sumErrorTheta: 3.71257e-05
+ left integral: 1.73715
+ right integral: -0.627521
+leftOutputPower: 107
 rightOutputPower: 102
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15072
-leftEncoder: 14916
-rightArcLength: 0.361271
-leftArcLength: 0.34682
-rightTurningRadius: 539.044
-deltaTheta0.000670206
-deltaX-0.000118642
-deltaY0.354045
-absoluteTheta: 0.00268083
-absoluteX: -0.00201206
-absoluteY: 5.76587
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.00268083
-errorWorldX: 0.00201206
-errorWorldY: 6.23413
-diffTime: 0.000723
-errorBotX: 0.0187246
-errorBotY: 6.2341
-errorBotTheta: 0.00268083
-sumErrorX: 8.62813e-06
-sumErrorY: 0.142207
-sumErrorTheta: 2.15873e-06
- left integral: 11.446
- right integral: 11.307
-leftOutputPower: 100
-rightOutputPower: 97
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15120
-leftEncoder: 14961
-rightArcLength: 0.34682
-leftArcLength: 0.325144
-rightTurningRadius: 344.988
-deltaTheta0.00100531
-deltaX-0.000168883
-deltaY0.335982
-absoluteTheta: 0.00368614
-absoluteX: -0.00341942
-absoluteY: 6.10185
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.00368614
-errorWorldX: 0.00341942
-errorWorldY: 5.89815
-diffTime: 0.000813
-errorBotX: 0.0251607
-errorBotY: 5.89809
-errorBotTheta: 0.00368614
-sumErrorX: 2.90838e-05
-sumErrorY: 0.147002
-sumErrorTheta: 5.15556e-06
- left integral: 11.9265
- right integral: 11.5938
-leftOutputPower: 96
-rightOutputPower: 92
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15166
-leftEncoder: 15005
-rightArcLength: 0.332369
-leftArcLength: 0.317918
-rightTurningRadius: 495.92
-deltaTheta0.000670206
-deltaX-0.000108957
-deltaY0.325144
-absoluteTheta: 0.00435634
-absoluteX: -0.0049448
-absoluteY: 6.42699
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.00435634
-errorWorldX: 0.0049448
-errorWorldY: 5.57301
-diffTime: 0.000798
-errorBotX: 0.0292226
-errorBotY: 5.57293
-errorBotTheta: 0.00435634
-sumErrorX: 5.24034e-05
-sumErrorY: 0.151449
-sumErrorTheta: 8.63192e-06
- left integral: 12.3946
- right integral: 11.8372
-leftOutputPower: 92
-rightOutputPower: 87
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15208
-leftEncoder: 15052
-rightArcLength: 0.303467
-leftArcLength: 0.339594
-rightTurningRadius: -181.119
-deltaTheta-0.00167552
-deltaX0.000269365
-deltaY0.321531
-absoluteTheta: 0.00268083
-absoluteX: -0.00553741
-absoluteY: 6.74852
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.00268083
-errorWorldX: 0.00553741
-errorWorldY: 5.25148
-diffTime: 0.000723
-errorBotX: 0.0196157
-errorBotY: 5.25144
-errorBotTheta: 0.00268083
-sumErrorX: 6.65856e-05
-sumErrorY: 0.155246
-sumErrorTheta: 1.05702e-05
- left integral: 12.7611
- right integral: 12.0782
-leftOutputPower: 87
-rightOutputPower: 84
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15248
-leftEncoder: 15099
-rightArcLength: 0.289016
-leftArcLength: 0.339594
-rightTurningRadius: -123.21
+                                           I am at: 3.20675e-06, 6.61123e-07
+rightEncoder: 2333
+leftEncoder: 2220
+rightArcLength: -0.144508
+leftArcLength: -0.0939304
+rightTurningRadius: 61.605
 deltaTheta-0.00234572
-deltaX0.000368636
-deltaY0.314305
-absoluteTheta: 0.000335103
-absoluteX: -0.00527409
-absoluteY: 7.06283
-deisredTheta: 0
-desiredX: 0
-desiredY: 12
-errorWorldTheta: -0.000335103
-errorWorldX: 0.00527409
-errorWorldY: 4.93717
-diffTime: 0.000772
-errorBotX: 0.00692856
-errorBotY: 4.93717
-errorBotTheta: 0.000335103
-sumErrorX: 7.19344e-05
-sumErrorY: 0.159057
-sumErrorTheta: 1.08289e-05
- left integral: 13.0745
- right integral: 12.3746
-leftOutputPower: 82
-rightOutputPower: 81
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-The first piece of data from the lecia: 1.41669e+09
-rightEncoder: 15310
-leftEncoder: 15161
-rightArcLength: 0.447976
-leftArcLength: 0.447976
-deltaTheta0
-deltaX0
-deltaY0.447976
-absoluteTheta: 0.000335103
-absoluteX: -0.00542421
-absoluteY: 7.5108
+deltaX-0.000139828
+deltaY-0.119219
+absoluteTheta: 0.0375316
+absoluteX: 0.42851
+absoluteY: 16.4427
 deisredTheta: 0
 desiredX: 0
 desiredY: 24
-errorWorldTheta: -0.000335103
-errorWorldX: 0.00542421
-errorWorldY: 16.4892
-diffTime: 0.000891
-errorBotX: 0.0109498
-errorBotY: 16.4892
-errorBotTheta: 0.000335103
-sumErrorX: 9.75627e-06
-sumErrorY: 0.0146919
-sumErrorTheta: 2.98577e-07
- left integral: 1.18537
- right integral: 1.16533
-leftOutputPower: 232
-rightOutputPower: 231
+errorWorldTheta: -0.0375316
+errorWorldX: -0.42851
+errorWorldY: 7.55731
+diffTime: 0.000774
+errorBotX: -0.144637
+errorBotY: 7.56807
+errorBotTheta: 0.0375316
+sumErrorX: -0.000230468
+sumErrorY: 0.0127929
+sumErrorTheta: 6.61752e-05
+ left integral: 3.12997
+ right integral: -1.08311
+leftOutputPower: 109
+rightOutputPower: 104
 Length of the string??? : -1
 
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15342
-leftEncoder: 15191
-rightArcLength: 0.231213
-leftArcLength: 0.216762
-rightTurningRadius: 344.988
-deltaTheta0.000670206
-deltaX-7.5059e-05
-deltaY0.223988
-absoluteTheta: 0.00100531
-absoluteX: -0.00572445
-absoluteY: 7.73479
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00100531
-errorWorldX: 0.00572445
-errorWorldY: 16.2652
-diffTime: 0.000761
-errorBotX: 0.022076
-errorBotY: 16.2652
-errorBotTheta: 0.00100531
-sumErrorX: 2.65561e-05
-sumErrorY: 0.0270697
-sumErrorTheta: 1.06362e-06
- left integral: 2.20089
- right integral: 2.13026
-leftOutputPower: 231
-rightOutputPower: 228
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15373
-leftEncoder: 15231
-rightArcLength: 0.223988
-leftArcLength: 0.289016
-rightTurningRadius: -74.2683
-deltaTheta-0.00301593
-deltaX0.000386796
-deltaY0.256502
-absoluteTheta: -0.00201062
-absoluteX: -0.00482193
-absoluteY: 7.99129
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: 0.00201062
-errorWorldX: 0.00482193
-errorWorldY: 16.0087
-diffTime: 0.000801
-errorBotX: -0.0273655
-errorBotY: 16.0087
-errorBotTheta: -0.00201062
-sumErrorX: 4.63636e-06
-sumErrorY: 0.0398926
-sumErrorTheta: -5.46888e-07
- left integral: 3.17413
- right integral: 3.20869
-leftOutputPower: 225
-rightOutputPower: 229
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15425
-leftEncoder: 15296
-rightArcLength: 0.375721
-leftArcLength: 0.469652
-rightTurningRadius: -86.247
+                                           I am at: 3.20675e-06, 6.61123e-07
+rightEncoder: 2328
+leftEncoder: 2228
+rightArcLength: -0.0361271
+leftArcLength: 0.0578033
+rightTurningRadius: 8.29298
 deltaTheta-0.00435634
-deltaX0.000920682
-deltaY0.422685
-absoluteTheta: 6.27682
-absoluteX: -0.00121006
-absoluteY: 8.41396
+deltaX2.36072e-05
+deltaY0.0108381
+absoluteTheta: 0.0331752
+absoluteX: 0.428174
+absoluteY: 16.4535
 deisredTheta: 0
 desiredX: 0
 desiredY: 24
-errorWorldTheta: 0.00636696
-errorWorldX: 0.00121006
-errorWorldY: 15.586
-diffTime: 0.00077
-errorBotX: -0.098025
-errorBotY: 15.5857
-errorBotTheta: -0.00636696
-sumErrorX: -7.08429e-05
-sumErrorY: 0.0518937
-sumErrorTheta: -5.44945e-06
- left integral: 3.97371
- right integral: 4.32928
-leftOutputPower: 215
-rightOutputPower: 228
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15495
-leftEncoder: 15350
-rightArcLength: 0.505779
-leftArcLength: 0.390172
-rightTurningRadius: 94.3327
-deltaTheta0.00536165
-deltaX-0.00120094
-deltaY0.447973
-absoluteTheta: 6.28218
-absoluteX: -0.00196065
-absoluteY: 8.86194
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: 0.00100531
-errorWorldX: 0.00196065
-errorWorldY: 15.1381
-diffTime: 0.000775
-errorBotX: -0.0132578
-errorBotY: 15.1381
-errorBotTheta: -0.00100531
-sumErrorX: -8.11177e-05
-sumErrorY: 0.0636256
-sumErrorTheta: -6.22856e-06
- left integral: 4.88684
- right integral: 5.29326
-leftOutputPower: 215
-rightOutputPower: 218
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15547
-leftEncoder: 15392
-rightArcLength: 0.375721
-leftArcLength: 0.303467
-rightTurningRadius: 112.121
-deltaTheta0.00335103
-deltaX-0.000568995
-deltaY0.339594
-absoluteTheta: 6.28553
-absoluteX: -0.00332623
-absoluteY: 9.20153
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00234572
-errorWorldX: 0.00332623
-errorWorldY: 14.7985
-diffTime: 0.000719
-errorBotX: 0.0380393
-errorBotY: 14.7984
-errorBotTheta: 0.00234572
-sumErrorX: -5.37674e-05
-sumErrorY: 0.0742657
-sumErrorTheta: -4.54199e-06
- left integral: 5.79333
- right integral: 6.08918
-leftOutputPower: 215
-rightOutputPower: 210
-Length of the string??? : -1
-
-                                           I am at: -7.03729e-06, -1.19269e-06
-rightEncoder: 15605
-leftEncoder: 15450
-rightArcLength: 0.419074
-leftArcLength: 0.419074
-deltaTheta0
-deltaX0
-deltaY0.419074
-absoluteTheta: 0.00234572
-absoluteX: -0.00430926
-absoluteY: 9.6206
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00234572
-errorWorldX: 0.00430926
-errorWorldY: 14.3794
-diffTime: 0.000717
-errorBotX: 0.0380393
-errorBotY: 14.3793
-errorBotTheta: 0.00234572
-sumErrorX: -2.64932e-05
-sumErrorY: 0.0845757
-sumErrorTheta: -2.86011e-06
- left integral: 6.67326
- right integral: 6.85885
-leftOutputPower: 210
-rightOutputPower: 205
-Length of the string??? : 44
-$1416690413.482027,1995,344.77,94.40,8.905!
-
-The vector: 1.41669e+09 1995 344.77 94.4 
-The vector: 1.41669e+09 1995 344.77 94.4 8.905 
-Horizontal Angle: 6.01737
-Vertical  Angle: 1.64759
-Radius: 8.905
-xOrigin: -333.078
-yOrigin: 85.9538
-thetaOrigin: -6.03064
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 15673
-leftEncoder: 15518
-rightArcLength: 0.491328
-leftArcLength: 0.491328
-deltaTheta0
-deltaX0
-deltaY0.491328
-absoluteTheta: 0.00234572
-absoluteX: -0.00546178
-absoluteY: 10.1119
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00234572
-errorWorldX: 0.00546178
-errorWorldY: 13.8881
-diffTime: 0.000905
-errorBotX: 0.0380393
-errorBotY: 13.888
-errorBotTheta: 0.00234572
-sumErrorX: 7.93234e-06
-sumErrorY: 0.0971444
-sumErrorTheta: -7.37227e-07
- left integral: 7.74834
- right integral: 7.79476
-leftOutputPower: 204
-rightOutputPower: 199
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 15745
-leftEncoder: 15588
-rightArcLength: 0.52023
-leftArcLength: 0.505779
-rightTurningRadius: 776.223
-deltaTheta0.000670206
-deltaX-0.000171909
-deltaY0.513004
-absoluteTheta: 0.00301593
-absoluteX: -0.00718087
-absoluteY: 10.6249
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00301593
-errorWorldX: 0.00718087
-errorWorldY: 13.3751
-diffTime: 0.000787
-errorBotX: 0.047519
-errorBotY: 13.375
-errorBotTheta: 0.00301593
-sumErrorX: 4.53298e-05
-sumErrorY: 0.10767
-sumErrorTheta: 1.63631e-06
- left integral: 8.66818
- right integral: 8.5591
-leftOutputPower: 198
-rightOutputPower: 192
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 15820
-leftEncoder: 15665
-rightArcLength: 0.541906
-leftArcLength: 0.556357
-rightTurningRadius: -808.566
-deltaTheta-0.000670206
-deltaX0.000184016
-deltaY0.549131
-absoluteTheta: 0.00234572
-absoluteX: -0.00828497
-absoluteY: 11.1741
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00234572
-errorWorldX: 0.00828497
-errorWorldY: 12.8259
-diffTime: 0.000757
-errorBotX: 0.038371
-errorBotY: 12.8259
-errorBotTheta: 0.00234572
-sumErrorX: 7.43767e-05
-sumErrorY: 0.11738
-sumErrorTheta: 3.41202e-06
- left integral: 9.50313
- right integral: 9.27762
-leftOutputPower: 191
-rightOutputPower: 186
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 15898
-leftEncoder: 15744
-rightArcLength: 0.563582
-leftArcLength: 0.570808
-rightTurningRadius: -1681.82
-deltaTheta-0.000335103
-deltaX9.50344e-05
-deltaY0.567195
-absoluteTheta: 0.00201062
-absoluteX: -0.00933034
-absoluteY: 11.7413
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00201062
-errorWorldX: 0.00933034
-errorWorldY: 12.2587
-diffTime: 0.000742
-errorBotX: 0.033978
-errorBotY: 12.2587
-errorBotTheta: 0.00201062
-sumErrorX: 9.95883e-05
-sumErrorY: 0.126476
-sumErrorTheta: 4.9039e-06
- left integral: 10.2798
- right integral: 9.95635
-leftOutputPower: 184
-rightOutputPower: 179
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 15979
-leftEncoder: 15823
-rightArcLength: 0.585258
-leftArcLength: 0.570808
-rightTurningRadius: 873.251
-deltaTheta0.000670206
-deltaX-0.000193701
-deltaY0.578033
-absoluteTheta: 0.00268083
-absoluteX: -0.0110736
-absoluteY: 12.3193
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00268083
-errorWorldX: 0.0110736
-errorWorldY: 11.6807
-diffTime: 0.000754
-errorBotX: 0.0423875
-errorBotY: 11.6806
-errorBotTheta: 0.00268083
-sumErrorX: 0.000131549
-sumErrorY: 0.135283
-sumErrorTheta: 6.92524e-06
- left integral: 11.0505
- right integral: 10.5947
-leftOutputPower: 177
-rightOutputPower: 171
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16060
-leftEncoder: 15904
-rightArcLength: 0.585258
-leftArcLength: 0.585258
-deltaTheta0
-deltaX0
-deltaY0.585258
-absoluteTheta: 0.00268083
-absoluteX: -0.0126426
-absoluteY: 12.9045
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00268083
-errorWorldX: 0.0126426
-errorWorldY: 11.0955
-diffTime: 0.00077
-errorBotX: 0.0423875
-errorBotY: 11.0954
-errorBotTheta: 0.00268083
-sumErrorX: 0.000164187
-sumErrorY: 0.143826
-sumErrorTheta: 8.98948e-06
- left integral: 11.8016
- right integral: 11.2106
-leftOutputPower: 169
-rightOutputPower: 163
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16141
-leftEncoder: 15984
-rightArcLength: 0.585258
-leftArcLength: 0.578033
-rightTurningRadius: 1746.5
-deltaTheta0.000335103
-deltaX-9.74557e-05
-deltaY0.581646
-absoluteTheta: 0.00301593
-absoluteX: -0.0144943
-absoluteY: 13.4862
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00301593
-errorWorldX: 0.0144943
-errorWorldY: 10.5138
-diffTime: 0.00077
-errorBotX: 0.0462031
-errorBotY: 10.5137
-errorBotTheta: 0.00301593
-sumErrorX: 0.000199763
-sumErrorY: 0.151922
-sumErrorTheta: 1.13117e-05
- left integral: 12.5253
- right integral: 11.7822
-leftOutputPower: 162
-rightOutputPower: 156
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16222
-leftEncoder: 16063
-rightArcLength: 0.585258
-leftArcLength: 0.570808
-rightTurningRadius: 873.251
-deltaTheta0.000670206
-deltaX-0.000193701
-deltaY0.578033
-absoluteTheta: 0.00368614
-absoluteX: -0.0168187
-absoluteY: 14.0642
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00368614
-errorWorldX: 0.0168187
-errorWorldY: 9.93579
-diffTime: 0.000751
-errorBotX: 0.0534431
-errorBotY: 9.93566
-errorBotTheta: 0.00368614
-sumErrorX: 0.000239899
-sumErrorY: 0.159384
-sumErrorTheta: 1.408e-05
- left integral: 13.2128
- right integral: 12.2886
-leftOutputPower: 155
-rightOutputPower: 147
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16301
-leftEncoder: 16141
-rightArcLength: 0.570808
-leftArcLength: 0.563582
-rightTurningRadius: 1703.38
-deltaTheta0.000335103
-deltaX-9.50344e-05
-deltaY0.567195
-absoluteTheta: 0.00402124
-absoluteX: -0.0191945
-absoluteY: 14.6314
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00402124
-errorWorldX: 0.0191945
-errorWorldY: 9.3686
-diffTime: 0.000723
-errorBotX: 0.0568676
-errorBotY: 9.36845
-errorBotTheta: 0.00402124
-sumErrorX: 0.000281014
-sumErrorY: 0.166157
-sumErrorTheta: 1.69874e-05
- left integral: 13.8496
- right integral: 12.7355
-leftOutputPower: 148
-rightOutputPower: 140
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16377
-leftEncoder: 16217
-rightArcLength: 0.549131
-leftArcLength: 0.549131
-deltaTheta0
-deltaX0
-deltaY0.549131
-absoluteTheta: 0.00402124
-absoluteX: -0.0214027
-absoluteY: 15.1805
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00402124
-errorWorldX: 0.0214027
-errorWorldY: 8.81947
-diffTime: 0.000641
-errorBotX: 0.0568676
-errorBotY: 8.81932
-errorBotTheta: 0.00402124
-sumErrorX: 0.000317467
-sumErrorY: 0.17181
-sumErrorTheta: 1.9565e-05
- left integral: 14.3861
- right integral: 13.1035
-leftOutputPower: 141
-rightOutputPower: 132
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16449
-leftEncoder: 16290
-rightArcLength: 0.52023
-leftArcLength: 0.527455
-rightTurningRadius: -1552.45
-deltaTheta-0.000335103
-deltaX8.77706e-05
-deltaY0.523842
-absoluteTheta: 0.00368614
-absoluteX: -0.0232459
-absoluteY: 15.7044
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00368614
-errorWorldX: 0.0232459
-errorWorldY: 8.29563
-diffTime: 0.000664
-errorBotX: 0.0538245
-errorBotY: 8.29549
-errorBotTheta: 0.00368614
-sumErrorX: 0.000353206
-sumErrorY: 0.177318
-sumErrorTheta: 2.20126e-05
- left integral: 14.9068
- right integral: 13.4641
-leftOutputPower: 134
-rightOutputPower: 126
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16518
-leftEncoder: 16358
-rightArcLength: 0.498553
-leftArcLength: 0.491328
-rightTurningRadius: 1487.76
-deltaTheta0.000335103
-deltaX-8.29281e-05
-deltaY0.494941
-absoluteTheta: 0.00402124
-absoluteX: -0.0253191
-absoluteY: 16.1993
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00402124
-errorWorldX: 0.0253191
-errorWorldY: 7.8007
-diffTime: 0.000711
-errorBotX: 0.0566873
-errorBotY: 7.80053
-errorBotTheta: 0.00402124
-sumErrorX: 0.000393511
-sumErrorY: 0.182864
-sumErrorTheta: 2.48717e-05
- left integral: 15.4439
- right integral: 13.8144
-leftOutputPower: 128
-rightOutputPower: 119
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16582
-leftEncoder: 16423
-rightArcLength: 0.462426
-leftArcLength: 0.469652
-rightTurningRadius: -1379.95
-deltaTheta-0.000335103
-deltaX7.80856e-05
-deltaY0.466039
-absoluteTheta: 0.00368614
-absoluteX: -0.0269589
-absoluteY: 16.6653
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00368614
-errorWorldX: 0.0269589
-errorWorldY: 7.33466
-diffTime: 0.000708
-errorBotX: 0.0539952
-errorBotY: 7.33451
-errorBotTheta: 0.00368614
-sumErrorX: 0.000431739
-sumErrorY: 0.188057
-sumErrorTheta: 2.74815e-05
- left integral: 15.9447
- right integral: 14.1445
-leftOutputPower: 122
-rightOutputPower: 113
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16650
-leftEncoder: 16489
-rightArcLength: 0.491328
-leftArcLength: 0.476877
-rightTurningRadius: 733.1
-deltaTheta0.000670206
-deltaX-0.000162224
-deltaY0.484103
-absoluteTheta: 0.00435634
-absoluteX: -0.02923
-absoluteY: 17.1494
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00435634
-errorWorldX: 0.02923
-errorWorldY: 6.85056
-diffTime: 0.000792
-errorBotX: 0.059073
-errorBotY: 6.85037
-errorBotTheta: 0.00435634
-sumErrorX: 0.000478525
-sumErrorY: 0.193483
-sumErrorTheta: 3.09317e-05
- left integral: 16.4914
- right integral: 14.4658
-leftOutputPower: 116
+errorWorldTheta: -0.0331752
+errorWorldX: -0.428174
+errorWorldY: 7.54648
+diffTime: 0.000774
+errorBotX: -0.177628
+errorBotY: 7.55653
+errorBotTheta: 0.0331752
+sumErrorX: -0.000367952
+sumErrorY: 0.0186416
+sumErrorTheta: 9.18528e-05
+ left integral: 4.41296
+ right integral: -1.4303
+leftOutputPower: 107
 rightOutputPower: 106
 Length of the string??? : -1
 
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16722
-leftEncoder: 16559
-rightArcLength: 0.52023
-leftArcLength: 0.505779
-rightTurningRadius: 776.223
-deltaTheta0.000670206
-deltaX-0.000171909
-deltaY0.513004
-absoluteTheta: 0.00502655
-absoluteX: -0.0319806
-absoluteY: 17.6624
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00502655
-errorWorldX: 0.0319806
-errorWorldY: 6.33757
-diffTime: 0.000714
-errorBotX: 0.0638361
-errorBotY: 6.33733
-errorBotTheta: 0.00502655
-sumErrorX: 0.000524104
-sumErrorY: 0.198008
-sumErrorTheta: 3.45207e-05
- left integral: 16.9704
- right integral: 14.7108
-leftOutputPower: 109
-rightOutputPower: 99
-Length of the string??? : -1
-
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16789
-leftEncoder: 16623
-rightArcLength: 0.484103
-leftArcLength: 0.462426
-rightTurningRadius: 481.546
-deltaTheta0.00100531
-deltaX-0.000237889
-deltaY0.473264
-absoluteTheta: 0.00603186
-absoluteX: -0.0350731
-absoluteY: 18.1357
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00603186
-errorWorldX: 0.0350731
-errorWorldY: 5.86431
-diffTime: 0.000741
-errorBotX: 0.0704449
-errorBotY: 5.86399
-errorBotTheta: 0.00603186
-sumErrorX: 0.000576304
-sumErrorY: 0.202353
-sumErrorTheta: 3.89903e-05
- left integral: 17.4636
- right integral: 14.9129
-leftOutputPower: 104
-rightOutputPower: 92
-Length of the string??? : 20
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16850
-leftEncoder: 16684
-rightArcLength: 0.44075
-leftArcLength: 0.44075
+                                           I am at: 3.20675e-06, 6.61123e-07
+rightEncoder: 2328
+leftEncoder: 2228
+rightArcLength: 0
+leftArcLength: 0
 deltaTheta0
 deltaX0
-deltaY0.44075
-absoluteTheta: 0.00603186
-absoluteX: -0.0377316
-absoluteY: 18.5764
+deltaY0
+absoluteTheta: 0.0331752
+absoluteX: 0.428174
+absoluteY: 16.4535
 deisredTheta: 0
 desiredX: 0
 desiredY: 24
-errorWorldTheta: -0.00603186
-errorWorldX: 0.0377316
-errorWorldY: 5.42357
-diffTime: 0.000696
-errorBotX: 0.0704449
-errorBotY: 5.42324
-errorBotTheta: 0.00603186
-sumErrorX: 0.000625333
-sumErrorY: 0.206127
-sumErrorTheta: 4.31884e-05
- left integral: 17.9022
- right integral: 15.0782
+errorWorldTheta: -0.0331752
+errorWorldX: -0.428174
+errorWorldY: 7.54648
+diffTime: 0.000778
+errorBotX: -0.177628
+errorBotY: 7.55653
+errorBotTheta: 0.0331752
+sumErrorX: -0.000506146
+sumErrorY: 0.0245206
+sumErrorTheta: 0.000117663
+ left integral: 5.70257
+ right integral: -1.77928
+leftOutputPower: 109
+rightOutputPower: 106
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+rightEncoder: 2328
+leftEncoder: 2229
+rightArcLength: 0
+leftArcLength: 0.00722541
+rightTurningRadius: -0
+deltaTheta-0.000335103
+deltaX6.05315e-07
+deltaY0.00361271
+absoluteTheta: 0.0328401
+absoluteX: 0.428056
+absoluteY: 16.4571
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0328401
+errorWorldX: -0.428056
+errorWorldY: 7.54287
+diffTime: 0.000817
+errorBotX: -0.180161
+errorBotY: 7.55286
+errorBotTheta: 0.0328401
+sumErrorX: -0.000653338
+sumErrorY: 0.0306913
+sumErrorTheta: 0.000144493
+ left integral: 7.04773
+ right integral: -2.13713
+leftOutputPower: 110
+rightOutputPower: 106
+Length of the string??? : -1
+
+                                           I am at: 3.20675e-06, 6.61123e-07
+rightEncoder: 2336
+leftEncoder: 2244
+rightArcLength: 0.0578033
+leftArcLength: 0.108381
+rightTurningRadius: -24.642
+deltaTheta-0.00234572
+deltaX9.74556e-05
+deltaY0.0830922
+absoluteTheta: 0.0304944
+absoluteX: 0.42562
+absoluteY: 16.5402
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0304944
+errorWorldX: -0.42562
+errorWorldY: 7.45981
+diffTime: 0.000781
+errorBotX: -0.197975
+errorBotY: 7.46932
+errorBotTheta: 0.0304944
+sumErrorX: -0.000807956
+sumErrorY: 0.0365248
+sumErrorTheta: 0.00016831
+ left integral: 8.26911
+ right integral: -2.42514
+leftOutputPower: 109
+rightOutputPower: 105
+Length of the string??? : 41
+$1416695713.878853,295,8.09,98.71,4.525!
+
+The vector: 1.4167e+09 295 8.09 98.71 
+The vector: 1.4167e+09 295 8.09 98.71 4.525 
+Horizontal Angle: 0.141197
+Vertical  Angle: 1.72281
+Radius: 4.525
+xOrigin: 3.20675e-06
+yOrigin: 6.61123e-07
+thetaOrigin: 1.40866
+                                           I am at: -3.68785, -176.057
+rightEncoder: 2354
+leftEncoder: 2267
+rightArcLength: 0.130057
+leftArcLength: 0.166184
+rightTurningRadius: -77.6223
+deltaTheta-0.00167552
+deltaX0.000124089
+deltaY0.148121
+absoluteTheta: 0.0288189
+absoluteX: 0.421476
+absoluteY: 16.6882
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0288189
+errorWorldX: -0.421476
+errorWorldY: 7.31175
+diffTime: 0.000916
+errorBotX: -0.210613
+errorBotY: 7.32086
+errorBotTheta: 0.0288189
+sumErrorX: -0.00100088
+sumErrorY: 0.0432307
+sumErrorTheta: 0.000194708
+ left integral: 9.64106
+ right integral: -2.72415
+leftOutputPower: 107
+rightOutputPower: 104
+Length of the string??? : -1
+
+                                           I am at: -3.68785, -176.057
+rightEncoder: 2376
+leftEncoder: 2291
+rightArcLength: 0.158959
+leftArcLength: 0.17341
+rightTurningRadius: -237.179
+deltaTheta-0.000670206
+deltaX5.56889e-05
+deltaY0.166184
+absoluteTheta: 0.0281487
+absoluteX: 0.416854
+absoluteY: 16.8544
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0281487
+errorWorldX: -0.416854
+errorWorldY: 7.14563
+diffTime: 0.000784
+errorBotX: -0.215575
+errorBotY: 7.15453
+errorBotTheta: 0.0281487
+sumErrorX: -0.00116989
+sumErrorY: 0.0488399
+sumErrorTheta: 0.000216776
+ left integral: 10.7879
+ right integral: -2.97349
+leftOutputPower: 105
+rightOutputPower: 102
+Length of the string??? : -1
+
+                                           I am at: -3.68785, -176.057
+rightEncoder: 2400
+leftEncoder: 2320
+rightArcLength: 0.17341
+leftArcLength: 0.209537
+rightTurningRadius: -103.496
+deltaTheta-0.00167552
+deltaX0.000160408
+deltaY0.191473
+absoluteTheta: 0.0264732
+absoluteX: 0.411946
+absoluteY: 17.0458
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0264732
+errorWorldX: -0.411946
+errorWorldY: 6.95422
+diffTime: 0.000756
+errorBotX: -0.227723
+errorBotY: 6.96269
+errorBotTheta: 0.0264732
+sumErrorX: -0.00134205
+sumErrorY: 0.0541037
+sumErrorTheta: 0.00023679
+ left integral: 11.8412
+ right integral: -3.18457
+leftOutputPower: 103
+rightOutputPower: 100
+Length of the string??? : 40
+$1416695714.995840,296,8.15,98.57,4.597!
+The vector: 1.4167e+09 296 8.15 98.57 
+The vector: 1.4167e+09 296 8.15 98.57 4.597 
+Horizontal Angle: 0.142244
+Vertical  Angle: 1.72037
+Radius: 4.597
+xOrigin: 3.20675e-06
+yOrigin: 6.61123e-07
+thetaOrigin: 1.40866
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2426
+leftEncoder: 2350
+rightArcLength: 0.187861
+leftArcLength: 0.216762
+rightTurningRadius: -140.151
+deltaTheta-0.00134041
+deltaX0.00013559
+deltaY0.202311
+absoluteTheta: 0.0251327
+absoluteX: 0.406997
+absoluteY: 17.248
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0251327
+errorWorldX: -0.406997
+errorWorldY: 6.75197
+diffTime: 0.000962
+errorBotX: -0.237191
+errorBotY: 6.76006
+errorBotTheta: 0.0251327
+sumErrorX: -0.00157023
+sumErrorY: 0.0606069
+sumErrorTheta: 0.000260968
+ left integral: 13.1241
+ right integral: -3.42705
+leftOutputPower: 100
+rightOutputPower: 98
+Length of the string??? : 1
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2454
+leftEncoder: 2382
+rightArcLength: 0.202312
+leftArcLength: 0.231213
+rightTurningRadius: -150.932
+deltaTheta-0.00134041
+deltaX0.000145275
+deltaY0.216762
+absoluteTheta: 0.0237923
+absoluteX: 0.401986
+absoluteY: 17.4647
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0237923
+errorWorldX: -0.401986
+errorWorldY: 6.53526
+diffTime: 0.000787
+errorBotX: -0.246398
+errorBotY: 6.54298
+errorBotTheta: 0.0237923
+sumErrorX: -0.00176414
+sumErrorY: 0.0657562
+sumErrorTheta: 0.000279692
+ left integral: 14.126
+ right integral: -3.60498
 leftOutputPower: 98
-rightOutputPower: 86
-Length of the string??? : 24
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16908
-leftEncoder: 16741
-rightArcLength: 0.419074
-leftArcLength: 0.411848
-rightTurningRadius: 1250.58
-deltaTheta0.000335103
-deltaX-6.96112e-05
-deltaY0.415461
-absoluteTheta: 0.00636696
-absoluteX: -0.0404464
-absoluteY: 18.9919
-deisredTheta: 0
-desiredX: 0
-desiredY: 24
-errorWorldTheta: -0.00636696
-errorWorldX: 0.0404464
-errorWorldY: 5.00812
-diffTime: 0.000711
-errorBotX: 0.0723319
-errorBotY: 5.00776
-errorBotTheta: 0.00636696
-sumErrorX: 0.000676761
-sumErrorY: 0.209688
-sumErrorTheta: 4.77153e-05
- left integral: 18.3344
- right integral: 15.2157
-leftOutputPower: 93
-rightOutputPower: 80
+rightOutputPower: 95
 Length of the string??? : -1
 
-                                           I am at: -5.53665, 4.63662
-rightEncoder: 16962
-leftEncoder: 16794
-rightArcLength: 0.390172
-leftArcLength: 0.382947
-rightTurningRadius: 1164.33
-deltaTheta0.000335103
-deltaX-6.47687e-05
-deltaY0.38656
-absoluteTheta: 0.00670206
-absoluteX: -0.0431019
-absoluteY: 19.3784
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2482
+leftEncoder: 2416
+rightArcLength: 0.202312
+leftArcLength: 0.245664
+rightTurningRadius: -100.622
+deltaTheta-0.00201062
+deltaX0.000225177
+deltaY0.223988
+absoluteTheta: 0.0217817
+absoluteX: 0.397333
+absoluteY: 17.6887
 deisredTheta: 0
 desiredX: 0
 desiredY: 24
-errorWorldTheta: -0.00670206
-errorWorldX: 0.0431019
-errorWorldY: 4.62157
-diffTime: 0.000731
-errorBotX: 0.0740748
-errorBotY: 4.62118
-errorBotTheta: 0.00670206
-sumErrorX: 0.00073091
-sumErrorY: 0.213066
-sumErrorTheta: 5.26146e-05
- left integral: 18.764
- right integral: 15.3265
+errorWorldTheta: -0.0217817
+errorWorldX: -0.397333
+errorWorldY: 6.31132
+diffTime: 0.000781
+errorBotX: -0.259778
+errorBotY: 6.31848
+errorBotTheta: 0.0217817
+sumErrorX: -0.00196703
+sumErrorY: 0.0706909
+sumErrorTheta: 0.000296704
+ left integral: 15.0554
+ right integral: -3.74483
+leftOutputPower: 94
+rightOutputPower: 93
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2511
+leftEncoder: 2449
+rightArcLength: 0.209537
+leftArcLength: 0.238439
+rightTurningRadius: -156.323
+deltaTheta-0.00134041
+deltaX0.000150118
+deltaY0.223988
+absoluteTheta: 0.0204413
+absoluteX: 0.392904
+absoluteY: 17.9126
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0204413
+errorWorldX: -0.392904
+errorWorldY: 6.08738
+diffTime: 0.000782
+errorBotX: -0.268397
+errorBotY: 6.09414
+errorBotTheta: 0.0204413
+sumErrorX: -0.00217691
+sumErrorY: 0.0754565
+sumErrorTheta: 0.000312689
+ left integral: 15.9381
+ right integral: -3.86503
+leftOutputPower: 91
+rightOutputPower: 90
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2541
+leftEncoder: 2483
+rightArcLength: 0.216762
+leftArcLength: 0.245664
+rightTurningRadius: -161.713
+deltaTheta-0.00134041
+deltaX0.000154961
+deltaY0.231213
+absoluteTheta: 0.0191009
+absoluteX: 0.388643
+absoluteY: 18.1438
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0191009
+errorWorldX: -0.388643
+errorWorldY: 5.85621
+diffTime: 0.000764
+errorBotX: -0.27672
+errorBotY: 5.86256
+errorBotTheta: 0.0191009
+sumErrorX: -0.00238833
+sumErrorY: 0.0799355
+sumErrorTheta: 0.000327282
+ left integral: 16.7532
+ right integral: -3.96354
 leftOutputPower: 88
-rightOutputPower: 74
+rightOutputPower: 88
 Length of the string??? : -1
 
-                                           I am at: -5.53665, 4.63662
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2572
+leftEncoder: 2517
+rightArcLength: 0.223988
+leftArcLength: 0.245664
+rightTurningRadius: -222.805
+deltaTheta-0.00100531
+deltaX0.000118036
+deltaY0.234826
+absoluteTheta: 0.0180956
+absoluteX: 0.384512
+absoluteY: 18.3786
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0180956
+errorWorldX: -0.384512
+errorWorldY: 5.62142
+diffTime: 0.000784
+errorBotX: -0.282732
+errorBotY: 5.62745
+errorBotTheta: 0.0180956
+sumErrorX: -0.00260999
+sumErrorY: 0.0843475
+sumErrorTheta: 0.000341469
+ left integral: 17.5495
+ right integral: -4.05393
+leftOutputPower: 85
+rightOutputPower: 85
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2603
+leftEncoder: 2551
+rightArcLength: 0.223988
+leftArcLength: 0.245664
+rightTurningRadius: -222.805
+deltaTheta-0.00100531
+deltaX0.000118036
+deltaY0.234826
+absoluteTheta: 0.0170903
+absoluteX: 0.380617
+absoluteY: 18.6134
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0170903
+errorWorldX: -0.380617
+errorWorldY: 5.38662
+diffTime: 0.00075
+errorBotX: -0.288507
+errorBotY: 5.39234
+errorBotTheta: 0.0170903
+sumErrorX: -0.00282637
+sumErrorY: 0.0883917
+sumErrorTheta: 0.000354287
+ left integral: 18.2728
+ right integral: -4.13017
+leftOutputPower: 82
+rightOutputPower: 82
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2633
+leftEncoder: 2583
+rightArcLength: 0.216762
+leftArcLength: 0.231213
+rightTurningRadius: -323.426
+deltaTheta-0.000670206
+deltaX7.5059e-05
+deltaY0.223988
+absoluteTheta: 0.0164201
+absoluteX: 0.377014
+absoluteY: 18.8373
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0164201
+errorWorldX: -0.377014
+errorWorldY: 5.16266
+diffTime: 0.000581
+errorBotX: -0.292196
+errorBotY: 5.16816
+errorBotTheta: 0.0164201
+sumErrorX: -0.00299614
+sumErrorY: 0.0913944
+sumErrorTheta: 0.000363827
+ left integral: 18.8102
+ right integral: -4.18708
+leftOutputPower: 79
+rightOutputPower: 79
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
+rightEncoder: 2662
+leftEncoder: 2614
+rightArcLength: 0.209537
+leftArcLength: 0.223988
+rightTurningRadius: -312.645
+deltaTheta-0.000670206
+deltaX7.26378e-05
+deltaY0.216762
+absoluteTheta: 0.0157499
+absoluteX: 0.373673
+absoluteY: 19.0541
+deisredTheta: 0
+desiredX: 0
+desiredY: 24
+errorWorldTheta: -0.0157499
+errorWorldX: -0.373673
+errorWorldY: 4.94593
+diffTime: 0.000605
+errorBotX: -0.295733
+errorBotY: 4.9512
+errorBotTheta: 0.0157499
+sumErrorX: -0.00317505
+sumErrorY: 0.0943899
+sumErrorTheta: 0.000373355
+ left integral: 19.3462
+ right integral: -4.24377
+leftOutputPower: 77
+rightOutputPower: 76
+Length of the string??? : -1
+
+                                           I am at: -3.56055, -178.928
 Length of the string??? : -1
 
 Length of the string??? : -1
 
 Length of the string??? : -1
 
-Length of the string??? : -1
+Length of the string??? : 41
+$1416695715.199866,297,8.70,98.63,4.559!
 
-Length of the string??? : -1
-
-Length of the string??? : 44
-$1416690414.706406,1997,343.25,94.26,9.177!
-
-The vector: 1.41669e+09 1997 343.25 94.26 
-The vector: 1.41669e+09 1997 343.25 94.26 9.177 
-Horizontal Angle: 5.99084
-Vertical  Angle: 1.64515
-Radius: 9.177
-xOrigin: -333.078
-yOrigin: 85.9538
-thetaOrigin: -6.03064
-                                           I am at: -16.0259, 14.3339
+The vector: 1.4167e+09 297 8.7 98.63 
+The vector: 1.4167e+09 297 8.7 98.63 4.559 
+Horizontal Angle: 0.151844
+Vertical  Angle: 1.72142
+Radius: 4.559
+xOrigin: 3.20675e-06
+yOrigin: 6.61123e-07
+thetaOrigin: 1.40866
+                                           I am at: -1.82731, -177.447
