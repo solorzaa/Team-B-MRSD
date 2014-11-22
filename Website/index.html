@@ -109,43 +109,25 @@ TODO:
 						<li>Mandatory Requirements</li>
 						<ol type="A" style="font-size:24px;">
 							<li>Functional</li>
-							In order for the FielDroid to succeed, the system:
+							In order for the FielDroid to succeed, the system shall:
 							<ol type="I" style="font-size:20px;">
-								<li>Shall be autonomous</li>
-								<li>Shall paint field markings and graphics</li>
-								<li>Shall interface with the user</li>
-								<li>Shall plan a path given user input</li>
-								<li>Shall respond to the environment</li>
+								<li>Perform 100% of autonomous tasks by itself</li>
+								<li>Paint 100% of the line markings according to league standard regulations</li>
+								<li>Plan a path within 1 minute given user inputs</li>
+								<li>Stop if an obstacle is detected within 1 meter</li>
+								<li>Stop within 2 seconds of receiving an emergency stop command</li>
+								<li>Stop if communication with the command station times out for 10 seconds</li>
 							</ol>
 							<li>Non-Functional</li>
-							In order for the FielDroid to succeed, the system:
+							In order for the FielDroid to succeed, the system shall:
 							<ol type="I" style="font-size:20px;">
-								<li>Will be reliable when autonomously painting the field</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Move and Paint within 1cm of the desired path</li>
-									<li>Paint 100% of regulation soccer and football field markings</li>
-								</ol>
-								<li>Will be easy to use</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Operable by a 15 year old</li>
-								</ol>
-								<li>Will be safe to work around</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Avoid obstacles detected within a 3' radius</li>
-								</ol>
-								<li>Will be affordable</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Cost under $4,000</li>
-								</ol>
-								<li>Will save time</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Spend at most 2 hours to complete the task</li>
-									<li>Complete an entire field without requiring a recharge or paint refill</li>
-								</ol>
-								<li>Will save Paint</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Consume at most 324 oz. of paint per task</li>
-								</ol>
+								<li>Have a 30 cm error deviation between paint jobs</li>
+								<li>Have an accuracy of 30 cm while performing paint jobs</li>
+								<li>Be operable by personnel of minimum working age in the US</li>
+								<li>Have a set-up time of 5 minutes</li>
+								<li>Spend at most 2 hours to paint a field</li>
+								<li>Be capable of operating for 2 hours without replenishing resources</li>
+								<li>Paint without physically damaging the field</li>
 							</ol>
 						</ol>
 						<li>Desirable Requirements</li>
@@ -153,28 +135,29 @@ TODO:
 							<li>Functional</li>
 							Ideally, the FielDroid system shall:
 							<ol type="I" style="font-size:20px;">
-								<li>Paint complex graphics</li>
-								<li>Paint with multiple colors</li>
-								<li>Plan the most efficient path given user input settings</li>
+								<li>Monitor consumption of resources</li>
+								<li>Plan the most efficient path within 2 minutes</li>
+								<li>Report the robot's current status to the user once every 5 seconds</li>
+								<li>Paint complex graphic designs</li>
+								<li>Paint in multiple colors</li>
+								<li>Move around obstacles detected along its path</li>
+								<li>Relocalize itself if it gets lost while painting</li>
 							</ol>
 							<li>Non-Functional</li>
-							Ideally, the FielDroid system:
+							Ideally, the FielDroid system shall:
 							<ol type="I" style="font-size:20px;">
-								<li>Will look appealing</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Will have a Technology Readiness Level (TRL) of 6</li>
-								</ol>
-								<li>Will be modular</li>
-								<ol type="a" style="font-size:18px;">
-									<li>Will have two additional tools for seeding and mowing can be installed in under five minutes</li>
-								</ol>
+								<li>Provide an affordable field-painting solution under $4,000</li>
+								<li>Be operable using a mobile device application</li>
+								<li>Report battery life, paint consumption, percentage of task completion, and current state to the mobile device application</li>
+								<li>Be able to paint other varieties of sport fields</li>
+								<li>Require only 1 person to handle and operate</li>
 							</ol>
 						</ol>
 					</ol>
 					<h1 id="functional">Functional Architecture</h1>
-					<a href="http://i.imgur.com/tUZ6S80.png"><img src="http://i.imgur.com/tUZ6S80.png" style="width:800px;" alt="Functional Architecture"/></a>
+					<a href="http://i.imgur.com/ElD2J3t.png?1"><img src="http://i.imgur.com/ElD2J3t.png?1" style="width:800px;" alt="Functional Architecture"/></a>
 					<h1 id="physical">Physical Architecture</h1>
-					<a href="http://i.imgur.com/9frsauW.png"><img src="http://i.imgur.com/9frsauW.png" style="width:800px;" alt="Physical Architecture"/></a>
+					<a href="http://i.imgur.com/8nbYSku.png?1"><img src="http://i.imgur.com/8nbYSku.png?1" style="width:800px;" alt="Physical Architecture"/></a>
 					<h1 id="depict">System Depiction</h1>
 					<a href="http://i.imgur.com/W4JYe4Z.png"><img src="http://i.imgur.com/W4JYe4Z.png" style="width:800px;" alt="System Depiction"/></a>
 					<a href="http://i.imgur.com/DjoBZSs.png"><img src="http://i.imgur.com/DjoBZSs.png" style="width:800px;" alt="System Depiction Parts List" /></a>
@@ -254,7 +237,8 @@ TODO:
 					<div>
 						<img src="http://i.imgur.com/TtA271N.jpg" style="width:150px; float:left;" alt="Ander Solorzano" />
 						<!-- http://i.imgur.com/TtA271N.jpg -->
-						<p style="margin-left:160px;">Having experience in mobile robotics development, space robotics development, and control theory, Ander enjoys developing and researching new technologies that improve space robotic applications and autonomous robotics applications. Ander has led several teams in the AUVSI's Intelligent Ground Vehicle Competition and assisted in the development of several tele-operated robots. He has worked as a Space Robotics Engineer at Astrobotic Technology, Inc. for two summers and as an Applications Engineer at Texas Instruments in the summer of 2012. Ander also attended Kanazawa Institute of Technology in a summer foreign exchange program. He holds a B.S. in Electrical Engineering from Rose-Hulman Institute of Technology. Currently, he is pursuing a M.S. degree in Robotics Systems Development at Carnegie-Mellon University.</p>
+						<p style="margin-left:160px;">Having experience in mobile robotics development, space robotics development, and control theory, Ander enjoys developing and researching new technologies that improve space robotic applications and autonomous robotics applications. Ander has led several teams in the AUVSI's Intelligent Ground Vehicle Competition and assisted in the development of several tele-operated robots. He has worked as a Space Robotics Engineer at Astrobotic Technology, Inc. for two summers and as an Applications Engineer at Texas Instruments in the summer of 2012. Ander also attended Kanazawa Institute of Technology in a summer foreign exchange program. He holds a B.S. in Electrical Engineering from Rose-Hulman Institute of Technology. Currently, he is pursuing a M.S. degree in Robotics Systems Development at Carnegie-Mellon University.
+						<u><br /><a href="https://www.linkedin.com/pub/ander-solorzano/69/159/a59">LinkedIn</a></p></u>
 					</div>
 					<b>Jaghvi Mehta:</b> Market Research & Competition Analysis; Legal Issues
 					<div>
@@ -298,6 +282,8 @@ TODO:
 					December 3rd - Stephen Smith<br />
 					<h2>Conceptial Design Review (CoDR)</h2>
 					<a href="https://drive.google.com/file/d/0B9EIWArBba3ebm84OWJhTGgyRFU/view?usp=sharing" target="_blank"><u>Our CoDR can be found here</u></a>
+					<h2>Preliminary Design Review (PDR)</h2>
+					<a href="https://docs.google.com/presentation/d/1fXIX2fzayQDgRC0QkJ-sD7kicAAy-e7cm2NCz8z08fU/edit?usp=sharing" target="_blank"><u>Our PDR can be found here</u></a>
 					<h2>Individual Lab Reports (ILRs)</h2>
 					<a href="https://drive.google.com/folderview?id=0B9EIWArBba3eZFdmWVFoanpyeDg&usp=sharing" target="_blank"><u>All ILRs can be accessed in this folder in drive</u></a>
 					<h2>Gannt Chart</h2>
@@ -306,6 +292,9 @@ TODO:
 					<a href="https://docs.google.com/spreadsheets/d/1yPLyQ5cX_IaO93wS5-Jk8Oi5NYF7K9vvsYo0GpdEQCg/edit?usp=sharing" target="_blank"><u>This document lets us keep track of our expenses</u></a>
 					<h2>Issue Log</h2>
 					<a href="https://docs.google.com/a/andrew.cmu.edu/spreadsheets/d/1po9D4qhK1_S7DiDknZ0RQtg26uRscJ8DdqY0E8mTw-Y/edit#gid=0" target="_blank"><u>A live tracker for bugs and issues</u></a>
+					<h2>FVE Test Plan</h2>
+					<a href="https://drive.google.com/file/d/0B7zdUnmmxoiSemRSR3ZEelVTRDg/view?usp=sharing" target="_blank"><u>The test plan for our Fall Validation Experiment</u></a>
+				
 				</div>
 			</div>
 		</div>
