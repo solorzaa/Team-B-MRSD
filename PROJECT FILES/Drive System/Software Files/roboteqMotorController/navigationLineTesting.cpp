@@ -51,7 +51,7 @@ float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
 float botRadius = 11.25; //radius from each wheel to the midpoint between wheels in inches
 int stallPower = 40;
-float distanceCorrection = .9583;
+float distanceCorrection = 1;
 
 //Leica communication variables
 static int fd;
@@ -142,7 +142,6 @@ int main(int argc, char *argv[])
 
 	// Create variable to handle serial input
 	char* full_string;
-	//assign space for full string on the stack
 	full_string = (char*) malloc(100*sizeof(char));
 
 	// Leica Mode Only
@@ -162,26 +161,16 @@ int main(int argc, char *argv[])
 			usleep(1000000);
 		}
 
-		// Display the initial data
-		//cout << "received data" << endl;
-
 		// Get initial robot data
 		testData = leicaStoF(full_string);
 
-		//cout << "The Data R: " << testData[2] << endl;
-		//cout << "The Data Theta: " << testData[3] << endl;
-		//cout << "The Data Phi: " << testData[3] << endl;
-
 		// Convert intial robot data to planar coordinate system
+		// Stores in location - {x,y}
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-		//cout << "Spherical not origin x: " << location[0] << endl;
-		//cout << "Spherical not origin y: " << location[1] << endl;
-
-		// Set robot origin to initial planar data
-		xOrigin = location[0];
-		yOrigin = location[1];
-		// thetaOrigin = testData[2]*M_PI/180;  // FIX THE ORIGIN WITH STEP CALIBRATION
+		// Set robot origin to initial planar data ---- STEPHEN THINKS THIS IS BAD
+		//xOrigin = location[0];
+		//yOrigin = location[1];
 
 		// Initialize the previous Locations
 		prevLocation[0] = location[0];
@@ -189,6 +178,7 @@ int main(int argc, char *argv[])
 		calibrateTheta[0] = location[0];
 		calibrateTheta[1] = location[1];
 
+		// Get the first point of the orientation calibration
 		while(readPort(full_string)==0){
 			printf("Calibrating Origin\n");
 			usleep(1000000);
@@ -196,10 +186,13 @@ int main(int argc, char *argv[])
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
+		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
 		bool keepGoing = false;
 		while(!keepGoing) {
 			keepGoing = poseControl(getDeltaPose(),0,24,0);
 		}
+
+		// Get 2nd point to calibrate theta
 		while(readPort(full_string)==0) {
 			printf("Calibrating Theta\n");
 			usleep(100000);
@@ -209,31 +202,12 @@ int main(int argc, char *argv[])
 		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
 		thetaOrigin -= M_PI/2;
 		thetaOrigin *= -1;
+		
 		// Reset the origin at the last data point from calibration.  
 		xOrigin = location[0];
 		yOrigin = location[1];
-		//cout << "xOrigin: " << xOrigin << endl;
-		//cout << "yOrigin: " << yOrigin << endl;
 
-		//readPort(full_string);
-		//Get initial robot data
-		//testData = leicaStoF(full_string);
-
-		//Convert intial robot data to planar coordinate system
-		//sphericalToPlanar(testData[2], testData[3], testData[4]);
-
-		//cout << "The Data R: " << testData[2] << endl;
-		//cout << "The Data Theta: " << testData[3] << endl;
-		//cout << "The Data Phi: " << testData[3] << endl;
-
-		//for(vector<float>::iterator it = testData.begin() ; it != testData.end() ; it++){
-		//cout << *it << endl;
-		//}
-
-		//cout << "absolute X after offset: " << location[0] << endl;
-		//cout << "absolute Y after offset: " << location[1] << endl;
-
-		//sleep(1);
+		sleep(1);
 	}
 
 	if(!dataOnly) {	
@@ -246,97 +220,18 @@ int main(int argc, char *argv[])
 
 	// Go straight for 10 ft
 	bool keepGoing = false;
-	while(!keepGoing) {
-		keepGoing = poseControl(getDeltaPose(),0,12,0);
-		if(readPort(full_string)>0) {
-			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
+	for(int i=0; i<120; i+=12) {
+		while(!keepGoing) {
+			keepGoing = poseControl(getDeltaPose(),0,i,0);
+			if(readPort(full_string)>0) {
+				testData = leicaStoF(full_string);
+				sphericalToPlanar(testData[2], testData[3], testData[4]);
+			}
+			cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
 		}
-		cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-		cout<<"The first piece of data from the lecia: "<<testData[0]<<endl;
+		keepGoing = false;
 	}
-	keepGoing = false;
-	while(!keepGoing) {
-		keepGoing = poseControl(getDeltaPose(),0,24,0);
-		if(readPort(full_string)>0) {
-			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
-		}
-		cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	}
-	while(readPort(full_string)==0) {
-		usleep(100000);
-	}
-	testData = leicaStoF(full_string);
-	sphericalToPlanar(testData[2],testData[3],testData[4]);
-	cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
 
-	/*keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,36,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,48,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,60,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,72,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,84,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,96,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,108,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  keepGoing = false;
-	  while(!keepGoing) {
-	  keepGoing = poseControl(getDeltaPose(),0,120,0);
-	  readPort(full_string);
-	  testData = leicaStoF(full_string);
-	  sphericalToPlanar(testData[2], testData[3], testData[4]);
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	  }
-	  cout<<"                                           I am at: "<<location[0]<<", "<<location[1]<<endl;
-	 */
 	// Step through the goal points	
 	/*for(int i=0;i<100;i++) {
 	  bool done = false;
@@ -489,9 +384,9 @@ double * getDeltaPose()
 		deltaY = (rightTurningRadius-botRadius)*sin(deltaTheta);
 	}
 
-	cout << "deltaTheta" << deltaTheta << endl;
-	cout << "deltaX" << deltaX << endl;
-	cout << "deltaY" << deltaY << endl;
+	cout << "deltaTheta: " << deltaTheta << endl;
+	cout << "deltaX: " << deltaX << endl;
+	cout << "deltaY: " << deltaY << endl;
 
 	double deltas[3] = {deltaX, deltaY, deltaTheta};
 	double* frame = deltas;
@@ -673,7 +568,7 @@ int readPort(char* fs){
 	int i;
 	while(1){
 		int l = read(fd, byte_in, ARRAY_SIZE);
-		cout<<"Length of the string??? : " << l<< endl;
+		cout<<"Length of the string : " << l<< endl;
 
 		for(i = 0; i < l; i++){
 			if(l<40) {
@@ -748,10 +643,6 @@ vector<float> leicaStoF(char* recievedData){
 		//cout << "print the number" << number << endl;
 
 	}
-	cout<< "The vector: ";
-	for(vector<float>::const_iterator i = leicaData.begin(); i!= leicaData.end(); ++i)
-		cout<< *i << ' ';
-	cout<<endl;
 
 	istringstream(leicaString.c_str()) >> number;
 	leicaData.push_back(number);
@@ -775,11 +666,10 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 	cout<< "Radius: " << radius << endl;
 	//cout << xOrigin << endl;
 	//cout << yOrigin << endl;
-	float translateX = ((-radius*cos(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES)-xOrigin);
-	float translateY = ((-radius*sin(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES)-yOrigin);
+	float translateX = ((radius*cos(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES)-xOrigin);
+	float translateY = ((radius*sin(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES)-yOrigin);
 	location[0] = translateX*cos(thetaOrigin)-translateY*sin(thetaOrigin);
 	location[1] = translateX*sin(thetaOrigin)+translateY*cos(thetaOrigin);
-	location[2] = -thetaOrigin;
 
 	cout<< "xOrigin: " << xOrigin <<endl;
 	cout<< "yOrigin: " << yOrigin <<endl;
