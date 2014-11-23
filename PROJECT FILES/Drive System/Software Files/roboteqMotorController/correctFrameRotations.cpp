@@ -84,7 +84,7 @@ double sumErrorY = 0;
 double sumErrorTheta = 0;
 
 bool leicaConnected = true;
-bool dataOnly = false;
+bool dataOnly = true;
 
 //PID Settings
 float KPX = 50;		//30;
@@ -184,7 +184,6 @@ int main(int argc, char *argv[])
 		prevLocation[1] = location[1];
 		calibrateTheta[0] = location[0];
 		calibrateTheta[1] = location[1];
-		float timestamp = testData[0];
 
 		// Get the first point of the orientation calibration
 		while(readPort(full_string)==0){
@@ -194,8 +193,6 @@ int main(int argc, char *argv[])
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-		sleep(.5);
-
 		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
 		if(!dataOnly) {
 			bool keepGoing = false;
@@ -204,21 +201,27 @@ int main(int argc, char *argv[])
 				cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
 			}
 		}
+		sleep(1);
+		readPort(full_string);
+		sleep(1);
+		readPort(full_string);
+		sleep(1);
+		readPort(full_string);
+		sleep(1);
+		readPort(full_string);
+		sleep(1);
+		readPort(full_string);
 
-		while(abs(location[0]-calibrateTheta[0])<1 && abs(location[1]-calibrateTheta[1])<1) {
-			// Get 2nd point to calibrate theta
-			while(readPort(full_string)==0) {
-				cout << "Calibrating Theta" << endl;
-				usleep(100000);
-			}
-			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
-			cout << "Waiting for 2nd point " << endl;
+		// Get 2nd point to calibrate theta
+		while(readPort(full_string)==0) {
+			cout << "Calibrating Theta" << endl;
+			usleep(100000);
 		}
-
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
 		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
-		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,10) << endl;
-		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],10) <<endl;
+		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << endl;
+		cout << "Second Point: " << location[0] << ", " << calibrateTheta[1] << endl;
 		thetaOrigin -= M_PI/2;
 		thetaOrigin *= -1;
 		
@@ -229,7 +232,7 @@ int main(int argc, char *argv[])
 	//	sleep(1);
 	}
 	while(readPort(full_string)==0) {
-		printf("Need more data...");
+		printf("Calibrating Theta\n");
 		usleep(100000);
 	}
 	testData = leicaStoF(full_string);
@@ -247,7 +250,7 @@ int main(int argc, char *argv[])
 	if(!dataOnly) {
 		// Go straight for 10 ft
 		bool keepGoing = false;
-		for(int i=24; i<=72; i+=12) {
+		for(int i=24; i<=48; i+=12) {
 			while(!keepGoing) {
 				keepGoing = poseControl(getDeltaPose(),0,i,0);
 				if(readPort(full_string)>0) {
@@ -259,15 +262,13 @@ int main(int argc, char *argv[])
 			keepGoing = false;
 		}
 	}
-	if(dataOnly) {
-		while(1) {
-			readPort(full_string);
-			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
-			cout<<"Leica Data: "<< testData[2]<<", "<< testData[3]<<", "<< testData[4]<<endl;
-			cout<<"Robot Frame: "<<location[0]<<", "<<location[1]<<endl;
-			usleep(100000);
-		}
+	while(1) {
+		readPort(full_string);
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		cout<<"Leica Data: "<< testData[2]<<", "<< testData[3]<<", "<< testData[4]<<endl;
+		cout<<"Robot Frame: "<<location[0]<<", "<<location[1]<<endl;
+		usleep(100000);
 	}
 
 	// Step through the goal points	
