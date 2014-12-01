@@ -88,12 +88,12 @@ bool dataOnly = false;
 
 //PID Settings
 float KPX = 50;		//30;
-float KPY = 14;		//14;
-float KPTheta = 200;	//200;
+float KPY = 3;		//14;
+float KPTheta = 100;	//200;
 
 float KIX = 48;		//48;
-float KIY = 80;		//80;
-float KITheta = 32000;	//32000;
+float KIY = 200;	//80;
+float KITheta = 25000;	//32000;
 
 double errorXThresh = 5;
 double errorYThresh = 5;
@@ -162,7 +162,7 @@ int main(int argc, char *argv[])
 
 		// Don't start until we have recieved data from the Leica Tracking Station
 		while(readPort(full_string)==0){
-			printf("no data");
+			printf("no data\n");
 			//readPort(full_string);
 			//printf("Returned here- string is: %s\n",full_string);
 			usleep(1000000);
@@ -201,8 +201,9 @@ int main(int argc, char *argv[])
 		if(!dataOnly) {
 			bool keepGoing = false;
 			while(!keepGoing) {
-				keepGoing = poseControl(getDeltaPose(),0,24,0);
+				keepGoing = poseControl(getDeltaPose(),0,48,0);
 				cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
+				readPort(full_string);
 			}
 		}
 
@@ -237,6 +238,11 @@ int main(int argc, char *argv[])
 	sphericalToPlanar(testData[2], testData[3], testData[4]);
 	cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
 
+	// Set Encoder Absolute Position to zero
+	absoluteX = 0;
+	absoluteY = 0;
+	absoluteTheta = 0;
+
 	if(!dataOnly) {	
 		// Initialize the encoders
 		readAbsoluteEncoderCount(prevLeftEncoder, 2); 
@@ -250,7 +256,7 @@ int main(int argc, char *argv[])
 	if(!dataOnly) {
 		// Go straight for 10 ft
 		bool keepGoing = false;
-		for(int i=24; i<=72; i+=12) {
+		for(int i=0; i<=600; i+=12) {
 			while(!keepGoing) {
 				keepGoing = poseControl(getDeltaPose(),0,i,0);
 				if(readPort(full_string)>0) {
@@ -274,7 +280,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Step through the goal points	
-	for(int i=0;i<100;i++) {
+	/*for(int i=0;i<100;i++) {
 		bool done = false;
 		while(!done) {
 			cout << "            point #: " << i << endl << endl;
@@ -288,7 +294,7 @@ int main(int argc, char *argv[])
 				sphericalToPlanar(testData[2], testData[3], testData[4]);
 			}
 		}
-	}
+	}*/
 
 	if(!dataOnly) {
 		// Disconnect roboteq
@@ -459,15 +465,16 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	double rightIntegralFeedback;
 	double rightDerivativeFeedback;
 
-	if(leicaConnected) {
+	/*if(leicaConnected) {
 		//If tracking data is new, update the absolute position
-		if(location[0]!=prevLocation[0]||location[1]!=prevLocation[1]) {
+		if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
+		cout << "Updating the absolute Position of the robot" << endl;
 		absoluteX = location[0];
 		absoluteY = location[1];
 		prevLocation[0] = location[0];
 		prevLocation[1] = location[1];
 		}
-	}
+	}*/
 
 	//Keep the theta between 2 pi
 	absoluteTheta = fmod(absoluteTheta + 2*M_PI, 2*M_PI);
