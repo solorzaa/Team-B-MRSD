@@ -167,6 +167,7 @@ int main(int argc, char *argv[])
 			//printf("Returned here- string is: %s\n",full_string);
 			usleep(1000000);
 		}
+		cout << "Received First set of Leica Data" << endl;
 
 		// Get initial robot data
 		testData = leicaStoF(full_string);
@@ -194,7 +195,7 @@ int main(int argc, char *argv[])
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-		sleep(.5);
+		//sleep(.5);
 
 		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
 		if(!dataOnly) {
@@ -217,8 +218,8 @@ int main(int argc, char *argv[])
 		}
 
 		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
-		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,10) << endl;
-		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],10) <<endl;
+		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,1.0) << endl;
+		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],1.0) <<endl;
 		thetaOrigin -= M_PI/2;
 		thetaOrigin *= -1;
 		
@@ -244,6 +245,8 @@ int main(int argc, char *argv[])
 		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
 	}
 
+
+	// 10 ft in a straight line after the calibration step
 	if(!dataOnly) {
 		// Go straight for 10 ft
 		bool keepGoing = false;
@@ -271,21 +274,21 @@ int main(int argc, char *argv[])
 	}
 
 	// Step through the goal points	
-	/*for(int i=0;i<100;i++) {
-	  bool done = false;
-	  while(!done) {
-	  cout << "            point #: " << i << endl << endl;
-	  if(!dataOnly) {
-	  done = poseControl(getDeltaPose(),xPoints[i],yPoints[i],thetaPoints[i]);
-	  }
-	  if(leicaConnected) {
-	// Get new tracking station data
-	readPort(full_string);	
-	testData = leicaStoF(full_string);
-	sphericalToPlanar(testData[2], testData[3], testData[4]);
+	for(int i=0;i<100;i++) {
+		bool done = false;
+		while(!done) {
+			cout << "            point #: " << i << endl << endl;
+		  	if(!dataOnly) {
+				done = poseControl(getDeltaPose(),xPoints[i],yPoints[i],thetaPoints[i]);
+		  	}
+		  	if(leicaConnected) {
+				// Get new tracking station data
+				readPort(full_string);	
+				testData = leicaStoF(full_string);
+				sphericalToPlanar(testData[2], testData[3], testData[4]);
+			}
+		}
 	}
-	}
-	}*/
 
 	if(!dataOnly) {
 		// Disconnect roboteq
@@ -456,15 +459,15 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	double rightIntegralFeedback;
 	double rightDerivativeFeedback;
 
-	/*if(leicaConnected) {
-	//If tracking data is new, update the absolute position
-	if(location[0]!=prevLocation[0]||location[1]!=prevLocation[1]) {
-	absoluteX = location[0];
-	absoluteY = location[1];
-	prevLocation[0] = location[0];
-	prevLocation[1] = location[1];
+	if(leicaConnected) {
+		//If tracking data is new, update the absolute position
+		if(location[0]!=prevLocation[0]||location[1]!=prevLocation[1]) {
+		absoluteX = location[0];
+		absoluteY = location[1];
+		prevLocation[0] = location[0];
+		prevLocation[1] = location[1];
+		}
 	}
-	}*/
 
 	//Keep the theta between 2 pi
 	absoluteTheta = fmod(absoluteTheta + 2*M_PI, 2*M_PI);
