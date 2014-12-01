@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
 			printf("no data");
 			//readPort(full_string);
 			//printf("Returned here- string is: %s\n",full_string);
-			usleep(1000000);
+			usleep(100000);
 		}
 
 		// Get initial robot data
@@ -189,12 +189,12 @@ int main(int argc, char *argv[])
 		// Get the first point of the orientation calibration
 		while(readPort(full_string)==0){
 			cout << "Calibrating Origin" << endl;
-			usleep(1000000);
+			usleep(100000);
 		}
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-		sleep(.5);
+		//sleep(.5);
 
 		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
 		if(!dataOnly) {
@@ -202,8 +202,13 @@ int main(int argc, char *argv[])
 			while(!keepGoing) {
 				keepGoing = poseControl(getDeltaPose(),0,24,0);
 				cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
+				readPort(full_string);
 			}
 		}
+		readPort(full_string);
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		//sleep(.5);
 
 		while(abs(location[0]-calibrateTheta[0])<1 && abs(location[1]-calibrateTheta[1])<1) {
 			// Get 2nd point to calibrate theta
@@ -228,13 +233,14 @@ int main(int argc, char *argv[])
 
 	//	sleep(1);
 	}
-	while(readPort(full_string)==0) {
+	/*while(readPort(full_string)==0) {
 		printf("Need more data...");
 		usleep(100000);
 	}
 	testData = leicaStoF(full_string);
 	sphericalToPlanar(testData[2], testData[3], testData[4]);
 	cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
+	*/
 
 	if(!dataOnly) {	
 		// Initialize the encoders
