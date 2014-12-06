@@ -59,10 +59,10 @@ int ARRAY_SIZE = 200;
 char port[20] = "/dev/ttyUSB0"; /* port to connect to */
 
 //Point File
-float * xPoints = new float[100]{0,0,0,0,0,0,0,0,0,0,0,-0.48,-4.2,-11.28,-21.36,-33.48,-47.16,-61.2,-74.88,-87,-96.96,-103.92,-107.52,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-104.52,-96.96,-82.2,-64.44,-43.44,-21.24,-4.2,12.36,26.4,36.48,44.4,50.4,54.6,54.36,48,36.48,19.92,0,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-119.4,-129.84,-138.6,-144.84,-148.08,-148.08,-144.84,-138.6,-129.84,-119.4,-108,-94.5,-81,-67.5,-54,-40.5,-27,-13.5,0,11.4,21.84,30.6,36.84,40.08,40.08,36.84,30.6,21.84,11.4,0,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-121.5,-135};
-float * yPoints = new float[100]{0,16.2,32.4,48.6,64.8,81,97.2,113.4,129.6,145.8,162,169.2,182.76,195,204.96,211.92,215.52,215.52,211.8,204.72,194.76,182.52,168.84,162,145.8,129.6,113.4,97.2,81,64.8,48.6,32.4,16.2,0,-12,-23.76,-35.4,-42.36,-45.48,-43.92,-39.12,-30.24,-16.68,0,19.56,40.56,66.36,93.12,121.56,142.92,156.84,162,162,162,162,162,162,162,162,162,160.32,155.52,148.08,138.36,127.32,115.68,104.64,94.92,87.48,82.68,81,81,81,81,81,81,81,81,81,79.32,74.52,67.08,57.36,46.32,34.68,23.64,13.92,6.48,1.68,0,0,0,0,0,0,0,0,0,0,0};
-float * thetaPoints = new float[100]{0,0,0,0,0,0,0,0,0,0,0,0.134390352,0.39618974,0.657989128,0.919788516,1.181587904,1.443387291,1.705186679,1.966986067,2.228785455,2.490584843,2.75238423,3.014183618,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.141592654,3.558726345,3.865904293,4.204498168,4.454080251,4.672246408,4.890412564,5.08763477,5.335471523,5.626941508,5.831145031,5.955063408,6.051056517,6.201154832,0.105766953,0.347320521,0.663225116,1.0978121,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.857030324,2.141518992,2.42775299,2.713986987,2.998475655,3.284709652,3.56919832,3.855432318,4.141666315,4.426154983,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.71238898,4.426154983,4.141666315,3.855432318,3.56919832,3.284709652,2.998475655,2.713986987,2.42775299,2.141518992,1.857030324,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327,1.570796327};
-int * paintPoints = new int[100]{1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,};
+float * xPoints = new float[110]{0,0,0,0,0,0,0,0,0,0,0,0,-1.84,-7.2346,-15.816,-27,-40.024,-54,-67.976,-81,-92.184,-100.77,-106.16,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-106.16,-100.77,-92.184,-81,-67.976,-54,-40.5,-27,-13.5,0,-9.9196e-15,13.976,27,38.184,46.765,52.16,54,54,54,54,54,54,54,54,54,52.16,46.765,38.184,27,13.976,3.3065e-15,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-108,-123.5,-136.64,-145.42,-148.5,-145.42,-136.64,-123.5,-108,-94.5,-81,-67.5,-54,-40.5,-27,-13.5,-1.4211e-14,2.4799e-15,15.499,28.638,37.417,40.5,37.417,28.638,15.499,2.4799e-15,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-121.5,-135};
+float * yPoints = new float[110]{0,16.2,32.4,48.6,64.8,81,97.2,113.4,129.6,145.8,162,162,175.98,189,200.18,208.77,214.16,216,214.16,208.77,200.18,189,175.98,162,145.8,129.6,113.4,97.2,81,64.8,48.6,32.4,16.2,7.1054e-15,-0,-13.976,-27,-38.184,-46.765,-52.16,-54,-54,-54,-54,-54,-54,-52.16,-46.765,-38.184,-27,-13.976,-1.3226e-14,15.4,30.8,46.2,61.6,77,92.4,107.8,108,121.98,135,146.18,154.77,160.16,162,162,162,162,162,162,162,162,162,162,158.92,150.14,137,121.5,106,92.862,84.083,81,81,81,81,81,81,81,81,81,81,77.917,69.138,55.999,40.5,25.001,11.862,3.0829,0,0,0,0,0,0,0,0,0,0,0};
+float * thetaPoints = new float[110]{0,0,0,0,0,0,0,0,0,0,0,0,0.2618,0.5236,0.7854,1.0472,1.309,1.5708,1.8326,2.0944,2.3562,2.618,2.8798,3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,3.1416,3.4034,3.6652,3.927,4.1888,4.4506,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.9742,5.236,5.4978,5.7596,6.0214,6.2832,0,0,0,0,0,0,0,0,0.2618,0.5236,0.7854,1.0472,1.309,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.9635,2.3562,2.7489,3.1416,3.5343,3.927,4.3197,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,-1.5708,-1.9635,-2.3562,-2.7489,-3.1416,-3.5343,-3.927,-4.3197,-4.7124,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708};
+int * paintPoints = new int[110]{1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0};
 
 float location[3] = {0,0,0};
 float prevLocation[2] = {0,0};
@@ -87,17 +87,17 @@ bool leicaConnected = true;
 bool dataOnly = false;
 
 //PID Settings
-float KPX = 50;		//30;
-float KPY = 14;		//14;
-float KPTheta = 200;	//200;
+float KPX = 18;		//50;   50
+float KPY = 5;		//14;   3   1
+float KPTheta = 200;	//200;  200
 
-float KIX = 48;		//48;
-float KIY = 80;		//80;
-float KITheta = 32000;	//32000;
+float KIX = 20;	//48;   48
+float KIY = 50;	//80;   200  50
+float KITheta = 2000;	//32000;32000    2000
 
-double errorXThresh = 5;
-double errorYThresh = 5;
-double errorThetaThresh = 0.1;
+double errorXThresh = 12;
+double errorYThresh = 10;
+double errorThetaThresh = 0.4;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -123,6 +123,12 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius);
 /////////////////////////////////
 int main(int argc, char *argv[])
 {
+	// Correct the angles
+        for(int i=0; i<110; i++) {
+                thetaPoints[i]+=2*M_PI;
+                thetaPoints[i]=fmod(thetaPoints[i],2*M_PI);
+                cout << thetaPoints[i] << endl;
+        }
 	// Correct the distance measurements
 	wheelRadius = wheelRadius * distanceCorrection;
 	botRadius = botRadius * distanceCorrection;
@@ -162,11 +168,12 @@ int main(int argc, char *argv[])
 
 		// Don't start until we have recieved data from the Leica Tracking Station
 		while(readPort(full_string)==0){
-			printf("no data");
+			printf("no data\n");
 			//readPort(full_string);
 			//printf("Returned here- string is: %s\n",full_string);
-			usleep(1000000);
+			usleep(100000);
 		}
+		cout << "Received First set of Leica Data" << endl;
 
 		// Get initial robot data
 		testData = leicaStoF(full_string);
@@ -189,36 +196,37 @@ int main(int argc, char *argv[])
 		// Get the first point of the orientation calibration
 		while(readPort(full_string)==0){
 			cout << "Calibrating Origin" << endl;
-			usleep(1000000);
+			usleep(100000);
 		}
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-		sleep(.5);
+		//sleep(.5);
 
 		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
 		if(!dataOnly) {
 			bool keepGoing = false;
 			while(!keepGoing) {
-				keepGoing = poseControl(getDeltaPose(),0,24,0);
+				keepGoing = poseControl(getDeltaPose(),0,48,0);
 				cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
+				readPort(full_string);
 			}
 		}
 
-		while(abs(location[0]-calibrateTheta[0])<1 && abs(location[1]-calibrateTheta[1])<1) {
+		while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<30) {
 			// Get 2nd point to calibrate theta
+			cout << "Waiting for 2nd point " << endl;
 			while(readPort(full_string)==0) {
 				cout << "Calibrating Theta" << endl;
 				usleep(100000);
 			}
 			testData = leicaStoF(full_string);
 			sphericalToPlanar(testData[2], testData[3], testData[4]);
-			cout << "Waiting for 2nd point " << endl;
 		}
 
 		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
-		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,10) << endl;
-		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],10) <<endl;
+		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,1.0) << endl;
+		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],1.0) <<endl;
 		thetaOrigin -= M_PI/2;
 		thetaOrigin *= -1;
 		
@@ -228,13 +236,21 @@ int main(int argc, char *argv[])
 
 	//	sleep(1);
 	}
-	while(readPort(full_string)==0) {
-		printf("Need more data...");
-		usleep(100000);
+
+	if(leicaConnected) {
+		while(readPort(full_string)==0) {
+			printf("Need more data...");
+			usleep(100000);
+		}
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
 	}
-	testData = leicaStoF(full_string);
-	sphericalToPlanar(testData[2], testData[3], testData[4]);
-	cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
+
+	// Set Encoder Absolute Position to zero
+	absoluteX = 0;
+	absoluteY = 0;
+	absoluteTheta = 0;
 
 	if(!dataOnly) {	
 		// Initialize the encoders
@@ -244,10 +260,12 @@ int main(int argc, char *argv[])
 		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
 	}
 
-	if(!dataOnly) {
+
+	// 10 ft in a straight line after the calibration step
+	/*if(!dataOnly) {
 		// Go straight for 10 ft
 		bool keepGoing = false;
-		for(int i=24; i<=72; i+=12) {
+		for(int i=0; i<=600; i+=12) {
 			while(!keepGoing) {
 				keepGoing = poseControl(getDeltaPose(),0,i,0);
 				if(readPort(full_string)>0) {
@@ -258,7 +276,7 @@ int main(int argc, char *argv[])
 			}
 			keepGoing = false;
 		}
-	}
+	}*/
 	if(dataOnly) {
 		while(1) {
 			readPort(full_string);
@@ -271,21 +289,39 @@ int main(int argc, char *argv[])
 	}
 
 	// Step through the goal points	
-	/*for(int i=0;i<100;i++) {
-	  bool done = false;
-	  while(!done) {
-	  cout << "            point #: " << i << endl << endl;
-	  if(!dataOnly) {
-	  done = poseControl(getDeltaPose(),xPoints[i],yPoints[i],thetaPoints[i]);
-	  }
-	  if(leicaConnected) {
-	// Get new tracking station data
-	readPort(full_string);	
-	testData = leicaStoF(full_string);
-	sphericalToPlanar(testData[2], testData[3], testData[4]);
+	for(int i=0;i<110;i++) {
+		bool done = false;
+		if(i==24) {
+			absoluteTheta = M_PI;
+		}
+		if(i==41) {
+			absoluteTheta = 3*M_PI/2;
+		}
+		if(i==52) {
+			absoluteTheta = 0;
+		}
+		if(i==68) {
+			absoluteTheta = M_PI/2;
+		}
+		if(i==85) {
+			absoluteTheta = 3*M_PI/2;
+		}
+		if(i==100) {
+			absoluteTheta = M_PI/2;
+		}
+		while(!done) {
+			cout << "            point #: " << i << endl << endl;
+		  	if(!dataOnly) {
+				done = poseControl(getDeltaPose(),xPoints[i],yPoints[i],thetaPoints[i]);
+		  	}
+		  	if(leicaConnected) {
+				// Get new tracking station data
+				readPort(full_string);	
+				testData = leicaStoF(full_string);
+				sphericalToPlanar(testData[2], testData[3], testData[4]);
+			}
+		}
 	}
-	}
-	}*/
 
 	if(!dataOnly) {
 		// Disconnect roboteq
@@ -456,15 +492,18 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	double rightIntegralFeedback;
 	double rightDerivativeFeedback;
 
-	/*if(leicaConnected) {
-	//If tracking data is new, update the absolute position
-	if(location[0]!=prevLocation[0]||location[1]!=prevLocation[1]) {
-	absoluteX = location[0];
-	absoluteY = location[1];
-	prevLocation[0] = location[0];
-	prevLocation[1] = location[1];
+	if(leicaConnected) {
+		//If tracking data is new, update the absolute position
+		if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
+			if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
+				cout << "Updating the absolute Position of the robot" << endl;
+				absoluteX = location[0];
+				absoluteY = location[1];
+				prevLocation[0] = location[0];
+				prevLocation[1] = location[1];
+			}
+		}
 	}
-	}*/
 
 	//Keep the theta between 2 pi
 	absoluteTheta = fmod(absoluteTheta + 2*M_PI, 2*M_PI);
@@ -536,6 +575,14 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	cout << " left integral: " << leftIntegralFeedback << endl;
 	cout << " right integral: " << rightIntegralFeedback << endl;
 
+	cout << "KPXerrorX: " << KPX*errorBotX << endl;
+	cout << "KPYerrorY: " << KPY*errorBotY << endl;
+	cout << "KPThetaerrorTheta: " << KPTheta*errorBotTheta << endl;
+
+	cout << "KIXsumErrorX: " << KIX*sumErrorX << endl;
+	cout << "KIYsumErrorY: " << KIY*sumErrorY << endl;
+	cout << "KIThetasumErrorTheta: " << KITheta*sumErrorTheta << endl;
+
 	leftOutputPower = leftProportionalFeedback + leftIntegralFeedback;//KPX*errorBotX + KPY*errorBotY + KPTheta*errorBotTheta + KIX*sumErrorX + KIY*sumErrorY - KITheta*sumErrorTheta;
 	rightOutputPower = rightProportionalFeedback + rightIntegralFeedback;//-KPX*errorBotX + KPY*errorBotY - KPTheta*errorBotTheta - KIX*sumErrorX + KIY*sumErrorY + KITheta*sumErrorTheta;
 
@@ -549,8 +596,8 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	//Stop when the bot is within an inch
 	if(abs(errorWorldX) < errorXThresh && abs(errorWorldY) < errorYThresh && abs(errorWorldTheta) < errorThetaThresh)
 	{	
-		device.SetCommand(_GO, 2, 0);
-		device.SetCommand(_GO, 1, 0);
+		//device.SetCommand(_GO, 2, 0);
+		//device.SetCommand(_GO, 1, 0);
 
 		//Reset integral fedback terms
 		sumErrorX = 0;
