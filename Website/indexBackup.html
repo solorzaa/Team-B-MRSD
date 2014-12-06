@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--Links of Images -->
+<!-- http://imgur.com/tUZ6S80,LZe0YUW,9T3i01S,HtvL4T7,vSAChvI,AM0P9vK,q5p8wEp,v4dQsJ6,CGJaG6g,H2j9nnR,sMIdJPP,byqdUQo#0 -->
+
+<!--
+TODO:
+-Fix robot rectangle positioning
+
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Fieldroid is your autonomous field painting solution.  With quick and easy plug and play operation, 
+		this robot will paint an entire regulation football or soccer field in under 2 hours.  At a low cost, this product really brings home
+		savings on your facilities' budget">
+		<meta name="keywords" content="fieldroid,robot,paint,painting,autonomous,team b,mrsd,stephen smith,ander solorzano,matt clark,jaghvi mehta">
+		<meta name="author" content="Stephen Smith">
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="skrollr/src/skrollr.js"></script>
+		<script type="text/javascript" src="skrollr/dist/skrollr.menu.min.js"></script>
+		
+		<link rel="shortcut icon" href="favicon.ico?v=2" />
+		<link rel="stylesheet" type="text/css" href="main.css" />
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+		<title>Fieldroid - Autonomous Field Painting Robot</title>
+	</head>
+	<body onload="skrollr.menu.init(skrollr.init());">
+	<img src="http://i.imgur.com/LZe0YUW.jpg" id="full-screen-background-image" data-0="opacity:0;" data-1400="opacity:.4;" data-1600="opacity:.75;" data-1800="opacity:1;"/>
+		<!--<div class="guide">-->
+		<div class="guide-center">
+			<ul>
+				<a href="#"><li><img src="http://i.imgur.com/AM0P9vK.png" style="width:40px;" alt="Fieldroid small logo"/></li></a>
+				<li><a href="#about" data-menu-top="2800">About</a>
+				<ul>
+					<a href="#problem" data-menu-top="2800"><li>Problem Description</li></a>
+					<a href="#useCase" data-menu-top="6150"><li>Use Case</li></a>
+				</ul></li>
+				<li><a href="#design" data-menu-top="7625">Design</a>
+				<ul>
+					<a href="#design" data-menu-top="7625"><li>System Requirements</li></a>
+					<a href="#functional" data-menu-top="8635"><li>Functional Architecture</li></a>
+					<a href="#physical" data-menu-top="9335"><li>Physical Architecture</li></a>
+					<a href="#depict" data-menu-top="10205"><li>System Depiction</li></a>
+					<a href="#descriptions" data-menu-top="11815"><li>Subsystem Descriptions</li></a>
+				</ul></li>
+				<li><a href="#product" data-menu-top="15005">Product</a>
+				<ul>
+					<a href="#implementation" data-menu-top="15005"><li>Implementation</li></a>
+					<a href="#performance"data-menu-top="21990"><li>Performance</li></a>
+					<a href="#manage" data-menu-top="22050"><li>Project Management</li></a>
+				</ul></li>
+				<li><a href="#team" data-menu-top="23170">Team</a>
+					<ul>
+					<a href="#members" data-menu-top="23170"><li>Members</li></a>
+					<a href="#board" data-menu-top="24320"><li>Board</li></a>
+					<a href="#contact" data-menu-top="24720"><li>Contact</li></a>
+				</ul></li>
+				<li><a href="#more" data-menu-top="24840">More</a>
+					<ul>
+					<a href="#media" data-menu-top="24840"><li>Media</li></a>
+					<a href="#docs" data-menu-top="24970"><li>Documents</li></a>
+				</li></ul>
+			</ul>
+		</div>
+		<!--</div>-->
+		<div id="skrollr-body">
+			<div class="horizontal-container">
+				<div class="robot" 
+					data-0="top:200px; margin-top:200px; left:100%; margin-left:92%; transform: rotate(241deg);"
+					data-1800="top:1000px; margin-top:1000px; margin-left:0%; left:0%;"
+					data-2000="top:1000px; margin-top:1000px; transform: rotate(0deg);"
+					data-8000="top:0px; margin-top:0px;"
+					data-11600="transform: rotate(90deg); margin-left:5%; left:5%;" 
+					data-15000="margin-left:92%; left:100%;" 
+					data-16200="transform: rotate(180deg); top:0px; margin-top:0px;" 
+					data-18000="top:850px; margin-top:850px;" 
+					data-19800="transform: rotate(270deg); margin-left:92%; left:100%;"
+					data-23000="left:0px; margin-left:0px;">
+					<img src="http://i.imgur.com/VnME5Om.png" style="width:151px; height:230px;" alt="The robot"/>
+				</div>
+				<div class="scrollMe" data-0="color:rgba(0,0,0,1)" data-400="color:rgba(0,0,0,0)" data-19000=color:rgba(0,0,0,0)">
+					Scroll Down! <br /> I want to paint!
+				</div>
+			</div>
+			<div class="container">
+				<div style="padding-top:300px; padding-bottom:500px;" data-smooth-scrolling="off" data-0="padding-top:300px;" data-1800="padding-top:2100px;">
+					<img src="http://i.imgur.com/vSAChvI.png" style="width:1000px;" alt="Fieldroid logo"/>
+				</div>
+				<div id="about">
+					<h1 id="problem">Problem Description</h1>
+					<img src="http://hello-georgia.com/files/DESTINATIONS/EUROPE/SPAIN/camp-nou-evening-1920x1080.jpg" style="width:1000px;" alt="A view of a professional soccer field"/>
+					<p>A beautiful and meticulously painted field is the pride of every major soccer and football team in the world. It is an enormous spectacle which requires constant care and maintenance. Currently, this maintenance implies several laborers spending many painstaking hours in an effort to paint across more than an acre of grass every week. <b>The Fieldroid is an autonomous field painting system that will transform any field of grass into a professional grade sports stadium!</b></p>
+					<div align="center"><img src="http://i.giflike.com/0S1PBzp.gif" alt="Fieldroid in motion"/></div> 
+					<p>Affordable and easy-to-use, fieldroid will bring field quality to the next level for all sports organizations, big and small. Giving everyone the ability to play on a professional field, this robot will inspire the next generation of sports stars!</p>
+					<p style="text-align:center;"><img src="http://i.imgur.com/t10N30T.jpg" style="width:1000px;" alt="Complicated field painting designs" /><br />Field painting can be extremely complex </p>
+					<p style="text-align:center;"><img src="http://www.ecu.edu/cs-admin/news/poe/2008/1008/images/DowdyFieldPrep2.jpg" style="width:1000px;" alt="Complicated field painting designs" /><br />Field painting needs coordination</p>
+					<p style="text-align:center;"><img src="http://i.dailymail.co.uk/i/pix/2012/02/04/article-2096099-119606E8000005DC-575_634x420.jpg" style="width:1000px;" alt="Complicated field painting designs" /><br />Field painting can happen at any time</p>
+					<p>While current solutions are time, labor and resource intensive, Fieldroid paints field markings, text, and graphics with superhuman precision and efficiency. The excessive use of paint is an unnecessary cost which damages grassy fields. Fieldroid can control the amount of paint used at any point on the field so that it limits these damages, all while saving paint. Furthermore, time is money in the fast paced sports industry. One field may have to be repainted more than once in a single day to accommodate multiple events. Fieldroid paints a field in under two hours allowing for faster turnover times between events. It also operates at all times of day or night so that field managers have one less thing to worry about when they wake up. We present advanced technologies in the form of an easy to use robot so that the only simple step between a plot of grass and a professional grade sports field is Fieldroid.</p>
+					<br />
+					<h1 id="useCase">Use Case</h1>
+					<!--<img src="http://cdn.makeagif.com/media/10-15-2014/fwo1vW.gif" style="width:1000px;" alt="Rough sketch of the robot"/>-->
+					<div align="center"><iframe style="z-index:-1" src="http://gfycat.com/ifr/AffectionateDownrightAkitainu" frameborder="0" scrolling="no" width="400" height="272" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></iframe></div>
+					<p>Bob Corley has had a long day. The first big game of the season is tomorrow, Steelers vs The Cowboys at home. Bob is the groundskeeper for The Heinz Stadium which is considered one of the most beautiful Football fields in the nation. His team has been hard at work all day making sure the field is in perfect condition. They spend much of the day making the final touches to the turf before they could let the Fieldroid loose.</p>
+					<p>At about 3pm, Bob was able to give the okay on the turf and he let his project manager, Erica, get the robot out of the storage facility and start it up for the first round of paint. She takes it out to the corner of the field, pulls out her phone, and starts tapping the screen. Bob knew very well the interface she was messing with, it was a well-designed app in which she could pull up a pre-programmed line set for a standard NFL field. Bob asks if she had charged Fieldroid since the last use and she stated the battery was at 100%. He grabbed the paint from the storage area and poured it into the cartridge on the robot. For the lines, he knew the robot would only need white and due to its efficient use of paint, he only needed to fill it once for the whole field. Erica double checked the paint and the settings on the phone. She set up the survey beacon and tapped the calibrate button on the App. The Fieldroid was waiting for the okay to start.</p>
+					<p>Bob was always amazed at the reliability of this complex system. The stadium had owned this system for over 2 years and had very few issues. They were one of the first adopters of this technology, and he knew that could have meant real problems.</p>
+					<p>Erica checked with Bob to make sure everything looked good and she tapped the launch button on her phone. Off the robot went, painting the outline, the cross lines, and then the numbers. It was a tedious task that would normally take his team half a day. The robot would be done in a little over an hour.</p>
+					<p>At the end of the day, Bob came back to find the robot waiting for its next command, having finished the lines on the field. This next part was Bob's favorite part about this product, but sadly he had to get home to have dinner with his family. The battery still reading over 70%, had plenty left to finish the job. He pulled out the white cartridge and placed in a color one that he filled up with gold and black. He placed the robot on the corner of the field, just like before and tapped the launch key on his phone. This time, he had input the logo design for the center of the field and end zones. He would stick around and watch, but it was getting dark and he really wanted to see his kids before the big game tomorrow.</p>
+					<p>As he left the stadium, he turned off the lights and wandered out to his car. The robot was still going, as it would take a few hours to complete, but he knew how they used to do it in the old days, another half day of work - just for the logos. Bob remembered the Fieldroid's marketing tactic of "set it and leave it alone." Boy was he happy he made that purchase as he knew full well he could show up in the morning with a perfectly painted field and a robot, The Fieldroid, sitting in the corner waiting to be charged for the next big event.</p>
+					<p>For another view of a typical use case, click on this link below.
+					<div align="center"><iframe width="420" height="315" src="//www.youtube.com/embed/Rle4ivrTMfw" frameborder="0" allowfullscreen></iframe></a>
+				</div>
+				<div id="design">
+					<h1>System Requirements</h1>
+					<ol style="font-size:28px;">
+						<li>Mandatory Requirements</li>
+						<ol type="A" style="font-size:24px;">
+							<li>Functional</li>
+							In order for the FielDroid to succeed, the system shall:
+							<ol type="I" style="font-size:20px;">
+								<li>Perform 100% of autonomous tasks by itself</li>
+								<li>Paint 100% of the line markings according to league standard regulations</li>
+								<li>Plan a path within 1 minute given user inputs</li>
+								<li>Stop if an obstacle is detected within 1 meter</li>
+								<li>Stop within 2 seconds of receiving an emergency stop command</li>
+								<li>Stop if communication with the command station times out for 10 seconds</li>
+							</ol>
+							<li>Non-Functional</li>
+							In order for the FielDroid to succeed, the system shall:
+							<ol type="I" style="font-size:20px;">
+								<li>Have a 30 cm error deviation between paint jobs</li>
+								<li>Have an accuracy of 30 cm while performing paint jobs</li>
+								<li>Be operable by personnel of minimum working age in the US</li>
+								<li>Have a set-up time of 5 minutes</li>
+								<li>Spend at most 2 hours to paint a field</li>
+								<li>Be capable of operating for 2 hours without replenishing resources</li>
+								<li>Paint without physically damaging the field</li>
+							</ol>
+						</ol>
+						<li>Desirable Requirements</li>
+						<ol type="A" style="font-size:24px;">
+							<li>Functional</li>
+							Ideally, the FielDroid system shall:
+							<ol type="I" style="font-size:20px;">
+								<li>Monitor consumption of resources</li>
+								<li>Plan the most efficient path within 2 minutes</li>
+								<li>Report the robot's current status to the user once every 5 seconds</li>
+								<li>Paint complex graphic designs</li>
+								<li>Paint in multiple colors</li>
+								<li>Move around obstacles detected along its path</li>
+								<li>Relocalize itself if it gets lost while painting</li>
+							</ol>
+							<li>Non-Functional</li>
+							Ideally, the FielDroid system shall:
+							<ol type="I" style="font-size:20px;">
+								<li>Provide an affordable field-painting solution under $4,000</li>
+								<li>Be operable using a mobile device application</li>
+								<li>Report battery life, paint consumption, percentage of task completion, and current state to the mobile device application</li>
+								<li>Be able to paint other varieties of sport fields</li>
+								<li>Require only 1 person to handle and operate</li>
+							</ol>
+						</ol>
+					</ol>
+					<h1 id="functional">Functional Architecture</h1>
+					<a href="http://i.imgur.com/ElD2J3t.png?1"><img src="http://i.imgur.com/ElD2J3t.png?1" style="width:1000px;" alt="Functional Architecture"/></a>
+					<h1 id="physical">Physical Architecture</h1>
+					<a href="http://i.imgur.com/8nbYSku.png?1"><img src="http://i.imgur.com/8nbYSku.png?1" style="width:1000px;" alt="Physical Architecture"/></a>
+					<h1 id="depict">System Depiction</h1>
+					<a href="http://i.imgur.com/W4JYe4Z.png"><img src="http://i.imgur.com/W4JYe4Z.png" style="width:1000px;" alt="System Depiction"/></a>
+					<a href="http://i.imgur.com/DjoBZSs.png"><img src="http://i.imgur.com/DjoBZSs.png" style="width:1000px;" alt="System Depiction Parts List" /></a>
+					<h1 id="descriptions">System descriptions</h1>
+					<h2>Localization</h2>
+					<img src="http://i.imgur.com/IF7ElTP.png" style="width:1000px;" alt="Leica Tracking Prism"/>
+					<p>Autonomous navigation systems require strong localization systems.  This subsystem dictates the overarching physical structure of our system.  Sticking to the results of Major System Level Trade A, localization should be performed using a multiple beacon or single beacon system.  
+					</p>
+					<p>According to Subsystem Level Trade A, the system should include one survey gun for absolute localization. With the consideration of Subsystem Level Trade D, an Inertial Measurement Unit (IMU) should also be included.  The combination of these two sensors should allow the robot to position and orient itself within the world.  This technical capability provides the best chance for success in achieving Fieldroid’s functional Requirements
+					</p>
+					<p>Alternative solutions must be considered and there were clear options presented in the trade studies if problems should arise.  The primary downside of the survey gun is cost.  If this problem seems too hard to overcome, a camera and April tags solution may be the next most feasible option as it minimizes cost.  Also, due to the high importance placed on Functional Requirement 1 & 2, there may be a need to include more additional sensors for validation.  Wheel encoders were close to passing in Subsystem Level Trade D and should be considered if a two sensor solution does not meet the requirements.  
+					</p>
+					<h2>CPU</h2>
+					<p>The type of CPU platform and physical architecture depends on the type of system configuration chosen as mentioned in the Major Systems-Level Trade Studies. This subsystem adds to the reliability of the system accurately painting line markings. The criteria for the CPU consists of high speeds with a strong programming interface and capabilities of communicating to several physical components easily. This aligns with the functional requirements listed for our system.
+					</p>
+					<p>Based on the results and decisions of Major System-Level Trade A, the Fieldroid system makes use of a single board computer that receives constant localization feedback from a single or multiple beacons. Since the system only needs to react to feedback loops and communicate to various actuators, we need to use a CPU platform that is capable of this. The CPU on-board Fieldroid shall consist of a BeagleBone Black, a Linux OS Board, or a 32-Bit ARM board. 
+					</p>
+					<p>Alternatively, there are multiple solutions for this subsystem. Instead of a single board computer, we can choose to integrate a real-time controller. Real-time controllers allow us to make real-time corrections to our system. In particular, we can make the robot extremely responsive to its changes thus significantly increasing its level of accuracy and precision well beyond the capabilities of a human. Although real-time controllers can provide a strong and extremely reliable solution to our problem, the high cost of these devices is an important consideration if pursuing this solution.
+					</p>
+					<h2>Operating System</h2>
+					<p>For this subsystem, the decisions from Major System-Level Trade A and Subsystem B had to be taken into account. Note, that for our project we chose hardware components first and then proceeded to choose an operating system that supports our hardware. Furthermore, given our chosen operating system, we have multiple options to explore for firmware. 
+					</p>
+					<p>For this subsystem trade, we decided to choose an operating system that is fast, allows for a wide programming freedom, and features good community support for hardware components. Having an OS that efficiently performs its tasks allows us to achieve our overarching objective in a timely manner. Furthermore, a stable and reliable OS adds to the robustness of our system making it more user friendly. Based on these 3 main factors, several distributions in Linux OS can provide us with the tools we need. The distributions in question are Ubuntu 14.04, Xubuntu 14.04, and Arch Linux. These options allow us to program in any programming language and have strong capabilities and features for robotic applications. 
+					</p>
+					<p>Alternatively, we could choose to deploy an operating system that is driven by convenience for the user rather than operational performance. This might also restrict our programming freedom to fewer options.
+					</p>
+					<h2>Drive System</h2>
+					<p>For overall robot system stability it is desirable to have a robust drive system. It will significantly affect the time required for task completion which is one of the most important non-functional requirements for Fieldroid. Also, it is essential to have an easily maneuverable system to be able to paint intricate designs on a field.
+					</p>
+					<p>Following the trade study, a three wheeled Fieldroid, is the most appropriate drive system. A three wheeled drive system will provide better stability which is required for the system to be able to hold the weight of the overall paint system, and simultaneously navigate a field of grass.
+					</p>
+					<h2>Paint System</h2>
+					<p>Selection of an effective paint system is important. Current field painting operations performed by manual labor are accurate but time consuming, so it is important for our system to paint accurately and quickly. Also, it is an important subsystem which determines the overall reliability of Fieldroid.
+					</p>
+					<p>The critical attributes contributing to a working system include the type of pump used to deploy paint and the type of spray mechanism.  From the trade study, it is observed that the second best option is using a Diaphragm pump based mechanism. Aerosol sprays are convenient and fast, but when painting large fields they can accumulate significant costs. For autonomous Fieldroid operation it is required that there is sufficient paint storage on board. Aerosol cans are small and their paint capacity is much less than the typical pump system.  
+					</p>
+					<h2>Control Systems</h2>
+					<p>Fieldroid must utilize effective control systems in order to achieve our stated performance requirements for efficiency and precision. The onboard CPU will integrate our sensing systems (localization, resource monitoring) with our actuation systems (driving, painting) in order form a negative feedback loop and effectively optimize Fieldroid’s performance. 
+					</p>
+					<p>The most critical control loops included on Fieldroid will support autonomous navigation and painting. The drive system will feature PID controls which link localization information directly to motor speed. This feature is critical for smooth and accurate motion. Additionally, the paint system will regulate the amount of paint being dispensed based on information received from the drive system and localization system. This will result in the efficient use of paint and consistent painting performance. All of these control loops will be managed by Fieldroid’s onboard CPU.
+					</p>
+					<h2>User Interface</h2>
+					<p>Communication with the Fieldroid system must be facilitated by a user interface (UI). This UI must be simple and intuitive so that the user can quickly send commands to the system. An easy to read interface will also allow the user to monitor Fieldroid’s current status and alert the user of any problems such as a low battery, low supply of paint, or a blocked path. 
+					</p>
+					<p>As a result of Subsystem Trade F, we will be creating a mobile application available for download by the user. This type of UI takes advantage of a user’s existing device and completely eliminates expenses such as interactive monitors. Mobile devices are constantly accessible and convenient to monitor if the user is away from the Fieldroid. Having a UI which is physically detached from the Fieldroid keeps the user dirt and paint free.
+					</p>
+				</div>
+				<div id="product">
+					<h1 id="implementation">Implementation</h1>
+					<h2>Mechanical Design</h2>
+					<a href="https://www.dropbox.com/s/xirx614kb6dzcg7/TeamB_smsmith_Task1.PDF?dl=0"><img src="http://i.imgur.com/cYM5JRE.png" style="width:1000px;" alt="Multi-View Drawing of System" /></a>
+					<h2>Electrical Design</h2>
+					We planned ahead for a well connected system that could be integrated smoothly once all of the components arrive.  The following shows the plan for the electrical systems.  
+					<h3>Signals Diagram</h2>
+					<a href="http://i.imgur.com/Bf5ORcx.png"><img src="http://i.imgur.com/Bf5ORcx.png" style="width:1000px;" alt="Signals Diagram" /></a>
+					<h3>Power Diagram</h2>
+					<a href="http://i.imgur.com/l5ZuRsV.png"><img src="http://i.imgur.com/l5ZuRsV.png" style="width:1000px;" alt="Signals Diagram" /></a>
+					<p>All of the pieces came together really well.  The following picture shows the fully connected board. This subsystem was broken into power and signals.   </p>
+					<a href="http://i.imgur.com/kgctWrO.jpg"><img src="http://i.imgur.com/kgctWrO.jpg" style="width:1000px;" alt="Electrical Board Fully Built" /></a>
+					<br /><br /><br /><br />
+					<h3><u><a href="https://docs.google.com/document/d/1bZY_iULkywn344Hcq6u9w1e8t2BR5kn0j-E8arlN214/edit?usp=sharing">Here is our PCB development</a></u></h3>
+					<br /><br /><br /><br />
+					<h2>Software Design</h2>
+					Our model is shown below.  It represents how we calculate our absolute position based on our encoder data.  We use this model to control the robot in (x,y,theta) so that we can incorporate the tracking data.  
+					<a href="http://i.imgur.com/wCwCFZ0.jpg"><img src="http://i.imgur.com/wCwCFZ0.jpg" style="width:1000px;" alt="Roboteq software for motor controller" /></a>
+					<!--<div align="center"><iframe width="560" height="315" src="//www.youtube.com/embed/93eT8tjGj0w" frameborder="0" allowfullscreen></iframe></div>-->
+					<h2>Integration</h2>
+					<p>Our design translates nicely into a physical system that will be used to paint fields.</p>
+					<a href="http://i.imgur.com/0dMUFRD.jpg"><img src="http://i.imgur.com/0dMUFRD.jpg" style="width:1000px;" alt="Integration"></a>
+					<p>So far we can paint squares!!! (with water) </p>
+					<div align="center"><iframe width="560" height="315" src="//www.youtube.com/embed/qUzkFAt3NqQ" frameborder="0" allowfullscreen></iframe></div>
+					
+					<h1 id="performance">Performance</h1>
+					<!-- Something -->
+					<h1 id="manage">Project Management</h1>
+					<h2>Schedule (Gannt Chart)</h2>
+					<a href="http://i.imgur.com/p4paxFY.png"><img src="http://i.imgur.com/p4paxFY.png" style="width:1000px;" alt="Gannt Chart Fieldroid" /></a>
+					(click to enlarge, see <a href="#docs">Documents</a> for live copy)<br />
+					<h2>Parts List Tracking</h2>
+					<a href="http://i.imgur.com/qpNyC6Y.png"><img src="http://i.imgur.com/qpNyC6Y.png" style="width:1000px;" alt="Parts List Tracker" /></a>
+					(click to enlarge, see <a href="#docs">Documents</a> for live copy)<br />
+					<h2>Issues Log</h2>
+					<a href="http://i.imgur.com/MLxzq9M.png"><img src="http://i.imgur.com/MLxzq9M.png" style="width:1000px;" alt="Log of Issues for Fieldroid" /></a>
+					(click to enlarge, see <a href="#docs">Documents</a> for live copy)<br />
+				</div>
+				<div id="team">
+					<h1 id ="members">Team Members</h1>
+					<b>Ander Solorzano:</b> Product/Technology Solution Development; Legal Issues
+					<div>
+						<img src="http://i.imgur.com/TtA271N.jpg" style="width:150px; float:left;" alt="Ander Solorzano" />
+						<!-- http://i.imgur.com/TtA271N.jpg -->
+						<p style="margin-left:160px;">Having experience in mobile robotics development, space robotics development, and control theory, Ander enjoys developing and researching new technologies that improve space robotic applications and autonomous robotics applications. Ander has led several teams in the AUVSI's Intelligent Ground Vehicle Competition and assisted in the development of several tele-operated robots. He has worked as a Space Robotics Engineer at Astrobotic Technology, Inc. for two summers and as an Applications Engineer at Texas Instruments in the summer of 2012. Ander also attended Kanazawa Institute of Technology in a summer foreign exchange program. He holds a B.S. in Electrical Engineering from Rose-Hulman Institute of Technology. Currently, he is pursuing a M.S. degree in Robotics Systems Development at Carnegie-Mellon University.
+						<u><br /><a href="https://www.linkedin.com/pub/ander-solorzano/69/159/a59">LinkedIn</a></p></u>
+					</div>
+					<b>Jaghvi Mehta:</b> Market Research & Competition Analysis; Legal Issues
+					<div>
+						<img src="http://i.imgur.com/CJlO6f8.jpg" style="width:150px; float:left;" alt="Jaghvi Mehta" />
+						<p style="margin-left:160px;">Jaghvi worked with Tata Motors Limited, India as an electronics maintenance engineer of manipulator robots. Her interests are oriented towards mechatronics applications. She has been mostly involved with the open source projects at Indian Institute of Technology, Mumbai, India. She developed a <a href="www.github.com/androportal/anuduino">low cost USB development board "anuduino"</a>. She interned in a team to <a href="www.github.com/androportal/APL-apk">develop an application</a> to run programming languages on android based tablets. She holds a B.Tech degree in Electronics and Communication from Indian School of Mines, India. Currently, she is pursuing a M.S. degree in Robotics Systems Development at Carnegie-Mellon University.</p>
+						<br /><br /><br />
+					</div>
+					<b>Matt Clark:</b> Financial Analysis & Plans; Production & Operations
+					<div>
+						<img src="http://i.imgur.com/ZR3kyc1.jpg" style="width:150px; float:left;" alt="Matt Clark" />
+						<p style="margin-left:160px;">With a background in both physics and robotics, Matt’s skills are highly valuable for researching, designing, and developing new technologies.  He received a B.S. in Engineering Physics from the University of Colorado at Boulder where he earned distinctions for his work developing a beam stabilization for cutting edge ultrafast laser systems at the JILA institute. Quickly developing a taste for mechatronics and control systems, Matt became involved in robotics projects and research. After graduating, he was contracted by the Biofrontiers Institute to develop automation technologies for the American Gut Project. Currently, he is pursuing a M.S. degree in Robotics Systems Development at Carnegie-Mellon University.</p>
+					</div>
+					<b>Stephen Smith:</b> Sales & Marketing; Business Structure & Organization
+					<div>
+						<img src="http://i.imgur.com/v2ELNyG.jpg" style="width:150px; float:left;" alt="Stephen Smith" />
+						<p style="margin-left:160px;"><a href="http://stephenmitchellsmith.me/">Stephen</a> has had numerous experiences developing robotics applications for research and industry. His systems design focus has provided him with the ability to seek experience in a multitude of fields including Mechanical Design at Cisco Systems, Electrical Engineering at Newport News Shipbuilding, and several computer engineering and controls research positions at Cornell University and Carnegie Mellon (CMU). The kinematic behavioral control work he developed at CMU is most notable as it incorporated work on autonomous sixteen degree-of-freedom snake robots that were able to complete realistic tasks. With his systems approach to technical positions, Stephen has developed strong working knowledge in many complicated engineering fields. On top of these positions, he has also founded his own company, <a href="http://abcnews.go.com/blogs/lifestyle/2013/07/jar-with-a-twist-billed-as-end-to-peanut-butter-knuckles/">Jar~with~a~Twist</a> a new solution to peanut butter jars. Running this company, he has developed significant experiences in marketing, sales, and financial analysis. These abilities are what clearly sets him apart as an business thinking systems engineer who his pursuing his Masters of Science in Robotics Systems Design at Carnegie Mellon University.
+						<u><br /><a href="https://www.linkedin.com/in/stephenmitchellsmith">LinkedIn</a></p></u>
+					</div>
+					<h1 id ="board">Board</h1>
+					<h2>Team Mentor</h2>
+					<b>Stephan Roth</b>
+					<p>With over 18 years of experience in applied Robotics engineering, Stephan Roth has a wide knowledge of the hardware and software components as well as the system development process of robotic applications. Currently, he is tasked with designing a sensor suite for the DARPA Transformer program to develop a flying car. He is the current President and Co-Founder of Sensible Machines.</p>
+					<h2>Robotics Institute Faculty</h2>
+					<b>Hagen Schempf<br />
+					John Dolan<br />
+					Dimi Apostolopolous</b>
+					<h1 id="contact">Contact</h1>
+					<u><a href="mailto:fieldroidrobot@gmail.com">Click here to contact us</a></u>
+				</div>
+				<div id="more">
+					<h1 id="media">Media</h1>
+					<u><a href="https://drive.google.com/folderview?id=0B9EIWArBba3eU0xqXzNIZUp1YUk&usp=sharing" target="_blank">Some pictures of white board meetings can be seen here</a></u>
+					<h1 id="docs">Documents</h1>
+					<h2>Presentations</h2>
+					October 8th - Jaghvi Mehta<br />
+					October 15th - Matt Clark<br />
+					October 22nd - Ander Solorzano<br />
+					November 5th - Stephen Smith<br />
+					November 17th - Jaghvi Mehta<br />
+					November 24th - Matt Clark<br />
+					December 3rd - Ander Solorzano<br />
+					<h2>Conceptual Design Review (CoDR)</h2>
+					<a href="https://drive.google.com/file/d/0B9EIWArBba3ebm84OWJhTGgyRFU/view?usp=sharing" target="_blank"><u>Our CoDR can be found here</u></a>
+					<h2>Preliminary Design Review (PDR)</h2>
+					<a href="https://docs.google.com/presentation/d/1fXIX2fzayQDgRC0QkJ-sD7kicAAy-e7cm2NCz8z08fU/edit?usp=sharing" target="_blank"><u>Our PDR can be found here</u></a>
+					<h2>Individual Lab Reports (ILRs)</h2>
+					<a href="https://drive.google.com/folderview?id=0B9EIWArBba3eZFdmWVFoanpyeDg&usp=sharing" target="_blank"><u>All ILRs can be accessed in this folder in drive</u></a>
+					<h2>Gannt Chart</h2>
+					<a href="https://www.dropbox.com/s/z0x0llh7aqha93e/Fieldroid_Gantt.xlsx?dl=0" target="_blank"><u>The Gannt chart is our scheduling method</u></a>
+					<h2>Budget/Parts Tracking</h2>
+					<a href="https://docs.google.com/a/andrew.cmu.edu/spreadsheets/d/1z21CbfANhzwJ7YlyiUKKCneSo8MF5Ee1PMPG81xxXuc/edit?usp=sharing" target="_blank"><u>This document lets us keep track of our expenses</u></a>
+					<h2>Issue Log</h2>
+					<a href="https://docs.google.com/a/andrew.cmu.edu/spreadsheets/d/1po9D4qhK1_S7DiDknZ0RQtg26uRscJ8DdqY0E8mTw-Y/edit#gid=0" target="_blank"><u>A live tracker for bugs and issues</u></a>
+					<h2>Risk Management</h2>
+					<a href="https://drive.google.com/file/d/0B7zdUnmmxoiSUmstbzNQZVd1bm8/view?usp=sharing" target="_blank"><u>A document that holds all the risks we detected and their risk mitigation plan</u></a>
+					<h2>FVE Test Plan</h2>
+					<a href="https://drive.google.com/file/d/0B7zdUnmmxoiSemRSR3ZEelVTRDg/view?usp=sharing" target="_blank"><u>The test plan for our Fall Validation Experiment</u></a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
