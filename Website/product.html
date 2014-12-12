@@ -23,12 +23,12 @@
 		<div class="guide-center">
 			<ul>
 				<a href="index.html#"><li><img src="http://i.imgur.com/AM0P9vK.png" style="width:40px;" alt="Fieldroid small logo"/></li></a>
-				<li><a href="index.html#about" data-menu-top="2800">About</a>
+				<li><a href="index.html#about" data-menu-top="2800">System Summary</a>
 				<ul>
 					<a href="index.html#problem" data-menu-top="2800"><li>Problem Description</li></a>
 					<a href="index.html#useCase" data-menu-top="6150"><li>Use Case</li></a>
 				</ul></li>
-				<li><a href="design.html#" data-menu-top="0">Design</a>
+				<li><a href="design.html#" data-menu-top="0">System Design</a>
 				<ul>
 					<a href="design.html#design" data-menu-top="0"><li>System Requirements</li></a>
 					<a href="design.html#functional" data-menu-top="0"><li>Functional Architecture</li></a>
@@ -38,8 +38,8 @@
 				</ul></li>
 				<li><a href="#" data-menu-top="0">Product</a>
 				<ul>
-					<a href="#implementation" data-menu-top="0"><li>Implementation</li></a>
-					<a href="#performance"data-menu-top="7050"><li>Performance</li></a>
+					<a href="#implementation" data-menu-top="0"><li>System Implementation</li></a>
+					<a href="#performance"data-menu-top="7050"><li>System Performance</li></a>
 					<a href="#manage" data-menu-top="7420"><li>Project Management</li></a>
 				</ul></li>
 				<li><a href="team.html#" data-menu-top="0">Team</a>
@@ -82,30 +82,38 @@
 					<h2>Electrical Design</h2>
 					<p>We planned ahead for a well connected system that could be integrated smoothly once all of the components arrive.  The following shows the plan for the electrical systems.  </p>
 					<h3>Signals Diagram</h2>
-					<a href="http://i.imgur.com/Bf5ORcx.png"><img src="http://i.imgur.com/Bf5ORcx.png" style="width:1000px;" alt="Signals Diagram" /></a>
+					<div align="center"><a href="http://i.imgur.com/Bf5ORcx.png"><img src="http://i.imgur.com/Bf5ORcx.png" style="width:800px;" alt="Signals Diagram" /></a></div>
 					<h3>Power Diagram</h2>
-					<a href="http://i.imgur.com/l5ZuRsV.png"><img src="http://i.imgur.com/l5ZuRsV.png" style="width:1000px;" alt="Signals Diagram" /></a>
+					<div align="center"><a href="http://i.imgur.com/l5ZuRsV.png"><img src="http://i.imgur.com/l5ZuRsV.png" style="width:800px;" alt="Signals Diagram" /></a></div>
 					<p>All of the pieces came together really well.  The following picture shows the fully connected board. This subsystem was broken into power and signals.   </p>
-					<a href="http://i.imgur.com/kgctWrO.jpg"><img src="http://i.imgur.com/kgctWrO.jpg" style="width:1000px;" alt="Electrical Board Fully Built" /></a>
+					<div align="center"><a href="http://i.imgur.com/kgctWrO.jpg"><img src="http://i.imgur.com/kgctWrO.jpg" style="width:800px;" alt="Electrical Board Fully Built" /></a></div>
 					<h3>PCB Development</h3>
 					<div align="center"><a href="http://i.imgur.com/SSaVrA6.png"><img src="http://i.imgur.com/SSaVrA6.png" style="width:600px;" alt="PCB Schematic" /></a></div>
 					<h3><u><a href="https://docs.google.com/document/d/1bZY_iULkywn344Hcq6u9w1e8t2BR5kn0j-E8arlN214/edit?usp=sharing">Here is some more information on our PCB Devolpment</a></u></h3>
 					<h2>Software Design</h2>
 					<p>Our model is shown below.  It represents how we calculate our absolute position based on our encoder data.  We use this model to control the robot in (x,y,theta) so that we can incorporate the tracking data.  </p>
-					<a href="http://i.imgur.com/wCwCFZ0.jpg"><img src="http://i.imgur.com/wCwCFZ0.jpg" style="width:1000px;" alt="Roboteq software for motor controller" /></a>
+					<div align="center"><a href="http://i.imgur.com/wCwCFZ0.jpg"><img src="http://i.imgur.com/wCwCFZ0.jpg" style="width:600px;" alt="Sketch of Mathematical Model" /></a></div>
+					<div align="center"><a href="http://i.imgur.com/2NGEHOJ.png"><img src="http://i.imgur.com/2NGEHOJ.png" style="width:800px;" alt="Better version of mathematical model" /></a></div>
+					<div align="center"><a href="http://i.imgur.com/XxUvxVY.png"><img src="http://i.imgur.com/XxUvxVY.png" style="width:400px;" alt="Controls Model" /></a></div>
+					<div align="center"><a href="http://i.imgur.com/gDUWVNS.png"><img src="http://i.imgur.com/gDUWVNS.png" style="width:800px;" alt="Gain Tuning" /></a></div>
 					<p>Our software is open sourced on <a href="https://github.com/solorzaa/Team-B-MRSD"><u>github</u></a>. </p>
 					<!--<div align="center"><iframe width="560" height="315" src="//www.youtube.com/embed/93eT8tjGj0w" frameborder="0" allowfullscreen></iframe></div>-->
 					<h2>Integration</h2>
 					<p>Our design translates nicely into a physical system that will be used to paint fields.</p>
-					<a href="http://i.imgur.com/0dMUFRD.jpg"><img src="http://i.imgur.com/0dMUFRD.jpg" style="width:1000px;" alt="Integration"></a>
+					<div align="center"><a href="http://i.imgur.com/0dMUFRD.jpg"><img src="http://i.imgur.com/0dMUFRD.jpg" style="width:600px;" alt="Integration"></a></div>
 					
 					<h1 id="performance">Performance</h1>
-					<p>So far we can paint squares!!! (with water) </p>
+					<h2>Square Painting</h2>
 					<div align="center"><iframe width="560" height="315" src="//www.youtube.com/embed/qUzkFAt3NqQ" frameborder="0" allowfullscreen></iframe></div>
-					
+					<h2>FVE Performance</h2>
+					<a href="http://i.imgur.com/sItAts1.png"><img src="http://i.imgur.com/sItAts1.png" style="width:1000px;" alt="FVE Performance Requirements" /></a>
+					<a href="http://i.imgur.com/8VXitIC.png"><img src="http://i.imgur.com/8VXitIC.png" style="width:980px;" alt="FVE Performance Systems" /></a>
 					<h1 id="manage">Project Management</h1>
 					<h2>Schedule (Gantt Chart)</h2>
+					<h3>Fall</h3>
 					<a href="http://i.imgur.com/p4paxFY.png"><img src="http://i.imgur.com/p4paxFY.png" style="width:1000px;" alt="Gantt Chart Fieldroid" /></a>
+					<h3>Spring</h3>
+					<a href="http://i.imgur.com/iqkQy8L.png"><img src="http://i.imgur.com/iqkQy8L.png" style="width:1000px;" alt="Gantt Chart Fieldroid Spring" /></a>
 					(click to enlarge, see <a href="#docs">Documents</a> for live copy)<br />
 					<h2>Parts List Tracking</h2>
 					<a href="http://i.imgur.com/qpNyC6Y.png"><img src="http://i.imgur.com/qpNyC6Y.png" style="width:1000px;" alt="Parts List Tracker" /></a>

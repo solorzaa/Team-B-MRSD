@@ -23,12 +23,12 @@
 		<div class="guide-center">
 			<ul>
 				<a href="index.html#"><li><img src="http://i.imgur.com/AM0P9vK.png" style="width:40px;" alt="Fieldroid small logo"/></li></a>
-				<li><a href="index.html#about" data-menu-top="2800">About</a>
+				<li><a href="index.html#about" data-menu-top="2800">System Summary</a>
 				<ul>
 					<a href="index.html#problem" data-menu-top="2800"><li>Problem Description</li></a>
 					<a href="index.html#useCase" data-menu-top="6150"><li>Use Case</li></a>
 				</ul></li>
-				<li><a href="#" data-menu-top="0">Design</a>
+				<li><a href="#" data-menu-top="0">System Design</a>
 				<ul>
 					<a href="#design" data-menu-top="0"><li>System Requirements</li></a>
 					<a href="#functional" data-menu-top="1050"><li>Functional Architecture</li></a>
@@ -38,8 +38,8 @@
 				</ul></li>
 				<li><a href="product.html#" data-menu-top="15005">Product</a>
 				<ul>
-					<a href="product.html#implementation" data-menu-top="15005"><li>Implementation</li></a>
-					<a href="product.html#performance"data-menu-top="21990"><li>Performance</li></a>
+					<a href="product.html#implementation" data-menu-top="15005"><li>System Implementation</li></a>
+					<a href="product.html#performance"data-menu-top="21990"><li>System Performance</li></a>
 					<a href="product.html#manage" data-menu-top="22050"><li>Project Management</li></a>
 				</ul></li>
 				<li><a href="team.html#" data-menu-top="0">Team</a>
@@ -88,7 +88,6 @@
 								<li>Perform 100% of autonomous tasks by itself</li>
 								<li>Paint 100% of the line markings according to league standard regulations</li>
 								<li>Plan a path within 1 minute given user inputs</li>
-								<li>Stop if an obstacle is detected within 1 meter</li>
 								<li>Stop within 2 seconds of receiving an emergency stop command</li>
 								<li>Stop if communication with the command station times out for 10 seconds</li>
 							</ol>
@@ -97,7 +96,6 @@
 							<ol type="I" style="font-size:20px;">
 								<li>Have a 30 cm error deviation between paint jobs</li>
 								<li>Have an accuracy of 30 cm while performing paint jobs</li>
-								<li>Be operable by personnel of minimum working age in the US</li>
 								<li>Have a set-up time of 5 minutes</li>
 								<li>Spend at most 2 hours to paint a field</li>
 								<li>Be capable of operating for 2 hours without replenishing resources</li>
@@ -112,6 +110,7 @@
 								<li>Monitor consumption of resources</li>
 								<li>Plan the most efficient path within 2 minutes</li>
 								<li>Report the robot's current status to the user once every 5 seconds</li>
+								<li>Stop if an obstacle is detected within 1 meter</li>
 								<li>Paint complex graphic designs</li>
 								<li>Paint in multiple colors</li>
 								<li>Move around obstacles detected along its path</li>
@@ -122,6 +121,7 @@
 							<ol type="I" style="font-size:20px;">
 								<li>Provide an affordable field-painting solution under $4,000</li>
 								<li>Be operable using a mobile device application</li>
+								<li>Be operable by personnel of minimum working age in the US</li>
 								<li>Report battery life, paint consumption, percentage of task completion, and current state to the mobile device application</li>
 								<li>Be able to paint other varieties of sport fields</li>
 								<li>Require only 1 person to handle and operate</li>
@@ -129,55 +129,62 @@
 						</ol>
 					</ol>
 					<h1 id="functional">Functional Architecture</h1>
-					<a href="http://i.imgur.com/ElD2J3t.png?1"><img src="http://i.imgur.com/ElD2J3t.png?1" style="width:1000px;" alt="Functional Architecture"/></a>
+					<a href="http://i.imgur.com/Lp7Edlz.png"><img src="http://i.imgur.com/Lp7Edlz.png" style="width:1000px;" alt="Functional Architecture"/></a>
 					<h1 id="physical">Physical Architecture</h1>
-					<a href="http://i.imgur.com/8nbYSku.png?1"><img src="http://i.imgur.com/8nbYSku.png?1" style="width:1000px;" alt="Physical Architecture"/></a>
+					<a href="http://i.imgur.com/zvMiGSb.png"><img src="http://i.imgur.com/zvMiGSb.png" style="width:1000px;" alt="Physical Architecture"/></a>
 					<h1 id="depict">System Depiction</h1>
 					<a href="http://i.imgur.com/W4JYe4Z.png"><img src="http://i.imgur.com/W4JYe4Z.png" style="width:1000px;" alt="System Depiction"/></a>
 					<a href="http://i.imgur.com/DjoBZSs.png"><img src="http://i.imgur.com/DjoBZSs.png" style="width:1000px;" alt="System Depiction Parts List" /></a>
 					<h1 id="descriptions">System descriptions</h1>
 					<h2>Localization</h2>
-					<img src="http://i.imgur.com/IF7ElTP.png" style="width:1000px;" alt="Leica Tracking Prism"/>
-					<p>Autonomous navigation systems require strong localization systems.  This subsystem dictates the overarching physical structure of our system.  Sticking to the results of Major System Level Trade A, localization should be performed using a multiple beacon or single beacon system.  
+					<div style="float:left;"><img src="http://i.imgur.com/IF7ElTP.png" style="width:400px;" alt="Leica Tracking Prism"/></div>
+					<p>Localization is the most critical subsystem. Fieldroid uses a Leica robot total station to localize the robot in the environment. The Leica total station is initialized by calibrating to a 360 degree tracking prism mounted on top of the robot. Leica then continuously shoots a laser at the tracking prism to give an accurate pose of the robot in the world frame. The Leica also sends the timestamp, which can be used for clock synchronization. The data through the survey-gun is sent at around 1Hz, which requires that the system utilize dead-reckoning techniques for the interim. The data obtained from the Leica is within millimeter accuracy and therefore is highly reliable for precise and accurate field painting.  This data can be integrated with the encoder data and in the future, the IMU data to present a multilayered pose in the world frame.  
 					</p>
-					<p>According to Subsystem Level Trade A, the system should include one survey gun for absolute localization. With the consideration of Subsystem Level Trade D, an Inertial Measurement Unit (IMU) should also be included.  The combination of these two sensors should allow the robot to position and orient itself within the world.  This technical capability provides the best chance for success in achieving Fieldroid’s functional Requirements
+					<br /><br /><br /><br /><br /><br />
+					<h2>Drive</h2>
+					<a href="http://i.imgur.com/K9ilOBI.png"><img src="http://i.imgur.com/K9ilOBI.png" style="width:250px; float:left; margin-right:30px;" alt="RoboteQ motor controller" /></a>
+					<a href="http://i.imgur.com/z08xWeX.png"><img src="http://i.imgur.com/z08xWeX.png" style="width:300px; float:right; margin-left:30px;" alt="Drive System Components" /></a>
+					<p>The drive system uses a robot-base provided by Sensible Machines. It is a robust drive system designed to work on fields. It has two drive wheels and four castor wheels for ease of maneuverability. It uses highly powerful DC motors and motor encoders to calculate the robot velocity and distance traveled. The RoboteQ motor controller processes the data from the encoders and communicates with the on-board BeagleBone which also receives the localization data from the survey-gun to correctly the position of the robot in the world frame. 
 					</p>
-					<p>Alternative solutions must be considered and there were clear options presented in the trade studies if problems should arise.  The primary downside of the survey gun is cost.  If this problem seems too hard to overcome, a camera and April tags solution may be the next most feasible option as it minimizes cost.  Also, due to the high importance placed on Functional Requirement 1 & 2, there may be a need to include more additional sensors for validation.  Wheel encoders were close to passing in Subsystem Level Trade D and should be considered if a two sensor solution does not meet the requirements.  
+					<p>The drive system and localization system work in strict synchronization to localize the robot in real time with the pre-calculated path planning data.
 					</p>
-					<h2>CPU</h2>
-					<p>The type of CPU platform and physical architecture depends on the type of system configuration chosen as mentioned in the Major Systems-Level Trade Studies. This subsystem adds to the reliability of the system accurately painting line markings. The criteria for the CPU consists of high speeds with a strong programming interface and capabilities of communicating to several physical components easily. This aligns with the functional requirements listed for our system.
+					<h2>Communication Subsystem</h2>
+					<a href="http://i.imgur.com/YPUn6TY.png"><img src="http://i.imgur.com/YPUn6TY.png" style="width:500px; float: left; margin-right:30px;" alt="Communication subsystem 3dr radios" /></a>
+					<p>For the communication system 3DR radios were utilized. The pair communicates at a frequency of 915 MHz and at a baud rate of 56700. The radios have been configured for single way communication. The transmitter radio is at the command station and receives the data from the laptop connected to the tracking station.  The receiver radio receives the data and sends it to the BeagleBone. There are LEDs on both the radios which turns solid green when both radios establish communication and the LEDs blink when the connection is lost indicating fault.  Also, there are LEDs which turn red and orange indicating data transfer over radios. The only issues seen with this component of the subsystem was when another team used the same pair of radios for communication; however, this problem can be resolved by giving separate id’s to the radios. These highly reliable radios ensure no loss of data and are otherwise a perfect choice for on-field communication.
 					</p>
-					<p>Based on the results and decisions of Major System-Level Trade A, the Fieldroid system makes use of a single board computer that receives constant localization feedback from a single or multiple beacons. Since the system only needs to react to feedback loops and communicate to various actuators, we need to use a CPU platform that is capable of this. The CPU on-board Fieldroid shall consist of a BeagleBone Black, a Linux OS Board, or a 32-Bit ARM board. 
+					<h2>Power System</h2>
+					<a href="http://i.imgur.com/X2XdaHb.png"><img src="http://i.imgur.com/X2XdaHb.png" style="width:500px; float:right; margin-left:30px;" alt="On-board electronics and PCB" /></a>
+					<p>Fieldroid has two separate power system modules. The first one is used to control the on-board electronics. Power is derived from 14.8V and 6.6 mAH Li-ion batteries. These batteries are rechargeable and provide sufficient current to meet the system requirements. The power is distributed to the unit modules using a custom designed power distribution printed circuit board (PCB). The PCB has built in protection circuitries for current spikes, overvoltage protection for improper fluctuations and noise rectification in case of disturbances. There were a few glitches in the PCB. These errors are on the schedule to be rectified in the spring semester as part of the risk mitigation plan. The ground traces on the PCB are thinner than the power traces which are undesirable. Also, the DC-DC converter pad layout is mirrored upside down, which causes the first issue.  
 					</p>
-					<p>Alternatively, there are multiple solutions for this subsystem. Instead of a single board computer, we can choose to integrate a real-time controller. Real-time controllers allow us to make real-time corrections to our system. In particular, we can make the robot extremely responsive to its changes thus significantly increasing its level of accuracy and precision well beyond the capabilities of a human. Although real-time controllers can provide a strong and extremely reliable solution to our problem, the high cost of these devices is an important consideration if pursuing this solution.
+					<a href="http://i.imgur.com/v6klcha.png"><img src="http://i.imgur.com/v6klcha.png" style="width:500px;" alt="PCB diagram" /></a>
+					<a href="http://i.imgur.com/1xUy9yi.png"><img src="http://i.imgur.com/1xUy9yi.png" style="width:490px; float:right;" alt="Drive Power System and Batteries" /></a>
+					<p>The second power system is used to power the drive system. The batteries used for the drive system supply 24V at 50A. This is required to run the RoboteQ motor controller used for the drive system and the DC motors. The power system has appropriate LED indication at various points to indicate a functional system and give us warning in case of failure at any node. This is critical for easy debugging and robust system functionality.
 					</p>
-					<h2>Operating System</h2>
-					<p>For this subsystem, the decisions from Major System-Level Trade A and Subsystem B had to be taken into account. Note, that for our project we chose hardware components first and then proceeded to choose an operating system that supports our hardware. Furthermore, given our chosen operating system, we have multiple options to explore for firmware. 
-					</p>
-					<p>For this subsystem trade, we decided to choose an operating system that is fast, allows for a wide programming freedom, and features good community support for hardware components. Having an OS that efficiently performs its tasks allows us to achieve our overarching objective in a timely manner. Furthermore, a stable and reliable OS adds to the robustness of our system making it more user friendly. Based on these 3 main factors, several distributions in Linux OS can provide us with the tools we need. The distributions in question are Ubuntu 14.04, Xubuntu 14.04, and Arch Linux. These options allow us to program in any programming language and have strong capabilities and features for robotic applications. 
-					</p>
-					<p>Alternatively, we could choose to deploy an operating system that is driven by convenience for the user rather than operational performance. This might also restrict our programming freedom to fewer options.
-					</p>
-					<h2>Drive System</h2>
-					<p>For overall robot system stability it is desirable to have a robust drive system. It will significantly affect the time required for task completion which is one of the most important non-functional requirements for Fieldroid. Also, it is essential to have an easily maneuverable system to be able to paint intricate designs on a field.
-					</p>
-					<p>Following the trade study, a three wheeled Fieldroid, is the most appropriate drive system. A three wheeled drive system will provide better stability which is required for the system to be able to hold the weight of the overall paint system, and simultaneously navigate a field of grass.
-					</p>
+					
 					<h2>Paint System</h2>
-					<p>Selection of an effective paint system is important. Current field painting operations performed by manual labor are accurate but time consuming, so it is important for our system to paint accurately and quickly. Also, it is an important subsystem which determines the overall reliability of Fieldroid.
+					<a href="http://i.imgur.com/scukJUw.png"><img src="http://i.imgur.com/scukJUw.png" style="width:300px; float:left; margin-right:30px;" alt="On-board paint system" /></a>
+					<p>Our paint system was deconstructed from pre-built field marking equipment. It, therefore paints highly reliable and consistent field lines. It consists of a 6 gallon paint can, which can store sufficient paint to complete the field. It has a pump which triggers paint when receiving commands from the BeagleBone. It works on 12V and draws a maximum of 3.3A. This makes it highly power efficient which is desirable for our robot system. The robot has a spray mechanism at the bottom which is used to paint the field lines. It can be adjusted to change the width of the paint lines and also the height is adjustable to meet the user needs.
 					</p>
-					<p>The critical attributes contributing to a working system include the type of pump used to deploy paint and the type of spray mechanism.  From the trade study, it is observed that the second best option is using a Diaphragm pump based mechanism. Aerosol sprays are convenient and fast, but when painting large fields they can accumulate significant costs. For autonomous Fieldroid operation it is required that there is sufficient paint storage on board. Aerosol cans are small and their paint capacity is much less than the typical pump system.  
-					</p>
+					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<!--<a href=""><img src="" style="width:500px;" alt="" /></a>-->
 					<h2>Control Systems</h2>
-					<p>Fieldroid must utilize effective control systems in order to achieve our stated performance requirements for efficiency and precision. The onboard CPU will integrate our sensing systems (localization, resource monitoring) with our actuation systems (driving, painting) in order form a negative feedback loop and effectively optimize Fieldroid’s performance. 
+					<div style="float:left; width:500px;"><a herf="http://i.imgur.com/cPj6kE3.png"><img src="http://i.imgur.com/cPj6kE3.png" style="width:470px;" alt="MATLAB path and pose of robot for mini-field paint" /></a></div>
+					<a href="http://i.imgur.com/2NGEHOJ.png"><img src="http://i.imgur.com/2NGEHOJ.png" style="width:480px; float:right;" alt="Mathematical model for fieldroid" /></a>
+					<a href="http://i.imgur.com/XxUvxVY.png"><img src="http://i.imgur.com/XxUvxVY.png" style="width:300px; float:left; margin-right:30px;" alt="Control systems model for fieldroid" /></a>
+					<div style="padding-top:340px;">
+						<p>The robot’s control system is built upon a mathematical model that incorporates the encoders.  This system uses a mathematical model that takes the encoder values and converts them into an X, Y, and Θ in the world frame.  The robot can then control itself in the world frame based on goal points that are along the field path.  The path of the robot takes into account the x,y, and theta of the robot in the world frame.  The choice of large sweeping turns eliminates the problems associated with point turns.  Damaging the grass and misaligned corners are likely if point turns were to be used in this context.  
+						</p>
+						<p>To control the robot, there needs to be in place a model to take the error in the world frame and apply it as control signals to the wheels.  The RoboteQ motor controller allows power commands to be sent to the wheels, therefore, for a goal position, the power directions would look as depicted.  
+						</p>
+						<p>Tuning the control parameters presents difficulties on highly inertial systems.  In order to make more sense of what could be controlled, the error in the robot’s frame was graphed over the path in order to analyze the issues with different sections of the path.  This was the general tuning strategy for the overall system.
+						</p>
+					</div>
+					<div align="center"><a href="http://i.imgur.com/gDUWVNS.png"><img src="http://i.imgur.com/gDUWVNS.png" style="width:800px;" alt="Control Gain Tuning" /></a></div>
+					<h2>Safety System</h2>
+					<a href="http://i.imgur.com/GbMm3zw.png"><img src="http://i.imgur.com/GbMm3zw.png" style="width:400px; float:right; margin-left:30px;" alt="Emergency Stop" /></a>
+					<p>To ensure the operator and equipment safety, a highly reliable emergency stop was incorporated. The emergency stop, if triggered, immediately halts the drive system. This meets MFR 2 which states that the robot shall stop within 2 seconds of receiving the emergency command. The E-stop makes the robot system highly robust and reliable to use for any user as well as the robot.
 					</p>
-					<p>The most critical control loops included on Fieldroid will support autonomous navigation and painting. The drive system will feature PID controls which link localization information directly to motor speed. This feature is critical for smooth and accurate motion. Additionally, the paint system will regulate the amount of paint being dispensed based on information received from the drive system and localization system. This will result in the efficient use of paint and consistent painting performance. All of these control loops will be managed by Fieldroid’s onboard CPU.
-					</p>
-					<h2>User Interface</h2>
-					<p>Communication with the Fieldroid system must be facilitated by a user interface (UI). This UI must be simple and intuitive so that the user can quickly send commands to the system. An easy to read interface will also allow the user to monitor Fieldroid’s current status and alert the user of any problems such as a low battery, low supply of paint, or a blocked path. 
-					</p>
-					<p>As a result of Subsystem Trade F, we will be creating a mobile application available for download by the user. This type of UI takes advantage of a user’s existing device and completely eliminates expenses such as interactive monitors. Mobile devices are constantly accessible and convenient to monitor if the user is away from the Fieldroid. Having a UI which is physically detached from the Fieldroid keeps the user dirt and paint free.
-					</p>
+					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 				</div>
 			</div>
 		</div>
