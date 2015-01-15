@@ -14,7 +14,10 @@ using namespace std;
 //Function Declarations
 ////////////////////////////////////////////
 
-bool readAbsoluteEncoderCount(int &count, int index);
+bool readAbsoluteEncoderCount(RoboteqDevice device, int &count, int index);
+
+void setLeft(RoboteqDevice device, int speed);
+void setRight(RoboteqDevice device, int speed);
 
 /////////////////////////////////
 //Main
@@ -69,20 +72,21 @@ int main(int argc, char *argv[])
 	
 	// Store the initial values of the encoder into a base value to allow the measurements
 	// to start at zero
-	readAbsoluteEncoderCount(leftEncoder,1);
+	readAbsoluteEncoderCount(device, leftEncoder,1);
 	leftEncoderStart = leftEncoder;
-	readAbsoluteEncoderCount(rightEncoder,2);
+	readAbsoluteEncoderCount(device, rightEncoder,2);
 	rightEncoderStart = rightEncoder;
 
+	// Cycle through powers from 0 to 245 for 2 seconds each
 	for(int i = 0; i<250; i+=10) {
-		setLeft(i);
-		setRight(i);
+		setLeft(device, i);
+		setRight(device, i);
 		cout << "Power: " << i << endl;
-		startTime = clock();
+		int startTime = clock();
 		// For two seconds, run at the power and print the encoder values
 		while((clock()-startTime)/CLOCKS_PER_SEC < 2) {
-			readAbsoluteEncoderCount(leftEncoder,1);
-			readAbsoluteEncoderCount(rightEncoder,2);
+			readAbsoluteEncoderCount(device, leftEncoder,1);
+			readAbsoluteEncoderCount(device, rightEncoder,2);
 			cout << "Left Encoder: " << leftEncoder << endl;
 			cout << "Right Encoder: " << rightEncoder << endl;
 		}
@@ -97,7 +101,7 @@ int main(int argc, char *argv[])
 //Function Definitions
 ////////////////////////////////////////////
 
-bool readAbsoluteEncoderCount(int &count, int index)
+bool readAbsoluteEncoderCount(RoboteqDevice device, int &count, int index)
 {
 	if(device.GetValue(_ABCNTR, index, count) != RQ_SUCCESS) {
 		cout << "Failed to read encoder!!!" << endl;
@@ -111,14 +115,14 @@ bool readAbsoluteEncoderCount(int &count, int index)
 }
 
 void setLeft(RoboteqDevice motorDevice, int speed) {
-	motorDevice.setCommand(_GO, 1, speed);
+	motorDevice.SetCommand(_GO, 1, speed);
 }
 
 void setRight(RoboteqDevice motorDevice, int speed) {
-	motorDevice.setCommand(_GO, 2, speed);
+	motorDevice.SetCommand(_GO, 2, speed);
 }
 
 void stopAll(RoboteqDevice motorDevice) {
-	motorDevice.setCommand(_GO, 1, 0);
-	motorDevice.setCommand(_GO, 2, 0);
+	motorDevice.SetCommand(_GO, 1, 0);
+	motorDevice.SetCommand(_GO, 2, 0);
 }
