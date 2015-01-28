@@ -619,7 +619,7 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 	double t = 0;
 
 	//Project path forward in time
-	for(int i = 0; i < numberOfPoints; i += 1)
+	for(int i = 0; i < numberOfPoints, i += 1)
 	{
 		//increment time step
 		t += t_step;
