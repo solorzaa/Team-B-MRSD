@@ -88,6 +88,8 @@ double absoluteTheta = 0;
 int prevRightEncoder;
 int prevLeftEncoder;
 vector<float> testData;
+double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double pathResolution = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
 
 clock_t prevTime;
 clock_t currTime;
@@ -135,6 +137,8 @@ vector<float> leicaStoF(char* recievedData);
 void sphericalToPlanar(float horAngle, float verAngle, float radius);
 
 Pose* projectPath(double linearVelocity, double angularVelocity, double t_interval, double t_step);
+
+Pose*** constructLUT(double _vMin, double _vMax, double _vNumberOfEntries, double _wMin, double _wMax, double __wNumberOfEntries);
 
 /////////////////////////////////
 //Main
@@ -605,8 +609,10 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+//projectPath:
 //Returns an array of multiple points each described by (X,Y,Theta). This array 
-//forms the projected path for the given velocities and time interval.
+//forms the projected path for the given velocities and time interval (how far 
+//ahead in time the projected path goes).
 Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_interval, double t_step)
 {
 
@@ -643,7 +649,34 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 
 }
 
+//////////////////////////////////////////////////////////////////////////////////
+//constructLUT():
+//Iterates through all possible combinations of linear velocity and angular
+//velocity to construct a look up table of all possible paths to be taken by the
+//the robot
+Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, double _wMin, double _wMax, const int _wNumberOfEntries)
+{
+	//Find the difference between each linear velocity and angular velocity entry in the Look Up Table (this is the resolution)
+	double _vResolution = abs(_vMax - _vMin) / _vNumberOfEntries;
+	double _wResolution = abs(_wMax - _wMin) / _wNumberOfEntries;
 
+	//Allocate memory
+	Pose*** LUT;
+	LUT = new Pose**[_vNumberOfEntries];
+	for (int i = 0; i < _vNumberOfEntries; ++i)
+		LUT[i] = new Pose*[_wNumberOfEntries];
+
+	//Store projected path for each linear and angular velocity combination
+    	for(int i = 0; i < _vNumberOfEntries; i++){
+        	for(int j = 0; j < _wNumberOfEntries; j++){
+	
+        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
+
+        	}
+    	}
+
+    	return LUT;
+}
 
 
 
