@@ -145,51 +145,53 @@ Pose*** constructLUT(double _vMin, double _vMax, double _vNumberOfEntries, doubl
 /////////////////////////////////
 int main(int argc, char *argv[])
 {
-	// Correct the angles
-        for(int i=0; i<110; i++) {
-                thetaPoints[i]+=2*M_PI;
-                thetaPoints[i]=fmod(thetaPoints[i],2*M_PI);
-        }
-	// Correct the distance measurements
-	wheelRadius = wheelRadius * distanceCorrection;
-	botRadius = botRadius * distanceCorrection;
+//	// Correct the angles
+//        for(int i=0; i<110; i++) {
+//                thetaPoints[i]+=2*M_PI;
+//                thetaPoints[i]=fmod(thetaPoints[i],2*M_PI);
+//        }
+//	// Correct the distance measurements
+//	wheelRadius = wheelRadius * distanceCorrection;
+//	botRadius = botRadius * distanceCorrection;
+//
+//	// If you don't want motion
+//	if(!dataOnly) {
+//		// Set up the motor controller
+//		device.Disconnect();
+//		if(initialize() == false){
+//			return 1;
+//		}
+//
+//		// Turn off the motors (just in case)
+//		device.SetCommand(_GO, leftWheelCode, 0);
+//		device.SetCommand(_GO, rightWheelCode, 0);	
+//	}
+//
+//	//Start clock to keep time along path
+//	startTime = clock();
+//
+//	//Move bot based on linear and angular velocities
+//	while( pathTime < 0.01)	
+//	{
+//		linearVelocity = 0;
+//		angularVelocity = 60;	
+//		velocitiesPolar2Wheel(linearVelocity, angularVelocity, leftWheelRPM, rightWheelRPM);
+//		device.SetCommand(_GO, leftWheelCode, leftWheelRPM);
+//		device.SetCommand(_GO, rightWheelCode, rightWheelRPM);
+//		pathTime = (double) (clock() - startTime)/CLOCKS_PER_SEC;
+//		cout << pathTime << endl;
+//	}
+//
+//	//Stop the bot
+//	device.SetCommand(_GO, leftWheelCode, 0);
+//	device.SetCommand(_GO, rightWheelCode, 0);
+//
+//	if(!dataOnly) {
+//		// Disconnect roboteq
+//		device.Disconnect();
+//	}
+	Pose* testPath = 
 
-	// If you don't want motion
-	if(!dataOnly) {
-		// Set up the motor controller
-		device.Disconnect();
-		if(initialize() == false){
-			return 1;
-		}
-
-		// Turn off the motors (just in case)
-		device.SetCommand(_GO, leftWheelCode, 0);
-		device.SetCommand(_GO, rightWheelCode, 0);	
-	}
-
-	//Start clock to keep time along path
-	startTime = clock();
-
-	//Move bot based on linear and angular velocities
-	while( pathTime < 0.01)	
-	{
-		linearVelocity = 0;
-		angularVelocity = 60;	
-		velocitiesPolar2Wheel(linearVelocity, angularVelocity, leftWheelRPM, rightWheelRPM);
-		device.SetCommand(_GO, leftWheelCode, leftWheelRPM);
-		device.SetCommand(_GO, rightWheelCode, rightWheelRPM);
-		pathTime = (double) (clock() - startTime)/CLOCKS_PER_SEC;
-		cout << pathTime << endl;
-	}
-
-	//Stop the bot
-	device.SetCommand(_GO, leftWheelCode, 0);
-	device.SetCommand(_GO, rightWheelCode, 0);
-
-	if(!dataOnly) {
-		// Disconnect roboteq
-		device.Disconnect();
-	}
 	return 0;
 }
 
@@ -613,13 +615,13 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 //Returns an array of multiple points each described by (X,Y,Theta). This array 
 //forms the projected path for the given velocities and time interval (how far 
 //ahead in time the projected path goes).
-Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_interval, double t_step)
+Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_interval, int numberOfPoints)
 {
 
 	//Get the path reoslution, or number of points in the projected path.
 	//Then initialize the array of the path points.
-	int numberOfPoints = (int) ( t_interval / t_step );
-	Pose path[numberOfPoints];
+	double t_step = ( t_interval / numberOfPoints );
+	Pose* path = new Pose[numberOfPoints];
 
 	//intialize the beginning of the path and variables
 	double t = 0;

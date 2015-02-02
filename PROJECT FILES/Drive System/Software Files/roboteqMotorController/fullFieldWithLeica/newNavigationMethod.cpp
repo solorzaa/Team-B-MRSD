@@ -619,7 +619,7 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 	//Get the path reoslution, or number of points in the projected path.
 	//Then initialize the array of the path points.
 	int numberOfPoints = (int) ( t_interval / t_step );
-	Pose path[numberOfPoints];
+	Pose* path = new Pose[numberOfPoints];
 
 	//intialize the beginning of the path and variables
 	double t = 0;
@@ -640,12 +640,13 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 		}
 		else
 		{
-			path[i].X = (_linearVelocity/_angularVelocity) * cos(_angularVelocity*t) * t;
-			path[i].Y = (_linearVelocity/_angularVelocity) * sin(_angularVelocity*t) * t;
+			path[i].X = (_linearVelocity/_angularVelocity) * cos(_angularVelocity*t);
+			path[i].Y = (_linearVelocity/_angularVelocity) * sin(_angularVelocity*t);
 			path[i].Theta = _angularVelocity * t;
 		}
 	}
 
+	return path; 
 
 }
 
@@ -669,14 +670,19 @@ Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, do
 	//Store projected path for each linear and angular velocity combination
     	for(int i = 0; i < _vNumberOfEntries; i++){
         	for(int j = 0; j < _wNumberOfEntries; j++){
-	
-        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
 
-        	}
+        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
+        	
+		}
     	}
 
     	return LUT;
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+//optimizePath:
+//Finds the path that minimizes error in pose with respect to the desired path. 
+//Returns the linear velocity and angular velocity that will give that path
 
 
 
