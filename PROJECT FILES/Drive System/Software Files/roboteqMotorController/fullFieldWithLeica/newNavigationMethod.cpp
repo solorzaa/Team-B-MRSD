@@ -876,8 +876,25 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 
 }
 
+////////////////////////////////////////////////////////////////
+//sendVelocityCommands:
+//Takes in a linear velocity and angular velocity command and
+//converts these to individual RPM commands sent to each wheel
+bool sendVelocityCommands(double linearVelocity, double angularVelocity)
+{
 
+//Find the RPM of each wheel that will give the deisreved linear and angular velocity
+double rightWheel_RPM = ( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
+double leftWheel_RPM = ( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
 
+//Send RPM commands to wheels
+if((status = device.SetCommand(_GO, leftWheelCode, leftWheel_RPM)) != RQ_SUCCESS)
+	cout<<"failed to send left motor command --> "<<status<<endl;
+else if((status = device.SetCommand(_GO, rightWheelCode, rightWheel_RPM)) != RQ_SUCCESS)
+	cout<<"failed to send right motor command --> "<<status<<endl;
+else
+	return true;
+}
 
 
 
