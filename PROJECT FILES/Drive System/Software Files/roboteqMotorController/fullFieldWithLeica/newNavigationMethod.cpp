@@ -115,6 +115,27 @@ double errorXThresh = 12;
 double errorYThresh = 10;
 double errorThetaThresh = 0.1;
 
+double currentTime = 34;
+double timeStep = .01;
+
+
+////////Model Predictive Control Parameters///////////////////////////////
+//Look Up Table Settings
+double vMin = 0;
+double vMax = 10;
+double vResolution = 0.1;
+int vNumberOfPoints = (int) (vMin - vMax) / vResolution;
+double wMin = 0;
+double wMax = 10;
+double wResolution = 0.1;
+int vNumberOfPoints = (int) (vMin - vMax) / vResolution;
+
+//Path length and resolution settings
+double timeInterval = 1;
+double timeStep = 0.1;
+int numPathPoints = (int) timeInterval / timeStep;
+
+
 ////////////////////////////////////////////
 //Function Declarations
 ////////////////////////////////////////////
@@ -139,6 +160,16 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius);
 Pose* projectPath(double linearVelocity, double angularVelocity, double t_interval, double t_step);
 
 Pose*** constructLUT(double _vMin, double _vMax, double _vNumberOfEntries, double _wMin, double _wMax, double __wNumberOfEntries);
+
+bool projectGoal(double horizon, vector<double> & xDesired, vector<double> & yDesired, vector<double> & thDesired);
+
+bool desiredPathXY(double t, double & x, double & y, double & th);
+
+bool desiredPathVW(double t, double & v, double & w);
+
+double getPathError(Pose* projectedPath, vector<double> xDesiredPath, vector<double> yDesiredPath, int _numPathPoints);
+
+double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath);
 
 /////////////////////////////////
 //Main
@@ -679,11 +710,172 @@ Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, do
     	return LUT;
 }
 
+///////////////////////////////////////////////////////////////////////
+
+bool projectGoal(double horizon, vector<double> & xHorizon,
+                                 vector<double> & yHorizon,
+                                 vector<double> & thHorizon) {
+        /// This Function:
+        ///
+        /// Outputs by reference a subset of the desired path
+        /// given a length of time and pulling from the current
+        /// time that the program is running on
+        ///
+        /// Assume globals: timeStep, currentTime
+
+        for(double t = currentTime; t < currentTime+horizon; t+= timeStep) {
+                double x,y,th;
+                desiredPathXY(t,x,y,th);
+                xHorizon.push_back(x);
+                yHorizon.push_back(y);
+                thHorizon.push_back(th);
+        }
+        return true;
+}
+
+///////////////////////////////////////////////////////////////////////
+bool desiredPathXY(double t, double & x, double & y, double & th) {
+        /// This Function:
+        ///
+        /// Returns true if moving, false if not
+        ///
+        /// Returns (by reference) desired x, y, theta
+        /// of the path
+
+        double desiredVelocity = 6; // 6 in/s
+
+        // Segment 0: The negative time case (shouldn't happen)
+        if ( t < 0 ) {
+                x=0;
+                y=0;
+                th=0;
+                return false;
+        }
+        // Segment 1: Straight Line - 18 ft
+        else if ( t < 36 ) {
+                x = 0;
+                y = desiredVelocity*t;
+                th = 0;
+                return true;
+        }
+        // Segment 2: 3/4ths of a circle to go around a corner (6 ft radius)
+        else if ( t < 92.5487 ) {
+                x = (6*12)*cos((t-36)/56.5487*3*M_PI/2)-(6*12);
+                y = (6*12)*sin((t-36)/56.5487*3*M_PI/2)+(18*12);
+                th = 3*M_PI/2*((t-36)/56.5487);
+                return true;
+        }
+        // Segment 3: Straight line - 12 ft
+        else if ( t < 116.5487 ) {
+                x = -(6*12)+(desiredVelocity*(t-92.5487));
+                y = (12*12);
+                th = 3*M_PI/2;
+                return true;
+        }
+        // Segment 4: Stop at the end
+        else {
+                x = (6*12);
+                y = (12*12);
+                th = 3*M_PI/2;
+                return false;
+        }
+}
+
 ///////////////////////////////////////////////////////////////////////////////////
-//optimizePath:
+bool desiredPathVW(double t, double & v, double & w) {
+        /// This function:
+        ///
+        /// Returns true if moving, false if not moving
+        ///
+        /// Returns (by reference) a desired v and w at 
+        /// a given point in time 
+
+        double desiredVelocity = 6; // 6 in/s
+        double trackRadius = 6*12; // 6 ft
+
+        if ( t < 0 ) {
+                v = 0;
+                w = 0;
+                return false;
+        }
+        else if ( t < 36 ) {
+                v = desiredVelocity;
+                w = 0;
+                return true;
+        }
+        else if ( t < 92.5487 ) {
+                v = 6;
+                w = desiredVelocity/trackRadius;
+                return true;
+        }
+        else if ( t < 116.5487 ) {
+                v = desiredVelocity;
+                w = 0;
+                return true;
+        }
+        else {
+                v = 0;
+                w = 0;
+                return false;
+        }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//getPathError:
+//returns the error, or cost function, for a single projected path corresponding to a linear and angualr velocity command
+double getPathError(Pose* projectedPath,  vector<double> xDesiredPath, vector<double> yDesiredPath, int _numPathPoints)
+{
+	double error = 0;
+	double xError, yError;
+
+	for(int i = 0; i < _numPathPoints; i++){
+
+		xError = projectedPath[i].X - xDesiredPath[i];
+		yError = projectedPath[i].Y - yDesiredPath[i];
+
+		//No need to take the square root of the sum of squares because it will still be the minimum
+		error += pow(xError, 2) +  pow(yError, 2);
+
+	}
+
+	return error;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+//getOptimalVelocities:
 //Finds the path that minimizes error in pose with respect to the desired path. 
 //Returns the linear velocity and angular velocity that will give that path
+double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath)
+{
+	
+	double* velocities = new double[2]
+	double errorCurrent, errorMin;
+	int _vMinIndex, _wMinIndex;
 
+	for(int i = 0; i < _vNumberOfEntries, i ++){
+		for(int j = 0; j < _wNumberOfEntries, j++){
+		
+			//retried error for current path
+			errorCurrent = getPathError(projectedPaths[i][j], xDesiredPath, yDesiredPath, _numPathPoints);
+			
+			//set this path error as the minimum if its less than the current minimum
+			if(errorCurrent < errorMin)
+			{
+				errorMin = errorCurrent;
+				_vMinIndex = i;
+				_wMinIndex = j;
+			}
+
+		}
+	}
+	
+	//convert the index values to the corresponding velocity commands and return them
+	velocities[0] =  vMin + (_vMinIndex * vResolution);
+	velocities[1] =  wMin + (_wMinIndex * wResolution);		
+
+	return velocities;
+
+}
 
 
 
