@@ -116,7 +116,6 @@ double errorYThresh = 10;
 double errorThetaThresh = 0.1;
 
 double currentTime = 34;
-double timeStep = .01;
 
 
 ////////Model Predictive Control Parameters///////////////////////////////
@@ -124,15 +123,15 @@ double timeStep = .01;
 double vMin = 0;
 double vMax = 10;
 double vResolution = 0.1;
-int vNumberOfPoints = (int) (vMin - vMax) / vResolution;
+int vNumberOfEntries = (int) (vMin - vMax) / vResolution;
 double wMin = 0;
 double wMax = 10;
 double wResolution = 0.1;
-int vNumberOfPoints = (int) (vMin - vMax) / vResolution;
+int wNumberOfEntries = (int) (vMin - vMax) / vResolution;
 
 //Path length and resolution settings
 double timeInterval = 1;
-double timeStep = 0.1;
+double timeStep = 0.01;
 int numPathPoints = (int) timeInterval / timeStep;
 
 
@@ -848,12 +847,12 @@ double getPathError(Pose* projectedPath,  vector<double> xDesiredPath, vector<do
 double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath)
 {
 	
-	double* velocities = new double[2]
+	double* velocities = new double[2];
 	double errorCurrent, errorMin;
 	int _vMinIndex, _wMinIndex;
 
-	for(int i = 0; i < _vNumberOfEntries, i ++){
-		for(int j = 0; j < _wNumberOfEntries, j++){
+	for(int i = 0; i < _vNumberOfEntries; i ++){
+		for(int j = 0; j < _wNumberOfEntries; j++){
 		
 			//retried error for current path
 			errorCurrent = getPathError(projectedPaths[i][j], xDesiredPath, yDesiredPath, _numPathPoints);
