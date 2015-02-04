@@ -166,9 +166,11 @@ bool desiredPathXY(double t, double & x, double & y, double & th);
 
 bool desiredPathVW(double t, double & v, double & w);
 
-double getPathError(Pose* projectedPath, vector<double> xDesiredPath, vector<double> yDesiredPath, int _numPathPoints);
+double getPathError(Pose* projectedPath,  vector<Pose> goalPoints, int _numPathPoints);
 
-double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath);
+double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath, vector<double> thetaDesiredPath);
+
+bool pathToRobotFrame(vector<double> projectedPathX, vector<double> projectedPathY, vector<double> projectedPathTheta, vector<Pose> & newProjectedPath);
 
 /////////////////////////////////
 //Main
@@ -664,13 +666,13 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 		//Don't divide by zero
 		if(_angularVelocity == 0)
 		{
-			path[i].X = _linearVelocity * t;
-			path[i].Y = 0;
+			path[i].X = 0;
+			path[i].Y = _linearVelocity * t;
 			path[i].Theta = 0;	
 		}
 		else
 		{
-			path[i].X = (_linearVelocity/_angularVelocity) * cos(_angularVelocity*t);
+			path[i].X = -(_linearVelocity/_angularVelocity) * (1-cos(_angularVelocity*t));
 			path[i].Y = (_linearVelocity/_angularVelocity) * sin(_angularVelocity*t);
 			path[i].Theta = _angularVelocity * t;
 		}
@@ -822,15 +824,15 @@ bool desiredPathVW(double t, double & v, double & w) {
 ///////////////////////////////////////////////////////////////////////////////////
 //getPathError:
 //returns the error, or cost function, for a single projected path corresponding to a linear and angualr velocity command
-double getPathError(Pose* projectedPath,  vector<double> xDesiredPath, vector<double> yDesiredPath, int _numPathPoints)
+double getPathError(Pose* projectedPath,  vector<Pose> goalPoints, int _numPathPoints)
 {
 	double error = 0;
 	double xError, yError;
 
 	for(int i = 0; i < _numPathPoints; i++){
 
-		xError = projectedPath[i].X - xDesiredPath[i];
-		yError = projectedPath[i].Y - yDesiredPath[i];
+		xError = projectedPath[i].X - goalPoints[i].X;
+		yError = projectedPath[i].Y - goalPoints[i].Y;
 
 		//No need to take the square root of the sum of squares because it will still be the minimum
 		error += pow(xError, 2) +  pow(yError, 2);
@@ -844,21 +846,24 @@ double getPathError(Pose* projectedPath,  vector<double> xDesiredPath, vector<do
 //getOptimalVelocities:
 //Finds the path that minimizes error in pose with respect to the desired path. 
 //Returns the linear velocity and angular velocity that will give that path
-double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath)
+double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int _wNumberOfEntries, int _numPathPoints ,vector<double> xDesiredPath, vector<double> yDesiredPath, vector<double> thetaDesiredPath)
 {
 	
 	double* velocities = new double[2];
 	double errorCurrent, errorMin;
 	int _vMinIndex, _wMinIndex;
+	
+	vector<Pose> goalPath (xDesiredPath.size());
+	pathToRobotFrame(xDesiredPath, yDesiredPath, thetaDesiredPath, goalPath);
 
 	for(int i = 0; i < _vNumberOfEntries; i ++){
 		for(int j = 0; j < _wNumberOfEntries; j++){
 		
 			//retried error for current path
-			errorCurrent = getPathError(projectedPaths[i][j], xDesiredPath, yDesiredPath, _numPathPoints);
+			errorCurrent = getPathError(projectedPaths[i][j], goalPath, _numPathPoints);
 			
 			//set this path error as the minimum if its less than the current minimum
-			if(errorCurrent < errorMin)
+			if(errorCurrent < errorMin || (i==0 && j==0))
 			{
 				errorMin = errorCurrent;
 				_vMinIndex = i;
@@ -896,16 +901,13 @@ else
 	return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Rotates the projected goal path into the frame of the robot
+bool pathToRobotFrame(vector<double> projectedPathX, vector<double> projectedPathY, vector<double> projectedPathTheta, vector<Pose> & newProjectedPath) {
+	for (int i=0; i<projectedPathX.size(); i++) {
+		newProjectedPath[i].X = cos(absoluteTheta)*projectedPathX[i] + -sin(absoluteTheta)*projectedPathY[i];
+		newProjectedPath[i].Y = sin(absoluteTheta)*projectedPathX[i] + cos(absoluteTheta)*projectedPathY[i];
+		newProjectedPath[i].X -= absoluteX;
+		newProjectedPath[i].Y -= absoluteY;
+		newProjectedPath[i].Theta += absoluteTheta;
+	}
+}
