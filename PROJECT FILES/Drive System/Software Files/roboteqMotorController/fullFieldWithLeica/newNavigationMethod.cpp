@@ -70,12 +70,6 @@ static int fd;
 int ARRAY_SIZE = 200;
 char port[20] = "/dev/ttyUSB0"; /* port to connect to */
 
-//Point File
-float xPoints[] = {0,0,0,0,0,0,0,0,0,0,0,0,-1.84,-7.2346,-15.816,-27,-40.024,-54,-67.976,-81,-92.184,-100.77,-106.16,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-108,-106.16,-100.77,-92.184,-81,-67.976,-54,-40.5,-27,-13.5,0,-9.9196e-15,13.976,27,38.184,46.765,52.16,54,54,54,54,54,54,54,54,54,52.16,46.765,38.184,27,13.976,3.3065e-15,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-108,-123.5,-136.64,-145.42,-148.5,-145.42,-136.64,-123.5,-108,-94.5,-81,-67.5,-54,-40.5,-27,-13.5,-1.4211e-14,2.4799e-15,15.499,28.638,37.417,40.5,37.417,28.638,15.499,2.4799e-15,-13.5,-27,-40.5,-54,-67.5,-81,-94.5,-108,-121.5,-135};
-float yPoints[] = {0,16.2,32.4,48.6,64.8,81,97.2,113.4,129.6,145.8,162,162,175.98,189,200.18,208.77,214.16,216,214.16,208.77,200.18,189,175.98,162,145.8,129.6,113.4,97.2,81,64.8,48.6,32.4,16.2,7.1054e-15,-0,-13.976,-27,-38.184,-46.765,-52.16,-54,-54,-54,-54,-54,-54,-52.16,-46.765,-38.184,-27,-13.976,-1.3226e-14,15.4,30.8,46.2,61.6,77,92.4,107.8,108,121.98,135,146.18,154.77,160.16,162,162,162,162,162,162,162,162,162,162,158.92,150.14,137,121.5,106,92.862,84.083,81,81,81,81,81,81,81,81,81,81,77.917,69.138,55.999,40.5,25.001,11.862,3.0829,0,0,0,0,0,0,0,0,0,0,0};
-float thetaPoints[] = {0,0,0,0,0,0,0,0,0,0,0,0,0.2618,0.5236,0.7854,1.0472,1.309,1.5708,1.8326,2.0944,2.3562,2.618,2.8798,3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,-3.1416,3.1416,3.4034,3.6652,3.927,4.1888,4.4506,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.9742,5.236,5.4978,5.7596,6.0214,6.2832,0,0,0,0,0,0,0,0,0.2618,0.5236,0.7854,1.0472,1.309,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.9635,2.3562,2.7489,3.1416,3.5343,3.927,4.3197,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,4.7124,-1.5708,-1.9635,-2.3562,-2.7489,-3.1416,-3.5343,-3.927,-4.3197,-4.7124,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708,1.5708};
-int paintPoints[] = {1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,-1,0,0};
-
 float location[3] = {0,0,0};
 float prevLocation[2] = {0,0};
 float calibrateTheta[2] = {0,0};
@@ -88,12 +82,7 @@ double absoluteTheta = 0;
 int prevRightEncoder;
 int prevLeftEncoder;
 vector<float> testData;
-double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double pathResolution = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
 
-clock_t prevTime;
-clock_t currTime;
-clock_t startTime;
 double pathTime;
 double sumErrorX = 0;
 double sumErrorY = 0;
@@ -102,20 +91,9 @@ double sumErrorTheta = 0;
 bool leicaConnected = false;
 bool dataOnly = false;
 
-//PID Settings
-float KPX = 30;		// 18
-float KPY = 5;		//5
-float KPTheta = 300;	//200
-
-float KIX = 40;	//20
-float KIY = 80;	//50
-float KITheta = 16000;	//2000
-
 double errorXThresh = 12;
 double errorYThresh = 10;
 double errorThetaThresh = 0.1;
-
-double currentTime = 34;
 
 
 ////////Model Predictive Control Parameters///////////////////////////////
@@ -123,17 +101,20 @@ double currentTime = 34;
 double vMin = 0;
 double vMax = 10;
 double vResolution = 0.1;
-int vNumberOfEntries = (int) (vMin - vMax) / vResolution;
+const int vNumberOfEntries = (int) (vMin - vMax) / vResolution;
 double wMin = 0;
 double wMax = 10;
 double wResolution = 0.1;
-int wNumberOfEntries = (int) (vMin - vMax) / vResolution;
+const int wNumberOfEntries = (int) (vMin - vMax) / vResolution;
 
 //Path length and resolution settings
-double timeInterval = 1;
-double timeStep = 0.01;
-int numPathPoints = (int) timeInterval / timeStep;
+double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
+int numPathPoints = (int) pathHorizon / timeStep;
 
+clock_t prevTime;
+clock_t currentTime;
+clock_t startTime;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -144,9 +125,7 @@ bool readAbsoluteEncoderCount(int &count, int index);
 
 bool velocitiesPolar2Wheel(double _linearVelocity, double _angularVelocity, double &_leftWheelRPM, double &_rightWheelRPM);
 
-double* getDeltaPose();
-
-bool poseControl(double * deltaPose, double desiredX, double desiredY, double desiredTheta);
+bool getPose();
 
 int openPort();
 
@@ -158,7 +137,7 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius);
 
 Pose* projectPath(double linearVelocity, double angularVelocity, double t_interval, double t_step);
 
-Pose*** constructLUT(double _vMin, double _vMax, double _vNumberOfEntries, double _wMin, double _wMax, double __wNumberOfEntries);
+Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, double _wMin, double _wMax, const int _wNumberOfEntries);
 
 bool projectGoal(double horizon, vector<double> & xDesired, vector<double> & yDesired, vector<double> & thDesired);
 
@@ -172,23 +151,19 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 
 bool pathToRobotFrame(vector<double> projectedPathX, vector<double> projectedPathY, vector<double> projectedPathTheta, vector<Pose> & newProjectedPath);
 
+bool sendVelocityCommands(double linearVelocity, double angularVelocity);
+
 /////////////////////////////////
 //Main
-/////////////////////////////////
+
 int main(int argc, char *argv[])
 {
-	// Correct the angles
-        for(int i=0; i<110; i++) {
-                thetaPoints[i]+=2*M_PI;
-                thetaPoints[i]=fmod(thetaPoints[i],2*M_PI);
-        }
 	// Correct the distance measurements
 	wheelRadius = wheelRadius * distanceCorrection;
 	botRadius = botRadius * distanceCorrection;
 
-	// If you don't want motion
+	//setup and initialize the motor controller
 	if(!dataOnly) {
-		// Set up the motor controller
 		device.Disconnect();
 		if(initialize() == false){
 			return 1;
@@ -199,19 +174,35 @@ int main(int argc, char *argv[])
 		device.SetCommand(_GO, rightWheelCode, 0);	
 	}
 
-	//Start clock to keep time along path
-	startTime = clock();
+	//Initialize variables to keep time and track position along path
+	startTime = clock();			//Time the bot received first motion command
+	currentTime = clock() - startTime;	//Initialize the current Time
+	bool inProgress;			//Keep track of whether or not the bot is still painting
+	vector<double> xPathGoal;		//the desired parametric x path
+	vector<double> yPathGoal;		//the deisred parametric y path
+	vector<double> thetaPathGoal;		//the desired parametric theta path
+	double* velocityCommands;
+	double xTrash, yTrash, thetaTrash;	//variables not needed in main but need to run desiredPathXY
 
-	//Move bot based on linear and angular velocities
-	while( pathTime < 0.01)	
-	{
-		linearVelocity = 0;
-		angularVelocity = 60;	
-		velocitiesPolar2Wheel(linearVelocity, angularVelocity, leftWheelRPM, rightWheelRPM);
-		device.SetCommand(_GO, leftWheelCode, leftWheelRPM);
-		device.SetCommand(_GO, rightWheelCode, rightWheelRPM);
-		pathTime = (double) (clock() - startTime)/CLOCKS_PER_SEC;
-		cout << pathTime << endl;
+	//Construct look up table for model predictive control paths
+	Pose*** MPC_LUT = constructLUT(vMin, vMax, vNumberOfEntries, wMin, wMax, wNumberOfEntries);
+
+	while(inProgress = desiredPathXY(currentTime, xTrash, yTrash, thetaTrash)){
+		//get current position
+		getPose();
+
+		//get current time
+		currentTime = clock() - startTime;
+
+		//retrieve the path we want to travel along for the next pathHorizon period
+		projectGoal(pathHorizon, xPathGoal, yPathGoal, thetaPathGoal);
+		
+		//Retrieve the velocities which minimizes the error between our predicted path and the desired (goal) path
+		velocityCommands =  getOptimalVelocities(MPC_LUT, vNumberOfEntries, wNumberOfEntries, numPathPoints , xPathGoal, yPathGoal, thetaPathGoal);
+		
+		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
+		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
+
 	}
 
 	//Stop the bot
@@ -293,7 +284,7 @@ bool velocitiesPolar2Wheel(double _linearVelocity, double _angularVelocity, doub
 } 
 
 //////////////////////////////////////////////////////////////////////
-double * getDeltaPose()
+bool getPose()
 {
 	int currRightEncoder;
 	int currLeftEncoder;
@@ -363,36 +354,7 @@ double * getDeltaPose()
 	cout << "deltaX: " << deltaX << endl;
 	cout << "deltaY: " << deltaY << endl;
 
-	double deltas[3] = {deltaX, deltaY, deltaTheta};
-	double* frame = deltas;
-	return frame;
-}
-
-
-/////////////////////////////////////////////////////////////////////////////////////////
-bool poseControl(double * pose, double desiredX, double desiredY, double desiredTheta) {
-	double deltaX = pose[0];
-	double deltaY = pose[1];
-	double deltaTheta = pose[2];
-
-	double errorWorldTheta;
-	double errorWorldX;
-	double errorWorldY;
-	double errorBotTheta;
-	double errorBotX;
-	double errorBotY;
-	double leftProportional;
-	double rightProportional;
-	int leftOutputPower;
-	int rightOutputPower;
-	double diffTime;
-	double leftProportionalFeedback;
-	double leftIntegralFeedback;
-	double leftDerivativeFeedback;
-	double rightProportionalFeedback;
-	double rightIntegralFeedback;
-	double rightDerivativeFeedback;
-
+	
 	if(leicaConnected) {
 		//If tracking data is new, update the absolute position
 		if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
@@ -413,104 +375,14 @@ bool poseControl(double * pose, double desiredX, double desiredY, double desired
 	absoluteX += deltaX*cos(absoluteTheta) - deltaY*sin(absoluteTheta);
 	absoluteY += deltaX*sin(absoluteTheta) + deltaY*cos(absoluteTheta);
 
-	cout << "absoluteTheta: " << absoluteTheta << endl;
-	cout << "absoluteX: " << absoluteX << endl;	
-	cout << "absoluteY: " << absoluteY << endl;
+        //Print out current position in the absolute frame
+	//cout << "absoluteTheta: " << absoluteTheta << endl;
+	//cout << "absoluteX: " << absoluteX << endl;	
+	//cout << "absoluteY: " << absoluteY << endl;
 
-	errorWorldX = desiredX-absoluteX;
-	errorWorldY = desiredY-absoluteY;
-	errorWorldTheta = desiredTheta-absoluteTheta;
-
-	//Don't spin all the way around the wrong direction when absolute theta crosses 2*M_PI
-	if(errorWorldTheta > M_PI){
-		errorWorldTheta = errorWorldTheta - 2*M_PI;	
-	}
-	if(errorWorldTheta < -M_PI){
-		errorWorldTheta = errorWorldTheta + 2*M_PI;	
-	}
-
-	//Transform absolute error in position into the robot's frame
-	errorBotX = errorWorldX*cos(absoluteTheta) + errorWorldY*sin(absoluteTheta);
-	errorBotY = -errorWorldX*sin(absoluteTheta) + errorWorldY*cos(absoluteTheta);
-	errorBotTheta = -errorWorldTheta;
-
-	cout << "deisredTheta: " << desiredTheta << endl;
-	cout << "desiredX: " << desiredX << endl;	
-	cout << "desiredY: " << desiredY << endl;
-
-	cout << "errorWorldTheta: " << errorWorldTheta << endl;
-	cout << "errorWorldX: " << errorWorldX << endl;	
-	cout << "errorWorldY: " << errorWorldY << endl;
-
-	//Proportional Feedback
-	leftProportionalFeedback = KPX*errorBotX + KPY*errorBotY + KPTheta*errorBotTheta;
-	rightProportionalFeedback = - KPX*errorBotX + KPY*errorBotY - KPTheta*errorBotTheta;
-
-	//Integral Feedback
-	currTime = clock();
-	diffTime = (double) (currTime - prevTime)/CLOCKS_PER_SEC;
-
-	cout << "diffTime: " << diffTime << endl;
-
-	sumErrorX += errorBotX * diffTime;
-	sumErrorY += errorBotY * diffTime;
-	sumErrorTheta += errorBotTheta * diffTime;
-
-	cout << "errorBotX: " << errorBotX << endl;
-	cout << "errorBotY: " << errorBotY << endl;	
-	cout << "errorBotTheta: " << errorBotTheta << endl;
-
-	cout << "sumErrorX: " << sumErrorX << endl;
-	cout << "sumErrorY: " << sumErrorY << endl;	
-	cout << "sumErrorTheta: " << sumErrorTheta << endl;
-
-	prevTime = currTime;
-
-	//cout << "    KIX: " << KIX <<endl;
-	//cout << "    KIY: " << KIY <<endl;
-	//cout << "    KITheta: " << KITheta <<endl;
-
-	leftIntegralFeedback = KIX*sumErrorX + KIY*sumErrorY + KITheta*sumErrorTheta;
-	rightIntegralFeedback = - KIX*sumErrorX + KIY*sumErrorY - KITheta*sumErrorTheta;
-
-	cout << " left integral: " << leftIntegralFeedback << endl;
-	cout << " right integral: " << rightIntegralFeedback << endl;
-
-	cout << "KPXerrorX: " << KPX*errorBotX << endl;
-	cout << "KPYerrorY: " << KPY*errorBotY << endl;
-	cout << "KPThetaerrorTheta: " << KPTheta*errorBotTheta << endl;
-
-	cout << "KIXsumErrorX: " << KIX*sumErrorX << endl;
-	cout << "KIYsumErrorY: " << KIY*sumErrorY << endl;
-	cout << "KIThetasumErrorTheta: " << KITheta*sumErrorTheta << endl;
-
-	leftOutputPower = leftProportionalFeedback + leftIntegralFeedback;//KPX*errorBotX + KPY*errorBotY + KPTheta*errorBotTheta + KIX*sumErrorX + KIY*sumErrorY - KITheta*sumErrorTheta;
-	rightOutputPower = rightProportionalFeedback + rightIntegralFeedback;//-KPX*errorBotX + KPY*errorBotY - KPTheta*errorBotTheta - KIX*sumErrorX + KIY*sumErrorY + KITheta*sumErrorTheta;
-
-	cout << "leftOutputPower: " << leftOutputPower << endl;	
-	cout << "rightOutputPower: " << rightOutputPower << endl;
-
-	// Send POWER
-	device.SetCommand(_GO, 2, -leftOutputPower);
-	device.SetCommand(_GO, 1, -rightOutputPower);
-
-	//Stop when the bot is within an inch
-	if(abs(errorWorldX) < errorXThresh && abs(errorWorldY) < errorYThresh && abs(errorWorldTheta) < errorThetaThresh)
-	{	
-		//device.SetCommand(_GO, 2, 0);
-		//device.SetCommand(_GO, 1, 0);
-
-		//Reset integral fedback terms
-		sumErrorX = 0;
-		sumErrorY = 0;
-		sumErrorTheta = 0;
-
-		return true;
-	}
-	else {
-		return false;
-	}
+	return true;
 }
+
 
 /////////////////////////////////////////////////////////////////
 int openPort(){
@@ -690,8 +562,8 @@ Pose* projectPath(double _linearVelocity, double _angularVelocity, double t_inte
 Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, double _wMin, double _wMax, const int _wNumberOfEntries)
 {
 	//Find the difference between each linear velocity and angular velocity entry in the Look Up Table (this is the resolution)
-	double _vResolution = abs(_vMax - _vMin) / _vNumberOfEntries;
-	double _wResolution = abs(_wMax - _wMin) / _wNumberOfEntries;
+	double _vResolution = (double) abs(_vMax - _vMin) / _vNumberOfEntries;
+	double _wResolution = (double) abs(_wMax - _wMin) / _wNumberOfEntries;
 
 	//Allocate memory
 	Pose*** LUT;
@@ -703,7 +575,7 @@ Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, do
     	for(int i = 0; i < _vNumberOfEntries; i++){
         	for(int j = 0; j < _wNumberOfEntries; j++){
 
-        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
+        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, timeStep);
         	
 		}
     	}
@@ -724,7 +596,7 @@ bool projectGoal(double horizon, vector<double> & xHorizon,
         ///
         /// Assume globals: timeStep, currentTime
 
-        for(double t = currentTime; t < currentTime+horizon; t+= timeStep) {
+        for(double t = currentTime + timeStep; t < currentTime+horizon+timeStep ; t+= timeStep) {
                 double x,y,th;
                 desiredPathXY(t,x,y,th);
                 xHorizon.push_back(x);
