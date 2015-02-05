@@ -101,11 +101,11 @@ double errorThetaThresh = 0.1;
 double vMin = 0;
 double vMax = 10;
 double vResolution = 0.1;
-const int vNumberOfEntries = (int) (vMin - vMax) / vResolution;
-double wMin = 0;
-double wMax = 10;
+const int vNumberOfEntries = (int) (vMax-vMin) / vResolution;
+double wMin = -5;
+double wMax = 5;
 double wResolution = 0.1;
-const int wNumberOfEntries = (int) (vMin - vMax) / vResolution;
+const int wNumberOfEntries = (int) (wMax - wMin) / wResolution;
 
 //Path length and resolution settings
 double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
@@ -113,8 +113,9 @@ double timeStep = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) pathHorizon / timeStep;
 
 clock_t prevTime;
-clock_t currentTime;
+double currentTime;
 clock_t startTime;
+double clock2sec = 3.22463169065/CLOCKS_PER_SEC;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -175,24 +176,35 @@ int main(int argc, char *argv[])
 	}
 
 	//Initialize variables to keep time and track position along path
-	startTime = clock();			//Time the bot received first motion command
-	currentTime = clock() - startTime;	//Initialize the current Time
-	bool inProgress;			//Keep track of whether or not the bot is still painting
-	vector<double> xPathGoal;		//the desired parametric x path
-	vector<double> yPathGoal;		//the deisred parametric y path
-	vector<double> thetaPathGoal;		//the desired parametric theta path
+	startTime = clock();				//Time the bot received first motion command
+	currentTime = (clock() - startTime)*clock2sec;	//Initialize the current Time
+	bool inProgress;				//Keep track of whether or not the bot is still painting
+	vector<double> xPathGoal;			//the desired parametric x path
+	vector<double> yPathGoal;			//the deisred parametric y path
+	vector<double> thetaPathGoal;			//the desired parametric theta path
 	double* velocityCommands;
-	double xTrash, yTrash, thetaTrash;	//variables not needed in main but needed to run desiredPathXY
+	double xGoal, yGoal, thetaGoal;		//variables not needed in main but needed to run desiredPathXY
+
+	cout << "preceding look up table" << endl;
 
 	//Construct look up table for model predictive control paths
 	Pose*** MPC_LUT = constructLUT(vMin, vMax, vNumberOfEntries, wMin, wMax, wNumberOfEntries);
 
-	while(inProgress = desiredPathXY(currentTime, xTrash, yTrash, thetaTrash)){
+	cout << "look up table created" << endl;
+	cout << "currentTime before while loop: " << currentTime << endl;
+
+
+	while(inProgress = desiredPathXY(currentTime, xGoal, yGoal, thetaGoal)){
 		//get current position
 		getPose();
+		
+		cout << "xGoal:" << xGoal << endl;
+		cout << "yGoal:" << yGoal << endl;
+		cout << "thetaGoal:" << thetaGoal << endl;
 
 		//get current time
-		currentTime = clock() - startTime;
+		currentTime = (double) (clock() - startTime)*clock2sec;
+		cout << "current time: " << currentTime << endl;
 
 		//retrieve the path we want to travel along for the next pathHorizon period
 		projectGoal(pathHorizon, xPathGoal, yPathGoal, thetaPathGoal);
@@ -200,6 +212,9 @@ int main(int argc, char *argv[])
 		//Retrieve the velocities which minimizes the error between our predicted path and the desired (goal) path
 		velocityCommands =  getOptimalVelocities(MPC_LUT, vNumberOfEntries, wNumberOfEntries, numPathPoints , xPathGoal, yPathGoal, thetaPathGoal);
 		
+		cout << "linearVelocity:" << velocityCommands[0] << endl;
+		cout << "angularVelocity:" << velocityCommands[1] << endl;
+
 		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
 		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
 
@@ -309,8 +324,8 @@ bool getPose()
 	  return frame;
 	  }*/
 
-	cout << "rightEncoder: " << currRightEncoder << endl;
-	cout << "leftEncoder: " << currLeftEncoder << endl;
+//	cout << "rightEncoder: " << currRightEncoder << endl;
+//	cout << "leftEncoder: " << currLeftEncoder << endl;
 
 	//Calculate the current angle of rotation for each wheel
 	rightDeltaPhi = (double) (currRightEncoder - prevRightEncoder) * 2 * M_PI/counts_per_revolution;
@@ -324,8 +339,8 @@ bool getPose()
 	rightArcLength = rightDeltaPhi * (wheelRadius);
 	leftArcLength = leftDeltaPhi * (wheelRadius);		
 
-	cout << "rightArcLength: " << rightArcLength << endl;
-	cout << "leftArcLength: " << leftArcLength << endl;
+//	cout << "rightArcLength: " << rightArcLength << endl;
+//	cout << "leftArcLength: " << leftArcLength << endl;
 
 	if(rightArcLength == leftArcLength) {
 		deltaTheta = 0;
@@ -350,9 +365,9 @@ bool getPose()
 		deltaY = (rightTurningRadius-botRadius)*sin(deltaTheta);
 	}
 
-	cout << "deltaTheta: " << deltaTheta << endl;
-	cout << "deltaX: " << deltaX << endl;
-	cout << "deltaY: " << deltaY << endl;
+//	cout << "deltaTheta: " << deltaTheta << endl;
+//	cout << "deltaX: " << deltaX << endl;
+//	cout << "deltaY: " << deltaY << endl;
 
 	
 	if(leicaConnected) {
@@ -376,9 +391,9 @@ bool getPose()
 	absoluteY += deltaX*sin(absoluteTheta) + deltaY*cos(absoluteTheta);
 
         //Print out current position in the absolute frame
-	//cout << "absoluteTheta: " << absoluteTheta << endl;
-	//cout << "absoluteX: " << absoluteX << endl;	
-	//cout << "absoluteY: " << absoluteY << endl;
+	cout << "absoluteTheta: " << absoluteTheta << endl;
+	cout << "absoluteX: " << absoluteX << endl;	
+	cout << "absoluteY: " << absoluteY << endl;
 
 	return true;
 }
@@ -761,8 +776,12 @@ bool sendVelocityCommands(double linearVelocity, double angularVelocity)
 {
 
 //Find the RPM of each wheel that will give the deisreved linear and angular velocity
-double rightWheel_RPM = ( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
-double leftWheel_RPM = ( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
+double rightWheel_RPM = 10*( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
+double leftWheel_RPM = 10*( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
+
+cout << "rightWheel_RPM:" << rightWheel_RPM << endl;
+cout << "leftWheel_RPM:" << leftWheel_RPM << endl;
+
 
 //Send RPM commands to wheels
 if((status = device.SetCommand(_GO, leftWheelCode, leftWheel_RPM)) != RQ_SUCCESS)
