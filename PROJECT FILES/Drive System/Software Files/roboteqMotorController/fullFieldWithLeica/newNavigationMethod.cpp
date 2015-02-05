@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
 	vector<double> yPathGoal;		//the deisred parametric y path
 	vector<double> thetaPathGoal;		//the desired parametric theta path
 	double* velocityCommands;
-	double xTrash, yTrash, thetaTrash;	//variables not needed in main but need to run desiredPathXY
+	double xTrash, yTrash, thetaTrash;	//variables not needed in main but needed to run desiredPathXY
 
 	//Construct look up table for model predictive control paths
 	Pose*** MPC_LUT = constructLUT(vMin, vMax, vNumberOfEntries, wMin, wMax, wNumberOfEntries);
