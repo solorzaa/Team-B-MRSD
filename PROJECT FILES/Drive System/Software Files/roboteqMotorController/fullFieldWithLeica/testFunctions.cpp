@@ -162,83 +162,12 @@ bool sendVelocityCommands(double linearVelocity, double angularVelocity);
 
 int main(int argc, char *argv[])
 {
-	// Correct the distance measurements
-	wheelRadius = wheelRadius * distanceCorrection;
-	botRadius = botRadius * distanceCorrection;
+	Pose* testPath = projectPath(6, 0.1, 5, 0.1);
 
-	//setup and initialize the motor controller
-	if(!dataOnly) {
-		device.Disconnect();
-		if(initialize() == false){
-			return 1;
-		}
-
-		// Turn off the motors (just in case)
-		device.SetCommand(_GO, leftWheelCode, 0);
-		device.SetCommand(_GO, rightWheelCode, 0);	
-
-		// Initialize Encoder Values
-		readAbsoluteEncoderCount(prevLeftEncoder, leftWheelCode);
-		readAbsoluteEncoderCount(prevRightEncoder, rightWheelCode);
+	for(int i = 0; i<50; i++){
+	cout << "x:" << testPath[i].X <<"     y:"<<  testPath[i].Y <<"        theta:" << testPath[i].Theta << endl;
 	}
 
-	//Initialize variables to keep time and track position along path
-	bool inProgress;				//Keep track of whether or not the bot is still painting
-	vector<double> xPathGoal;			//the desired parametric x path
-	vector<double> yPathGoal;			//the deisred parametric y path
-	vector<double> thetaPathGoal;			//the desired parametric theta path
-	double* velocityCommands;
-	double xGoal, yGoal, thetaGoal;		//variables not needed in main but needed to run desiredPathXY
-
-	if(verbose) cout << "preceding look up table" << endl;
-
-	//Construct look up table for model predictive control paths
-	Pose*** MPC_LUT = constructLUT(vMin, vMax, vNumberOfEntries, wMin, wMax, wNumberOfEntries);
-
-	if(verbose) cout << "look up table created" << endl;
-	if(verbose) cout << "currentTime before while loop: " << currentTime << endl;
-
-	startTime = clock();				//Time the bot received first motion command
-	currentTime = (clock() - startTime)*clock2sec;	//Initialize the current Time
-
-	while(inProgress = desiredPathXY(currentTime, xGoal, yGoal, thetaGoal)){
-		//get current position
-		getPose();
-
-		if(!verbose) cout << "xGoal:" << xGoal << endl;
-		if(!verbose) cout << "yGoal:" << yGoal << endl;
-		if(!verbose) cout << "thetaGoal:" << thetaGoal << endl;
-
-		//get current time
-		currentTime = (double) (clock() - startTime)*clock2sec;
-		if(!verbose) cout << "current time: " << currentTime << endl;
-
-		//retrieve the path we want to travel along for the next pathHorizon period
-		projectGoal(pathHorizon, xPathGoal, yPathGoal, thetaPathGoal);
-
-		//Retrieve the velocities which minimizes the error between our predicted path and the desired (goal) path
-
-		for(int i=0; i<10;i++) if(verbose) cout << yPathGoal[i] << " ";
-		if(verbose) cout << endl;
-
-		velocityCommands =  getOptimalVelocities(MPC_LUT, vNumberOfEntries, wNumberOfEntries, numPathPoints , xPathGoal, yPathGoal, thetaPathGoal);
-
-		if(!verbose) cout << "linearVelocity:" << velocityCommands[0] << endl;
-		if(!verbose) cout << "angularVelocity:" << velocityCommands[1] << endl;
-
-		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
-		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
-
-	}
-
-	//Stop the bot
-	device.SetCommand(_GO, leftWheelCode, 0);
-	device.SetCommand(_GO, rightWheelCode, 0);
-
-	if(!dataOnly) {
-		// Disconnect roboteq
-		device.Disconnect();
-	}
 	return 0;
 }
 
