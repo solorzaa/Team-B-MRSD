@@ -49,7 +49,7 @@ int status;
 int result;
 RoboteqDevice device;
 string motorControllerPort = "/dev/ttyUSB0";
-int counts_per_revolution = 5500;// 1250; 
+int counts_per_revolution = 5500; //1250;
 float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
 float botRadius = 11.25; //radius from each wheel to the midpoint between wheels in inches
@@ -100,14 +100,14 @@ double errorThetaThresh = 0.1;
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
-double vMin = 10;
-double vMax = 30;
-double vResolution = 0.1;
-const int vNumberOfEntries = (int) (vMax-vMin) / vResolution;
+double vMin = 0;
+double vMax = 50;
+double vResolution = 0.5;
+const int vNumberOfEntries = (int) ( (vMax-vMin) / vResolution );
 double wMin = -1;
 double wMax = 1;
 double wResolution = 0.01;
-const int wNumberOfEntries = (int) (wMax - wMin) / wResolution;
+const int wNumberOfEntries = (int) ( (wMax - wMin) / wResolution );
 
 //Path length and resolution settings
 double pathHorizon = 10; 	//Model Predictive Control will look ahead 1 sec to predict a path
@@ -118,7 +118,7 @@ clock_t prevTime;
 double currentTime;
 clock_t startTime;
 double stephensComputer = 2.17;
-double clock2sec = 3.22463169065/CLOCKS_PER_SEC/stephensComputer;
+double clock2sec = 1.3/CLOCKS_PER_SEC;//3.22463169065/CLOCKS_PER_SEC;//stephensComputer;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -205,9 +205,9 @@ int main(int argc, char *argv[])
 		//get current position
 		getPose();
 
-		if(!verbose) cout << "                                      xGoal:" << xGoal << endl;
-		if(!verbose) cout << "                                      yGoal:" << yGoal << endl;
-		if(!verbose) cout << "                                      thetaGoal:" << thetaGoal << endl;
+		if(!verbose) cout << "xGoal:" << xGoal << endl;
+		if(!verbose) cout << "yGoal:" << yGoal << endl;
+		if(!verbose) cout << "thetaGoal:" << thetaGoal << endl;
 
 		//get current time
 		currentTime = (double) (clock() - startTime)*clock2sec;
@@ -335,8 +335,8 @@ bool getPose()
 	  return frame;
 	  }*/
 
-	cout << "rightEncoderChange: " << currRightEncoder - prevRightEncoder << endl;
-	cout << "leftEncoderCahnge: " << currLeftEncoder - prevLeftEncoder << endl;
+	//cout << "rightEncoderCurrent: " << currRightEncoder << endl;
+	//cout << "leftEncoderCurrent: " << currLeftEncoder << endl;
 
 	//Calculate the current angle of rotation for each wheel
 	rightDeltaPhi = (double) (currRightEncoder - prevRightEncoder) * 2 * M_PI/counts_per_revolution;
@@ -376,9 +376,9 @@ bool getPose()
 		deltaY = (rightTurningRadius-botRadius)*sin(deltaTheta);
 	}
 
-		if(!verbose) cout << "deltaTheta: " << deltaTheta << endl;
-		if(!verbose) cout << "deltaX: " << deltaX << endl;
-		if(!verbose) cout << "deltaY: " << deltaY << endl;
+		//if(!verbose) cout << "deltaTheta: " << deltaTheta << endl;
+		//if(!verbose) cout << "deltaX: " << deltaX << endl;
+		//if(!verbose) cout << "deltaY: " << deltaY << endl;
 
 
 	if(leicaConnected) {
@@ -398,14 +398,13 @@ bool getPose()
 	absoluteTheta += deltaTheta;
 	//Keep the theta between 2 pi
 	absoluteTheta = fmod(absoluteTheta + 2*M_PI, 2*M_PI);
-
 	absoluteX += deltaX*cos(absoluteTheta) - deltaY*sin(absoluteTheta);
 	absoluteY += deltaX*sin(absoluteTheta) + deltaY*cos(absoluteTheta);
 
 	//Print out current position in the absolute frame
-	if(!verbose) cout << "                               absoluteTheta: " << absoluteTheta << endl;
-	if(!verbose) cout << "                               absoluteX: " << absoluteX << endl;	
-	if(!verbose) cout << "                               absoluteY: " << absoluteY << endl;
+	if(!verbose) cout << "absoluteTheta: " << absoluteTheta << endl;
+	if(!verbose) cout << "absoluteX: " << absoluteX << endl;	
+	if(!verbose) cout << "absoluteY: " << absoluteY << endl;
 
 	return true;
 }
@@ -633,217 +632,62 @@ bool projectGoal(double horizon, vector<double> & xHorizon,
                 xHorizon.push_back(x);
                 yHorizon.push_back(y);
                 thHorizon.push_back(th);
+		//cout << "x desired path:" << x << endl;
+		//cout << "y desired path:" << y << endl;
         }
         return true;
 }
 
 ///////////////////////////////////////////////////////////////////////
 bool desiredPathXY(double t, double & x, double & y, double & th) {
-	/// This Function:
-	///
-	/// Returns true if moving, false if not
-	///
-	/// Returns (by reference) desired x, y, theta
-	/// of the path
+        /// This Function:
+        ///
+        /// Returns true if moving, false if not
+        ///
+        /// Returns (by reference) desired x, y, theta
+        /// of the path
 
-	//Settings
-	double desiredVelocity = 20; // 6 in/s
-	double fieldLength = 18; // 18 ft
-	double fieldWidth = 10; // 10 ft
-	double cornerRadius = 6; // 6 ft
-	double startingDistance = 2; // 2 ft
-	
-	// NOTE: do not make fieldLength < 4*cornerRadius
-	
-	//Calculated times
-	double t0 = startingDistance*12/desiredVelocity;
-	double t1 = t0 + fieldLength*12/desiredVelocity;
-	double t2 = t1 + cornerRadius*12/desiredVelocity;
-	double t3 = t2 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
-	double t4 = t3 + cornerRadius*12/desiredVelocity;
-	double t5 = t4 + fieldWidth*12/desiredVelocity;
-	double t6 = t5 + cornerRadius*12/desiredVelocity;
-	double t7 = t6 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
-	double t8 = t7 + cornerRadius*12/desiredVelocity;
-    double t9 = t8 + fieldLength*12/desiredVelocity;
-    double t10 = t9 + cornerRadius*12/desiredVelocity;
-    double t11 = t10 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
-    double t12 = t11 + cornerRadius*12/desiredVelocity;
-    double t13 = t12 + fieldWidth*12/desiredVelocity;
-    double t14 = t13 + cornerRadius*12/desiredVelocity;
-    double t15 = t14 + M_PI/2*cornerRadius*12/desiredVelocity;
-    // breaks if length/2 < 2*cornerRadius
-    double t16 = t15 + (fieldLength/2-(2*cornerRadius))*12/desiredVelocity; 
-    double t17 = t16 + M_PI/2*cornerRadius*12/desiredVelocity;
-    double t18 = t17 + cornerRadius*12/desiredVelocity;
-    double t19 = t18 + fieldWidth*12/desiredVelocity;
-    double t20 = t19 + startingDistance*12/desiredVelocity;
-	
-	// Segment 0: The negative time case (shouldn't happen)
-	if ( t < 0 ) {
-		x=0;
-		y=0;
-		th=0;
-		return false;
-	}
-	// Segment 1: Starting Distance (no puddles)
-	else if ( t < t0 ) {
-		x = 0;
-		y = desiredVelocity*t;
-		th = 0;
-		return true;
-	}
-	// Segment 2: Straight Line Left Field Length
-	else if ( t < t1 ) {
-		x = 0;
-		y = desiredVelocity*(t-t0)+desiredVelocity*t0;
-		th = 0;
-		return true;
-	}
-	// Segment 3: Prepare for circle
-	else if ( t < t2 ) {
-		x = 0;
-		y = desiredVelocity*(t-t1)+desiredVelocity*t1;
-		th = 0;
-		return true;
-	}
-	// Segment 4: 3/4ths of a circle to go around a corner (6 ft radius)
-	else if ( t < t3 ) {
-		x = (cornerRadius*12)*cos((t-t2)/(t3-t2)*3*M_PI/2)-(cornerRadius*12);
-		y = (cornerRadius*12)*sin((t-t2)/(t3-t2)*3*M_PI/2)+(desiredVelocity*t2);
-		th = 3*M_PI/2*((t-t2)/(t3-t2));
-		return true;
-	}
-	// Segment 5: Return to field from corner circle
-	else if ( t < t4 ) {
-		x = -(cornerRadius*12)+(desiredVelocity*(t-t3));
-		y = (startingDistance+fieldLength)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// Segment 6: Straight line Top Field Width
-	else if ( t < t5 ) {
-		x = desiredVelocity*(t-t4);
-		y = (startingDistance+fieldLength)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// Segment 7: Prepare for corner
-	else if ( t < t6 ) {
-		x = desiredVelocity*(t-t5)+fieldWidth*12;
-		y = (startingDistance+fieldLength)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// segment 8: 2nd Corner
-	else if ( t < t7 ) {
-		x = (cornerRadius*12)*sin((t-t6)/(t7-t6)*3*M_PI/2)+(fieldWidth+cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t6)/(t7-t6)*3*M_PI/2)+(cornerRadius+startingDistance+fieldLength)*12;
-		th = 3*M_PI/2+3*M_PI/2*((t-t6)/(t7-t6));
-		return true;
-	}
-	// Segment 9: Exit corner
-	else if ( t < t8 ) {
-		x = fieldWidth*12;
-	        y = (startingDistance+fieldLength+cornerRadius)*12-(desiredVelocity*(t-t7));
-		th = M_PI;
-		return true;
-	}
-	// Segment 10: Right Field Length
-	else if ( t < t9 ) {
-		x = fieldWidth*12;
-        	y = (startingDistance+fieldLength)*12-(desiredVelocity*(t-t8));
-		th = M_PI;
-		return true;
-	}
-	// Segment 11:  Prepare for corner
-	else if ( t < t10 ) {
-		x = fieldWidth*12;
-        	y = (startingDistance)*12-(desiredVelocity*(t-t9));
-		th = M_PI;
-		return true;
-	}
-	// Segment 12: 3rd Corner
-	else if ( t < t11 ) {
-		x = -(cornerRadius*12)*cos((t-t10)/(t11-t10)*3*M_PI/2)+(cornerRadius*12)+(fieldWidth*12);
-        	y = -(cornerRadius*12)*sin((t-t10)/(t11-t10)*3*M_PI/2)-(cornerRadius*12)+(startingDistance*12);
-		th = M_PI+3*M_PI/2*((t-t10)/(t11-t10));
-		return true;
-	}
-	// Segment 13: Exit corner
-	else if ( t < t12 ) {
-		x = (fieldWidth+cornerRadius)*12-(desiredVelocity*(t-t11));
-        	y = startingDistance*12;
-		th = M_PI/2;
-		return true;
-	}
-	// Segment 14: Bottom Field Width
-	else if ( t < t13 ) {
-		x = (fieldWidth*12)-(desiredVelocity*(t-t12));
-	        y = startingDistance*12;
-		th = M_PI/2;
-		return true;
-	}
-	// Segment 15: Prepare to turn towards center
-	else if ( t < t14 ) {
-		x = -desiredVelocity*(t-t13);
-        	y = startingDistance*12;
-		th = M_PI/2;
-		return true;
-	}
-	// Segment 16: Turn towards center
-	else if ( t < t15 ) {
-		x = -(cornerRadius*12)*sin((t-t14)/(t15-t14)*M_PI/2)-(cornerRadius*12);
-	        y = -(cornerRadius*12)*cos((t-t14)/(t15-t14)*M_PI/2)+(startingDistance*12)+(cornerRadius*12);
-		th = M_PI/2 + M_PI/2*((t-t14)/(t15-t14));
-		return true;
-	}
-	// Segment 17: Travel towards center
-	else if ( t < t16 ) {
-		x = -(2*cornerRadius*12);
-        	y = ((startingDistance+cornerRadius)*12)+desiredVelocity*(t-t15);
-		th = 0;
-		return true;
-	}
-	// Segment 18: Turn towards center line
-	else if ( t < t17 ) {
-		x = -(cornerRadius*12)*cos((t-t16)/(t17-t16)*M_PI/2)-(cornerRadius*12);
-	        y = (cornerRadius*12)*sin((t-t16)/(t17-t16)*M_PI/2)+(startingDistance-cornerRadius+fieldLength/2)*12;
-		th = M_PI/2*((t-t16)/(t17-t16));
-		return true;
-	}
-	// Segment 19: Prepare to do center
-	else if ( t < t18 ) {
-		x = -(cornerRadius*12)+desiredVelocity*(t-t17);
-        	y = (startingDistance+fieldLength/2)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// Segment 20: Do Center Line
-	else if ( t < t19 ) {
-		x = desiredVelocity*(t-t18);
-	        y = (startingDistance+fieldLength/2)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// Segment 21: exit field
-	else if ( t < t20 ) {
-		x = fieldWidth*12+desiredVelocity*(t-t19);
-        	y = (startingDistance+fieldLength/2)*12;
-		th = 3*M_PI/2;
-		return true;
-	}
-	// Segment X: Stop at the end
-	else {
-		x = (fieldWidth+startingDistance)*12;
-		y = (startingDistance+fieldLength/2)*12;
-		th = 3*M_PI/2;
-		return false;
-	}
+        double desiredVelocity = 6; // 6 in/s
+
+        // Segment 0: The negative time case (shouldn't happen)
+        if ( t < 0 ) {
+                x=0;
+                y=0;
+                th=0;
+                return false;
+        }
+        // Segment 1: Straight Line - 18 ft
+        else if ( t < 36 ) {
+                x = 0;
+                y = desiredVelocity*t;
+                th = 0;
+                return true;
+        }
+        // Segment 2: 3/4ths of a circle to go around a corner (6 ft radius)
+        else if ( t < 92.5487 ) {
+                x = (6*12)*cos((t-36)/56.5487*3*M_PI/2)-(6*12);
+                y = (6*12)*sin((t-36)/56.5487*3*M_PI/2)+(18*12);
+                th = 3*M_PI/2*((t-36)/56.5487);
+                return true;
+        }
+        // Segment 3: Straight line - 12 ft
+        else if ( t < 116.5487 ) {
+                x = -(6*12)+(desiredVelocity*(t-92.5487));
+                y = (12*12);
+                th = 3*M_PI/2;
+                return true;
+        }
+        // Segment 4: Stop at the end
+        else {
+                x = (6*12);
+                y = (12*12);
+                th = 3*M_PI/2;
+                return false;
+        }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-bool desiredPathVW(double t, double & v, double & w) { /// NOT UPDATED!
+bool desiredPathVW(double t, double & v, double & w) {
         /// This function:
         ///
         /// Returns true if moving, false if not moving
@@ -915,21 +759,20 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 	double errorCurrent, errorMin;
 	int _vMinIndex, _wMinIndex;
 
-	if(verbose) cout << "First y point: " << yDesiredPath[0] << endl;
+	//if(verbose) cout << "First y point: " << yDesiredPath[0] << endl;
 	
-	vector<Pose> goalPath (xDesiredPath.size());
+	vector<Pose> goalPath(xDesiredPath.size());
 	pathToRobotFrame(xDesiredPath, yDesiredPath, thetaDesiredPath, goalPath);
 
-	if(verbose) cout << "Rotated y Point: " << goalPath[0].Y << endl;
+	//if(verbose) cout << "Rotated y Point: " << goalPath[0].Y << endl;
 
-	for(int i = 0; i < _vNumberOfEntries; i ++){
+	for(int i = 0; i < _vNumberOfEntries; i++){
 		for(int j = 0; j < _wNumberOfEntries; j++){
 		
 			//retried error for current path
 			errorCurrent = getPathError(projectedPaths[i][j], goalPath, _numPathPoints);
 			//set this path error as the minimum if its less than the current minimum
-			if(errorCurrent < errorMin || (i==0 && j==0))
-			{
+			if((errorCurrent < errorMin) || (i==0 && j==0)){
 				errorMin = errorCurrent;
 				_vMinIndex = i;
 				_wMinIndex = j;
@@ -939,10 +782,17 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 		//cout << endl;
 	}
 	//cout << endl;
+	//cout << "             _vNumberOfEntries: " << _vNumberOfEntries << "          _wNumberOfEntries: " << _wNumberOfEntries << endl;	
+	//cout << "                     _vMinIndex:" << _vMinIndex << "       _wMinIndex:"  << _wMinIndex << endl;
+
+	//for (int i = 0; i < numPathPoints; i++){
+	//cout << "Projected Path" << projectedPaths[_vMinIndex][_wMinIndex][i].X << " " << projectedPaths[_vMinIndex][_wMinIndex][i].Y << " " << goalPath[i].X  << " " << goalPath[i].Y  << endl;
+	
+	//}
 	
 	//convert the index values to the corresponding velocity commands and return them
 	velocities[0] =  vMin + (_vMinIndex * vResolution);
-	velocities[1] =  wMin + (_wMinIndex * wResolution);		
+	velocities[1] = ( wMin + (_wMinIndex * wResolution) ) * 2;		
 
 	return velocities;
 
@@ -955,12 +805,12 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 bool sendVelocityCommands(double linearVelocity, double angularVelocity)
 {
 
-//Find the RPM of each wheel that will give the deisreved linear and angular velocity
-double rightWheel_RPM = 160/M_PI*( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
-double leftWheel_RPM = 160/M_PI*( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
+//Find the RPM of each wheel that will give the desired linear and angular velocity
+double rightWheel_RPM = 150/M_PI*( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
+double leftWheel_RPM = 150/M_PI*( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
 
-if(!verbose) cout << "rightWheel_RPM:" << rightWheel_RPM << endl;
-if(!verbose) cout << "leftWheel_RPM:" << leftWheel_RPM << endl;
+//if(!verbose) cout << "rightWheel_RPM:" << rightWheel_RPM << endl;
+//if(!verbose) cout << "leftWheel_RPM:" << leftWheel_RPM << endl;
 
 
 //Send RPM commands to wheels
@@ -974,11 +824,21 @@ else
 
 // Rotates the projected goal path into the frame of the robot
 bool pathToRobotFrame(vector<double> projectedPathX, vector<double> projectedPathY, vector<double> projectedPathTheta, vector<Pose> & newProjectedPath) {
+	
+	Pose* translatedPath = new Pose[projectedPathX.size()];
+
 	for (int i=0; i<projectedPathX.size(); i++) {
-		newProjectedPath[i].X = projectedPathX[i] - absoluteX;
-		newProjectedPath[i].Y = projectedPathY[i] - absoluteY;
-		newProjectedPath[i].X = cos(absoluteTheta)*projectedPathX[i] + sin(absoluteTheta)*projectedPathY[i];
-		newProjectedPath[i].Y = -sin(absoluteTheta)*projectedPathX[i] + cos(absoluteTheta)*projectedPathY[i];
+
+		translatedPath[i].X = projectedPathX[i] - absoluteX;
+		translatedPath[i].Y = projectedPathY[i] - absoluteY;
+		newProjectedPath[i].X = cos(absoluteTheta)*translatedPath[i].X + sin(absoluteTheta)*translatedPath[i].Y;
+		newProjectedPath[i].Y = -sin(absoluteTheta)*translatedPath[i].X + cos(absoluteTheta)*translatedPath[i].Y;
 		newProjectedPath[i].Theta += absoluteTheta;
+	
+//		newProjectedPath[i].X = cos(absoluteTheta)*projectedPathX[i] + sin(absoluteTheta)*projectedPathY[i];
+//		newProjectedPath[i].Y = -sin(absoluteTheta)*projectedPathX[i] + cos(absoluteTheta)*projectedPathY[i];
+//		newProjectedPath[i].X -= absoluteX;
+//		newProjectedPath[i].Y -= absoluteY;
+//		newProjectedPath[i].Theta += absoluteTheta;
 	}
 }
