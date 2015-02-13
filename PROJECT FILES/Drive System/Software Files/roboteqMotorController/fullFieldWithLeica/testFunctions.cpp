@@ -106,12 +106,12 @@ double vResolution = 0.1;
 const int vNumberOfEntries = (int) (vMax-vMin) / vResolution;
 double wMin = -1;
 double wMax = 1;
-double wResolution = 0.01;
+double wResolution = 0.05;
 const int wNumberOfEntries = (int) (wMax - wMin) / wResolution;
 
 //Path length and resolution settings
-double pathHorizon = 10; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double timeStep = 0.5; 	//The resolution of the MPC path will be 0.1 seconds
+double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) (pathHorizon / timeStep);
 
 clock_t prevTime;
@@ -162,10 +162,10 @@ bool sendVelocityCommands(double linearVelocity, double angularVelocity);
 
 int main(int argc, char *argv[])
 {
-	Pose* testPath = projectPath(6, 0.1, 5, 0.1);
+	Pose* testPath = projectPath(6, 0.1, pathHorizon, timeStep);
 
-	for(int i = 0; i<50; i++){
-	cout << "x:" << testPath[i].X <<"     y:"<<  testPath[i].Y <<"        theta:" << testPath[i].Theta << endl;
+	for(int i = 0; i < numPathPoints; i++){
+	cout << testPath[i].X <<" "<<  testPath[i].Y <<" "<< testPath[i].Theta << endl;
 	}
 
 	return 0;

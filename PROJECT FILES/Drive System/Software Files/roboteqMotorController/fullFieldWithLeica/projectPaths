@@ -1,0 +1,5 @@
+linearVelocity = [-1:1:0.1];
+angularVelocity = [-10:10:0.1];
+
+% pathX = -(_linearVelocity/_angularVelocity) * (1-cos(_angularVelocity*t));
+% pathY = (_linearVelocity/_angularVelocity) * sin(_angularVelocity*t);
