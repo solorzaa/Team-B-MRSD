@@ -17,7 +17,7 @@ myI2C::~myI2C(){
 void myI2C::i2cOpen()
 {
 	//cout << "beagle-i2c opening /dev/i2c-3... ";
-	g_i2cFile = open("/dev/i2c-1", O_RDWR);
+	g_i2cFile = open("/dev/i2c-3", O_RDWR);
 	if (g_i2cFile < 0) {
 		perror("i2cOpen in myI2C::i2cOpen");
 		exit(1);
