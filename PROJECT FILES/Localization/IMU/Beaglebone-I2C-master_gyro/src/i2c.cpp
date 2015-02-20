@@ -34,7 +34,7 @@ void myI2C::i2cClose()
 // set the I2C slave address for all subsequent I2C device transfers
 void myI2C::i2cSetAddress(unsigned char address)
 {
-	//cout << "beagle-i2c setting address 0x"<< hex <<(int)address <<"... ";
+ 	//cout << "beagle-i2c setting address 0x"<< hex <<(int)address <<"... ";
 	if (ioctl(g_i2cFile, I2C_SLAVE, address) < 0) {
 		perror("i2cSetAddress error in myI2C::i2cSetAddress");
 		exit(1);
@@ -68,7 +68,8 @@ unsigned char myI2C::Read_I2C_Byte(unsigned char DEVICE_ADDR,unsigned char Reg_A
 	if(read(g_i2cFile, I2C_RD_Buf, 1) !=1){
 		perror("Read Error myI2C::Read_I2C_Byte");
 	}
-	
+	cout << "reading data" << endl;
+	cout << hex <<int( I2C_RD_Buf[0]) << endl;
 	return I2C_RD_Buf[0];
 }
 
