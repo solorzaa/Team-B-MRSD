@@ -49,7 +49,7 @@ int status;
 int result;
 RoboteqDevice device;
 string motorControllerPort = "/dev/ttyUSB0";
-int counts_per_revolution = 5500;
+int counts_per_revolution = 5461;
 float wheelDiameter = 13.2; //wheel diameter in inches
 float wheelRadius = wheelDiameter/2; //wheel radius in inches
 float botRadius = 11.25; //radius from each wheel to the midpoint between wheels in inches
@@ -64,6 +64,12 @@ double angularVelocity = 0;
 double leftWheelRPM = 0;
 double rightWheelRPM = 0;
 
+int indexSignal1 = 0;
+int indexSignal2 = 0;
+int indexSignal3 = 0;
+int indexSignal4 = 0;
+int indexSignal5 = 0;
+int indexSignal6 = 0;
 
 //Leica communication variables
 static int fd;
@@ -87,6 +93,10 @@ double absoluteY = 0;
 double absoluteTheta = 0;
 int prevRightEncoder;
 int prevLeftEncoder;
+int currRightEncoderCount;
+int currLeftEncoderCount;
+int prevRightEncoderCount;
+int prevLeftEncoderCount;
 vector<float> testData;
 double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
 double pathResolution = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
@@ -140,57 +150,71 @@ Pose* projectPath(double linearVelocity, double angularVelocity, double t_interv
 
 Pose*** constructLUT(double _vMin, double _vMax, double _vNumberOfEntries, double _wMin, double _wMax, double __wNumberOfEntries);
 
+double getUnixTime();
+
 /////////////////////////////////
 //Main
 /////////////////////////////////
 int main(int argc, char *argv[])
 {
-//	// Correct the angles
+	// Correct the angles
 //        for(int i=0; i<110; i++) {
 //                thetaPoints[i]+=2*M_PI;
 //                thetaPoints[i]=fmod(thetaPoints[i],2*M_PI);
 //        }
-//	// Correct the distance measurements
+	// Correct the distance measurements
 //	wheelRadius = wheelRadius * distanceCorrection;
 //	botRadius = botRadius * distanceCorrection;
+
+	// If you don't want motion
+	//if(!dataOnly) {
+		// Set up the motor controller
+	//	device.Disconnect();
+	//	if(initialize() == false){
+	//		return 1;
+	//	}
 //
-//	// If you don't want motion
-//	if(!dataOnly) {
-//		// Set up the motor controller
-//		device.Disconnect();
-//		if(initialize() == false){
-//			return 1;
-//		}
-//
-//		// Turn off the motors (just in case)
+		// Turn off the motors (just in case)
 //		device.SetCommand(_GO, leftWheelCode, 0);
 //		device.SetCommand(_GO, rightWheelCode, 0);	
 //	}
-//
-//	//Start clock to keep time along path
-//	startTime = clock();
-//
-//	//Move bot based on linear and angular velocities
-//	while( pathTime < 0.01)	
-//	{
-//		linearVelocity = 0;
-//		angularVelocity = 60;	
+	//Start clock to keep time along path
+	startTime = getUnixTime();
+
+//        readAbsoluteEncoderCount(currRightEncoderCount, 1);
+//	prevRightEncoderCount = currRightEncoderCount;
+//	int diffCount = currRightEncoderCount - prevRightEncoderCount;
+//	int MCTime = 0;
+	
+	//Move bot based on linear and angular velocities
+	while( pathTime < 5400)	
+	{
+//		linearVelocity = 50;
+//		angularVelocity = 0;	
 //		velocitiesPolar2Wheel(linearVelocity, angularVelocity, leftWheelRPM, rightWheelRPM);
-//		device.SetCommand(_GO, leftWheelCode, leftWheelRPM);
-//		device.SetCommand(_GO, rightWheelCode, rightWheelRPM);
-//		pathTime = (double) (clock() - startTime)/CLOCKS_PER_SEC;
-//		cout << pathTime << endl;
-//	}
-//
-//	//Stop the bot
+		//device.SetCommand(_GO, leftWheelCode, leftWheelRPM);
+//		device.SetCommand(_GO, leftWheelCode, 10);
+		pathTime = (double) (getUnixTime() - startTime);
+
+//		readAbsoluteEncoderCount(currRightEncoderCount, 1);
+
+//		device.GetValue(_TIME, MCTime);
+	
+//		diffCount = currRightEncoderCount - prevRightEncoderCount;
+		cout <<  pathTime << endl;
+	
+		//cout << indexSignal1 << "    " << indexSignal2 << "    " << indexSignal3 << "    " << indexSignal4 << "    " << indexSignal5 << "    " << indexSignal6 << endl;  
+	}
+
+	//Stop the bot
 //	device.SetCommand(_GO, leftWheelCode, 0);
 //	device.SetCommand(_GO, rightWheelCode, 0);
-//
+
 //	if(!dataOnly) {
-//		// Disconnect roboteq
+		// Disconnect roboteq
 //		device.Disconnect();
 //	}
-	Pose* testPath = 
+ 
 
 	return 0;
 }
@@ -674,7 +698,7 @@ Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, do
 	{
         	for(int j = 0; j < _wNumberOfEntries; j++)
 		{
-        		LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
+        	//	LUT[i][j] = projectPath(_vMin + (_vResolution * i), _wMin + (_wResolution * j), pathHorizon, pathResolution);
         	}
     	}
 
@@ -682,9 +706,18 @@ Pose*** constructLUT(double _vMin, double _vMax, const int _vNumberOfEntries, do
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
-//optimizePath:
-//Finds the path that minimizes error in pose with respect to the desired path. 
-//Returns the linear velocity and angular velocity that will give that path
+//getUnixTime:
+//Get the time is seconds. This time is indpendent of the machine running this program.
+//The library supporting this function is only on Unix machines
+
+double getUnixTime()
+{
+    struct timespec tv;
+
+    if(clock_gettime(CLOCK_REALTIME, &tv) != 0) return 0;
+
+    return (((double) tv.tv_sec) + (double) (tv.tv_nsec / 1000000000.0));
+}
 
 
 
