@@ -1,0 +1,2938 @@
+Opening port: '/dev/ttyO4'...succeeded.
+Initializing port......done.
+Detecting device version...v1.2.
+- SetConfig(_DINA, 1, 1)...succeeded.
+absoluteTheta: 0
+absoluteX: 0
+absoluteY: 0
+xGoal:0
+yGoal:0
+thetaGoal:0
+current time: 0.013
+linearVelocity:6
+angularVelocity:0
+absoluteTheta: 6.2817
+absoluteX: 3.74314e-05
+absoluteY: 0.0167551
+xGoal:0
+yGoal:0.078
+thetaGoal:0
+current time: 0.364
+linearVelocity:6.5
+angularVelocity:0
+absoluteTheta: 6.27983
+absoluteX: 0.00407299
+absoluteY: 0.959224
+xGoal:0
+yGoal:2.184
+thetaGoal:0
+current time: 0.728
+linearVelocity:6.5
+angularVelocity:0
+absoluteTheta: 6.27983
+absoluteX: 0.00743339
+absoluteY: 1.96201
+xGoal:0
+yGoal:4.368
+thetaGoal:0
+current time: 1.092
+linearVelocity:6.5
+angularVelocity:0
+absoluteTheta: 6.27983
+absoluteX: 0.0105664
+absoluteY: 2.89695
+xGoal:0
+yGoal:6.552
+thetaGoal:0
+current time: 1.443
+linearVelocity:7
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0147096
+absoluteY: 3.9567
+xGoal:0
+yGoal:8.658
+thetaGoal:0
+current time: 1.794
+linearVelocity:7
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0184433
+absoluteY: 4.95949
+xGoal:0
+yGoal:10.764
+thetaGoal:0
+current time: 2.158
+linearVelocity:7
+angularVelocity:0
+absoluteTheta: 6.27983
+absoluteX: 0.0219564
+absoluteY: 6.06952
+xGoal:0
+yGoal:12.948
+thetaGoal:0
+current time: 2.522
+linearVelocity:7.5
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0262961
+absoluteY: 7.17954
+xGoal:0
+yGoal:15.132
+thetaGoal:0
+current time: 2.873
+linearVelocity:7.5
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0303387
+absoluteY: 8.26526
+xGoal:0
+yGoal:17.238
+thetaGoal:0
+current time: 3.237
+linearVelocity:7.5
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0344374
+absoluteY: 9.36607
+xGoal:0
+yGoal:19.422
+thetaGoal:0
+current time: 3.601
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 6.27909
+absoluteX: 0.039585
+absoluteY: 10.5682
+xGoal:0
+yGoal:21.606
+thetaGoal:0
+current time: 3.952
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 6.27909
+absoluteX: 0.0442171
+absoluteY: 11.6992
+xGoal:0
+yGoal:23.712
+thetaGoal:0
+current time: 4.303
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 6.27946
+absoluteX: 0.0488251
+absoluteY: 13.0019
+xGoal:0
+yGoal:25.818
+thetaGoal:0
+current time: 4.667
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 6.27909
+absoluteX: 0.0544031
+absoluteY: 14.3046
+xGoal:0
+yGoal:28.002
+thetaGoal:0
+current time: 5.031
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.0603492
+absoluteY: 15.5822
+xGoal:0
+yGoal:30.186
+thetaGoal:0
+current time: 5.395
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 6.27909
+absoluteX: 0.0657042
+absoluteY: 16.9519
+xGoal:0
+yGoal:32.37
+thetaGoal:0
+current time: 5.746
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 6.27909
+absoluteX: 0.0707069
+absoluteY: 18.1733
+xGoal:0
+yGoal:34.476
+thetaGoal:0
+current time: 6.11
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.0770429
+absoluteY: 19.5347
+xGoal:0
+yGoal:36.66
+thetaGoal:0
+current time: 6.461
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.0838858
+absoluteY: 20.896
+xGoal:0
+yGoal:38.766
+thetaGoal:0
+current time: 6.825
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.0900737
+absoluteY: 22.3411
+xGoal:0
+yGoal:40.95
+thetaGoal:0
+current time: 7.176
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.0958681
+absoluteY: 23.638
+xGoal:0
+yGoal:43.056
+thetaGoal:0
+current time: 7.553
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.101662
+absoluteY: 24.9348
+xGoal:0
+yGoal:45.318
+thetaGoal:0
+current time: 7.904
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.108969
+absoluteY: 26.3883
+xGoal:0
+yGoal:47.424
+thetaGoal:0
+current time: 8.268
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.115611
+absoluteY: 27.7605
+xGoal:0
+yGoal:49.608
+thetaGoal:0
+current time: 8.619
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.122086
+absoluteY: 29.2727
+xGoal:0
+yGoal:51.714
+thetaGoal:0
+current time: 8.983
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 6.27872
+absoluteX: 0.128082
+absoluteY: 30.6148
+xGoal:0
+yGoal:53.898
+thetaGoal:0
+current time: 9.334
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.135683
+absoluteY: 32.1269
+xGoal:0
+yGoal:56.004
+thetaGoal:0
+current time: 9.698
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.143201
+absoluteY: 33.6801
+xGoal:0
+yGoal:58.188
+thetaGoal:0
+current time: 10.062
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 6.27834
+absoluteX: 0.150208
+absoluteY: 35.1277
+xGoal:0
+yGoal:60.372
+thetaGoal:0
+current time: 10.413
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.15887
+absoluteY: 36.732
+xGoal:0
+yGoal:62.478
+thetaGoal:0
+current time: 10.777
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.166376
+absoluteY: 38.1721
+xGoal:0
+yGoal:64.662
+thetaGoal:0
+current time: 11.141
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.173883
+absoluteY: 39.6122
+xGoal:0
+yGoal:66.846
+thetaGoal:0
+current time: 11.492
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.183142
+absoluteY: 41.2164
+xGoal:0
+yGoal:68.952
+thetaGoal:0
+current time: 11.843
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.191501
+absoluteY: 42.8794
+xGoal:0
+yGoal:71.058
+thetaGoal:0
+current time: 12.22
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.199322
+absoluteY: 44.3798
+xGoal:0
+yGoal:73.32
+thetaGoal:0
+current time: 12.571
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.208919
+absoluteY: 46.0427
+xGoal:0
+yGoal:75.426
+thetaGoal:0
+current time: 12.922
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.21732
+absoluteY: 47.714
+xGoal:0
+yGoal:77.532
+thetaGoal:0
+current time: 13.286
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.227014
+absoluteY: 49.3937
+xGoal:0
+yGoal:79.716
+thetaGoal:0
+current time: 13.637
+linearVelocity:10.5
+angularVelocity:0
+absoluteTheta: 6.27797
+absoluteX: 0.235415
+absoluteY: 51.065
+xGoal:0
+yGoal:81.822
+thetaGoal:0
+current time: 14.014
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.245012
+absoluteY: 52.7279
+xGoal:0
+yGoal:84.084
+thetaGoal:0
+current time: 14.352
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.255795
+absoluteY: 54.483
+xGoal:0
+yGoal:86.112
+thetaGoal:0
+current time: 14.716
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.265272
+absoluteY: 56.0739
+xGoal:0
+yGoal:88.296
+thetaGoal:0
+current time: 15.08
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.274793
+absoluteY: 57.8373
+xGoal:0
+yGoal:90.48
+thetaGoal:0
+current time: 15.431
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.287068
+absoluteY: 59.8353
+xGoal:0
+yGoal:92.586
+thetaGoal:0
+current time: 15.795
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.296589
+absoluteY: 61.5988
+xGoal:0
+yGoal:94.77
+thetaGoal:0
+current time: 16.159
+linearVelocity:11
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.305432
+absoluteY: 63.1821
+xGoal:0
+yGoal:96.954
+thetaGoal:0
+current time: 16.523
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.314359
+absoluteY: 64.7805
+xGoal:0
+yGoal:99.138
+thetaGoal:0
+current time: 16.874
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.325657
+absoluteY: 66.6194
+xGoal:0
+yGoal:101.244
+thetaGoal:0
+current time: 17.251
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.335539
+absoluteY: 68.2781
+xGoal:0
+yGoal:103.506
+thetaGoal:0
+current time: 17.602
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.34542
+absoluteY: 69.9368
+xGoal:0
+yGoal:105.612
+thetaGoal:0
+current time: 17.966
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.2776
+absoluteX: 0.355393
+absoluteY: 71.7841
+xGoal:0
+yGoal:107.796
+thetaGoal:0
+current time: 18.317
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.366845
+absoluteY: 73.648
+xGoal:0
+yGoal:109.902
+thetaGoal:0
+current time: 18.681
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.376772
+absoluteY: 75.3143
+xGoal:0
+yGoal:112.086
+thetaGoal:0
+current time: 19.032
+linearVelocity:11.5
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.386654
+absoluteY: 76.973
+xGoal:0
+yGoal:114.192
+thetaGoal:0
+current time: 19.396
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.396535
+absoluteY: 78.6318
+xGoal:0
+yGoal:116.376
+thetaGoal:0
+current time: 19.76
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.406687
+absoluteY: 80.3358
+xGoal:0
+yGoal:118.56
+thetaGoal:0
+current time: 20.111
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.417063
+absoluteY: 82.0774
+xGoal:0
+yGoal:120.666
+thetaGoal:0
+current time: 20.462
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.427304
+absoluteY: 83.7965
+xGoal:0
+yGoal:122.772
+thetaGoal:0
+current time: 20.839
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.44136
+absoluteY: 85.9536
+xGoal:0
+yGoal:125.034
+thetaGoal:0
+current time: 21.19
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.452432
+absoluteY: 87.7029
+xGoal:0
+yGoal:127.14
+thetaGoal:0
+current time: 21.554
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.463431
+absoluteY: 89.6087
+xGoal:0
+yGoal:129.324
+thetaGoal:0
+current time: 21.905
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.473673
+absoluteY: 91.3278
+xGoal:0
+yGoal:131.43
+thetaGoal:0
+current time: 22.256
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27723
+absoluteX: 0.483959
+absoluteY: 93.0544
+xGoal:0
+yGoal:133.536
+thetaGoal:0
+current time: 22.62
+linearVelocity:12
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.496432
+absoluteY: 94.9686
+xGoal:0
+yGoal:135.72
+thetaGoal:0
+current time: 22.984
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.507313
+absoluteY: 96.6876
+xGoal:0
+yGoal:137.904
+thetaGoal:0
+current time: 23.335
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.518815
+absoluteY: 98.5047
+xGoal:0
+yGoal:140.01
+thetaGoal:0
+current time: 23.699
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.530221
+absoluteY: 100.307
+xGoal:0
+yGoal:142.194
+thetaGoal:0
+current time: 24.063
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.541484
+absoluteY: 102.086
+xGoal:0
+yGoal:144.378
+thetaGoal:0
+current time: 24.414
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.55289
+absoluteY: 103.888
+xGoal:0
+yGoal:146.484
+thetaGoal:0
+current time: 24.778
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.564296
+absoluteY: 105.69
+xGoal:0
+yGoal:148.668
+thetaGoal:0
+current time: 25.129
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.57575
+absoluteY: 107.5
+xGoal:0
+yGoal:150.774
+thetaGoal:0
+current time: 25.506
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.587109
+absoluteY: 109.294
+xGoal:0
+yGoal:153.036
+thetaGoal:0
+current time: 25.857
+linearVelocity:12.5
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.598563
+absoluteY: 111.103
+xGoal:0
+yGoal:155.142
+thetaGoal:0
+current time: 26.208
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.609969
+absoluteY: 112.905
+xGoal:0
+yGoal:157.248
+thetaGoal:0
+current time: 26.572
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.62338
+absoluteY: 115.024
+xGoal:0
+yGoal:159.432
+thetaGoal:0
+current time: 26.936
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27611
+absoluteX: 0.639038
+absoluteY: 117.127
+xGoal:0
+yGoal:161.616
+thetaGoal:0
+current time: 27.3
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27648
+absoluteX: 0.652658
+absoluteY: 119.217
+xGoal:0
+yGoal:163.8
+thetaGoal:0
+current time: 27.638
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27686
+absoluteX: 0.665499
+absoluteY: 121.307
+xGoal:0
+yGoal:165.828
+thetaGoal:0
+current time: 28.015
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27648
+absoluteX: 0.679897
+absoluteY: 123.397
+xGoal:0
+yGoal:168.09
+thetaGoal:0
+current time: 28.366
+linearVelocity:13
+angularVelocity:0
+absoluteTheta: 6.27648
+absoluteX: 0.692631
+absoluteY: 125.297
+xGoal:0
+yGoal:170.196
+thetaGoal:0
+current time: 28.73
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 6.27686
+absoluteX: 0.70542
+absoluteY: 127.379
+xGoal:0
+yGoal:172.38
+thetaGoal:0
+current time: 29.081
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 6.27983
+absoluteX: 0.709257
+absoluteY: 129.44
+xGoal:0
+yGoal:174.486
+thetaGoal:0
+current time: 29.445
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 6.28281
+absoluteX: 0.706936
+absoluteY: 131.518
+xGoal:0
+yGoal:176.67
+thetaGoal:0
+current time: 29.796
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.00223402
+absoluteX: 0.699573
+absoluteY: 133.599
+xGoal:0
+yGoal:178.776
+thetaGoal:0
+current time: 30.16
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.00521272
+absoluteX: 0.685536
+absoluteY: 135.694
+xGoal:0
+yGoal:180.96
+thetaGoal:0
+current time: 30.511
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.00856375
+absoluteX: 0.66422
+absoluteY: 137.776
+xGoal:0
+yGoal:183.066
+thetaGoal:0
+current time: 30.888
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0115424
+absoluteX: 0.637036
+absoluteY: 139.861
+xGoal:0
+yGoal:185.328
+thetaGoal:0
+current time: 31.239
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0145211
+absoluteX: 0.603774
+absoluteY: 141.939
+xGoal:0
+yGoal:187.434
+thetaGoal:0
+current time: 31.603
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0171275
+absoluteX: 0.565715
+absoluteY: 144.003
+xGoal:0
+yGoal:189.618
+thetaGoal:0
+current time: 31.954
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0197339
+absoluteX: 0.52157
+absoluteY: 146.102
+xGoal:0
+yGoal:191.724
+thetaGoal:0
+current time: 32.318
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0234572
+absoluteX: 0.464731
+absoluteY: 148.346
+xGoal:0
+yGoal:193.908
+thetaGoal:0
+current time: 32.682
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0264359
+absoluteX: 0.406252
+absoluteY: 150.44
+xGoal:0
+yGoal:196.092
+thetaGoal:0
+current time: 33.046
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.029787
+absoluteX: 0.341027
+absoluteY: 152.512
+xGoal:0
+yGoal:198.276
+thetaGoal:0
+current time: 33.397
+linearVelocity:13
+angularVelocity:0.02
+absoluteTheta: 0.0323933
+absoluteX: 0.270607
+absoluteY: 154.601
+xGoal:0
+yGoal:200.382
+thetaGoal:0
+current time: 33.761
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0357443
+absoluteX: 0.193037
+absoluteY: 156.673
+xGoal:0
+yGoal:202.566
+thetaGoal:0
+current time: 34.125
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0424464
+absoluteX: 0.0990706
+absoluteY: 158.723
+xGoal:0
+yGoal:204.75
+thetaGoal:0
+current time: 34.463
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0491485
+absoluteX: -0.0103938
+absoluteY: 160.807
+xGoal:0
+yGoal:206.778
+thetaGoal:0
+current time: 34.827
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0562229
+absoluteX: -0.134229
+absoluteY: 162.876
+xGoal:0
+yGoal:208.962
+thetaGoal:0
+current time: 35.191
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0632973
+absoluteX: -0.274382
+absoluteY: 164.97
+xGoal:0
+yGoal:211.146
+thetaGoal:0
+current time: 35.542
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0699993
+absoluteX: -0.426641
+absoluteY: 167.042
+xGoal:0
+yGoal:213.252
+thetaGoal:0
+current time: 35.906
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0774461
+absoluteX: -0.595097
+absoluteY: 169.113
+xGoal:0
+yGoal:215.436
+thetaGoal:0
+current time: 36.27
+linearVelocity:13
+angularVelocity:0.04
+absoluteTheta: 0.0841481
+absoluteX: -0.775924
+absoluteY: 171.174
+xGoal:-0.0182242
+yGoal:217.62
+thetaGoal:0.0225
+current time: 36.621
+linearVelocity:13
+angularVelocity:0.06
+absoluteTheta: 0.0908502
+absoluteX: -0.969775
+absoluteY: 173.226
+xGoal:-0.0963886
+yGoal:219.724
+thetaGoal:0.05175
+current time: 36.972
+linearVelocity:13
+angularVelocity:0.06
+absoluteTheta: 0.100159
+absoluteX: -1.18845
+absoluteY: 175.305
+xGoal:-0.236067
+yGoal:221.826
+thetaGoal:0.081
+current time: 37.336
+linearVelocity:12.5
+angularVelocity:0.06
+absoluteTheta: 0.109467
+absoluteX: -1.42552
+absoluteY: 177.373
+xGoal:-0.445763
+yGoal:223.999
+thetaGoal:0.111333
+current time: 37.7
+linearVelocity:12.5
+angularVelocity:0.06
+absoluteTheta: 0.120265
+absoluteX: -1.70744
+absoluteY: 179.605
+xGoal:-0.721292
+yGoal:226.166
+thetaGoal:0.141667
+current time: 38.064
+linearVelocity:12.5
+angularVelocity:0.06
+absoluteTheta: 0.130318
+absoluteX: -1.97817
+absoluteY: 181.593
+xGoal:-1.0624
+yGoal:228.323
+thetaGoal:0.172
+current time: 38.428
+linearVelocity:12.5
+angularVelocity:0.06
+absoluteTheta: 0.139999
+absoluteX: -2.2732
+absoluteY: 183.616
+xGoal:-1.46877
+yGoal:230.469
+thetaGoal:0.202333
+current time: 38.779
+linearVelocity:12.5
+angularVelocity:0.06
+absoluteTheta: 0.150052
+absoluteX: -2.58182
+absoluteY: 185.59
+xGoal:-1.92209
+yGoal:232.525
+thetaGoal:0.231583
+current time: 39.13
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.159733
+absoluteX: -2.9071
+absoluteY: 187.548
+xGoal:-2.43537
+yGoal:234.568
+thetaGoal:0.260833
+current time: 39.494
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.173137
+absoluteX: -3.26374
+absoluteY: 189.51
+xGoal:-3.0305
+yGoal:236.669
+thetaGoal:0.291167
+current time: 39.845
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.186168
+absoluteX: -3.64635
+absoluteY: 191.471
+xGoal:-3.66449
+yGoal:238.677
+thetaGoal:0.320416
+current time: 40.222
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.1992
+absoluteX: -4.0562
+absoluteY: 193.435
+xGoal:-4.41054
+yGoal:240.813
+thetaGoal:0.351833
+current time: 40.573
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.21186
+absoluteX: -4.48598
+absoluteY: 195.374
+xGoal:-5.16511
+yGoal:242.779
+thetaGoal:0.381083
+current time: 40.924
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.224891
+absoluteX: -4.94615
+absoluteY: 197.326
+xGoal:-5.97686
+yGoal:244.722
+thetaGoal:0.410333
+current time: 41.301
+linearVelocity:12.5
+angularVelocity:0.08
+absoluteTheta: 0.237551
+absoluteX: -5.4276
+absoluteY: 199.261
+xGoal:-6.91164
+yGoal:246.782
+thetaGoal:0.44175
+current time: 41.652
+linearVelocity:12.5
+angularVelocity:0.1
+absoluteTheta: 0.25021
+absoluteX: -5.92926
+absoluteY: 201.174
+xGoal:-7.83971
+yGoal:248.672
+thetaGoal:0.471
+current time: 42.016
+linearVelocity:12.5
+angularVelocity:0.1
+absoluteTheta: 0.266221
+absoluteX: -6.47487
+absoluteY: 203.113
+xGoal:-8.86013
+yGoal:250.603
+thetaGoal:0.501333
+current time: 42.38
+linearVelocity:12.5
+angularVelocity:0.1
+absoluteTheta: 0.282231
+absoluteX: -7.04667
+absoluteY: 205.028
+xGoal:-9.93863
+yGoal:252.502
+thetaGoal:0.531666
+current time: 42.731
+linearVelocity:12
+angularVelocity:0.1
+absoluteTheta: 0.298242
+absoluteX: -7.65156
+absoluteY: 206.941
+xGoal:-11.0327
+yGoal:254.301
+thetaGoal:0.560916
+current time: 43.095
+linearVelocity:12
+angularVelocity:0.1
+absoluteTheta: 0.314252
+absoluteX: -8.25517
+absoluteY: 208.748
+xGoal:-12.2224
+yGoal:256.133
+thetaGoal:0.59125
+current time: 43.459
+linearVelocity:12
+angularVelocity:0.1
+absoluteTheta: 0.332125
+absoluteX: -8.98093
+absoluteY: 210.793
+xGoal:-13.467
+yGoal:257.927
+thetaGoal:0.621583
+current time: 43.823
+linearVelocity:12
+angularVelocity:0.1
+absoluteTheta: 0.347763
+absoluteX: -9.64881
+absoluteY: 212.592
+xGoal:-14.7656
+yGoal:259.683
+thetaGoal:0.651916
+current time: 44.174
+linearVelocity:12
+angularVelocity:0.1
+absoluteTheta: 0.363401
+absoluteX: -10.3387
+absoluteY: 214.364
+xGoal:-16.0676
+yGoal:261.338
+thetaGoal:0.681166
+current time: 44.525
+linearVelocity:12
+angularVelocity:0.12
+absoluteTheta: 0.379411
+absoluteX: -11.0587
+absoluteY: 216.129
+xGoal:-17.4175
+yGoal:262.955
+thetaGoal:0.710416
+current time: 44.876
+linearVelocity:12
+angularVelocity:0.12
+absoluteTheta: 0.3984
+absoluteX: -11.8214
+absoluteY: 217.893
+xGoal:-18.8141
+yGoal:264.531
+thetaGoal:0.739666
+current time: 45.253
+linearVelocity:12
+angularVelocity:0.12
+absoluteTheta: 0.417017
+absoluteX: -12.6251
+absoluteY: 219.663
+xGoal:-20.3647
+yGoal:266.178
+thetaGoal:0.771083
+current time: 45.604
+linearVelocity:12
+angularVelocity:0.12
+absoluteTheta: 0.436007
+absoluteX: -13.4536
+absoluteY: 221.398
+xGoal:-21.8543
+yGoal:267.666
+thetaGoal:0.800333
+current time: 45.968
+linearVelocity:12
+angularVelocity:0.12
+absoluteTheta: 0.454996
+absoluteX: -14.3298
+absoluteY: 223.147
+xGoal:-23.4444
+yGoal:269.163
+thetaGoal:0.830666
+current time: 46.319
+linearVelocity:11.5
+angularVelocity:0.12
+absoluteTheta: 0.474357
+absoluteX: -15.2226
+absoluteY: 224.845
+xGoal:-25.0199
+yGoal:270.561
+thetaGoal:0.859916
+current time: 46.696
+linearVelocity:11.5
+angularVelocity:0.12
+absoluteTheta: 0.492602
+absoluteX: -16.0949
+absoluteY: 226.435
+xGoal:-26.7569
+yGoal:272.01
+thetaGoal:0.891333
+current time: 47.047
+linearVelocity:11.5
+angularVelocity:0.12
+absoluteTheta: 0.511219
+absoluteX: -17.0073
+absoluteY: 228.027
+xGoal:-28.4143
+yGoal:273.309
+thetaGoal:0.920583
+current time: 47.398
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.53058
+absoluteX: -17.9467
+absoluteY: 229.593
+xGoal:-30.109
+yGoal:274.559
+thetaGoal:0.949833
+current time: 47.762
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.553665
+absoluteX: -18.9293
+absoluteY: 231.142
+xGoal:-31.9043
+yGoal:275.802
+thetaGoal:0.980166
+current time: 48.113
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.576005
+absoluteX: -19.9457
+absoluteY: 232.67
+xGoal:-33.6704
+yGoal:276.95
+thetaGoal:1.00942
+current time: 48.477
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.598718
+absoluteX: -20.9993
+absoluteY: 234.177
+xGoal:-35.5366
+yGoal:278.084
+thetaGoal:1.03975
+current time: 48.841
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.624409
+absoluteX: -22.2229
+absoluteY: 235.83
+xGoal:-37.4363
+yGoal:279.161
+thetaGoal:1.07008
+current time: 49.205
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.647122
+absoluteX: -23.3379
+absoluteY: 237.271
+xGoal:-39.3678
+yGoal:280.181
+thetaGoal:1.10042
+current time: 49.556
+linearVelocity:11.5
+angularVelocity:0.14
+absoluteTheta: 0.669834
+absoluteX: -24.4959
+absoluteY: 238.699
+xGoal:-41.2587
+yGoal:281.107
+thetaGoal:1.12967
+current time: 49.907
+linearVelocity:11
+angularVelocity:0.14
+absoluteTheta: 0.692547
+absoluteX: -25.6968
+absoluteY: 240.114
+xGoal:-43.176
+yGoal:281.979
+thetaGoal:1.15892
+current time: 50.271
+linearVelocity:11
+angularVelocity:0.14
+absoluteTheta: 0.714515
+absoluteX: -26.8668
+absoluteY: 241.433
+xGoal:-45.1903
+yGoal:282.822
+thetaGoal:1.18925
+current time: 50.635
+linearVelocity:11
+angularVelocity:0.14
+absoluteTheta: 0.736482
+absoluteX: -28.0599
+absoluteY: 242.72
+xGoal:-47.2293
+yGoal:283.605
+thetaGoal:1.21958
+current time: 50.986
+linearVelocity:11
+angularVelocity:0.14
+absoluteTheta: 0.75845
+absoluteX: -29.281
+absoluteY: 243.981
+xGoal:-49.217
+yGoal:284.3
+thetaGoal:1.24883
+current time: 51.35
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.780418
+absoluteX: -30.5294
+absoluteY: 245.215
+xGoal:-51.299
+yGoal:284.96
+thetaGoal:1.27917
+current time: 51.714
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.805365
+absoluteX: -31.7978
+absoluteY: 246.403
+xGoal:-53.4
+yGoal:285.556
+thetaGoal:1.3095
+current time: 52.065
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.831428
+absoluteX: -33.1193
+absoluteY: 247.577
+xGoal:-55.4421
+yGoal:286.07
+thetaGoal:1.33875
+current time: 52.429
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.85712
+absoluteX: -34.4671
+absoluteY: 248.714
+xGoal:-57.5749
+yGoal:286.54
+thetaGoal:1.36908
+current time: 52.78
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.882811
+absoluteX: -35.8371
+absoluteY: 249.811
+xGoal:-59.6441
+yGoal:286.932
+thetaGoal:1.39833
+current time: 53.144
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.908502
+absoluteX: -37.2349
+absoluteY: 250.873
+xGoal:-61.801
+yGoal:287.274
+thetaGoal:1.42867
+current time: 53.508
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.934938
+absoluteX: -38.6742
+absoluteY: 251.906
+xGoal:-63.9674
+yGoal:287.551
+thetaGoal:1.459
+current time: 53.859
+linearVelocity:11
+angularVelocity:0.16
+absoluteTheta: 0.960257
+absoluteX: -40.1283
+absoluteY: 252.896
+xGoal:-66.0634
+yGoal:287.755
+thetaGoal:1.48825
+current time: 54.223
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 0.985948
+absoluteX: -41.5899
+absoluteY: 253.837
+xGoal:-68.2423
+yGoal:287.902
+thetaGoal:1.51858
+current time: 54.574
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 1.01462
+absoluteX: -43.194
+absoluteY: 254.803
+xGoal:-70.3467
+yGoal:287.981
+thetaGoal:1.54783
+current time: 54.938
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 1.04068
+absoluteX: -44.6431
+absoluteY: 255.627
+xGoal:-72.5306
+yGoal:287.998
+thetaGoal:1.57817
+current time: 55.302
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 1.066
+absoluteX: -46.1198
+absoluteY: 256.419
+xGoal:-74.714
+yGoal:287.949
+thetaGoal:1.6085
+current time: 55.653
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 1.09244
+absoluteX: -47.621
+absoluteY: 257.172
+xGoal:-76.817
+yGoal:287.839
+thetaGoal:1.63775
+current time: 56.017
+linearVelocity:10.5
+angularVelocity:0.16
+absoluteTheta: 1.11813
+absoluteX: -49.1408
+absoluteY: 257.887
+xGoal:-78.9936
+yGoal:287.66
+thetaGoal:1.66808
+current time: 56.381
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.14382
+absoluteX: -50.6631
+absoluteY: 258.556
+xGoal:-81.1637
+yGoal:287.414
+thetaGoal:1.69842
+current time: 56.745
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.17249
+absoluteX: -52.2049
+absoluteY: 259.179
+xGoal:-83.3254
+yGoal:287.104
+thetaGoal:1.72875
+current time: 57.096
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.20153
+absoluteX: -53.7918
+absoluteY: 259.767
+xGoal:-85.4
+yGoal:286.742
+thetaGoal:1.758
+current time: 57.46
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.22983
+absoluteX: -55.3785
+absoluteY: 260.305
+xGoal:-87.5394
+yGoal:286.303
+thetaGoal:1.78833
+current time: 57.811
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.25962
+absoluteX: -57.0451
+absoluteY: 260.814
+xGoal:-89.5888
+yGoal:285.819
+thetaGoal:1.81758
+current time: 58.162
+linearVelocity:10.5
+angularVelocity:0.18
+absoluteTheta: 1.28791
+absoluteX: -58.6604
+absoluteY: 261.259
+xGoal:-91.6232
+yGoal:285.274
+thetaGoal:1.84683
+current time: 58.539
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.3177
+absoluteX: -60.313
+absoluteY: 261.66
+xGoal:-93.7895
+yGoal:284.624
+thetaGoal:1.87825
+current time: 58.89
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.34637
+absoluteX: -61.8902
+absoluteY: 261.996
+xGoal:-95.7871
+yGoal:283.957
+thetaGoal:1.9075
+current time: 59.254
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.37541
+absoluteX: -63.4394
+absoluteY: 262.279
+xGoal:-97.8372
+yGoal:283.204
+thetaGoal:1.93783
+current time: 59.605
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.40408
+absoluteX: -65.0251
+absoluteY: 262.523
+xGoal:-99.7916
+yGoal:282.42
+thetaGoal:1.96708
+current time: 59.969
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.43312
+absoluteX: -66.6379
+absoluteY: 262.723
+xGoal:-101.793
+yGoal:281.547
+thetaGoal:1.99742
+current time: 60.32
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.46366
+absoluteX: -68.3147
+absoluteY: 262.877
+xGoal:-103.697
+yGoal:280.647
+thetaGoal:2.02667
+current time: 60.697
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.4927
+absoluteX: -69.9115
+absoluteY: 262.979
+xGoal:-105.713
+yGoal:279.62
+thetaGoal:2.05808
+current time: 61.048
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.52137
+absoluteX: -71.498
+absoluteY: 263.034
+xGoal:-107.559
+yGoal:278.607
+thetaGoal:2.08733
+current time: 61.399
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.55041
+absoluteX: -73.098
+absoluteY: 263.044
+xGoal:-109.374
+yGoal:277.54
+thetaGoal:2.11658
+current time: 61.763
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.57796
+absoluteX: -74.6726
+absoluteY: 263.011
+xGoal:-111.224
+yGoal:276.378
+thetaGoal:2.14692
+current time: 62.127
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.60738
+absoluteX: -76.2748
+absoluteY: 262.929
+xGoal:-113.037
+yGoal:275.161
+thetaGoal:2.17725
+current time: 62.478
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.63605
+absoluteX: -77.8573
+absoluteY: 262.802
+xGoal:-114.749
+yGoal:273.935
+thetaGoal:2.2065
+current time: 62.842
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 1.66472
+absoluteX: -79.4355
+absoluteY: 262.631
+xGoal:-116.487
+yGoal:272.612
+thetaGoal:2.23683
+current time: 63.206
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.69339
+absoluteX: -81.0081
+absoluteY: 262.414
+xGoal:-118.183
+yGoal:271.237
+thetaGoal:2.26717
+current time: 63.557
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.72504
+absoluteX: -82.5974
+absoluteY: 262.141
+xGoal:-119.779
+yGoal:269.862
+thetaGoal:2.29642
+current time: 63.921
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.75669
+absoluteX: -84.1692
+absoluteY: 261.82
+xGoal:-121.391
+yGoal:268.389
+thetaGoal:2.32675
+current time: 64.272
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.78833
+absoluteX: -85.7136
+absoluteY: 261.453
+xGoal:-122.902
+yGoal:266.922
+thetaGoal:2.356
+current time: 64.636
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.81998
+absoluteX: -87.2699
+absoluteY: 261.03
+xGoal:-124.423
+yGoal:265.354
+thetaGoal:2.38633
+current time: 65
+linearVelocity:10
+angularVelocity:0.2
+absoluteTheta: 1.85163
+absoluteX: -88.7961
+absoluteY: 260.564
+xGoal:-125.895
+yGoal:263.742
+thetaGoal:2.41667
+current time: 65.351
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 1.88365
+absoluteX: -90.3183
+absoluteY: 260.044
+xGoal:-127.269
+yGoal:262.145
+thetaGoal:2.44592
+current time: 65.715
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 1.91567
+absoluteX: -91.925
+absoluteY: 259.438
+xGoal:-128.643
+yGoal:260.448
+thetaGoal:2.47625
+current time: 66.079
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 1.94472
+absoluteX: -93.3361
+absoluteY: 258.86
+xGoal:-129.965
+yGoal:258.709
+thetaGoal:2.50658
+current time: 66.443
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 1.97301
+absoluteX: -94.7228
+absoluteY: 258.247
+xGoal:-131.233
+yGoal:256.932
+thetaGoal:2.53692
+current time: 66.794
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.00578
+absoluteX: -96.0873
+absoluteY: 257.586
+xGoal:-132.405
+yGoal:255.182
+thetaGoal:2.56617
+current time: 67.145
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.03892
+absoluteX: -97.4548
+absoluteY: 256.866
+xGoal:-133.525
+yGoal:253.399
+thetaGoal:2.59542
+current time: 67.509
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.07131
+absoluteX: -98.7768
+absoluteY: 256.114
+xGoal:-134.631
+yGoal:251.515
+thetaGoal:2.62575
+current time: 67.873
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.10408
+absoluteX: -100.077
+absoluteY: 255.318
+xGoal:-135.679
+yGoal:249.6
+thetaGoal:2.65608
+current time: 68.224
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.13684
+absoluteX: -101.357
+absoluteY: 254.475
+xGoal:-136.635
+yGoal:247.723
+thetaGoal:2.68533
+current time: 68.588
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.16514
+absoluteX: -102.608
+absoluteY: 253.603
+xGoal:-137.567
+yGoal:245.748
+thetaGoal:2.71567
+current time: 68.952
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.19418
+absoluteX: -103.826
+absoluteY: 252.7
+xGoal:-138.439
+yGoal:243.746
+thetaGoal:2.746
+current time: 69.303
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.22657
+absoluteX: -105.01
+absoluteY: 251.759
+xGoal:-139.222
+yGoal:241.791
+thetaGoal:2.77525
+current time: 69.667
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.25897
+absoluteX: -106.175
+absoluteY: 250.769
+xGoal:-139.974
+yGoal:239.74
+thetaGoal:2.80558
+current time: 70.018
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.29173
+absoluteX: -107.297
+absoluteY: 249.75
+xGoal:-140.639
+yGoal:237.742
+thetaGoal:2.83483
+current time: 70.382
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.3245
+absoluteX: -108.404
+absoluteY: 248.676
+xGoal:-141.267
+yGoal:235.65
+thetaGoal:2.86517
+current time: 70.746
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.35689
+absoluteX: -109.46
+absoluteY: 247.583
+xGoal:-141.831
+yGoal:233.54
+thetaGoal:2.8955
+current time: 71.097
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.38556
+absoluteX: -110.488
+absoluteY: 246.462
+xGoal:-142.314
+yGoal:231.491
+thetaGoal:2.92475
+current time: 71.461
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.41796
+absoluteX: -111.606
+absoluteY: 245.154
+xGoal:-142.751
+yGoal:229.351
+thetaGoal:2.95508
+current time: 71.812
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.45035
+absoluteX: -112.546
+absoluteY: 243.98
+xGoal:-143.112
+yGoal:227.276
+thetaGoal:2.98433
+current time: 72.176
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.48311
+absoluteX: -113.469
+absoluteY: 242.745
+xGoal:-143.421
+yGoal:225.114
+thetaGoal:3.01466
+current time: 72.54
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.51178
+absoluteX: -114.352
+absoluteY: 241.497
+xGoal:-143.664
+yGoal:222.944
+thetaGoal:3.045
+current time: 72.891
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.54157
+absoluteX: -115.208
+absoluteY: 240.205
+xGoal:-143.837
+yGoal:220.845
+thetaGoal:3.07425
+current time: 73.255
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.57359
+absoluteX: -116.007
+absoluteY: 238.907
+xGoal:-143.951
+yGoal:218.664
+thetaGoal:3.10458
+current time: 73.619
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.60673
+absoluteX: -116.765
+absoluteY: 237.579
+xGoal:-143.998
+yGoal:216.481
+thetaGoal:3.13491
+current time: 73.97
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.6395
+absoluteX: -117.48
+absoluteY: 236.223
+xGoal:-143.982
+yGoal:214.375
+thetaGoal:3.16416
+current time: 74.334
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.67152
+absoluteX: -118.142
+absoluteY: 234.868
+xGoal:-143.899
+yGoal:212.193
+thetaGoal:3.1945
+current time: 74.698
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.70056
+absoluteX: -118.776
+absoluteY: 233.472
+xGoal:-143.751
+yGoal:210.014
+thetaGoal:3.22483
+current time: 75.049
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.72923
+absoluteX: -119.369
+absoluteY: 232.063
+xGoal:-143.545
+yGoal:207.918
+thetaGoal:3.25408
+current time: 75.4
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.762
+absoluteX: -119.913
+absoluteY: 230.63
+xGoal:-143.278
+yGoal:205.829
+thetaGoal:3.28333
+current time: 75.777
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.79476
+absoluteX: -120.408
+absoluteY: 229.188
+xGoal:-142.923
+yGoal:203.595
+thetaGoal:3.31475
+current time: 76.128
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.82715
+absoluteX: -120.855
+absoluteY: 227.734
+xGoal:-142.53
+yGoal:201.526
+thetaGoal:3.344
+current time: 76.492
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.85582
+absoluteX: -121.265
+absoluteY: 226.262
+xGoal:-142.059
+yGoal:199.394
+thetaGoal:3.37433
+current time: 76.843
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.88747
+absoluteX: -121.661
+absoluteY: 224.629
+xGoal:-141.543
+yGoal:197.352
+thetaGoal:3.40358
+current time: 77.207
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 2.92061
+absoluteX: -121.971
+absoluteY: 223.132
+xGoal:-140.946
+yGoal:195.251
+thetaGoal:3.43391
+current time: 77.558
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.95338
+absoluteX: -122.234
+absoluteY: 221.622
+xGoal:-140.309
+yGoal:193.244
+thetaGoal:3.46316
+current time: 77.935
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 2.9813
+absoluteX: -122.455
+absoluteY: 220.118
+xGoal:-139.561
+yGoal:191.109
+thetaGoal:3.49458
+current time: 78.286
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.01072
+absoluteX: -122.631
+absoluteY: 218.608
+xGoal:-138.804
+yGoal:189.144
+thetaGoal:3.52383
+current time: 78.637
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.04385
+absoluteX: -122.757
+absoluteY: 217.067
+xGoal:-137.99
+yGoal:187.202
+thetaGoal:3.55308
+current time: 79.001
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.07625
+absoluteX: -122.831
+absoluteY: 215.548
+xGoal:-137.086
+yGoal:185.214
+thetaGoal:3.58341
+current time: 79.352
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.10827
+absoluteX: -122.858
+absoluteY: 214.032
+xGoal:-136.158
+yGoal:183.323
+thetaGoal:3.61266
+current time: 79.716
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.13694
+absoluteX: -122.843
+absoluteY: 212.512
+xGoal:-135.137
+yGoal:181.393
+thetaGoal:3.643
+current time: 80.08
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.16561
+absoluteX: -122.785
+absoluteY: 210.993
+xGoal:-134.059
+yGoal:179.494
+thetaGoal:3.67333
+current time: 80.431
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.19502
+absoluteX: -122.68
+absoluteY: 209.459
+xGoal:-132.965
+yGoal:177.694
+thetaGoal:3.70258
+current time: 80.808
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.22742
+absoluteX: -122.525
+absoluteY: 207.946
+xGoal:-131.731
+yGoal:175.798
+thetaGoal:3.734
+current time: 81.146
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.26018
+absoluteX: -122.32
+absoluteY: 206.436
+xGoal:-130.575
+yGoal:174.132
+thetaGoal:3.76216
+current time: 81.523
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.29258
+absoluteX: -122.066
+absoluteY: 204.928
+xGoal:-129.231
+yGoal:172.313
+thetaGoal:3.79358
+current time: 81.874
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.32087
+absoluteX: -121.777
+absoluteY: 203.456
+xGoal:-127.929
+yGoal:170.658
+thetaGoal:3.82283
+current time: 82.225
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.34954
+absoluteX: -121.439
+absoluteY: 201.957
+xGoal:-126.579
+yGoal:169.041
+thetaGoal:3.85208
+current time: 82.589
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.38194
+absoluteX: -121.004
+absoluteY: 200.3
+xGoal:-125.13
+yGoal:167.408
+thetaGoal:3.88241
+current time: 82.94
+linearVelocity:9.5
+angularVelocity:0.2
+absoluteTheta: 3.41433
+absoluteX: -120.571
+absoluteY: 198.843
+xGoal:-123.686
+yGoal:165.875
+thetaGoal:3.91166
+current time: 83.304
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.4471
+absoluteX: -120.091
+absoluteY: 197.404
+xGoal:-122.142
+yGoal:164.33
+thetaGoal:3.942
+current time: 83.668
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.47577
+absoluteX: -119.569
+absoluteY: 195.967
+xGoal:-120.552
+yGoal:162.833
+thetaGoal:3.97233
+current time: 84.032
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.50444
+absoluteX: -119.003
+absoluteY: 194.538
+xGoal:-118.917
+yGoal:161.385
+thetaGoal:4.00266
+current time: 84.383
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.5331
+absoluteX: -118.406
+absoluteY: 193.149
+xGoal:-117.3
+yGoal:160.036
+thetaGoal:4.03191
+current time: 84.734
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.56177
+absoluteX: -117.762
+absoluteY: 191.762
+xGoal:-115.644
+yGoal:158.735
+thetaGoal:4.06116
+current time: 85.098
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.59044
+absoluteX: -117.083
+absoluteY: 190.402
+xGoal:-113.887
+yGoal:157.438
+thetaGoal:4.0915
+current time: 85.462
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.61949
+absoluteX: -116.358
+absoluteY: 189.051
+xGoal:-112.091
+yGoal:156.195
+thetaGoal:4.12183
+current time: 85.813
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.64816
+absoluteX: -115.593
+absoluteY: 187.717
+xGoal:-110.325
+yGoal:155.048
+thetaGoal:4.15108
+current time: 86.19
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.67683
+absoluteX: -114.799
+absoluteY: 186.421
+xGoal:-108.392
+yGoal:153.874
+thetaGoal:4.1825
+current time: 86.541
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.7055
+absoluteX: -113.963
+absoluteY: 185.141
+xGoal:-106.559
+yGoal:152.836
+thetaGoal:4.21175
+current time: 86.892
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.73417
+absoluteX: -113.101
+absoluteY: 183.898
+xGoal:-104.697
+yGoal:151.853
+thetaGoal:4.241
+current time: 87.256
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.76284
+absoluteX: -112.183
+absoluteY: 182.655
+xGoal:-102.737
+yGoal:150.89
+thetaGoal:4.27133
+current time: 87.607
+linearVelocity:9.5
+angularVelocity:0.18
+absoluteTheta: 3.79151
+absoluteX: -111.246
+absoluteY: 181.457
+xGoal:-100.819
+yGoal:150.019
+thetaGoal:4.30058
+current time: 87.971
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 3.8198
+absoluteX: -110.273
+absoluteY: 180.284
+xGoal:-98.8049
+yGoal:149.176
+thetaGoal:4.33091
+current time: 88.335
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 3.8522
+absoluteX: -109.079
+absoluteY: 178.941
+xGoal:-96.7658
+yGoal:148.393
+thetaGoal:4.36125
+current time: 88.699
+linearVelocity:10
+angularVelocity:0.18
+absoluteTheta: 3.88087
+absoluteX: -107.992
+absoluteY: 177.783
+xGoal:-94.704
+yGoal:147.673
+thetaGoal:4.39158
+current time: 89.05
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 3.90991
+absoluteX: -106.858
+absoluteY: 176.643
+xGoal:-92.696
+yGoal:147.039
+thetaGoal:4.42083
+current time: 89.414
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 3.93523
+absoluteX: -105.709
+absoluteY: 175.541
+xGoal:-90.595
+yGoal:146.443
+thetaGoal:4.45116
+current time: 89.765
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 3.96129
+absoluteX: -104.525
+absoluteY: 174.465
+xGoal:-88.5528
+yGoal:145.929
+thetaGoal:4.48041
+current time: 90.142
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 3.98698
+absoluteX: -103.305
+absoluteY: 173.41
+xGoal:-86.3436
+yGoal:145.443
+thetaGoal:4.51183
+current time: 90.493
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 4.01267
+absoluteX: -102.058
+absoluteY: 172.388
+xGoal:-84.274
+yGoal:145.054
+thetaGoal:4.54108
+current time: 90.844
+linearVelocity:10
+angularVelocity:0.16
+absoluteTheta: 4.03874
+absoluteX: -100.782
+absoluteY: 171.396
+xGoal:-82.1938
+yGoal:144.725
+thetaGoal:4.57033
+current time: 91.208
+linearVelocity:10
+angularVelocity:0.14
+absoluteTheta: 4.06443
+absoluteX: -99.4969
+absoluteY: 170.449
+xGoal:-80.0275
+yGoal:144.449
+thetaGoal:4.60066
+current time: 91.559
+linearVelocity:10
+angularVelocity:0.14
+absoluteTheta: 4.08714
+absoluteX: -98.1992
+absoluteY: 169.535
+xGoal:-77.9315
+yGoal:144.245
+thetaGoal:4.62991
+current time: 91.936
+linearVelocity:10
+angularVelocity:0.14
+absoluteTheta: 4.10948
+absoluteX: -96.892
+absoluteY: 168.656
+xGoal:-75.6746
+yGoal:144.094
+thetaGoal:4.66133
+current time: 92.287
+linearVelocity:10.5
+angularVelocity:0.14
+absoluteTheta: 4.1322
+absoluteX: -95.5404
+absoluteY: 167.792
+xGoal:-73.5701
+yGoal:144.017
+thetaGoal:4.69058
+current time: 92.651
+linearVelocity:10.5
+angularVelocity:0.14
+absoluteTheta: 4.15454
+absoluteX: -94.1091
+absoluteY: 166.921
+xGoal:-71.3862
+yGoal:144
+thetaGoal:4.71239
+current time: 93.002
+linearVelocity:10.5
+angularVelocity:0.12
+absoluteTheta: 4.17725
+absoluteX: -92.6474
+absoluteY: 166.077
+xGoal:-69.2802
+yGoal:144
+thetaGoal:4.71239
+current time: 93.366
+linearVelocity:10.5
+angularVelocity:0.12
+absoluteTheta: 4.19624
+absoluteX: -91.1787
+absoluteY: 165.261
+xGoal:-67.0962
+yGoal:144
+thetaGoal:4.71239
+current time: 93.717
+linearVelocity:10.5
+angularVelocity:0.12
+absoluteTheta: 4.21746
+absoluteX: -89.4994
+absoluteY: 164.378
+xGoal:-64.9902
+yGoal:144
+thetaGoal:4.71239
+current time: 94.081
+linearVelocity:10.5
+angularVelocity:0.12
+absoluteTheta: 4.23645
+absoluteX: -87.9917
+absoluteY: 163.619
+xGoal:-62.8062
+yGoal:144
+thetaGoal:4.71239
+current time: 94.432
+linearVelocity:10.5
+angularVelocity:0.12
+absoluteTheta: 4.25507
+absoluteX: -86.4891
+absoluteY: 162.897
+xGoal:-60.7002
+yGoal:144
+thetaGoal:4.71239
+current time: 94.809
+linearVelocity:10.5
+angularVelocity:0.1
+absoluteTheta: 4.27331
+absoluteX: -84.9623
+absoluteY: 162.197
+xGoal:-58.4382
+yGoal:144
+thetaGoal:4.71239
+current time: 95.16
+linearVelocity:10.5
+angularVelocity:0.1
+absoluteTheta: 4.29007
+absoluteX: -83.4245
+absoluteY: 161.521
+xGoal:-56.3322
+yGoal:144
+thetaGoal:4.71239
+current time: 95.524
+linearVelocity:10.5
+angularVelocity:0.1
+absoluteTheta: 4.30757
+absoluteX: -81.8517
+absoluteY: 160.863
+xGoal:-54.1482
+yGoal:144
+thetaGoal:4.71239
+current time: 95.875
+linearVelocity:10.5
+angularVelocity:0.1
+absoluteTheta: 4.32395
+absoluteX: -80.2881
+absoluteY: 160.238
+xGoal:-52.0422
+yGoal:144
+thetaGoal:4.71239
+current time: 96.239
+linearVelocity:11
+angularVelocity:0.1
+absoluteTheta: 4.34108
+absoluteX: -78.7138
+absoluteY: 159.641
+xGoal:-49.8582
+yGoal:144
+thetaGoal:4.71239
+current time: 96.603
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.35634
+absoluteX: -77.0563
+absoluteY: 159.039
+xGoal:-47.6742
+yGoal:144
+thetaGoal:4.71239
+current time: 96.954
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.369
+absoluteX: -75.4118
+absoluteY: 158.462
+xGoal:-45.5682
+yGoal:144
+thetaGoal:4.71239
+current time: 97.305
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.38203
+absoluteX: -73.7241
+absoluteY: 157.896
+xGoal:-43.4622
+yGoal:144
+thetaGoal:4.71239
+current time: 97.669
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.39469
+absoluteX: -72.0335
+absoluteY: 157.352
+xGoal:-41.2782
+yGoal:144
+thetaGoal:4.71239
+current time: 98.033
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.40772
+absoluteX: -70.3398
+absoluteY: 156.831
+xGoal:-39.0942
+yGoal:144
+thetaGoal:4.71239
+current time: 98.384
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.42038
+absoluteX: -68.6438
+absoluteY: 156.333
+xGoal:-36.9882
+yGoal:144
+thetaGoal:4.71239
+current time: 98.748
+linearVelocity:11
+angularVelocity:0.08
+absoluteTheta: 4.43416
+absoluteX: -66.8722
+absoluteY: 155.84
+xGoal:-34.8042
+yGoal:144
+thetaGoal:4.71239
+current time: 99.099
+linearVelocity:11
+angularVelocity:0.06
+absoluteTheta: 4.44719
+absoluteX: -65.1026
+absoluteY: 155.372
+xGoal:-32.6982
+yGoal:144
+thetaGoal:4.71239
+current time: 99.476
+linearVelocity:11
+angularVelocity:0.06
+absoluteTheta: 4.45799
+absoluteX: -63.1987
+absoluteY: 154.888
+xGoal:-30.4362
+yGoal:144
+thetaGoal:4.71239
+current time: 99.827
+linearVelocity:11
+angularVelocity:0.06
+absoluteTheta: 4.46767
+absoluteX: -61.4979
+absoluteY: 154.472
+xGoal:-28.3302
+yGoal:144
+thetaGoal:4.71239
+current time: 100.191
+linearVelocity:11.5
+angularVelocity:0.06
+absoluteTheta: 4.47772
+absoluteX: -59.7644
+absoluteY: 154.067
+xGoal:-26.1462
+yGoal:144
+thetaGoal:4.71239
+current time: 100.542
+linearVelocity:11.5
+angularVelocity:0.06
+absoluteTheta: 4.4874
+absoluteX: -57.9249
+absoluteY: 153.655
+xGoal:-24.0402
+yGoal:144
+thetaGoal:4.71239
+current time: 100.919
+linearVelocity:11.5
+angularVelocity:0.06
+absoluteTheta: 4.49746
+absoluteX: -56.11
+absoluteY: 153.268
+xGoal:-21.7782
+yGoal:144
+thetaGoal:4.71239
+current time: 101.27
+linearVelocity:11.5
+angularVelocity:0.06
+absoluteTheta: 4.50751
+absoluteX: -54.2996
+absoluteY: 152.902
+xGoal:-19.6722
+yGoal:144
+thetaGoal:4.71239
+current time: 101.634
+linearVelocity:11.5
+angularVelocity:0.06
+absoluteTheta: 4.51756
+absoluteX: -52.4608
+absoluteY: 152.549
+xGoal:-17.4882
+yGoal:144
+thetaGoal:4.71239
+current time: 101.985
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.52724
+absoluteX: -50.6394
+absoluteY: 152.216
+xGoal:-15.3822
+yGoal:144
+thetaGoal:4.71239
+current time: 102.336
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.53469
+absoluteX: -48.7169
+absoluteY: 151.879
+xGoal:-13.2762
+yGoal:144
+thetaGoal:4.71239
+current time: 102.726
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.54177
+absoluteX: -46.9036
+absoluteY: 151.573
+xGoal:-10.9362
+yGoal:144
+thetaGoal:4.71239
+current time: 103.077
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.54884
+absoluteX: -45.0882
+absoluteY: 151.28
+xGoal:-8.8302
+yGoal:144
+thetaGoal:4.71239
+current time: 103.441
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.55554
+absoluteX: -43.2751
+absoluteY: 150.999
+xGoal:-6.6462
+yGoal:144
+thetaGoal:4.71239
+current time: 103.792
+linearVelocity:11.5
+angularVelocity:0.04
+absoluteTheta: 4.56262
+absoluteX: -41.431
+absoluteY: 150.728
+xGoal:-4.5402
+yGoal:144
+thetaGoal:4.71239
+current time: 104.156
+linearVelocity:12
+angularVelocity:0.04
+absoluteTheta: 4.56932
+absoluteX: -39.5976
+absoluteY: 150.47
+xGoal:-2.3562
+yGoal:144
+thetaGoal:4.71239
+current time: 104.52
+linearVelocity:12
+angularVelocity:0.04
+absoluteTheta: 4.57602
+absoluteX: -37.7127
+absoluteY: 150.218
+xGoal:-0.1722
+yGoal:144
+thetaGoal:4.71239
+current time: 104.871
+linearVelocity:12
+angularVelocity:0.04
+absoluteTheta: 4.58421
+absoluteX: -35.5513
+absoluteY: 149.948
+xGoal:1.9338
+yGoal:144
+thetaGoal:4.71239
+current time: 105.235
+linearVelocity:12
+angularVelocity:0.04
+absoluteTheta: 4.59091
+absoluteX: -33.6379
+absoluteY: 149.721
+xGoal:4.1178
+yGoal:144
+thetaGoal:4.71239
+current time: 105.586
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.59762
+absoluteX: -31.7063
+absoluteY: 149.505
+xGoal:6.2238
+yGoal:144
+thetaGoal:4.71239
+current time: 105.963
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.60097
+absoluteX: -29.7536
+absoluteY: 149.29
+xGoal:8.4858
+yGoal:144
+thetaGoal:4.71239
+current time: 106.314
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.60395
+absoluteX: -27.8378
+absoluteY: 149.084
+xGoal:10.5918
+yGoal:144
+thetaGoal:4.71239
+current time: 106.678
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.60655
+absoluteX: -25.9173
+absoluteY: 148.883
+xGoal:12.7758
+yGoal:144
+thetaGoal:4.71239
+current time: 107.029
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.60953
+absoluteX: -24.0003
+absoluteY: 148.688
+xGoal:14.8818
+yGoal:144
+thetaGoal:4.71239
+current time: 107.393
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.61251
+absoluteX: -22.0328
+absoluteY: 148.493
+xGoal:17.0658
+yGoal:144
+thetaGoal:4.71239
+current time: 107.757
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.61549
+absoluteX: -20.0813
+absoluteY: 148.307
+xGoal:19.2498
+yGoal:144
+thetaGoal:4.71239
+current time: 108.108
+linearVelocity:12
+angularVelocity:0.02
+absoluteTheta: 4.61847
+absoluteX: -18.1544
+absoluteY: 148.128
+xGoal:21.3558
+yGoal:144
+thetaGoal:4.71239
+current time: 108.472
+linearVelocity:11.5
+angularVelocity:0.02
+absoluteTheta: 4.62182
+absoluteX: -16.2393
+absoluteY: 147.957
+xGoal:23.5398
+yGoal:144
+thetaGoal:4.71239
+current time: 108.836
+linearVelocity:11.5
+angularVelocity:0.02
+absoluteTheta: 4.6248
+absoluteX: -14.4114
+absoluteY: 147.799
+xGoal:25.7238
+yGoal:144
+thetaGoal:4.71239
+current time: 109.187
+linearVelocity:11.5
+angularVelocity:0.02
+absoluteTheta: 4.62815
+absoluteX: -12.5454
+absoluteY: 147.645
+xGoal:27.8298
+yGoal:144
+thetaGoal:4.71239
+current time: 109.564
+linearVelocity:11.5
+angularVelocity:0.02
+absoluteTheta: 4.63075
+absoluteX: -10.7041
+absoluteY: 147.497
+xGoal:30.0918
+yGoal:144
+thetaGoal:4.71239
+current time: 109.915
+linearVelocity:11.5
+angularVelocity:0.02
+absoluteTheta: 4.63373
+absoluteX: -8.86653
+absoluteY: 147.355
+xGoal:32.1978
+yGoal:144
+thetaGoal:4.71239
+current time: 110.279
+linearVelocity:11
+angularVelocity:0.02
+absoluteTheta: 4.63671
+absoluteX: -7.02853
+absoluteY: 147.218
+xGoal:34.3818
+yGoal:144
+thetaGoal:4.71239
+current time: 110.63
+linearVelocity:11
+angularVelocity:0.02
+absoluteTheta: 4.64155
+absoluteX: -5.0268
+absoluteY: 147.081
+xGoal:36.4878
+yGoal:144
+thetaGoal:4.71239
+current time: 111.007
+linearVelocity:11
+angularVelocity:0.02
+absoluteTheta: 4.64565
+absoluteX: -3.25029
+absoluteY: 146.966
+xGoal:38.7498
+yGoal:144
+thetaGoal:4.71239
+current time: 111.358
+linearVelocity:10.5
+angularVelocity:0.02
+absoluteTheta: 4.64937
+absoluteX: -1.50265
+absoluteY: 146.859
+xGoal:40.8558
+yGoal:144
+thetaGoal:4.71239
+current time: 111.709
+linearVelocity:10.5
+angularVelocity:0.02
+absoluteTheta: 4.65235
+absoluteX: 0.203451
+absoluteY: 146.759
+xGoal:42.9618
+yGoal:144
+thetaGoal:4.71239
+current time: 112.086
+linearVelocity:10.5
+angularVelocity:0.02
+absoluteTheta: 4.65533
+absoluteX: 1.86802
+absoluteY: 146.666
+xGoal:45.2238
+yGoal:144
+thetaGoal:4.71239
+current time: 112.437
+linearVelocity:10
+angularVelocity:0.02
+absoluteTheta: 4.65905
+absoluteX: 3.55804
+absoluteY: 146.579
+xGoal:47.3298
+yGoal:144
+thetaGoal:4.71239
+current time: 112.788
+linearVelocity:10
+angularVelocity:0
+absoluteTheta: 4.66166
+absoluteX: 5.14366
+absoluteY: 146.501
+xGoal:49.4358
+yGoal:144
+thetaGoal:4.71239
+current time: 113.165
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 4.66166
+absoluteX: 6.61203
+absoluteY: 146.426
+xGoal:51.6978
+yGoal:144
+thetaGoal:4.71239
+current time: 113.516
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 4.66203
+absoluteX: 8.13901
+absoluteY: 146.35
+xGoal:53.8038
+yGoal:144
+thetaGoal:4.71239
+current time: 113.867
+linearVelocity:9.5
+angularVelocity:0
+absoluteTheta: 4.66203
+absoluteX: 9.50952
+absoluteY: 146.28
+xGoal:55.9098
+yGoal:144
+thetaGoal:4.71239
+current time: 114.231
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 4.66203
+absoluteX: 10.8725
+absoluteY: 146.212
+xGoal:58.0938
+yGoal:144
+thetaGoal:4.71239
+current time: 114.595
+linearVelocity:9
+angularVelocity:0
+absoluteTheta: 4.6624
+absoluteX: 12.3242
+absoluteY: 146.139
+xGoal:60.2778
+yGoal:144
+thetaGoal:4.71239
+current time: 114.946
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 4.66203
+absoluteX: 13.7675
+absoluteY: 146.066
+xGoal:62.3838
+yGoal:144
+thetaGoal:4.71239
+current time: 115.31
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 4.6624
+absoluteX: 15.1188
+absoluteY: 145.999
+xGoal:64.5678
+yGoal:144
+thetaGoal:4.71239
+current time: 115.674
+linearVelocity:8.5
+angularVelocity:0
+absoluteTheta: 4.66278
+absoluteX: 16.5036
+absoluteY: 145.931
+xGoal:66.7518
+yGoal:144
+thetaGoal:4.71239
+current time: 116.025
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 4.66278
+absoluteX: 17.9043
+absoluteY: 145.861
+xGoal:68.8578
+yGoal:144
+thetaGoal:4.71239
+current time: 116.402
+linearVelocity:8
+angularVelocity:0
+absoluteTheta: 4.66278
+absoluteX: 19.0339
+absoluteY: 145.805
+xGoal:71.1198
+yGoal:144
+thetaGoal:4.71239
+current time: 116.753
+linearVelocity:8
+angularVelocity:0
