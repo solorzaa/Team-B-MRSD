@@ -4,3 +4,9 @@ dmesg on terminal and check the port where Leica is connected.
 Suppose: /dev/ttyUSB1 is the port where Leica is connected
 Run Geocom_Scarab executable: ./Geocom_Scarab /dev/ttyUSB1 
 Yous should be able to see the data transmitted by Leica over radios
+
+
+
+Receiver radio needs to get connected at pin9_22 of beaglebone, using /dev/tty02
+The cape connects at 9_11 and 9_13 to use the Rx and Tx pin , using /dev/ttyo4
+The paint system connects at pin8_12
