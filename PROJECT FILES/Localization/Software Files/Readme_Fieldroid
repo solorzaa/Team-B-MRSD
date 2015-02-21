@@ -1,0 +1,6 @@
+Connect transmiter radio so that it acquires /dev/ttyUSB0 port
+Connect Leica 
+dmesg on terminal and check the port where Leica is connected.
+Suppose: /dev/ttyUSB1 is the port where Leica is connected
+Run Geocom_Scarab executable: ./Geocom_Scarab /dev/ttyUSB1 
+Yous should be able to see the data transmitted by Leica over radios
