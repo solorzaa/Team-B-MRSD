@@ -203,7 +203,7 @@ void ITG3200::setGains(float _Xgain, float _Ygain, float _Zgain) {
   gains[2] = _Zgain;
 }
 
-void ITG3200::setOffsets(int _Xoffset, int _Yoffset, int _Zoffset) {
+vo	id ITG3200::setOffsets(int _Xoffset, int _Yoffset, int _Zoffset) {
   offsets[0] = _Xoffset;
   offsets[1] = _Yoffset;
   offsets[2] = _Zoffset;

@@ -9,7 +9,7 @@
 #include <cstdio>
 
 #define MAX_BUFFER_SIZE					64
-
+#define ITG3200_ROT_RAW_SENSITIVITY 14.375
 class myI2C {
 	int g_i2cFile;
 public:
@@ -34,5 +34,10 @@ public:
 	// Reads multipes byte from <DEVICE_ADDR> starting from the register address <Reg_ADDR>.
 	// Read the output from i2cptr->I2C_RD_Buf
 	unsigned char Read_Multi_Byte(unsigned char DEVICE_ADDR, unsigned char Reg_ADDR, size_t n);
+	unsigned char ReadB(unsigned char, unsigned char, unsigned char);
+	int twosc2int(int twoscomplimentdata);
+	float ITG3200_rot_conv(int rawdata);
 };
 #endif /* BEAGLEI2C.H */
+
+
