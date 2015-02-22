@@ -29,14 +29,8 @@ using namespace std;
 int main(){
 	// Instantiate the I2c Object
 	myI2C *i2cptr = new myI2C();
-	
-
-	
-	//cptr->Send_I2C_Byte(DEVICE_ADDR,CTRL_REG1,value); 		// Example send data
 
 
-	//int  val=0;
-	//signed int gyroz = 0;
 	int valueH=i2cptr->Read_I2C_Byte(DEVICE_ADDR, ITG3200_ZRH);	
 	//cout << "high"  <<endl;
 	int valueL=i2cptr->Read_I2C_Byte(DEVICE_ADDR, ITG3200_ZRL);
@@ -49,11 +43,12 @@ int main(){
 	
 	cout << k << "my value" <<endl;
 
-	int kc = i2cptr->twosc2int( k);
-	float kc1 = (float)kc / (float)ITG3200_ROT_RAW_SENSITIVITY;
-	cout << kc <<"2s complement" <<endl;
-//	cout << kc1 << " final data" <<endl;
- //	cout <<hex << (valueH);
+	int kc = i2cptr->ITG3200_rot_conv(k);
+	//float kc1 = (float)kc / (float)ITG3200_ROT_RAW_SENSITIVITY;
+//	cout << kc <<"2s complement" <<endl;
+	cout << kc << " final data" <<endl;
+ 	cout <<endl;
+	cout <<hex << (valueH);
         
 //	cout << "my new function output" <<endl;		
 //      int value3=   i2cptr->ReadB(DEVICE_ADDR,ITG3200_ZRH,ITG3200_ZRL);

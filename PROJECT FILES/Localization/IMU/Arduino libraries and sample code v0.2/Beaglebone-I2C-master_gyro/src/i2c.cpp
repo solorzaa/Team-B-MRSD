@@ -130,7 +130,7 @@ unsigned char myI2C::ReadB(unsigned char DEVICE_ADDR,unsigned char Reg_ADDR1,uns
 
 int myI2C::twosc2int(int twoscomplimentdata)
 { int retval;
-  if( twoscomplimentdata > 32768 ) retval = twoscomplimentdata - 65536;
+  if( twoscomplimentdata >= 32768 ) retval = twoscomplimentdata - 65536;
   else retval = twoscomplimentdata;
   return retval;
 }
@@ -144,3 +144,35 @@ float myI2C::ITG3200_rot_conv(int rawdata)
   retval = (float)raw / (float)ITG3200_ROT_RAW_SENSITIVITY;
   return retval;
 }
+
+
+float  myI2C::Itg3200calibrate(void)
+{
+int reads = 600;
+int delay = 1000; // 4 milliseconds
+int skip = 5 ; // initial samples to skip
+float temp = 0;
+float angle=0;
+int k;	
+		
+		for(int i = 0; i < reads; i++){
+
+			if (i >= skip){
+			
+			int valueH=Read_I2C_Byte(ITG3200_ADDR,ITG3200_ZRH);	
+			int valueL=Read_I2C_Byte(ITG3200_ADDR, ITG3200_ZRL);
+			valueH=valueH<<8;
+			valueH|=valueL;
+			k=(int)valueH;
+			angle = ITG3200_rot_conv(k);
+			temp += angle;
+			}
+			
+			usleep(delay);
+			}
+	
+			float z_offset = (-1) * (float)temp / (reads - skip);
+			return z_offset;	
+
+}
+
