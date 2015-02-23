@@ -104,9 +104,16 @@ void RoboteqDevice::InitPort()
 
 	//Set Data format to 7E1
 	newtio.c_cflag &= ~CSIZE;		/* Mask the Character Size Bits through Control options*/
-	newtio.c_cflag |= CS7;			/* Select Character Size to 7-Bits through Control options*/
-	newtio.c_cflag |= PARENB;		/* Select the Parity Enable through Control options*/
-	newtio.c_cflag &= ~PARODD;		/* Select the Even Parity through Control options*/
+	// CS7 --> CS8
+	newtio.c_cflag |= CS8;			/* Select Character Size to 7-Bits through Control options*/
+	// COMMENTED OUT
+	//newtio.c_cflag |= PARENB;		/* Select the Parity Enable through Control options*/
+	// COMMENTED OUT
+	//newtio.c_cflag &= ~PARODD;		/* Select the Even Parity through Control options*/
+	// ADDED:
+	newtio.c_cflag &= ~PARENB;
+	newtio.c_cflag &= ~CSTOPB;
+	newtio.c_cflag &= ~CRTSCTS;
 
 	//cwrset.c_iflag |= (INPCK|ISTRIP);
 	//cwrset.c_cc[VMIN] = 6;

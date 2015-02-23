@@ -24,7 +24,6 @@
 
 //Proprietary Libraries
 #include "Pose.cpp"
-
 //These are the libraries supplied by Roboteq
 #include "RoboteqDevice.h"
 #include "ErrorCodes.h"
@@ -68,7 +67,7 @@ double RPM_Constant = (double) counts_per_revolution/1250.0;
 //Leica communication variables
 static int fd;
 int ARRAY_SIZE = 200;
-char port[20] = "/dev/ttyUSB0"; /* port to connect to */
+char port[20] = "/dev/ttyO2"; /* port to connect to */
 
 float location[3] = {0,0,0};
 float prevLocation[2] = {0,0};
@@ -89,7 +88,7 @@ double sumErrorY = 0;
 double sumErrorTheta = 0;
 
 /////  SETTINGS ////////
-bool leicaConnected = false;
+bool leicaConnected = true;
 bool dataOnly = false;
 bool verbose = false;
 
@@ -182,6 +181,131 @@ int main(int argc, char *argv[])
 		readAbsoluteEncoderCount(prevRightEncoder, rightWheelCode);
 	}
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Leica Code
+
+// Create variable to handle serial input
+	char* full_string;
+	full_string = (char*) malloc(100*sizeof(char));
+
+	// Leica Mode Only
+	if(leicaConnected) {
+		if(!dataOnly) {	
+			// Initialize the encoders
+			readAbsoluteEncoderCount(prevLeftEncoder, 2); 
+			readAbsoluteEncoderCount(prevRightEncoder, 1);		
+			prevTime = getUnixTime();
+			cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
+		}
+		// Open leica comm port for radios
+		openPort();
+		cout << "comm port opened successfully" << endl;
+
+		// Check for first data
+		readPort(full_string);
+
+		// Don't start until we have recieved data from the Leica Tracking Station
+		while(readPort(full_string)==0){
+			printf("no data\n");
+			//readPort(full_string);
+			//printf("Returned here- string is: %s\n",full_string);
+			usleep(100000);
+		}
+		cout << "Received First set of Leica Data" << endl;
+
+		// Get initial robot data
+		testData = leicaStoF(full_string);
+
+		// Convert intial robot data to planar coordinate system
+		// Stores in location - {x,y}
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+
+		// Set robot origin to initial planar data ---- STEPHEN THINKS THIS IS BAD
+		//xOrigin = location[0];
+		//yOrigin = location[1];
+
+		// Initialize the previous Locations
+		prevLocation[0] = location[0];
+		prevLocation[1] = location[1];
+		calibrateTheta[0] = location[0];
+		calibrateTheta[1] = location[1];
+		float timestamp = testData[0];
+
+		// Get the first point of the orientation calibration
+		while(readPort(full_string)==0){
+			cout << "Calibrating Origin" << endl;
+			usleep(100000);
+		}
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+
+		//sleep(.5);
+
+		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
+		//if(!dataOnly) {
+		//	bool keepGoing = false;
+		//	while(!keepGoing) {
+		//		keepGoing = poseControl(getDeltaPose(),0,48,0);
+		//		cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
+		//		readPort(full_string);
+		//	}
+		//}
+
+		while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<30) {
+	
+			sendVelocityCommands(10,0);
+
+			// Get 2nd point to calibrate theta
+			cout << "Waiting for 2nd point " << endl;
+			while(readPort(full_string)==0) {
+				cout << "Calibrating Theta" << endl;
+				usleep(100000);
+			}
+			testData = leicaStoF(full_string);
+			sphericalToPlanar(testData[2], testData[3], testData[4]);
+		}
+
+		sendVelocityCommands(0,0);		
+
+		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
+		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,1.0) << endl;
+		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],1.0) <<endl;
+		thetaOrigin -= M_PI/2;
+		thetaOrigin *= -1;
+		
+		// Reset the origin at the last data point from calibration.  
+		xOrigin = location[0];
+		yOrigin = location[1];
+
+	//	sleep(1);
+	}
+
+	if(leicaConnected) {
+		while(readPort(full_string)==0) {
+			printf("Need more data...");
+			usleep(100000);
+		}
+		testData = leicaStoF(full_string);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
+	}
+
+	// Set Encoder Absolute Position to zero
+	absoluteX = 0;
+	absoluteY = 0;
+	absoluteTheta = 0;
+
+	//if(!dataOnly) {	
+	//	// Initialize the encoders
+	//	readAbsoluteEncoderCount(prevLeftEncoder, 2); 
+	//	readAbsoluteEncoderCount(prevRightEncoder, 1);		
+	//	prevTime = clock();
+	//	cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
+	//}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+
 	//Initialize variables to keep time and track position along path
 	bool inProgress;				//Keep track of whether or not the bot is still painting
 	vector<double> xPathGoal;			//the desired parametric x path
@@ -190,13 +314,10 @@ int main(int argc, char *argv[])
 	double* velocityCommands;
 	double xGoal, yGoal, thetaGoal;		//variables not needed in main but needed to run desiredPathXY
 
-	if(verbose) cout << "preceding look up table" << endl;
-
 	//Construct look up table for model predictive control paths
 	Pose*** MPC_LUT = constructLUT(vMin, vMax, vNumberOfEntries, wMin, wMax, wNumberOfEntries);
 
 	if(verbose) cout << "look up table created" << endl;
-	if(verbose) cout << "currentTime before while loop: " << currentTime << endl;
 
 	startTime = getUnixTime();				//Time the bot received first motion command
 	currentTime = getUnixTime() - startTime;	//Initialize the current Time
@@ -205,16 +326,10 @@ int main(int argc, char *argv[])
 		//get current position
 		getPose();
 
-		if(!verbose) cout << "xGoal:" << xGoal << endl;
-		if(!verbose) cout << "yGoal:" << yGoal << endl;
-		if(!verbose) cout << "thetaGoal:" << thetaGoal << endl;
-
 		//get current time
 		prevTime = currentTime;
 		currentTime = getUnixTime() - startTime;
 		diffTime = currentTime - prevTime;
-		cout << "current time: " << currentTime << endl;
-		cout << "diffTime time: " << diffTime << endl;
 
 		//retrieve the path we want to travel along for the next pathHorizon period
 		projectGoal(pathHorizon, xPathGoal, yPathGoal, thetaPathGoal);
@@ -228,6 +343,10 @@ int main(int argc, char *argv[])
 
 		if(!verbose) cout << "linearVelocity:" << velocityCommands[0] << endl;
 		if(!verbose) cout << "angularVelocity:" << velocityCommands[1] << endl;
+			
+		if(!verbose) cout << "xGoal:" << xGoal << endl;
+		if(!verbose) cout << "yGoal:" << yGoal << endl;
+		if(!verbose) cout << "thetaGoal:" << thetaGoal << endl;
 
 		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
 		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
@@ -328,6 +447,19 @@ bool getPose()
 	double deltaX;
 	double deltaY;
 
+	if(leicaConnected) {
+                //If tracking data is new, update the absolute position
+                if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
+                        if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
+                                cout << "Updating the absolute Position of the robot" << endl;
+                                absoluteX = location[0];
+                                absoluteY = location[1];
+                                prevLocation[0] = location[0];
+                                prevLocation[1] = location[1];
+                        }
+                }
+        }
+
 	//Grab absolute number of encoder counts
 	readAbsoluteEncoderCount(currRightEncoder, rightWheelCode);
 	readAbsoluteEncoderCount(currLeftEncoder, leftWheelCode);
@@ -389,21 +521,6 @@ bool getPose()
 		//if(!verbose) cout << "deltaTheta: " << deltaTheta << endl;
 		//if(!verbose) cout << "deltaX: " << deltaX << endl;
 		//if(!verbose) cout << "deltaY: " << deltaY << endl;
-
-
-	if(leicaConnected) {
-		//If tracking data is new, update the absolute position
-		if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
-			if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
-				cout << "Updating the absolute Position of the robot" << endl;
-				absoluteX = location[0];
-				absoluteY = location[1];
-				prevLocation[0] = location[0];
-				prevLocation[1] = location[1];
-			}
-		}
-	}
-
 
 	absoluteTheta += deltaTheta;
 	//Keep the theta between 2 pi
