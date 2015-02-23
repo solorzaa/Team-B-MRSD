@@ -167,8 +167,8 @@ int k;
 			
 			usleep(delay);
 			}
-			
 			temp=(float)temp/(float)(ITG3200_ROT_RAW_SENSITIVITY);
+	
 			float z_offset = (-1) * (float)temp / (reads - skip);
 			return z_offset;	
 

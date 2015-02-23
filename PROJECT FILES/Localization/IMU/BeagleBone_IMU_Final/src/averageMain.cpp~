@@ -83,7 +83,6 @@ int main(){
 		}
 	usleep(100000);
 	gyroz=gyroz/(float)average;
-	//offset obtained from callibration step
 	gyroz=gyroz+offset;
 	cout << "averaged value:" << gyroz << endl;
 	
