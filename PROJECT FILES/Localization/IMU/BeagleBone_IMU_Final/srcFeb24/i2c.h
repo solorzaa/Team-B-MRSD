@@ -19,6 +19,19 @@
 #define ITG3200_ZRH 0x21 /*2 byte Hight byte and Low byte*/
 #define ITG3200_ZRL 0x22 /*2 byte Hight byte and Low byte*/
 
+/*Magnetometer*/
+ #define HMC5883L_I2C_ADDRESS                    0x1E
+ #define HMC5883L_CONFIG_REG_A                   0x00
+ #define HMC5883L_CONFIG_REG_B                   0x01
+ #define HMC5883L_MODE_REG                       0x02
+ #define HMC5883L_X_MSB			         0x03
+ #define HMC5883L_X_LSB                          0x04
+ #define HMC5883L_Z_MSB			         0x05
+ #define HMC5883L_Z_LSB            		 0x06
+ #define HMC5883L_Y_MSB               	  	 0x07
+ #define HMC5883L_Y_LSB             	         0x08
+ #define HMC5883L_STATUS_REG                     0x09
+ #define HMC5883L_ID_REG_A     			 0x0A
 
 /* ......................................................................*/
 
@@ -52,6 +65,7 @@ public:
 	int twosc2int(int twoscomplimentdata);
 	float ITG3200_rot_conv(int rawdata);
 	float Itg3200calibrate(void);
+	float HMC5883Lcalibrate(void);
 };
 #endif /* BEAGLEI2C.H */
 
