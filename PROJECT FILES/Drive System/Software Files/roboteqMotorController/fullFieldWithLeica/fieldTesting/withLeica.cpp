@@ -55,8 +55,8 @@ float botRadius = 11.25; //radius from each wheel to the midpoint between wheels
 int stallPower = 40;
 float distanceCorrection = 1;
 float thetaCorrection = 0.937;
-int leftWheelCode = 1;
-int rightWheelCode =2;
+int leftWheelCode = 2;
+int rightWheelCode = 1;
 
 double linearVelocity = 0;
 double angularVelocity = 0;
@@ -156,6 +156,8 @@ bool pathToRobotFrame(vector<double> projectedPathX, vector<double> projectedPat
 bool sendVelocityCommands(double linearVelocity, double angularVelocity);
 
 double getUnixTime();
+
+bool calibrateLeica(char* dataString, float leicaTimeStamp);
 /////////////////////////////////
 //Main
 
@@ -231,53 +233,10 @@ int main(int argc, char *argv[])
 		calibrateTheta[1] = location[1];
 		float timestamp = testData[0];
 
-		// Get the first point of the orientation calibration
-		while(readPort(full_string)==0){
-			cout << "Calibrating Origin" << endl;
-			usleep(100000);
+		if(calibrateLeica(full_string, timestamp))
+		{
+			cout << "Problem with calibration!" << endl;
 		}
-		testData = leicaStoF(full_string);
-		sphericalToPlanar(testData[2], testData[3], testData[4]);
-
-		//sleep(.5);
-
-		// Move 24 inches forward (actually close to 19) to calibrate absolute theta
-		//if(!dataOnly) {
-		//	bool keepGoing = false;
-		//	while(!keepGoing) {
-		//		keepGoing = poseControl(getDeltaPose(),0,48,0);
-		//		cout<<"                  I am at: "<<location[0]<<", "<<location[1]<<endl;
-		//		readPort(full_string);
-		//	}
-		//}
-
-		while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<30) {
-	
-			sendVelocityCommands(10,0);
-
-			// Get 2nd point to calibrate theta
-			cout << "Waiting for 2nd point " << endl;
-			while(readPort(full_string)==0) {
-				cout << "Calibrating Theta" << endl;
-				usleep(100000);
-			}
-			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
-		}
-
-		sendVelocityCommands(0,0);		
-
-		thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
-		cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(timestamp,1.0) << endl;
-		cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],1.0) <<endl;
-		thetaOrigin -= M_PI/2;
-		thetaOrigin *= -1;
-		
-		// Reset the origin at the last data point from calibration.  
-		xOrigin = location[0];
-		yOrigin = location[1];
-
-	//	sleep(1);
 	}
 
 	if(leicaConnected) {
@@ -295,13 +254,13 @@ int main(int argc, char *argv[])
 	absoluteY = 0;
 	absoluteTheta = 0;
 
-	//if(!dataOnly) {	
-	//	// Initialize the encoders
-	//	readAbsoluteEncoderCount(prevLeftEncoder, 2); 
-	//	readAbsoluteEncoderCount(prevRightEncoder, 1);		
-	//	prevTime = clock();
-	//	cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
-	//}
+	if(!dataOnly) {	
+		// Initialize the encoders
+		readAbsoluteEncoderCount(prevLeftEncoder, 2); 
+		readAbsoluteEncoderCount(prevRightEncoder, 1);		
+		prevTime = clock();
+		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
+	}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -323,6 +282,14 @@ int main(int argc, char *argv[])
 	currentTime = getUnixTime() - startTime;	//Initialize the current Time
 
 	while(inProgress = desiredPathXY(currentTime, xGoal, yGoal, thetaGoal)){
+	
+                //Get new position data from tracking station
+		if(leicaConnected) {
+                readPort(full_string);
+                testData = leicaStoF(full_string);
+                sphericalToPlanar(testData[2], testData[3], testData[4]);
+                }
+
 		//get current position
 		getPose();
 
@@ -341,12 +308,12 @@ int main(int argc, char *argv[])
 
 		velocityCommands =  getOptimalVelocities(MPC_LUT, vNumberOfEntries, wNumberOfEntries, numPathPoints , xPathGoal, yPathGoal, thetaPathGoal);
 
-		if(!verbose) cout << "linearVelocity:" << velocityCommands[0] << endl;
-		if(!verbose) cout << "angularVelocity:" << velocityCommands[1] << endl;
+		cout << "linearVelocity:" << velocityCommands[0] << endl;
+		cout << "angularVelocity:" << velocityCommands[1] << endl;
 			
-		if(!verbose) cout << "xGoal:" << xGoal << endl;
-		if(!verbose) cout << "yGoal:" << yGoal << endl;
-		if(!verbose) cout << "thetaGoal:" << thetaGoal << endl;
+		cout << "xGoal:" << xGoal << endl;
+		cout << "yGoal:" << yGoal << endl;
+		cout << "thetaGoal:" << thetaGoal << endl;
 
 		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
 		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
@@ -776,7 +743,7 @@ bool desiredPathXY(double t, double & x, double & y, double & th) {
 
 	//Settings
 	double desiredVelocity = 10; // 6 in/s
-	double fieldLength = 9; // 18 ft
+	double fieldLength = 12; // 18 ft
 	double fieldWidth = 5; // 10 ft
 	double cornerRadius = 3; // 6 ft
 	double startingDistance = 1; // 2 ft
@@ -1141,7 +1108,50 @@ double getUnixTime()
     return (((double) tv.tv_sec) + (double) (tv.tv_nsec / 1000000000.0));
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+//calibrateLeica:
+//drives a straight line in order to calibrate the initial theta in the Leica's frame of reference
 
+bool calibrateLeica(char* dataString, float leicaTimeStamp)
+{
+	// Get the first point of the orientation calibration
+	while(readPort(dataString)==0){
+		cout << "Calibrating Origin" << endl;
+		usleep(100000);
+	}
+
+	testData = leicaStoF(dataString);
+	sphericalToPlanar(testData[2], testData[3], testData[4]);
+
+	while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<30) {
+
+		sendVelocityCommands(10,0);
+
+		// Get 2nd point to calibrate theta
+		cout << "Waiting for 2nd point " << endl;
+		while(readPort(dataString)==0) {
+			cout << "Calibrating Theta" << endl;
+			usleep(100000);
+		}
+
+		testData = leicaStoF(dataString);
+		sphericalToPlanar(testData[2], testData[3], testData[4]);
+	}
+
+	sendVelocityCommands(0,0);		
+
+	thetaOrigin = atan2((location[1]-calibrateTheta[1]),(location[0]-calibrateTheta[0]));
+	cout << "First Point: " << calibrateTheta[0] << ", " << calibrateTheta[1] << " Timestamp: " << fmod(leicaTimeStamp,1.0) << endl;
+	cout << "Second Point: " << location[0] << ", " << location[1] << " Timestamp: " << fmod(testData[0],1.0) <<endl;
+	thetaOrigin -= M_PI/2;
+	thetaOrigin *= -1;
+	
+	// Reset the origin at the last data point from calibration.  
+	xOrigin = location[0];
+	yOrigin = location[1];
+
+	return true;	
+}
 
 
 
