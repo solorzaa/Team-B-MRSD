@@ -144,6 +144,8 @@ vector<double> veloSet;
 vector<double> anguSet;
 vector<double> timeSet;
 vector<double> thetaSet;
+vector<double> xSet;
+vector<double> ySet;
 struct timeval cTShift;
 double lastLeicaTime;
 double absoluteTimeShift = 0;
@@ -405,11 +407,15 @@ int main(int argc, char *argv[])
 		anguSet.push_back(velocityCommands[1]);
 		timeSet.push_back(getUnixTime());
 		thetaSet.push_back(absoluteTheta);
+		xSet.push_back(absoluteX);
+		ySet.push_back(absoluteY);
 		if(veloSet.size()>fifoSize) {
 			veloSet.erase(veloSet.begin());
 			anguSet.erase(anguSet.begin());
 			timeSet.erase(timeSet.begin());
 			thetaSet.erase(thetaSet.begin());
+			xSet.erase(xSet.begin());
+			ySet.erase(ySet.begin());
 		}
 	}
 
@@ -514,8 +520,11 @@ bool getPose()
                 if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
                         if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
                                 cout << "Updating the absolute Position of the robot" << endl;
-                                absoluteX = absoluteX*0.95 + location[0] * 0.05;
-                                absoluteY = absoluteY*0.95 + location[1] * 0.05 ;
+                                //absoluteX = absoluteX*0.95 + location[0] * 0.05;
+                                //absoluteY = absoluteY*0.95 + location[1] * 0.05 ;
+								
+								timeShift();
+								
                                 prevLocation[0] = location[0];
                                 prevLocation[1] = location[1];
                         }
@@ -702,7 +711,7 @@ vector<float> leicaStoF(char* recievedData){
 	if(verbose) cout<<endl;
 
 	//Time Shifting - Leica Time
-	lastLeicaTime = leicaData[0];
+	//lastLeicaTime = leicaData[0];
 
 	return leicaData;
 }
@@ -725,9 +734,6 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 	float translateY = ((radius*sin(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES)-yOrigin);
 	location[0] = translateX*cos(thetaOrigin)-translateY*sin(thetaOrigin);
 	location[1] = translateX*sin(thetaOrigin)+translateY*cos(thetaOrigin);
-
-	//Time Shift Locations
-	timeShift();
 
 	if(verbose) cout<< "xOrigin: " << xOrigin <<endl;
 	if(verbose) cout<< "yOrigin: " << yOrigin <<endl;
@@ -1338,6 +1344,8 @@ void *getHeading(void *threadarg) { // myI2C *i2cptr, float & heading) {
 // Shift Leica Values by Time 
 /////////////////////////////////////////
 void timeShift() {
+	//Shift Leica time by real date constant
+
 	// Some helper variables
 	double timeToNextDiscrete;
 	double timeToCurrent;
@@ -1358,27 +1366,54 @@ void timeShift() {
 
 	double cTime = cTShift.tv_usec/1.E6;
 	
-	if( ( cTime - lastLeicaTime) > 5) {
-		cout << "Time Shift is Strange" << endl;
-	}
+	//if( ( cTime - lastLeicaTime) > 5) {
+	//	cout << "Time Shift is Strange" << endl;
+	//}
 
-	// Find the index of the time shift
+	// Find the index of the time shift using the min distance between the Leica
+	// point and the last 10 points
 	int projectingStart = 0;
+	double min = 10000000;
 	for(int i=0; i<timeSet.size(); i++) {
-		if (lastLeicaTime>timeSet[i]) {
-			projectingStart = i-1;
-			break;
+		double distance = pow((xSet[i]-location[0]),2)+pow((ySet[i]-location[1]),2);
+		if(distance<min) {
+			projectingStart = i;
 		}
 	}
 	
 	// Determine if vector sizes aren't big enough
-	if (projectingStart<0) {
-		cout << "Leica Delay is too long" << endl;
+	if (projectingStart<=0) {
+		cout << "Leica Delay is too long, vectors aren't long enough" << endl;
 		return;
 	}
+	
+	// Figure out if the point is between the closest point and the next one or
+	// the closest point and the last one
+	double distanceBehind = (pow((xSet[projectingStart-1]-location[0]),2)+pow((ySet[projectingStart-1]-location[1]),2));
+	double distanceAhead = (pow((xSet[projectingStart+1]-location[0]),2)+pow((ySet[projectingStart+1]-location[1]),2));
+	if( distanceAhead > distanceBehind ) {
+		projectingStart-=1;
+	}
 
+	// Interpolate the time of the Leica
+	min = 10000000;
+	double interpX = xSet[projectingSet];
+	double interpY = ySet[projectingSet];
+	for(int i = 0; i<100; i++) {
+		double x = xSet[projectingSet] + (xSet[projectingSet+1]-xSet[projectingSet])*i/100.;
+		double y = ySet[projectingSet] + (ySet[projectingSet+1]-ySet[projectingSet])*i/100.;
+		double distance = pow((x-location[0]),2)+pow((y-location[1]),2);
+		if (distance<min) {
+			interpX = x;
+			interpY = y;
+		}
+	}
+	double interpDistance = sqrt(pow((interpX-xSet[projectingSet]),2)+pow((interpY-ySet[projectingSet]),2));
+	double wholeDistance = sqrt(pow((xSet[projectingSet+1]-xSet[projectingSet]),2)+pow((ySet[projectingSet+1]-ySet[projectingSet]),2));
+	lastLeicaTime = timeSet[projectingSet] + interpDistance/wholeDistance*(timeSet[projectingSet+1]-timeSet[projectingSet]);
+	
 	// Determine if Leica Data was received really quickly
-	else if (projectingStart==fifoSize-1) {
+	/*if (projectingStart==fifoSize-1) {
 		cout << "Leica Delay is VERY short" << endl;
 		
 		timeToCurrent = cTime-lastLeicaTime;
@@ -1394,7 +1429,7 @@ void timeShift() {
 		shiftedLocation[1]+=worldChangeY;
 		
 		return;
-	}
+	}*/
 		
 	// Project the point forward to the first discrete point
 	timeToNextDiscrete = timeSet[projectingStart+1]-lastLeicaTime;
