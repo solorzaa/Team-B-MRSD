@@ -365,9 +365,12 @@ int main(int argc, char *argv[])
 	H << Eigen::MatrixXd::Zero(3,3), Eigen::MatrixXd::Identity(3,3); //Linear Assumption
 	cout << "initial H: " << H << endl;
 
-	R << 0.052, -0.25, -0.046,      //Sensor covariance     
-             -0.25, 32.37, 0.22,
-             -0.046, 0.22, -0.047;
+	//R << 0.052, -0.25, -0.046,      //Sensor covariance     
+        //     -0.25, 32.37, 0.22,
+        //     -0.046, 0.22, -0.047;
+	R << 0.0057, -0.0274, -0.0052,
+	    -0.0274,  3.5970,  0.0239,
+	    -0.0052,  0.0239,  0.0047;
 	cout << "initial R: " << R << endl;
 
 	y << X(3), X(4), X(5);
