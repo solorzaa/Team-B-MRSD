@@ -1,0 +1,3740 @@
+Opening port: '/dev/ttyO4'...succeeded.
+Initializing port......done.
+Detecting device version...v1.2.
+- SetConfig(_DINA, 1, 1)...succeeded.
+Calibrating The IMU...
+heading offset is:-298.326
+
+
+I completed the callibration 
+
+
+Encoder at beginning: -1, 1
+comm port opened successfully
+Length of the string : -1
+
+Length of the string : -1
+
+no data
+Length of the string : -1
+
+no data
+Length of the string : 44
+$1425519452.784043,10813,19.13,96.02,3.870!
+
+Received First set of Leica Data
+1.42552e+09 10813 19.13 96.02 3.87 Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : -1
+
+Calibrating Origin
+Length of the string : 44
+$1425519453.442170,10814,19.13,96.02,3.870!
+
+1.42552e+09 10814 19.13 96.02 3.87 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519454.101921,10815,19.17,96.01,3.875!
+
+1.42552e+09 10815 19.17 96.01 3.875 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519454.743652,10816,20.66,96.01,3.875!
+
+1.42552e+09 10816 20.66 96.01 3.875 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 22
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 22
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519456.002289,10818,21.20,95.82,4.015!
+
+1.42552e+09 10818 21.2 95.82 4.015 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 42
+$1425519456.647818,10819,21.84,95.76,4.064
+1.42552e+09 10819 21.84 95.76 4.064 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : 2
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 29
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 15
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519457.946761,10821,23.04,95.64,4.162!
+
+1.42552e+09 10821 23.04 95.64 4.162 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519458.601446,10822,23.62,95.58,4.210!
+
+1.42552e+09 10822 23.62 95.58 4.21 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519459.242568,10823,24.18,95.52,4.257!
+
+1.42552e+09 10823 24.18 95.52 4.257 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519459.900943,10824,24.71,95.47,4.305!
+
+1.42552e+09 10824 24.71 95.47 4.305 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519460.552442,10825,25.24,95.40,4.356!
+
+1.42552e+09 10825 25.24 95.4 4.356 rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Waiting for 2nd point 
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 13
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 31
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : -1
+
+rightSent_RPM:63.2106
+leftSent_RPM:63.2106
+Calibrating Theta
+Length of the string : 44
+$1425519461.851071,10827,26.31,95.28,4.457!
+
+1.42552e+09 10827 26.31 95.28 4.457 rightSent_RPM:0
+leftSent_RPM:0
+First Point: 143.155, -49.6557 Timestamp: 0
+Second Point: 156.628, -77.4442 Timestamp: 0
+thetaOrigin:2.69014
+Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : -1
+
+Need more data...Length of the string : 44
+$1425519462.498021,10828,26.72,95.23,4.492!
+
+1.42552e+09 10828 26.72 95.23 4.492 I think I am at... 0.148145, 1.86426
+Encoder at beginning: 4380, 4381
+begin initializing Kalman filter
+initial X: 0
+0
+0
+0
+0
+0
+initial P: 1 0 0 0 0 0
+0 1 0 0 0 0
+0 0 1 0 0 0
+0 0 0 1 0 0
+0 0 0 0 1 0
+0 0 0 0 0 1
+initial Q: 0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+initial q: 10.3495 -2.3251  0.9759
+-2.3251  3.3519 -0.2221
+ 0.9759 -0.2221  0.0921
+initial completeQ:       0       0       0       0       0       0
+      0       0       0       0       0       0
+      0       0       0       0       0       0
+      0       0       0 10.3495 -2.3251  0.9759
+      0       0       0 -2.3251  3.3519 -0.2221
+      0       0       0  0.9759 -0.2221  0.0921
+initial H: 0 0 0 1 0 0
+0 0 0 0 1 0
+0 0 0 0 0 1
+initial R:  0.052  -0.25 -0.046
+ -0.25  32.37   0.22
+-0.046   0.22 -0.047
+initial y: 0
+0
+0
+initial z: 0
+0
+0
+initial F: 1 0 0 0 0 0
+0 1 0 0 0 0
+0 0 1 0 0 0
+0 0 0 1 0 0
+0 0 0 0 1 0
+0 0 0 0 0 1
+Length of the string : 44
+$1425519463.136452,10829,26.68,95.24,4.489!
+
+1.42552e+09 10829 26.68 95.24 4.489 z = 
+0
+0
+0
+X = 
+0
+0
+0
+0
+0
+0
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 0
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:0.807932
+linearVelocity:21.5
+angularVelocity:0
+xGoal:0
+yGoal:8.05911
+thetaGoal:0
+rightSent_RPM:135.903
+leftSent_RPM:135.903
+Length of the string : -1
+
+1.42552e+09 10829 26.68 95.24 4.489 z = 
+1.89431e-05
+   0.020543
+-0.00182604
+X = 
+-0.00117526
+  0.0026073
+-0.00191565
+ 0.00131895
+ 0.00260941
+ -0.0008683
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 6.28127
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:1.00997
+linearVelocity:24.5
+angularVelocity:0
+xGoal:0
+yGoal:8.07932
+thetaGoal:0
+rightSent_RPM:154.866
+leftSent_RPM:154.866
+Length of the string : -1
+
+1.42552e+09 10829 26.68 95.24 4.489 z = 
+ 0.0402478
+    6.5364
+-0.0396546
+X = 
+-0.0276337
+  0.772343
+-0.0524859
+  0.146855
+   1.24632
+-0.0114624
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 6.2307
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:1.21394
+linearVelocity:26
+angularVelocity:0.26
+xGoal:0
+yGoal:10.0997
+thetaGoal:0
+rightSent_RPM:182.837
+leftSent_RPM:145.858
+Length of the string : 44
+$1425519463.780058,10830,26.68,95.24,4.489!
+
+1.42552e+09 10830 26.68 95.24 4.489 z = 
+   0.344607
+    6.58286
+0.000824113
+X = 
+ 0.0266676
+   2.19269
+-0.0732121
+  0.409876
+   2.36981
+ 0.0067325
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 6.20997
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:1.44757
+linearVelocity:27.5
+angularVelocity:0.38
+xGoal:0
+yGoal:12.1394
+thetaGoal:0
+rightSent_RPM:200.852
+leftSent_RPM:146.807
+Length of the string : -1
+
+1.42552e+09 10830 26.68 95.24 4.489 z = 
+ 0.227596
+  3.74669
+0.0365952
+X = 
+   0.329344
+    4.13487
+ -0.0381412
+   0.198278
+    2.76272
+-0.00461305
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 6.24504
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:1.68538
+linearVelocity:28
+angularVelocity:0.28
+xGoal:0
+yGoal:14.4757
+thetaGoal:0
+rightSent_RPM:196.901
+leftSent_RPM:157.078
+Length of the string : -1
+
+1.42552e+09 10830 26.68 95.24 4.489 z = 
+0.0542618
+  3.20431
+0.0458215
+X = 
+   0.552328
+    6.84145
+ 0.00533479
+-0.00589861
+    2.95976
+ -0.0134389
+Leica X: 0.123775
+Leica Y: 1.69391
+absoluteTheta: 0.00533479
+absoluteX: 0.123775
+absoluteY: 1.69391
+time:1.92571
+linearVelocity:27.5
+angularVelocity:0.12
+xGoal:0
+yGoal:16.8538
+thetaGoal:0
+rightSent_RPM:182.362
+leftSent_RPM:165.296
+Length of the string : 44
+$1425519464.418056,10831,27.62,95.12,4.588!
+
+1.42552e+09 10831 27.62 95.12 4.588 z = 
+-0.0635699
+   2.87373
+  0.027714
+X = 
+  0.581649
+   10.3937
+ 0.0285472
+  -0.11402
+   3.00224
+-0.0170478
+Leica X: 0.100406
+Leica Y: 6.57785
+absoluteTheta: 0.0285472
+absoluteX: 0.100406
+absoluteY: 6.57785
+time:2.21113
+linearVelocity:27
+angularVelocity:0
+xGoal:0
+yGoal:19.2571
+thetaGoal:0
+rightSent_RPM:170.669
+leftSent_RPM:170.669
+Length of the string : -1
+
+1.42552e+09 10831 27.62 95.12 4.588 z = 
+-0.221829
+  6.36858
+0.0280745
+X = 
+  0.548815
+   13.2292
+ 0.0610492
+  -0.24182
+   3.91377
+-0.0232449
+Leica X: 0.100406
+Leica Y: 6.57785
+absoluteTheta: 0.0610492
+absoluteX: 0.100406
+absoluteY: 6.57785
+time:2.4467
+linearVelocity:26
+angularVelocity:-0.16
+xGoal:0
+yGoal:22.1113
+thetaGoal:0
+rightSent_RPM:152.97
+leftSent_RPM:175.725
+Length of the string : 44
+$1425519465.086894,10832,28.82,94.95,4.729!
+
+1.42552e+09 10832 28.82 94.95 4.729 z = 
+  -0.24842
+   4.10137
+-0.0016137
+X = 
+  0.398835
+   15.9986
+ 0.0627895
+ -0.270968
+   3.99022
+-0.0236569
+Leica X: -0.0720158
+Leica Y: 13.3393
+absoluteTheta: 0.0627895
+absoluteX: -0.0720158
+absoluteY: 13.3393
+time:2.68572
+linearVelocity:25.5
+angularVelocity:-0.22
+xGoal:0
+yGoal:24.467
+thetaGoal:0
+rightSent_RPM:145.542
+leftSent_RPM:176.832
+Length of the string : -1
+
+1.42552e+09 10832 28.82 94.95 4.729 z = 
+ -0.157732
+   2.91155
+-0.0187701
+X = 
+  0.153724
+   19.1342
+ 0.0374103
+ -0.164861
+   3.69714
+-0.0139913
+Leica X: -0.0720158
+Leica Y: 13.3393
+absoluteTheta: 0.0374103
+absoluteX: -0.0720158
+absoluteY: 13.3393
+time:2.92359
+linearVelocity:24.5
+angularVelocity:-0.14
+xGoal:0
+yGoal:26.8572
+thetaGoal:0
+rightSent_RPM:144.91
+leftSent_RPM:164.822
+Length of the string : -1
+
+1.42552e+09 10832 28.82 94.95 4.729 z = 
+-0.0600082
+   2.27727
+-0.0190437
+X = 
+ -0.0357824
+     22.575
+  0.0099074
+ -0.0605806
+    3.30717
+-0.00516696
+Leica X: -0.0720158
+Leica Y: 13.3393
+absoluteTheta: 0.0099074
+absoluteX: -0.0720158
+absoluteY: 13.3393
+time:3.16211
+linearVelocity:23
+angularVelocity:-0.06
+xGoal:0
+yGoal:29.2359
+thetaGoal:0
+rightSent_RPM:141.118
+leftSent_RPM:149.651
+Length of the string : 44
+$1425519465.747054,10833,29.87,94.78,4.887!
+
+1.42552e+09 10833 29.87 94.78 4.887 z = 
+ -0.017207
+   6.33809
+-0.0358439
+X = 
+ -0.115207
+   25.5277
+-0.0241264
+ 0.0585983
+   4.00001
+0.00287637
+Leica X: -0.796774
+Leica Y: 20.4404
+absoluteTheta: 6.25906
+absoluteX: -0.796774
+absoluteY: 20.4404
+time:3.40133
+linearVelocity:22
+angularVelocity:0.08
+xGoal:0
+yGoal:31.6211
+thetaGoal:0
+rightSent_RPM:144.752
+leftSent_RPM:133.374
+Length of the string : -1
+
+1.42552e+09 10833 29.87 94.78 4.887 z = 
+   0.101426
+    3.74491
+-0.00915473
+X = 
+-0.0886699
+   27.9835
+-0.0354527
+  0.116789
+   3.90539
+0.00729569
+Leica X: -0.796774
+Leica Y: 20.4404
+absoluteTheta: 6.24773
+absoluteX: -0.796774
+absoluteY: 20.4404
+time:3.64465
+linearVelocity:22
+angularVelocity:0.16
+xGoal:0
+yGoal:34.0133
+thetaGoal:0
+rightSent_RPM:150.441
+leftSent_RPM:127.685
+Length of the string : -1
+
+1.42552e+09 10833 29.87 94.78 4.887 z = 
+0.0817196
+  2.64877
+0.0103862
+X = 
+ 0.0313364
+   30.7445
+-0.0225551
+ 0.0595706
+    3.6094
+0.00251859
+Leica X: -0.796774
+Leica Y: 20.4404
+absoluteTheta: 6.26063
+absoluteX: -0.796774
+absoluteY: 20.4404
+time:3.88783
+linearVelocity:21.5
+angularVelocity:0.12
+xGoal:0
+yGoal:36.4465
+thetaGoal:0
+rightSent_RPM:144.436
+leftSent_RPM:127.369
+Length of the string : 44
+$1425519466.388177,10834,30.74,94.63,5.024!
+
+1.42552e+09 10834 30.74 94.63 5.024 z = 
+0.0283954
+  2.04458
+0.0153371
+X = 
+   0.127979
+     33.833
+ -0.0045294
+  -0.008552
+     3.2514
+-0.00273599
+Leica X: -1.36003
+Leica Y: 26.5843
+absoluteTheta: 6.27866
+absoluteX: -1.36003
+absoluteY: 26.5843
+time:4.13033
+linearVelocity:20.5
+angularVelocity:0.06
+xGoal:0
+yGoal:38.8783
+thetaGoal:0
+rightSent_RPM:133.848
+leftSent_RPM:125.315
+Length of the string : -1
+
+1.42552e+09 10834 30.74 94.63 5.024 z = 
+-0.0117649
+    6.1102
+  0.034626
+X = 
+    0.13322
+    36.5792
+  0.0244274
+ -0.0225712
+    4.02246
+-0.00258663
+Leica X: -1.36003
+Leica Y: 26.5843
+absoluteTheta: 0.0244274
+absoluteX: -1.36003
+absoluteY: 26.5843
+time:4.37283
+linearVelocity:20
+angularVelocity:-0.08
+xGoal:0
+yGoal:41.3033
+thetaGoal:0
+rightSent_RPM:120.732
+leftSent_RPM:132.11
+Length of the string : -1
+
+1.42552e+09 10834 30.74 94.63 5.024 z = 
+-0.0965262
+    3.5487
+0.00898169
+X = 
+  0.139113
+   38.7887
+ 0.0387585
+ -0.123709
+   3.94768
+-0.0111554
+Leica X: -1.36003
+Leica Y: 26.5843
+absoluteTheta: 0.0387585
+absoluteX: -1.36003
+absoluteY: 26.5843
+time:4.616
+linearVelocity:20.5
+angularVelocity:-0.16
+xGoal:0
+yGoal:43.7283
+thetaGoal:0
+rightSent_RPM:118.204
+leftSent_RPM:140.96
+Length of the string : -1
+
+1.42552e+09 10834 30.74 94.63 5.024 z = 
+-0.0849511
+    2.4471
+-0.0094631
+X = 
+  0.0446754
+    41.3485
+  0.0285959
+  -0.100708
+     3.5657
+-0.00881174
+Leica X: -1.36003
+Leica Y: 26.5843
+absoluteTheta: 0.0285959
+absoluteX: -1.36003
+absoluteY: 26.5843
+time:4.85751
+linearVelocity:20.5
+angularVelocity:-0.14
+xGoal:0
+yGoal:46.16
+thetaGoal:0
+rightSent_RPM:119.626
+leftSent_RPM:139.537
+Length of the string : 44
+$1425519467.026923,10835,32.26,94.63,5.024!
+
+1.42552e+09 10835 32.26 94.63 5.024 z = 
+-0.0403317
+   2.02361
+-0.0156883
+X = 
+ -0.0620613
+     44.338
+ 0.00929797
+  -0.043955
+    3.15167
+-0.00369019
+Leica X: 3.04442
+Leica Y: 29.4047
+absoluteTheta: 0.00929797
+absoluteX: 3.04442
+absoluteY: 29.4047
+time:5.10502
+linearVelocity:19.5
+angularVelocity:-0.06
+xGoal:0
+yGoal:48.5751
+thetaGoal:0
+rightSent_RPM:118.994
+leftSent_RPM:127.527
+Length of the string : -1
+
+1.42552e+09 10835 32.26 94.63 5.024 z = 
+-0.0141419
+   6.17591
+-0.0404284
+X = 
+ -0.138234
+   47.0753
+-0.0276016
+  0.069334
+   3.82875
+0.00501815
+Leica X: 3.04442
+Leica Y: 29.4047
+absoluteTheta: 6.25558
+absoluteX: 3.04442
+absoluteY: 29.4047
+time:5.34669
+linearVelocity:19
+angularVelocity:0.1
+xGoal:0
+yGoal:51.0502
+thetaGoal:0
+rightSent_RPM:127.211
+leftSent_RPM:112.989
+Length of the string : -1
+
+1.42552e+09 10835 32.26 94.63 5.024 z = 
+   0.104884
+    3.47382
+-0.00875495
+X = 
+ -0.109628
+   49.1723
+-0.0389392
+  0.121187
+   3.70476
+0.00940492
+Leica X: 3.04442
+Leica Y: 29.4047
+absoluteTheta: 6.24425
+absoluteX: 3.04442
+absoluteY: 29.4047
+time:5.58982
+linearVelocity:19.5
+angularVelocity:0.16
+xGoal:0
+yGoal:53.4669
+thetaGoal:0
+rightSent_RPM:134.638
+leftSent_RPM:111.883
+Length of the string : 44
+$1425519468.127049,10836,32.94,94.28,5.381!
+
+1.42552e+09 10836 32.94 94.28 5.381 z = 
+0.0825359
+  2.42947
+0.0119307
+X = 
+0.00758218
+   51.5671
+-0.0250637
+ 0.0602093
+    3.4055
+0.00407493
+Leica X: -2.26925
+Leica Y: 42.6982
+absoluteTheta: 6.25812
+absoluteX: -2.26925
+absoluteY: 42.6982
+time:5.83473
+linearVelocity:19.5
+angularVelocity:0.12
+xGoal:0
+yGoal:55.8982
+thetaGoal:0
+rightSent_RPM:131.794
+leftSent_RPM:114.727
+Length of the string : -1
+
+1.42552e+09 10836 32.94 94.28 5.381 z = 
+0.0318085
+   1.9183
+0.0157528
+X = 
+   0.099351
+    54.3216
+-0.00716441
+-0.00313537
+    3.06679
+-0.00123277
+Leica X: -2.26925
+Leica Y: 42.6982
+absoluteTheta: 6.27602
+absoluteX: -2.26925
+absoluteY: 42.6982
+time:6.07708
+linearVelocity:19
+angularVelocity:0.08
+xGoal:0
+yGoal:58.3473
+thetaGoal:0
+rightSent_RPM:125.789
+leftSent_RPM:114.411
+Length of the string : -1
+
+1.42552e+09 10836 32.94 94.28 5.381 z = 
+0.00457103
+   6.44205
+  0.040489
+X = 
+     0.1081
+    56.9989
+   0.025487
+-0.00575517
+    3.97794
+-0.00110978
+Leica X: -2.26925
+Leica Y: 42.6982
+absoluteTheta: 0.025487
+absoluteX: -2.26925
+absoluteY: 42.6982
+time:6.31884
+linearVelocity:19
+angularVelocity:-0.1
+xGoal:0
+yGoal:60.7708
+thetaGoal:0
+rightSent_RPM:112.989
+leftSent_RPM:127.211
+Length of the string : 44
+$1425519468.952765,10837,33.57,94.18,5.495!
+
+1.42552e+09 10837 33.57 94.18 5.495 z = 
+-0.103416
+  3.61215
+0.0110763
+X = 
+  0.126574
+   59.0354
+ 0.0431637
+ -0.133274
+   3.94234
+-0.0125925
+Leica X: -2.56567
+Leica Y: 47.7681
+absoluteTheta: 0.0431637
+absoluteX: -2.56567
+absoluteY: 47.7681
+time:6.56611
+linearVelocity:19.5
+angularVelocity:-0.18
+xGoal:0
+yGoal:63.1884
+thetaGoal:0
+rightSent_RPM:110.46
+leftSent_RPM:136.061
+Length of the string : -1
+
+1.42552e+09 10837 33.57 94.18 5.495 z = 
+-0.0960542
+   2.51432
+ -0.012299
+X = 
+ 0.0276635
+   61.4897
+ 0.0310717
+ -0.109297
+   3.57578
+-0.0101239
+Leica X: -2.56567
+Leica Y: 47.7681
+absoluteTheta: 0.0310717
+absoluteX: -2.56567
+absoluteY: 47.7681
+time:6.80973
+linearVelocity:19.5
+angularVelocity:-0.14
+xGoal:0
+yGoal:65.6611
+thetaGoal:0
+rightSent_RPM:113.305
+leftSent_RPM:133.216
+Length of the string : -1
+
+1.42552e+09 10837 33.57 94.18 5.495 z = 
+-0.0424875
+   1.96071
+-0.0178889
+X = 
+ -0.0843606
+    64.3146
+  0.0095866
+ -0.0447591
+    3.13759
+-0.00397061
+Leica X: -2.56567
+Leica Y: 47.7681
+absoluteTheta: 0.0095866
+absoluteX: -2.56567
+absoluteY: 47.7681
+time:7.05156
+linearVelocity:19
+angularVelocity:-0.08
+xGoal:0
+yGoal:68.0973
+thetaGoal:0
+rightSent_RPM:114.411
+leftSent_RPM:125.789
+Length of the string : 44
+$1425519469.594407,10838,34.16,94.07,5.606!
+
+1.42552e+09 10838 34.16 94.07 5.606 z = 
+-0.00662094
+    7.20713
+ -0.0531044
+X = 
+ -0.179294
+   67.4517
+-0.0388546
+   0.10658
+    4.0423
+0.00873069
+Leica X: -2.83942
+Leica Y: 52.69
+absoluteTheta: 6.24433
+absoluteX: -2.83942
+absoluteY: 52.69
+time:7.32645
+linearVelocity:18.5
+angularVelocity:0.14
+xGoal:0
+yGoal:70.5156
+thetaGoal:0
+rightSent_RPM:126.895
+leftSent_RPM:106.984
+Length of the string : -1
+
+1.42552e+09 10838 34.16 94.07 5.606 z = 
+  0.147326
+   3.49119
+-0.0116477
+X = 
+ -0.136284
+   69.5243
+-0.0542211
+  0.170561
+   3.85273
+ 0.0145663
+Leica X: -2.83942
+Leica Y: 52.69
+absoluteTheta: 6.22896
+absoluteX: -2.83942
+absoluteY: 52.69
+time:7.57001
+linearVelocity:19
+angularVelocity:0.22
+xGoal:0
+yGoal:73.2645
+thetaGoal:0
+rightSent_RPM:135.745
+leftSent_RPM:104.455
+Length of the string : 44
+$1425519470.232791,10839,34.72,93.97,5.728!
+
+1.42552e+09 10839 34.72 93.97 5.728 z = 
+ 0.113232
+  2.40596
+0.0176532
+X = 
+ 0.0216901
+   71.9008
+-0.0343431
+ 0.0859968
+    3.5191
+0.00696974
+Leica X: -3.33676
+Leica Y: 57.9534
+absoluteTheta: 6.24884
+absoluteX: -3.33676
+absoluteY: 57.9534
+time:7.81487
+linearVelocity:19
+angularVelocity:0.18
+xGoal:0
+yGoal:75.7001
+thetaGoal:0
+rightSent_RPM:132.9
+leftSent_RPM:107.3
+Length of the string : -1
+
+1.42552e+09 10839 34.72 93.97 5.728 z = 
+0.0443901
+  1.92187
+0.0212298
+X = 
+    0.143642
+     74.6757
+   -0.010255
+  0.00313637
+      3.1644
+-0.000372771
+Leica X: -3.33676
+Leica Y: 57.9534
+absoluteTheta: 6.27293
+absoluteX: -3.33676
+absoluteY: 57.9534
+time:8.05982
+linearVelocity:18.5
+angularVelocity:0.1
+xGoal:0
+yGoal:78.1487
+thetaGoal:0
+rightSent_RPM:124.051
+leftSent_RPM:109.828
+Length of the string : -1
+
+1.42552e+09 10839 34.72 93.97 5.728 z = 
+0.000745468
+    6.67787
+  0.0670388
+X = 
+   0.179473
+    77.2936
+  0.0457845
+ -0.0422649
+    4.16913
+-0.00494407
+Leica X: -3.33676
+Leica Y: 57.9534
+absoluteTheta: 0.0457845
+absoluteX: -3.33676
+absoluteY: 57.9534
+time:8.30261
+linearVelocity:18
+angularVelocity:-0.16
+xGoal:0
+yGoal:80.5982
+thetaGoal:0
+rightSent_RPM:102.401
+leftSent_RPM:125.157
+Length of the string : 44
+$1425519470.878914,10840,35.27,93.89,5.842!
+
+1.42552e+09 10840 35.27 93.89 5.842 z = 
+-0.181911
+  3.60664
+0.0168947
+X = 
+  0.192221
+   79.2382
+ 0.0732677
+ -0.231329
+   4.12091
+-0.0225058
+Leica X: -3.62254
+Leica Y: 62.9454
+absoluteTheta: 0.0732677
+absoluteX: -3.62254
+absoluteY: 62.9454
+time:8.54581
+linearVelocity:19
+angularVelocity:-0.3
+xGoal:0
+yGoal:83.0261
+thetaGoal:0
+rightSent_RPM:98.7665
+leftSent_RPM:141.434
+Length of the string : -1
+
+1.42552e+09 10840 35.27 93.89 5.842 z = 
+ -0.157593
+   2.42226
+-0.0210621
+X = 
+ 0.0186936
+   81.6436
+  0.051739
+ -0.171343
+   3.67612
+-0.0165178
+Leica X: -3.62254
+Leica Y: 62.9454
+absoluteTheta: 0.051739
+absoluteX: -3.62254
+absoluteY: 62.9454
+time:8.78806
+linearVelocity:19
+angularVelocity:-0.26
+xGoal:0
+yGoal:85.4581
+thetaGoal:0
+rightSent_RPM:101.611
+leftSent_RPM:138.589
+Length of the string : -1
+
+1.42552e+09 10840 35.27 93.89 5.842 z = 
+-0.0696901
+   1.95159
+-0.0311394
+X = 
+  -0.163481
+    84.4759
+  0.0151834
+ -0.0604115
+    3.18299
+-0.00570917
+Leica X: -3.62254
+Leica Y: 62.9454
+absoluteTheta: 0.0151834
+absoluteX: -3.62254
+absoluteY: 62.9454
+time:9.03052
+linearVelocity:18.5
+angularVelocity:-0.14
+xGoal:0
+yGoal:87.8806
+thetaGoal:0
+rightSent_RPM:106.984
+leftSent_RPM:126.895
+Length of the string : 44
+$1425519471.526480,10841,35.77,93.81,5.954!
+
+1.42552e+09 10841 35.77 93.81 5.954 z = 
+-0.00860607
+    7.37339
+  -0.102076
+X = 
+ -0.305744
+   87.5119
+-0.0756601
+  0.168251
+   4.01221
+ 0.0151782
+Leica X: -3.96501
+Leica Y: 67.7949
+absoluteTheta: 6.20753
+absoluteX: -3.96501
+absoluteY: 67.7949
+time:9.27462
+linearVelocity:17.5
+angularVelocity:0.26
+xGoal:0
+yGoal:90.3052
+thetaGoal:0
+rightSent_RPM:129.108
+leftSent_RPM:92.1294
+Length of the string : -1
+
+1.42552e+09 10841 35.77 93.81 5.954 z = 
+  0.307283
+   3.72529
+-0.0255588
+X = 
+-0.265964
+  89.5637
+-0.114151
+  0.37087
+  3.80944
+0.0345513
+Leica X: -3.96501
+Leica Y: 67.7949
+absoluteTheta: 6.16903
+absoluteX: -3.96501
+absoluteY: 67.7949
+time:9.51953
+linearVelocity:18
+angularVelocity:0.48
+xGoal:0
+yGoal:92.7462
+thetaGoal:0
+rightSent_RPM:147.913
+leftSent_RPM:79.6453
+Length of the string : 44
+$1425519472.179784,10842,36.25,93.73,6.073!
+
+1.42552e+09 10842 36.25 93.73 6.073 z = 
+ 0.246631
+  2.44569
+0.0357727
+X = 
+0.0385104
+  91.7754
+-0.076032
+ 0.215116
+  3.51724
+0.0200819
+Leica X: -4.43346
+Leica Y: 72.8699
+absoluteTheta: 6.20715
+absoluteX: -4.43346
+absoluteY: 72.8699
+time:9.76301
+linearVelocity:18.5
+angularVelocity:0.4
+xGoal:0
+yGoal:95.1953
+thetaGoal:0
+rightSent_RPM:145.384
+leftSent_RPM:88.4948
+Length of the string : -1
+
+1.42552e+09 10842 36.25 93.73 6.073 z = 
+0.0940127
+  1.88459
+0.0520087
+X = 
+  0.307996
+   94.3577
+-0.0174026
+ 0.0206439
+   3.22027
+0.00174768
+Leica X: -4.43346
+Leica Y: 72.8699
+absoluteTheta: 6.26578
+absoluteX: -4.43346
+absoluteY: 72.8699
+time:10.0071
+linearVelocity:18
+angularVelocity:0.2
+xGoal:0
+yGoal:97.6301
+thetaGoal:0
+rightSent_RPM:128.001
+leftSent_RPM:99.5566
+Length of the string : -1
+
+1.42552e+09 10842 36.25 93.73 6.073 z = 
+-0.0285793
+   7.89096
+     0.168
+X = 
+   0.44073
+   97.0499
+  0.130257
+ -0.190542
+   4.74174
+-0.0209101
+Leica X: -4.43346
+Leica Y: 72.8699
+absoluteTheta: 0.130257
+absoluteX: -4.43346
+absoluteY: 72.8699
+time:10.2503
+linearVelocity:18
+angularVelocity:-0.5
+xGoal:0
+yGoal:100.071
+thetaGoal:0
+rightSent_RPM:78.2231
+leftSent_RPM:149.335
+Length of the string : 44
+$1425519472.829912,10843,36.74,93.67,6.180!
+
+1.42552e+09 10843 36.74 93.67 6.18 z = 
+-0.549565
+  3.89371
+ 0.040332
+X = 
+  0.441228
+   98.8174
+  0.203529
+ -0.678034
+   4.78745
+-0.0678466
+Leica X: -4.56746
+Leica Y: 77.5634
+absoluteTheta: 0.203529
+absoluteX: -4.56746
+absoluteY: 77.5634
+time:10.4938
+linearVelocity:19
+angularVelocity:-0.88
+xGoal:0
+yGoal:102.503
+thetaGoal:0
+rightSent_RPM:57.5216
+leftSent_RPM:182.679
+Length of the string : -1
+
+1.42552e+09 10843 36.74 93.67 6.18 z = 
+ -0.469981
+   2.63351
+-0.0729438
+X = 
+-0.0658315
+   101.403
+  0.132741
+ -0.465462
+   4.16655
+-0.0469858
+Leica X: -4.56746
+Leica Y: 77.5634
+absoluteTheta: 0.132741
+absoluteX: -4.56746
+absoluteY: 77.5634
+time:10.7383
+linearVelocity:18.5
+angularVelocity:-0.7
+xGoal:0
+yGoal:104.938
+thetaGoal:0
+rightSent_RPM:67.1612
+leftSent_RPM:166.718
+Length of the string : -1
+
+1.42552e+09 10843 36.74 93.67 6.18 z = 
+ -0.174582
+   2.06306
+-0.0980422
+X = 
+ -0.577546
+   104.498
+ 0.0191127
+ -0.101129
+   3.43065
+-0.0108684
+Leica X: -4.56746
+Leica Y: 77.5634
+absoluteTheta: 0.0191127
+absoluteX: -4.56746
+absoluteY: 77.5634
+time:10.9857
+linearVelocity:17.5
+angularVelocity:-0.32
+xGoal:0
+yGoal:107.383
+thetaGoal:0
+rightSent_RPM:87.8627
+leftSent_RPM:133.374
+Length of the string : 44
+$1425519473.474613,10844,37.16,93.61,6.290!
+
+1.42552e+09 10844 37.16 93.61 6.29 z = 
+ 0.0279771
+   1.59055
+-0.0595048
+X = 
+ -0.737578
+   107.599
+-0.0454463
+ 0.0833705
+   2.82285
+0.00809194
+Leica X: -4.95205
+Leica Y: 82.2428
+absoluteTheta: 6.23774
+absoluteX: -4.95205
+absoluteY: 82.2428
+time:11.2335
+linearVelocity:17
+angularVelocity:-0.06
+xGoal:0
+yGoal:109.857
+thetaGoal:0
+rightSent_RPM:103.191
+leftSent_RPM:111.725
+Length of the string : -1
+
+1.42552e+09 10844 37.16 93.61 6.29 z = 
+  0.239992
+   3.82887
+-0.0719176
+X = 
+-0.794751
+  109.615
+-0.125436
+ 0.372703
+  2.84383
+0.0371805
+Leica X: -4.95205
+Leica Y: 82.2428
+absoluteTheta: 6.15775
+absoluteX: -4.95205
+absoluteY: 82.2428
+time:11.477
+linearVelocity:17.5
+angularVelocity:0.32
+xGoal:0
+yGoal:112.335
+thetaGoal:0
+rightSent_RPM:133.374
+leftSent_RPM:87.8627
+Length of the string : 44
+$1425519474.136383,10845,37.54,93.55,6.408!
+
+1.42552e+09 10845 37.54 93.55 6.408 z = 
+   0.322066
+    2.50202
+-0.00713482
+X = 
+-0.559171
+   111.51
+-0.133186
+ 0.369508
+  2.68151
+0.0379109
+Leica X: -5.5717
+Leica Y: 87.1421
+absoluteTheta: 6.15
+absoluteX: -5.5717
+absoluteY: 87.1421
+time:11.7238
+linearVelocity:18
+angularVelocity:0.46
+xGoal:0
+yGoal:114.77
+thetaGoal:0
+rightSent_RPM:146.49
+leftSent_RPM:81.0675
+Length of the string : -1
+
+1.42552e+09 10845 37.54 93.55 6.408 z = 
+ 0.221028
+  1.91782
+0.0381358
+X = 
+ -0.182642
+   113.616
+-0.0835921
+  0.194781
+   2.54696
+ 0.0212392
+Leica X: -5.5717
+Leica Y: 87.1421
+absoluteTheta: 6.19959
+absoluteX: -5.5717
+absoluteY: 87.1421
+time:11.9672
+linearVelocity:18.5
+angularVelocity:0.36
+xGoal:0
+yGoal:117.238
+thetaGoal:0
+rightSent_RPM:142.54
+leftSent_RPM:91.3393
+Length of the string : -1
+
+1.42552e+09 10845 37.54 93.55 6.408 z = 
+0.0985484
+  1.81415
+0.0466089
+X = 
+  0.100073
+   116.307
+-0.0265253
+ 0.0459356
+   2.45642
+0.00636351
+Leica X: -5.5717
+Leica Y: 87.1421
+absoluteTheta: 6.25666
+absoluteX: -5.5717
+absoluteY: 87.1421
+time:12.2583
+linearVelocity:19
+angularVelocity:0.16
+xGoal:0
+yGoal:119.672
+thetaGoal:0
+rightSent_RPM:131.478
+leftSent_RPM:108.722
+Length of the string : 44
+$1425519474.771176,10846,38.05,93.51,6.501!
+
+1.42552e+09 10846 38.05 93.51 6.501 z = 
+0.0305552
+  3.96093
+0.0745137
+X = 
+   0.172513
+    118.435
+  0.0365124
+ -0.0422775
+    2.98779
+-0.00456149
+Leica X: -5.17469
+Leica Y: 91.4286
+absoluteTheta: 0.0365124
+absoluteX: -5.17469
+absoluteY: 91.4286
+time:12.5049
+linearVelocity:19.5
+angularVelocity:-0.12
+xGoal:0
+yGoal:122.583
+thetaGoal:0
+rightSent_RPM:114.727
+leftSent_RPM:131.794
+Length of the string : -1
+
+1.42552e+09 10846 38.05 93.51 6.501 z = 
+-0.122579
+  2.70023
+0.0236332
+X = 
+  0.175963
+   120.473
+ 0.0647058
+ -0.172082
+   3.00978
+-0.0180008
+Leica X: -5.17469
+Leica Y: 91.4286
+absoluteTheta: 0.0647058
+absoluteX: -5.17469
+absoluteY: 91.4286
+time:12.7491
+linearVelocity:20
+angularVelocity:-0.26
+xGoal:0
+yGoal:125.049
+thetaGoal:0
+rightSent_RPM:107.932
+leftSent_RPM:144.91
+Length of the string : 44
+$1425519475.419028,10847,38.58,93.46,6.602!
+
+1.42552e+09 10847 38.58 93.46 6.602 z = 
+ -0.123522
+   2.14534
+-0.0144652
+X = 
+ 0.0130337
+   122.922
+ 0.0466503
+ -0.132721
+    2.7846
+-0.0140459
+Leica X: -4.76536
+Leica Y: 96.051
+absoluteTheta: 0.0466503
+absoluteX: -4.76536
+absoluteY: 96.051
+time:12.9945
+linearVelocity:20
+angularVelocity:-0.24
+xGoal:0
+yGoal:127.491
+thetaGoal:0
+rightSent_RPM:109.354
+leftSent_RPM:143.488
+Length of the string : -1
+
+1.42552e+09 10847 38.58 93.46 6.602 z = 
+-0.0540964
+   1.69543
+-0.0238399
+X = 
+ -0.152887
+   125.597
+ 0.0157979
+-0.0448884
+   2.46144
+-0.0047732
+Leica X: -4.76536
+Leica Y: 96.051
+absoluteTheta: 0.0157979
+absoluteX: -4.76536
+absoluteY: 96.051
+time:13.2378
+linearVelocity:19.5
+angularVelocity:-0.14
+xGoal:0
+yGoal:129.945
+thetaGoal:0
+rightSent_RPM:113.305
+leftSent_RPM:133.216
+Length of the string : -1
+
+1.42552e+09 10847 38.58 93.46 6.602 z = 
+-0.0165988
+   4.35621
+-0.0500397
+X = 
+ -0.236288
+   127.969
+-0.0296999
+ 0.0688494
+   2.81645
+ 0.0077178
+Leica X: -4.76536
+Leica Y: 96.051
+absoluteTheta: 6.25349
+absoluteX: -4.76536
+absoluteY: 96.051
+time:13.4791
+linearVelocity:19.5
+angularVelocity:0.06
+xGoal:0
+yGoal:132.378
+thetaGoal:0
+rightSent_RPM:127.527
+leftSent_RPM:118.994
+Length of the string : 44
+$1425519476.060615,10848,38.98,93.40,6.720!
+
+1.42552e+09 10848 38.98 93.4 6.72 z = 
+  0.106548
+   2.87239
+-0.0204401
+X = 
+ -0.215468
+   130.049
+-0.0518887
+   0.14902
+   2.74945
+ 0.0168751
+Leica X: -5.10672
+Leica Y: 101.039
+absoluteTheta: 6.2313
+absoluteX: -5.10672
+absoluteY: 101.039
+time:13.7218
+linearVelocity:20
+angularVelocity:0.22
+xGoal:0
+yGoal:134.791
+thetaGoal:0
+rightSent_RPM:142.066
+leftSent_RPM:110.777
+Length of the string : -1
+
+1.42552e+09 10848 38.98 93.4 6.72 z = 
+  0.102905
+   2.12515
+0.00725931
+X = 
+-0.0702998
+     132.3
+-0.0396733
+  0.102961
+   2.58909
+ 0.0129861
+Leica X: -5.10672
+Leica Y: 101.039
+absoluteTheta: 6.24351
+absoluteX: -5.10672
+absoluteY: 101.039
+time:13.9654
+linearVelocity:20.5
+angularVelocity:0.3
+xGoal:0
+yGoal:137.218
+thetaGoal:0
+rightSent_RPM:150.915
+leftSent_RPM:108.248
+Length of the string : -1
+
+1.42552e+09 10848 38.98 93.4 6.72 z = 
+0.0492258
+   1.7658
+0.0195517
+X = 
+  0.072394
+   134.848
+-0.0134743
+ 0.0243699
+   2.42133
+ 0.0050801
+Leica X: -5.10672
+Leica Y: 101.039
+absoluteTheta: 6.26971
+absoluteX: -5.10672
+absoluteY: 101.039
+time:14.2074
+linearVelocity:20.5
+angularVelocity:0.36
+xGoal:0
+yGoal:139.654
+thetaGoal:0
+rightSent_RPM:155.182
+leftSent_RPM:103.981
+Length of the string : 44
+$1425519476.726897,10849,39.44,93.34,6.839!
+
+1.42552e+09 10849 39.44 93.34 6.839 z = 
+-0.014951
+  4.78595
+0.0739181
+X = 
+   0.12337
+   137.385
+ 0.0495508
+-0.0847983
+   3.19548
+-0.0106986
+Leica X: -5.14461
+Leica Y: 106.197
+absoluteTheta: 0.0495508
+absoluteX: -5.14461
+absoluteY: 106.197
+time:14.4491
+linearVelocity:20
+angularVelocity:0.3
+xGoal:0
+yGoal:142.074
+thetaGoal:0
+rightSent_RPM:147.755
+leftSent_RPM:105.088
+Length of the string : -1
+
+1.42552e+09 10849 39.44 93.34 6.839 z = 
+-0.214353
+  3.11381
+0.0557053
+X = 
+ 0.133876
+   139.52
+ 0.110687
+-0.321151
+  3.39467
+-0.038774
+Leica X: -5.14461
+Leica Y: 106.197
+absoluteTheta: 0.110687
+absoluteX: -5.14461
+absoluteY: 106.197
+time:14.6886
+linearVelocity:20.5
+angularVelocity:0.32
+xGoal:-0.00502167
+yGoal:144.491
+thetaGoal:0.0204569
+rightSent_RPM:152.337
+leftSent_RPM:106.826
+Length of the string : 44
+$1425519477.369430,10850,39.96,93.29,6.959!
+
+1.42552e+09 10850 39.96 93.29 6.959 z = 
+-0.284866
+  2.23903
+0.0341004
+X = 
+ -0.094476
+   141.996
+  0.135227
+ -0.393877
+   3.28044
+-0.0510153
+Leica X: -4.86055
+Leica Y: 111.521
+absoluteTheta: 0.135227
+absoluteX: -4.86055
+absoluteY: 111.521
+time:14.9302
+linearVelocity:20
+angularVelocity:0.52
+xGoal:-0.173346
+yGoal:146.879
+thetaGoal:0.120262
+rightSent_RPM:163.399
+leftSent_RPM:89.4429
+Length of the string : -1
+
+1.42552e+09 10850 39.96 93.29 6.959 z = 
+-0.281157
+  1.82186
+0.0305092
+X = 
+ -0.484034
+   144.949
+  0.135037
+ -0.397199
+   3.08681
+-0.0574101
+Leica X: -4.86055
+Leica Y: 111.521
+absoluteTheta: 0.135037
+absoluteX: -4.86055
+absoluteY: 111.521
+time:15.1727
+linearVelocity:19.5
+angularVelocity:0.94
+xGoal:-0.583322
+yGoal:149.259
+thetaGoal:0.220926
+rightSent_RPM:190.106
+leftSent_RPM:56.4154
+Length of the string : -1
+
+1.42552e+09 10850 39.96 93.29 6.959 z = 
+-0.826411
+  5.02285
+  0.13594
+X = 
+ -0.47248
+  147.433
+  0.31086
+ -1.12728
+  4.27703
+-0.150809
+Leica X: -4.86055
+Leica Y: 111.521
+absoluteTheta: 0.31086
+absoluteX: -4.86055
+absoluteY: 111.521
+time:15.4124
+linearVelocity:19
+angularVelocity:0.64
+xGoal:-1.2332
+yGoal:151.594
+thetaGoal:0.321961
+rightSent_RPM:165.612
+leftSent_RPM:74.5885
+Length of the string : 44
+$1425519478.012036,10851,40.35,93.24,7.081!
+
+1.42552e+09 10851 40.35 93.24 7.081 z = 
+-1.11434
+ 2.94805
+0.154201
+X = 
+-0.945267
+  149.632
+ 0.479043
+ -1.56049
+  4.80344
+-0.226685
+Leica X: -5.09892
+Leica Y: 116.678
+absoluteTheta: 0.479043
+absoluteX: -5.09892
+absoluteY: 116.678
+time:15.6554
+linearVelocity:19.5
+angularVelocity:0.28
+xGoal:-2.10394
+yGoal:153.827
+thetaGoal:0.421843
+rightSent_RPM:143.172
+leftSent_RPM:103.349
+Length of the string : -1
+
+1.42552e+09 10851 40.35 93.24 7.081 z = 
+ -1.09626
+  1.95212
+0.0729423
+X = 
+   -2.109
+  152.567
+ 0.498777
+  -1.5019
+  4.77343
+-0.254608
+Leica X: -5.09892
+Leica Y: 116.678
+absoluteTheta: 0.498777
+absoluteX: -5.09892
+absoluteY: 116.678
+time:15.895
+linearVelocity:18
+angularVelocity:0.68
+xGoal:-3.20924
+yGoal:155.989
+thetaGoal:0.523086
+rightSent_RPM:162.135
+leftSent_RPM:65.4229
+Length of the string : -1
+
+1.42552e+09 10851 40.35 93.24 7.081 z = 
+-0.870242
+  1.53701
+0.0289312
+X = 
+  -3.6203
+  156.448
+ 0.392238
+ -1.24265
+  4.56236
+-0.264291
+Leica X: -5.09892
+Leica Y: 116.678
+absoluteTheta: 0.392238
+absoluteX: -5.09892
+absoluteY: 116.678
+time:16.1347
+linearVelocity:16
+angularVelocity:1.98
+xGoal:-4.50789
+yGoal:158.002
+thetaGoal:0.622933
+rightSent_RPM:241.938
+leftSent_RPM:-39.6646
+Length of the string : 44
+$1425519478.650893,10852,40.67,93.20,7.208!
+
+1.42552e+09 10852 40.67 93.2 7.208 z = 
+-2.07657
+ 4.54943
+0.191395
+X = 
+  -3.6875
+  158.965
+ 0.759149
+ -2.87918
+  6.48118
+-0.519119
+Leica X: -5.66674
+Leica Y: 121.891
+absoluteTheta: 0.759149
+absoluteX: -5.66674
+absoluteY: 121.891
+time:16.3758
+linearVelocity:17
+angularVelocity:1.18
+xGoal:-6.00074
+yGoal:159.875
+thetaGoal:0.722781
+rightSent_RPM:191.37
+leftSent_RPM:23.5459
+Length of the string : -1
+
+1.42552e+09 10852 40.67 93.2 7.208 z = 
+-2.15861
+ 1.86939
+0.319145
+X = 
+ -4.83353
+  162.102
+  1.15066
+ -3.43198
+  8.04021
+-0.749716
+Leica X: -5.66674
+Leica Y: 121.891
+absoluteTheta: 1.15066
+absoluteX: -5.66674
+absoluteY: 121.891
+time:16.6137
+linearVelocity:16.5
+angularVelocity:0.22
+xGoal:-7.68378
+yGoal:161.601
+thetaGoal:0.823249
+rightSent_RPM:119.942
+leftSent_RPM:88.6528
+Length of the string : -1
+
+1.42552e+09 10852 40.67 93.2 7.208 z = 
+-1.87635
+0.697212
+0.151192
+X = 
+ -7.19221
+  167.649
+   1.2031
+ -3.23712
+  9.11628
+-0.959972
+Leica X: -5.66674
+Leica Y: 121.891
+absoluteTheta: 1.2031
+absoluteX: -5.66674
+absoluteY: 121.891
+time:16.8514
+linearVelocity:15.5
+angularVelocity:1.96
+xGoal:-9.50569
+yGoal:163.129
+thetaGoal:0.922374
+rightSent_RPM:237.356
+leftSent_RPM:-41.4029
+Length of the string : -1
+
+1.42552e+09 10852 40.67 93.2 7.208 z = 
+ -1.58385
+ 0.585093
+0.0248494
+X = 
+-10.4539
+ 178.699
+0.772601
+-3.23812
+ 11.0066
+-1.32457
+Leica X: -5.66674
+Leica Y: 121.891
+absoluteTheta: 0.772601
+absoluteX: -5.66674
+absoluteY: 121.891
+time:17.1133
+linearVelocity:6
+angularVelocity:1.98
+xGoal:-11.4684
+yGoal:164.468
+thetaGoal:1.02143
+rightSent_RPM:178.728
+leftSent_RPM:-102.875
+Length of the string : 44
+$1425519479.288836,10853,40.61,93.20,7.208!
+
+1.42552e+09 10853 40.61 93.2 7.208 z = 
+-3.52798
+ 2.98655
+0.540684
+X = 
+-11.1059
+ 199.299
+ 2.30731
+-8.05648
+ 23.6925
+-3.29098
+Leica X: -5.93885
+Leica Y: 121.773
+absoluteTheta: 2.30731
+absoluteX: -5.93885
+absoluteY: 121.773
+time:17.3541
+linearVelocity:48.5
+angularVelocity:1.98
+xGoal:-13.7715
+yGoal:165.711
+thetaGoal:1.13052
+rightSent_RPM:447.373
+leftSent_RPM:165.77
+Length of the string : -1
+
+1.42552e+09 10853 40.61 93.2 7.208 z = 
+-0.662321
+-0.742437
+ 0.358158
+X = 
+ -20.926
+ 369.825
+ 8.12368
+-20.6114
+ 106.312
+-16.1809
+Leica X: -5.93885
+Leica Y: 121.773
+absoluteTheta: 1.8405
+absoluteX: -5.93885
+absoluteY: 121.773
+time:17.5911
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-15.9977
+yGoal:166.627
+thetaGoal:1.23086
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+Length of the string : -1
+
+1.42552e+09 10853 40.61 93.2 7.208 z = 
+ -2.73897
+-0.990996
+ 0.186389
+X = 
+ -7.39563
+  75.5075
+0.0672223
+  3.95464
+ -34.6104
+  5.75797
+Leica X: -5.93885
+Leica Y: 121.773
+absoluteTheta: 0.0672223
+absoluteX: -5.93885
+absoluteY: 121.773
+time:17.8311
+linearVelocity:49.5
+angularVelocity:0.68
+xGoal:-18.2682
+yGoal:167.305
+thetaGoal:1.32964
+rightSent_RPM:361.248
+leftSent_RPM:264.536
+Length of the string : 44
+$1425519480.384519,10854,40.47,93.10,7.504!
+
+1.42552e+09 10854 40.47 93.1 7.504 z = 
+-0.744569
+  4.35822
+ 0.190474
+X = 
+-12.0051
+ 119.619
+ 1.88392
+  2.2427
+ -13.423
+ 2.66781
+Leica X: -11.2547
+Leica Y: 132.179
+absoluteTheta: 1.88392
+absoluteX: -11.2547
+absoluteY: 132.179
+time:18.0709
+linearVelocity:28.5
+angularVelocity:-2
+xGoal:-20.6236
+yGoal:167.761
+thetaGoal:1.42964
+rightSent_RPM:37.9263
+leftSent_RPM:322.374
+Length of the string : -1
+
+1.42552e+09 10854 40.47 93.1 7.504 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+ 485.778
+-248.192
+-5.08112
+X = 
+-72.3456
+ 433.147
+-32.3782
+ 519.955
+-117.409
+ 32.0744
+Leica X: -11.2547
+Leica Y: 132.179
+absoluteTheta: -0.96231
+absoluteX: -11.2547
+absoluteY: 132.179
+time:18.3092
+linearVelocity:0
+angularVelocity:-2
+xGoal:-23.0099
+yGoal:167.98
+thetaGoal:1.52953
+rightSent_RPM:-142.224
+leftSent_RPM:142.224
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10854 40.47 93.1 7.504 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 222.479
+  277.81
+-4.42084
+-9.71862
+-2.02238
+-13.3676
+Leica X: -11.2547
+Leica Y: 132.179
+absoluteTheta: 1.86235
+absoluteX: -11.2547
+absoluteY: 132.179
+time:18.5383
+linearVelocity:49.5
+angularVelocity:0.48
+xGoal:-25.3918
+yGoal:167.96
+thetaGoal:1.62882
+rightSent_RPM:347.026
+leftSent_RPM:278.759
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519481.210601,10855,38.72,93.03,7.633!
+
+1.42552e+09 10855 38.72 93.03 7.633 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+-0
+ 0
+ 0
+X = 
+ 227.969
+ 219.738
+-6.05221
+-12.2127
+ 3.11287
+-11.0115
+Leica X: -21.6357
+Leica Y: 133.035
+absoluteTheta: 0.230973
+absoluteX: -21.6357
+absoluteY: 133.035
+time:18.7677
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-27.6694
+yGoal:167.718
+thetaGoal:1.72429
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10855 38.72 93.03 7.633 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 226.507
+ 181.896
+-9.44509
+-10.2654
+ 7.93084
+-9.14579
+Leica X: -21.6357
+Leica Y: 133.035
+absoluteTheta: -3.1619
+absoluteX: -21.6357
+absoluteY: 133.035
+time:18.9955
+linearVelocity:49.5
+angularVelocity:-2
+xGoal:-29.9158
+yGoal:167.259
+thetaGoal:1.81986
+rightSent_RPM:170.669
+leftSent_RPM:455.116
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10855 38.72 93.03 7.633 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+-0
+ 0
+ 0
+X = 
+ 223.419
+  158.07
+-13.6265
+-8.87437
+ 12.1413
+-7.83656
+Leica X: -21.6357
+Leica Y: 133.035
+absoluteTheta: -1.0601
+absoluteX: -21.6357
+absoluteY: 133.035
+time:19.2239
+linearVelocity:0
+angularVelocity:-2
+xGoal:-32.0936
+yGoal:166.594
+thetaGoal:1.91477
+rightSent_RPM:-142.224
+leftSent_RPM:142.224
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519481.870887,10856,37.69,93.00,7.674!
+
+1.42552e+09 10856 37.69 93 7.674 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 227.087
+ 132.623
+-11.4682
+-7.84968
+ 15.4048
+-6.87036
+Leica X: -27.2088
+Leica Y: 132.127
+absoluteTheta: -5.18503
+absoluteX: -27.2088
+absoluteY: 132.127
+time:19.4535
+linearVelocity:49.5
+angularVelocity:1.48
+xGoal:-34.2044
+yGoal:165.723
+thetaGoal:2.00996
+rightSent_RPM:418.138
+leftSent_RPM:207.647
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10856 37.69 93 7.674 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 228.375
+ 114.561
+-11.1788
+-7.06106
+ 17.7499
+-6.12894
+Leica X: -27.2088
+Leica Y: 132.127
+absoluteTheta: -4.89559
+absoluteX: -27.2088
+absoluteY: 132.127
+time:19.6831
+linearVelocity:49.5
+angularVelocity:0.1
+xGoal:-36.2327
+yGoal:164.649
+thetaGoal:2.10563
+rightSent_RPM:320.003
+leftSent_RPM:305.781
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10856 37.69 93 7.674 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 227.955
+ 104.016
+-12.2046
+-6.43357
+ 19.3211
+-5.54289
+Leica X: -27.2088
+Leica Y: 132.127
+absoluteTheta: -5.9214
+absoluteX: -27.2088
+absoluteY: 132.127
+time:19.9121
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-38.1487
+yGoal:163.386
+thetaGoal:2.20127
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519482.512968,10857,37.73,93.00,7.673!
+
+1.42552e+09 10857 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 226.232
+ 100.624
+-14.2219
+-5.92144
+ 20.2821
+-5.06881
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -1.65553
+absoluteX: -27.0027
+absoluteY: 132.185
+time:20.1452
+linearVelocity:0
+angularVelocity:-2
+xGoal:-39.9319
+yGoal:161.949
+thetaGoal:2.29673
+rightSent_RPM:-142.224
+leftSent_RPM:142.224
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10857 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+ 0
+-0
+ 0
+X = 
+ 228.992
+ 83.6263
+-12.3122
+-5.49518
+ 20.7815
+-4.67817
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -6.02903
+absoluteX: -27.0027
+absoluteY: 132.185
+time:20.3737
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-41.5972
+yGoal:160.32
+thetaGoal:2.39384
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10857 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 230.207
+ 72.7964
+-11.6632
+-5.13497
+  20.943
+-4.35148
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -5.38
+absoluteX: -27.0027
+absoluteY: 132.185
+time:20.6023
+linearVelocity:49.5
+angularVelocity:1.58
+xGoal:-43.0687
+yGoal:158.573
+thetaGoal:2.48903
+rightSent_RPM:425.249
+leftSent_RPM:200.535
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519483.171073,10858,37.73,93.00,7.673!
+
+1.42552e+09 10858 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 230.164
+ 67.9627
+-12.0285
+-4.82692
+ 20.8646
+-4.07494
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -5.74528
+absoluteX: -27.0027
+absoluteY: 132.185
+time:20.8322
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-44.3684
+yGoal:156.694
+thetaGoal:2.58429
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10858 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 229.087
+ 68.6371
+-13.2228
+  -4.561
+  20.622
+-3.83853
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -0.65644
+absoluteX: -27.0027
+absoluteY: 132.185
+time:21.0615
+linearVelocity:0
+angularVelocity:-2
+xGoal:-45.4893
+yGoal:154.687
+thetaGoal:2.68009
+rightSent_RPM:-142.224
+leftSent_RPM:142.224
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10858 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 231.452
+ 54.2873
+-11.4869
+-4.32977
+ 20.2725
+-3.63478
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -5.20374
+absoluteX: -27.0027
+absoluteY: 132.185
+time:21.2913
+linearVelocity:49.5
+angularVelocity:0.74
+xGoal:-46.4107
+yGoal:152.588
+thetaGoal:2.77563
+rightSent_RPM:365.515
+leftSent_RPM:260.269
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519483.808484,10859,37.73,93.00,7.673!
+
+1.42552e+09 10859 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 232.635
+ 45.5661
+ -10.722
+-4.12753
+ 19.8583
+  -3.458
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -4.43882
+absoluteX: -27.0027
+absoluteY: 132.185
+time:21.5232
+linearVelocity:49.5
+angularVelocity:-2
+xGoal:-47.1291
+yGoal:150.407
+thetaGoal:2.87138
+rightSent_RPM:170.669
+leftSent_RPM:455.116
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10859 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+-0
+ 0
+ 0
+X = 
+ 232.811
+ 41.9992
+-10.7797
+-3.94987
+ 19.4105
+-3.30381
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -4.49656
+absoluteX: -27.0027
+absoluteY: 132.185
+time:21.7526
+linearVelocity:49.5
+angularVelocity:-2
+xGoal:-47.6394
+yGoal:148.145
+thetaGoal:2.96802
+rightSent_RPM:170.669
+leftSent_RPM:455.116
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519484.445876,10860,37.73,93.00,7.672!
+
+1.42552e+09 10860 37.73 93 7.672 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+-0
+ 0
+ 0
+X = 
+ 232.104
+ 43.1436
+-11.5559
+-3.79329
+ 18.9515
+-3.16875
+Leica X: -26.9852
+Leica Y: 132.15
+absoluteTheta: -5.27275
+absoluteX: -26.9852
+absoluteY: 132.15
+time:21.9827
+linearVelocity:49.5
+angularVelocity:0.94
+xGoal:-47.927
+yGoal:145.871
+thetaGoal:3.06357
+rightSent_RPM:379.737
+leftSent_RPM:246.047
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10860 37.73 93 7.672 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 230.456
+ 49.3765
+-13.1019
+-3.65496
+ 18.4969
+-3.05009
+Leica X: -26.9852
+Leica Y: 132.15
+absoluteTheta: -0.53556
+absoluteX: -26.9852
+absoluteY: 132.15
+time:22.2572
+linearVelocity:45
+angularVelocity:1.98
+xGoal:-47.9962
+yGoal:143.571
+thetaGoal:3.15948
+rightSent_RPM:425.249
+leftSent_RPM:143.646
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10860 37.73 93 7.672 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 231.649
+ 41.4596
+-12.2639
+-3.53261
+ 18.0577
+-2.94562
+Leica X: -26.9852
+Leica Y: 132.15
+absoluteTheta: -5.98068
+absoluteX: -26.9852
+absoluteY: 132.15
+time:22.4858
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-47.7905
+yGoal:140.836
+thetaGoal:3.27383
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : 44
+$1425519485.089747,10861,37.73,93.00,7.673!
+
+1.42552e+09 10861 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 231.979
+ 38.0424
+-12.1354
+-3.42434
+ 17.6411
+-2.85354
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -5.85225
+absoluteX: -27.0027
+absoluteY: 132.185
+time:22.7169
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-47.3818
+yGoal:138.588
+thetaGoal:3.36906
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10861 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 231.528
+ 38.7842
+-12.6496
+ -3.3286
+ 17.2518
+-2.77239
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -0.0832009
+absoluteX: -27.0027
+absoluteY: 132.185
+time:22.9479
+linearVelocity:49.5
+angularVelocity:1.98
+xGoal:-46.7528
+yGoal:136.364
+thetaGoal:3.46539
+rightSent_RPM:453.694
+leftSent_RPM:172.091
+failed to send left motor command --> 4
+Length of the string : -1
+
+1.42552e+09 10861 37.73 93 7.673 Failed to read encoder!!!
+Failed to read encoder!!!
+z = 
+0
+0
+0
+X = 
+ 230.364
+ 43.3516
+-13.7481
+-3.24409
+ 16.8927
+-2.70097
+Leica X: -27.0027
+Leica Y: 132.185
+absoluteTheta: -1.18178
+absoluteX: -27.0027
+absoluteY: 132.185
