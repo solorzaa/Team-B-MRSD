@@ -261,8 +261,8 @@ int main(int argc, char *argv[])
 	struct thread_data td;
 	td.thread_id = 0;
 	td.i2cptr = i2cptr;
-	int rc = pthread_create(&threadIMU, NULL, getHeading, (void *)&td);
-	if(rc) cout << "Unable to create thread..." << endl;
+	//int rc = pthread_create(&threadIMU, NULL, getHeading, (void *)&td);
+	//if(rc) cout << "Unable to create thread..." << endl;
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Leica Code
@@ -391,6 +391,7 @@ int main(int argc, char *argv[])
 		velocityCommands =  getOptimalVelocities(MPC_LUT, vNumberOfEntries, wNumberOfEntries, numPathPoints , xPathGoal, yPathGoal, thetaPathGoal);
 
 		cout << "time:" << currentTime << endl;
+		cout << "diff time: " << diffTime << endl;
 
 		cout << "linearVelocity:" << velocityCommands[0] << endl;
 		cout << "angularVelocity:" << velocityCommands[1] << endl;
@@ -515,7 +516,7 @@ bool getPose()
 	double deltaX;
 	double deltaY;
 
-/*	if(leicaConnected) {
+	if(leicaConnected) {
                 //If tracking data is new, update the absolute position
                 if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
                         if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
@@ -523,13 +524,13 @@ bool getPose()
                                 //absoluteX = absoluteX*0.95 + location[0] * 0.05;
                                 //absoluteY = absoluteY*0.95 + location[1] * 0.05 ;
 								
-								timeShift();
+				timeShift();
 								
                                 prevLocation[0] = location[0];
                                 prevLocation[1] = location[1];
                         }
                 }
-        }*/
+        }
 
 	//Grab absolute number of encoder counts
 	readAbsoluteEncoderCount(currRightEncoder, rightWheelCode);
@@ -601,10 +602,10 @@ bool getPose()
 
 	//Print out current position in the absolute frame
 	if(!verbose) cout << "absoluteTheta: " << absoluteTheta << endl;
-	//if(!verbose) cout << "absoluteX: " << absoluteX << endl;	
-	//if(!verbose) cout << "absoluteY: " << absoluteY << endl;
-	if(!verbose) cout << "absoluteX: " << location[0] << endl;	
-	if(!verbose) cout << "absoluteY: " << location[1] << endl;
+	if(!verbose) cout << "absoluteX: " << absoluteX << endl;	
+	if(!verbose) cout << "absoluteY: " << absoluteY << endl;
+	if(!verbose) cout << "location[0]: " << location[0] << endl;	
+	if(!verbose) cout << "location[1]: " << location[1] << endl;
 
 	return true;
 }
@@ -706,8 +707,8 @@ vector<float> leicaStoF(char* recievedData){
 	leicaData.push_back(number);
 
 	if(verbose) cout<< "The vector: ";
-	for(vector<float>::const_iterator i = leicaData.begin(); i!= leicaData.end(); ++i)
-		cout<< *i << ' ';
+	//for(vector<float>::const_iterator i = leicaData.begin(); i!= leicaData.end(); ++i)
+	//	cout<< *i << ' ';
 	if(verbose) cout<<endl;
 
 	//Time Shifting - Leica Time
@@ -1356,6 +1357,8 @@ void timeShift() {
 	double changeY;
 	double worldChangeX;
 	double worldChangeY;
+	double interpX;
+	double interpY;
 	
 	// Set projected point to leica point
 	shiftedLocation[0] = location[0];
@@ -1395,22 +1398,88 @@ void timeShift() {
 		projectingStart-=1;
 	}
 
+	cout << "Decided index backwards: " << projectingStart << endl;
+	
+	// Account for time is very close to actual
+	if(projectingStart == fifoSize-1) {
+		v = veloSet[projectingStart];
+		w = anguSet[projectingStart];
+		theta = thetaSet[projectingStart];
+		timeToNextDiscrete = cTime-timeSet[projectingStart];
+		double ctX;
+		double ctY;
+		if(w==0) {
+			ctX = 0;
+			ctY = v*timeToNextDiscrete;
+		}
+		else {
+			ctX = -(v/w)*(1-cos(w*timeToNextDiscrete));
+			ctY = (v/w)*sin(w*timeToNextDiscrete);
+		}
+		double wctX = ctX*cos(theta)-ctY*sin(theta);
+		double wctY = ctX*sin(theta)+ctY*cos(theta);
+		min = 10000000;
+		interpX = xSet[projectingStart];
+		interpY = ySet[projectingStart];
+		for(int i=0; i<100; i++) {
+			double x = xSet[projectingStart] + (wctX-xSet[projectingStart])*i/100.;
+			double y = ySet[projectingStart] + (wctY-ySet[projectingStart])*i/100.;
+			double distance = pow((x-location[0]),2)+pow((y-location[1]),2);
+			if(distance<min) {
+				interpX = x;
+				interpY = y;
+			}
+		}
+		double interpDistance = sqrt(pow((interpX-xSet[projectingStart]),2)+pow((interpY-ySet[projectingStart]),2));
+		double wholeDistance = sqrt(pow((wctX-xSet[projectingStart]),2)+pow((wctY-ySet[projectingStart]),2));
+		
+		lastLeicaTime = timeSet[projectingStart] + interpDistance/wholeDistance*(cTime-timeSet[projectingStart]);
+		
+		timeToCurrent = cTime-lastLeicaTime;
+		if(w==0) {
+			changeX = 0;
+			changeY = v*timeToCurrent;
+		}
+		else {
+			changeX = -(v/w)*(1-cos(w*timeToCurrent));
+			changeY = (v/w)*sin(w*timeToCurrent);
+		}
+		worldChangeX = changeX*cos(theta)-changeY*sin(theta);
+		worldChangeY = changeX*sin(theta)+changeY*cos(theta);
+		
+		shiftedLocation[0]+=worldChangeX;
+		shiftedLocation[1]+=worldChangeY;
+
+		return;
+	}
+		
+
 	// Interpolate the time of the Leica
 	min = 10000000;
-	double interpX = xSet[projectingSet];
-	double interpY = ySet[projectingSet];
+	interpX = xSet[projectingStart];
+	interpY = ySet[projectingStart];
 	for(int i = 0; i<100; i++) {
-		double x = xSet[projectingSet] + (xSet[projectingSet+1]-xSet[projectingSet])*i/100.;
-		double y = ySet[projectingSet] + (ySet[projectingSet+1]-ySet[projectingSet])*i/100.;
+		double x = xSet[projectingStart] + (xSet[projectingStart+1]-xSet[projectingStart])*i/100.;
+		double y = ySet[projectingStart] + (ySet[projectingStart+1]-ySet[projectingStart])*i/100.;
 		double distance = pow((x-location[0]),2)+pow((y-location[1]),2);
 		if (distance<min) {
 			interpX = x;
 			interpY = y;
 		}
 	}
-	double interpDistance = sqrt(pow((interpX-xSet[projectingSet]),2)+pow((interpY-ySet[projectingSet]),2));
-	double wholeDistance = sqrt(pow((xSet[projectingSet+1]-xSet[projectingSet]),2)+pow((ySet[projectingSet+1]-ySet[projectingSet]),2));
-	lastLeicaTime = timeSet[projectingSet] + interpDistance/wholeDistance*(timeSet[projectingSet+1]-timeSet[projectingSet]);
+
+	cout << "Interpreted Closest X: " << interpX << endl;
+	cout << "Interpreted Closest Y: " << interpY << endl;
+
+	double interpDistance = sqrt(pow((interpX-xSet[projectingStart]),2)+pow((interpY-ySet[projectingStart]),2));
+	double wholeDistance = sqrt(pow((xSet[projectingStart+1]-xSet[projectingStart]),2)+pow((ySet[projectingStart+1]-ySet[projectingStart]),2));
+
+	cout << "Interpreted Distance: " << interpDistance << endl;
+	cout << "Whole Distance: " << wholeDistance << endl;
+
+	lastLeicaTime = timeSet[projectingStart] + interpDistance/wholeDistance*(timeSet[projectingStart+1]-timeSet[projectingStart]);
+
+	cout << "Predicte of Leica Data: " << lastLeicaTime << endl;
 	
 	// Determine if Leica Data was received really quickly
 	/*if (projectingStart==fifoSize-1) {
@@ -1436,8 +1505,14 @@ void timeShift() {
 	v = veloSet[projectingStart];
 	w = anguSet[projectingStart];
 	theta = thetaSet[projectingStart];
-	changeX = -(v/w)*(1-cos(w*timeToNextDiscrete));
-	changeY = (v/w)*sin(w*timeToNextDiscrete);
+	if(w==0) {
+		changeX = 0;
+		changeY = v*timeToNextDiscrete;
+	}
+	else {
+		changeX = -(v/w)*(1-cos(w*timeToNextDiscrete));
+		changeY = (v/w)*sin(w*timeToNextDiscrete);
+	}
 	worldChangeX = changeX*cos(theta)-changeY*sin(theta);
 	worldChangeY = changeX*sin(theta)+changeY*cos(theta);
 
@@ -1450,8 +1525,14 @@ void timeShift() {
 		v = veloSet[i];
 		w = anguSet[i];
 		theta = thetaSet[i];
-		changeX = -(v/w)*(1-cos(w*timeToNextDiscrete));
-		changeY = (v/w)*sin(w*timeToNextDiscrete);
+		if(w==0) {
+			changeX = 0;
+			changeY = v*timeToNextDiscrete;
+		}
+		else {
+			changeX = -(v/w)*(1-cos(w*timeToNextDiscrete));
+			changeY = (v/w)*sin(w*timeToNextDiscrete);
+		}
 		worldChangeX = changeX*cos(theta)-changeY*sin(theta);
 		worldChangeY = changeX*sin(theta)+changeY*cos(theta);
 
@@ -1464,8 +1545,14 @@ void timeShift() {
 	v = veloSet[fifoSize-1];
 	w = anguSet[fifoSize-1];
 	theta = thetaSet[fifoSize-1];
-	changeX = -(v/w)*(1-cos(w*timeToCurrent));
-	changeY = (v/w)*sin(w*timeToCurrent);
+	if(w==0) {
+		changeX = 0;
+		changeY = v*timeToCurrent;
+	}
+	else {
+		changeX = -(v/w)*(1-cos(w*timeToCurrent));
+		changeY = (v/w)*sin(w*timeToCurrent);
+	}
 	worldChangeX = changeX*cos(theta)-changeY*sin(theta);
 	worldChangeY = changeX*sin(theta)+changeY*cos(theta);
 	
