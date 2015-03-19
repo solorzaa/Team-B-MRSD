@@ -31,41 +31,32 @@ int main(){
 	float heading_offset=i2cptr->HMC5883Lcalibrate();
 	cout <<"heading offset is:" << heading_offset <<endl;
 	cout <<"offset is:" << offset <<endl;
-	
-	/*mag*/
 	i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_CONFIG_REG_B,0X20);
 	i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_MODE_REG,0X00);
 	float scaleX=0.92;
 	float scaleY=0.92; //setting scale for magnetometer
-
 	while (1){
 	i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_MODE_REG,0X00); 	
-	usleep(67000);
+	usleep(67000); //ensuring that I2C gets enough time to set data in the registers
 
-	//read data from magnetometer	
-	int valuemxH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_MSB);
+	int valuemxH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_MSB);// read data from the registers
 	int valuemxL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_LSB);
 	int valuemyH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_MSB);
 	int valuemyL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_LSB);	
 		valuemxH=valuemxH<<8 | valuemxL;
 		valuemyH=valuemyH<<8|valuemyL;
 
-		valuemxH=i2cptr->twosc2int(valuemxH);
+		valuemxH=i2cptr->twosc2int(valuemxH);//convert data to signed integer
 		valuemyH=i2cptr->twosc2int(valuemyH);
 		valuemxH=valuemxH*scaleX;
 		valuemyH=valuemyH*scaleY;	
-		//caluclate the heading angle
-				
-		float heading=atan2(valuemyH,valuemxH);
+		float heading=atan2(valuemyH,valuemxH);//caluclate the heading angle
 		float declinationAngle = -0.1614;
  		heading += declinationAngle;
-	//	heading_offset=heading_offset*M_PI/180;
-	//	heading=heading+heading_offset;
 			 if(heading < 0)
-      			 heading += 2*M_PI;
+      			 heading += 2*M_PI;//restrict the angle
 			 if(heading > 2*M_PI)
 			 heading -= 2*M_PI;
-			 //float headingDegrees = heading * 180/M_PI;
 			 float headingDegrees = heading * 180/M_PI;	
                          headingDegrees=headingDegrees+heading_offset;
 			 if (headingDegrees<0)
