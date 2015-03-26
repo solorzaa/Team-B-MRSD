@@ -111,9 +111,9 @@ double errorThetaThresh = 0.1;
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
-double vMin = 15;
+double vMin = 0;
 double vMax = 35;
-double vResolution = 0.5;
+double vResolution = 1;
 const int vNumberOfEntries = (int) ( (vMax-vMin) / vResolution );
 double wMin = -.5;
 double wMax = .5;
@@ -121,8 +121,8 @@ double wResolution = 0.02;
 const int wNumberOfEntries = (int) ( (wMax - wMin) / wResolution );
 
 //Path length and resolution settings
-double pathHorizon = 1; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double timeStep = 0.1; 	//The resolution of the MPC path will be 0.1 seconds
+double pathHorizon = 3; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.3; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) (pathHorizon / timeStep);
 
 double prevTime;
@@ -150,6 +150,9 @@ Eigen::Matrix3d qv;
 Eigen::MatrixXd Ra(5,5);     
 Eigen::MatrixXd F(6,6);
 
+// LEICA BLIP
+float previousRadius = 0;
+
 ////////////////////////////////////////////
 //Function Declarations
 ////////////////////////////////////////////
@@ -167,7 +170,7 @@ int readPort(char* fs);
 
 vector<float> leicaStoF(char* recievedData);
 
-void sphericalToPlanar(float horAngle, float verAngle, float radius);
+bool sphericalToPlanar(float horAngle, float verAngle, float radius);
 
 Pose* projectPath(double linearVelocity, double angularVelocity, double t_interval, double t_step);
 
@@ -302,7 +305,7 @@ int main(int argc, char *argv[])
 
 		// Convert intial robot data to planar coordinate system
 		// Stores in location - {x,y}
-		sphericalToPlanar(testData[2], testData[3], testData[4]);
+		bool leicaBlip = sphericalToPlanar(testData[2], testData[3], testData[4]);
 
 		// Set robot origin to initial planar data ---- STEPHEN THINKS THIS IS BAD
 		//xOrigin = location[0];
@@ -344,6 +347,8 @@ int main(int argc, char *argv[])
 		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
 	}
 
+	// Fuck the water in the tank
+	sleep(2);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	//Kalman Filter
@@ -376,7 +381,7 @@ int main(int argc, char *argv[])
 	//	 0.0616, 0.0750; 
 	// Changed to .01 from .1
 	Ra << .039, .0488, 0, 0, 0,
-	     .0488, .0611, 0, 0,
+	     .0488, .0611, 0, 0, 0,
 	         0,  0, .17, -.0812, -.0001,
 		 0,  0, -.0812, 1.3942, -.0016,
 		 0,  0, -.0001,  -.0016, .01;
@@ -402,11 +407,13 @@ int main(int argc, char *argv[])
 
 	while(inProgress = desiredPathXY(currentTime, xGoal, yGoal, thetaGoal)){
 
+		bool leicaBlip = false;
+
 		//Get new position data from tracking station
 		if(leicaConnected) {
 			readPort(full_string);
 			testData = leicaStoF(full_string);
-			sphericalToPlanar(testData[2], testData[3], testData[4]);
+			leicaBlip = sphericalToPlanar(testData[2], testData[3], testData[4]);
 		}
 
 		//get current time
@@ -550,7 +557,7 @@ bool getPose()
                 if((location[0]!=prevLocation[0])||(location[1]!=prevLocation[1])) {
 					
 					if(currentTime > 2){
-					newLeicaData = true;
+						newLeicaData = true;
 					}
 
 					location[2] = atan2(location[1]-prevLocation[1],location[0]-prevLocation[0]);
@@ -558,7 +565,7 @@ bool getPose()
 					location[2] = fmod(location[2]+2*M_PI,2*M_PI);
 					prevLocation[0] = location[0];
 					prevLocation[1] = location[1];
-					cout << "Leica X: " << location[0] << endl;
+					cout << endl << "Leica X: " << location[0] << endl;
 					cout << "Leica Y: " << location[1] << endl;
 					cout << "Leica Theta: " << location[2] << endl;
                         /*if(abs(location[0]-absoluteX)>10||abs(location[1]-absoluteY)>10) {
@@ -761,7 +768,7 @@ vector<float> leicaStoF(char* recievedData){
 }
 
 ///////////////////////////////////////////////////////////////////////
-void sphericalToPlanar(float horAngle, float verAngle, float radius){
+bool sphericalToPlanar(float horAngle, float verAngle, float radius){
 	//Convert to radians
 	horAngle = -horAngle * (M_PI/180) + (2*M_PI);
 	verAngle = verAngle * (M_PI/180);
@@ -771,6 +778,11 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 	if(verbose) cout<< "Radius: " << radius << endl;
 	//cout << xOrigin << endl;
 	//cout << yOrigin << endl;
+
+	// Leica Blip
+	if(radius==previousRadius)
+		return false;
+	previousRadius = radius;
 
 	if(verbose) cout<<"no transformation x: "<< ((radius*cos(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES))<<endl;
 	if(verbose) cout<<"no transformation y: "<< ((radius*sin(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES))<<endl;
@@ -782,7 +794,7 @@ void sphericalToPlanar(float horAngle, float verAngle, float radius){
 	if(verbose) cout<< "xOrigin: " << xOrigin <<endl;
 	if(verbose) cout<< "yOrigin: " << yOrigin <<endl;
 	if(verbose) cout<< "thetaOrigin: " << thetaOrigin <<endl;
-	return;
+	return true;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -1454,7 +1466,7 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 	
 		// The jacobian for encoders only
 		H << 0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, botRadius/wheelRadius,
-		     0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, -botRadius/wheelRadius,
+		     0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, -botRadius/wheelRadius;
 
 		// Kalman Maths
 		X = F*X;
