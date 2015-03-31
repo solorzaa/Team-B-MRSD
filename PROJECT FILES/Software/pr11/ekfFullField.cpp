@@ -103,8 +103,9 @@ double sumErrorTheta = 0;
 bool leicaConnected = false;
 bool dataOnly = false;
 bool verbose = false;
-bool imuConnected = true;
-bool paintConnected = false;
+bool imuConnected = false;
+bool paintConnected = true;
+double desiredVelocity = 10; // 10 in/s
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
@@ -118,8 +119,8 @@ double wResolution = 0.02;
 const int wNumberOfEntries = (int) ( (wMax - wMin) / wResolution );
 
 //Path length and resolution settings
-double pathHorizon = 4; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double timeStep = 0.4; 	//The resolution of the MPC path will be 0.1 seconds
+double pathHorizon = 3; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.3; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) (pathHorizon / timeStep);
 
 double prevTime;
@@ -154,6 +155,8 @@ float previousRadius = 0;
 
 // Painting Port
 unsigned int paintGPIO = 44; // GPIO p8_12 (the row closest to paint)
+bool painting = false;
+double paintTime = 0;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -452,12 +455,39 @@ int main(int argc, char *argv[])
 
 		//convert the linear and angular velocity commands to wheel RPMs and send commands to the motors (linear = [0], angular = [1])
 		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
+		
+		double lagDistance = sqrt(pow((xGoal-absoluteX),2)+pow((yGoal-absoluteY),2));
+		double paintTuningStart = .85*lagDistance/desiredVelocity;
+		double paintTuningEnd = 1.6*lagDistance/desiredVelocity;
+		int paintGoalStart;	
+		int paintGoalEnd;
+		desiredPathXY(currentTime-paintTuningStart,xGoal,yGoal,paintGoalStart);
+		desiredPathXY(currentTime-paintTuningEnd,xGoal,yGoal,paintGoalEnd);
 
 		if(paintConnected) {
-			if(paintGoal==1) 
-				gpio_set_value(paintGPIO, HIGH);
-			else
-				gpio_set_value(paintGPIO, LOW);
+			if(painting) {
+				if(paintGoalEnd==1) {
+					gpio_set_value(paintGPIO, HIGH);
+					painting = true;
+				}
+				else {
+					if( (currentTime-paintTime) > 1 ) {
+						gpio_set_value(paintGPIO, LOW);
+						painting = false;
+					}
+				}
+			}
+			else {
+				if(paintGoalStart==1) {
+					gpio_set_value(paintGPIO, HIGH);
+					painting = true;
+					paintTime = currentTime;
+				}
+				else {
+					gpio_set_value(paintGPIO, LOW);
+					painting = false;
+				}
+			}
 		}
 	}
 
@@ -914,7 +944,6 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	// Default Paint Setting
 	p=0;
 	// Settings
-	double desiredVelocity = 10; // 10 in/s
 	double fieldLength = 12; // 110 yards
 	double fieldWidth = 9; // 84 yards
 	double cornerRadius = 3; // 5 feet
