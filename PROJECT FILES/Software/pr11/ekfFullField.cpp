@@ -103,18 +103,13 @@ double sumErrorTheta = 0;
 bool leicaConnected = false;
 bool dataOnly = false;
 bool verbose = false;
-bool imuConnected = false;
+bool imuConnected = true;
 bool paintConnected = false;
-
-double errorXThresh = 12;
-double errorYThresh = 10;
-double errorThetaThresh = 0.1;
-
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
 double vMin = 0;
-double vMax = 35;
+double vMax = 50;
 double vResolution = 1;
 const int vNumberOfEntries = (int) ( (vMax-vMin) / vResolution );
 double wMin = -.5;
@@ -123,8 +118,8 @@ double wResolution = 0.02;
 const int wNumberOfEntries = (int) ( (wMax - wMin) / wResolution );
 
 //Path length and resolution settings
-double pathHorizon = 3; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double timeStep = 0.3; 	//The resolution of the MPC path will be 0.1 seconds
+double pathHorizon = 4; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.4; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) (pathHorizon / timeStep);
 
 double prevTime;
@@ -134,9 +129,11 @@ double startTime;
 
 // IMU
 float IMUoffsetGyro;
-float headingOffset;
+float headingOffset = 0;
 float headingIMU = 0;
 bool robotIsDone = false;
+bool calibrateTheIMU = true;
+bool newIMUData = false;
 
 struct thread_data{
 	int thread_id;
@@ -149,7 +146,7 @@ Eigen::MatrixXd P(6,6);   //Variance in filter
 Eigen::MatrixXd Q(6,6);           //Variance in the motion model
 Eigen::Matrix3d qp;
 Eigen::Matrix3d qv;
-Eigen::MatrixXd Ra(5,5);     
+Eigen::MatrixXd Ra(6,6);     
 Eigen::MatrixXd F(6,6);
 
 // LEICA BLIP
@@ -249,17 +246,8 @@ int main(int argc, char *argv[])
 		// Initialization
 		while(true) {
 			try {
-				headingOffset=i2cptr->HMC5883Lcalibrate();
-				break;
-			}
-			catch (...) {
-				perror("Recalibrating IMU... ");
-			}
-		}
-		cout <<"heading offset is:" << headingOffset <<endl<<endl<<endl;
-		while(true) {
-			try {
-				i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_CONFIG_REG_B,0X20);
+				i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_CONFIG_REG_A,0x70);
+				i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_CONFIG_REG_B,0x10);
 				i2cptr->Send_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_MODE_REG,0X00);
 				break;
 			}
@@ -390,11 +378,12 @@ int main(int argc, char *argv[])
 	//R << 0.0959, 0.0616,
 	//	 0.0616, 0.0750; 
 	// Changed to .01 from .1
-	Ra << .0286, .0295, 0, 0, 0,
-	     .0295, .0328, 0, 0, 0,
-	         0,  0, 20, -.0812, -.0001,
-		 0,  0, -.0812, 20, -.0016,
-		 0,  0, -.0001,  -.0016, .01;
+	Ra << .0286, .0295, 0, 0, 0, 0,
+	     .0295, .0328, 0, 0, 0, 0,
+	         0,  0, 20, -.0812, -.0001, 0,
+		 0,  0, -.0812, 20, -.0016, 0,
+		 0,  0, -.0001,  -.0016, .01, 0,
+		 0,  0,      0,       0,   0, 100;
 	cout << "initial R: " << Ra << endl;
 
 
@@ -438,7 +427,12 @@ int main(int argc, char *argv[])
 		if(imuConnected) {
 			if(abs(prevHeading-headingIMU)>0) {
 				cout << "Heading in Main: " << headingIMU << endl;
-				prevHeading = headingIMU;
+				if(abs(prevHeading-headingIMU)>.17)
+					newIMUData = false;
+				else {
+					prevHeading = headingIMU;
+					newIMUData = true;
+				}
 			}
 		}
 
@@ -663,8 +657,6 @@ bool getPose()
 	//absoluteY += absDeltaY;
 	runKalman(rightDeltaPhi, leftDeltaPhi);
 	
-	headingIMU+= deltaTheta;
-
 	//Print out current position in the absolute frame
 	if(!verbose) cout << "absoluteTheta: " << absoluteTheta << endl;
 	//if(!verbose) cout << "absoluteX: " << absoluteX << endl;	
@@ -922,10 +914,10 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	// Default Paint Setting
 	p=0;
 	// Settings
-	double desiredVelocity = 20; // 10 in/s
-	double fieldLength = 4*3; // 110 yards
-	double fieldWidth = 3*3; // 84 yards
-	double cornerRadius = 2; // 5 feet
+	double desiredVelocity = 10; // 10 in/s
+	double fieldLength = 12; // 110 yards
+	double fieldWidth = 9; // 84 yards
+	double cornerRadius = 3; // 5 feet
 	double startingDistance = 1; // 1 foot
 
 	// Calculated based on Field Dimensions
@@ -1743,6 +1735,7 @@ bool calibrateLeica(char* dataString, float leicaTimeStamp)
 			cout << "Calibrating Theta" << endl;
 			usleep(10000);
 		}
+		previousRadius = 0;
 
 		testData = leicaStoF(dataString);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
@@ -1786,34 +1779,36 @@ void *getHeading(void *threadarg) { // myI2C *i2cptr, float & heading) {
                 usleep(67000);
 
                 //read data from magnetometer   
-                int valuemxH;
-                int valuemxL;
-                int valuemyH;
-                int valuemyL;
-                try {
-                        valuemxH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_MSB);
-                        valuemxL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_LSB);
-                        valuemyH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_MSB);
-                        valuemyL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_LSB);
-                }
-                catch(...) {
-                        dataReady = false;
-                }
+                char valuemxH;
+                char valuemxL;
+                char valuemyH;
+                char valuemyL;
+		if(dataReady) {
+			try {
+				valuemxH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_MSB);
+				valuemxL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_X_LSB);
+				valuemyH=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_MSB);
+				valuemyL=i2cptr->Read_I2C_Byte(HMC5883L_I2C_ADDRESS,HMC5883L_Y_LSB);
+			}
+			catch(...) {
+				dataReady = false;
+			}
+		}
                 if(dataReady) {
-                        valuemxH=valuemxH<<8 | valuemxL;
-                        valuemyH=valuemyH<<8|valuemyL;
+                        signed int valuemxHsi=valuemxH<<8 | valuemxL;
+                        signed int valuemyHsi=valuemyH<<8|valuemyL;
         
-                        valuemxH=i2cptr->twosc2int(valuemxH);
-                        valuemyH=i2cptr->twosc2int(valuemyH);
-                        valuemxH=valuemxH*scaleX;
-                        valuemyH=valuemyH*scaleY;       
+                        int valuemxHi=i2cptr->twosc2int(valuemxHsi);
+                        int valuemyHi=i2cptr->twosc2int(valuemyHsi);
+                        float valuemxHf=valuemxHi*scaleX;
+                        float valuemyHf=valuemyHi*scaleY;       
                         //caluclate the heading angle
         
-                        float heading=atan2(valuemyH,valuemxH);
-                        float declinationAngle = -0.1614;
+                        float heading=atan2(valuemyHf,valuemxHf);
+                        float declinationAngle = 0.1614;
                         heading += declinationAngle;
 			
-			heading += (headingOffset*M_PI/180);
+			heading -= (headingOffset*M_PI/180);
                         if(heading < 0)
                                 heading += 2*M_PI;
                         if(heading > 2*M_PI)
@@ -1821,11 +1816,16 @@ void *getHeading(void *threadarg) { // myI2C *i2cptr, float & heading) {
 
                         // FMOD?
                         float headingDegrees = heading * 180/M_PI;
+			if(calibrateTheIMU) {
+				headingOffset = headingDegrees;
+				calibrateTheIMU = false;
+			}
                         //headingDegrees=headingDegrees+headingOffset;
                         if (headingDegrees<0)
                                 headingDegrees+=360;
                         //cout <<"Heading:" << headingDegrees <<endl;                   
                         cout << "Heading: " << heading << endl;
+			cout << "Degrees: " << headingDegrees << " " << currentTime << endl;
 
                         headingIMU = heading;
                 }
@@ -1847,7 +1847,7 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 	     0, 0, 0, 0, 0, 1;
 
 	//Kalman Filter for Leica Data
-	if (newLeicaData) {
+	if (newLeicaData && !newIMUData) {
 		// Initialize data dependent variables
 		Eigen::MatrixXd H(5,6);
 		Eigen::VectorXd y(5);
@@ -1887,6 +1887,105 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 
 		// Print updated state
         	cout << "X = " << endl << X << endl;
+
+		// Declare no new leica data
+		newLeicaData = false;
+	}
+	// Kalman Filter for IMU and encoders
+	else if (newIMUData && !newLeicaData){
+		Eigen::MatrixXd H(3,6);
+		Eigen::Vector3d y;
+		Eigen::Vector3d z;
+		Eigen::MatrixXd K(6,3);
+		cout << "here 1" << endl;
+		Eigen::Matrix3d R = Eigen::Matrix3d::Zero();
+		cout << "here 2" << endl;
+		R.topLeftCorner(2,2) = Ra.topLeftCorner(2,2);
+		cout << "here 3" << endl;
+		R(2,2) = Ra(5,5);
+		cout << "here 4" << endl;
+
+		// The measurement
+		z << rightDeltaPhi/diffTime, leftDeltaPhi/diffTime, headingIMU;
+		cout << "here 5" << endl;
+		cout << "z = " << endl << z << endl;
+
+		// The model "measurement"
+		y << sqrt(pow(X(3),2)+pow(X(4),2))/wheelRadius + X(5)*botRadius/wheelRadius,
+		     sqrt(pow(X(3),2)+pow(X(4),2))/wheelRadius - X(5)*botRadius/wheelRadius,
+		     X(2);
+
+		// The jacobian for encoders only
+		H << 0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, botRadius/wheelRadius,
+		     0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, -botRadius/wheelRadius,
+		     0, 0, 1, 0, 0, 0;
+		
+		// Kalman Maths
+		X = F*X;
+		P = (F*P*F.transpose()) + Q;
+		
+		Eigen::Matrix3d temp;
+		temp = (H*P*H.transpose())+R;
+		K = (P*H.transpose())*temp.inverse();
+		
+		// State and Covariance Update
+		X = X + K*(z-y);
+		int Krows = K.rows();
+		P = (Eigen::MatrixXd::Identity(Krows,Krows) - K*H) * P;
+
+		// Print updated state
+		cout << "X = " << endl << X << endl;
+
+		// Declare no new IMU data
+		newIMUData = false;
+	}
+	// Kalman Filter for all the data
+	else if(newIMUData && newLeicaData) {
+		Eigen::MatrixXd H(6,6);
+		Eigen::VectorXd y(6);
+		Eigen::VectorXd z(6);
+		Eigen::MatrixXd K(6,6);
+		Eigen::MatrixXd R(6,6); 
+		R = Ra; 
+	
+		// The measurement (encoders only)
+		z << rightDeltaPhi/diffTime, leftDeltaPhi/diffTime, location[0], location[1], location[2], headingIMU;
+		cout << "z = " << endl << z << endl;
+
+		// The model "measurement"
+	        y << sqrt(pow(X(3),2)+pow(X(4),2))/wheelRadius + X(5)*botRadius/wheelRadius,
+		     sqrt(pow(X(3),2)+pow(X(4),2))/wheelRadius - X(5)*botRadius/wheelRadius,
+		     X(0),
+		     X(1),
+		     X(2),
+		     X(2);
+	
+		// The jacobian for encoders only
+		H << 0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, botRadius/wheelRadius,
+		     0, 0, 0, -sin(X(5)*diffTime)/wheelRadius, cos(X(5)*diffTime)/wheelRadius, -botRadius/wheelRadius,
+		     1, 0, 0, 0, 0, 0,
+		     0, 1, 0, 0, 0, 0,
+		     0, 0, 1, 0, 0, 0,
+		     0, 0, 1, 0, 0, 0;
+
+		// Kalman Maths
+		X = F*X;
+		P = (F*P*F.transpose()) + Q;
+		
+		Eigen::MatrixXd temp(6,6);
+		temp = (H*P*H.transpose())+R;
+		K = (P*H.transpose())*temp.inverse();
+		
+		// State and Covariance Update
+		X = X + K*(z-y);
+		int Krows = K.rows();
+		P = (Eigen::MatrixXd::Identity(Krows,Krows) - K*H) * P;
+
+		// Print updated state
+		cout << "X = " << endl << X << endl;
+		
+		// Declare no new IMU data
+		newIMUData = false;
 
 		// Declare no new leica data
 		newLeicaData = false;
@@ -1938,4 +2037,5 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 	//cout << "Leica Y: " << location[1] << endl;
 	cout << "Position: " << X(0) << " " << X(1) << " " << X(2) << endl;
 	cout << "Velocity: " << X(3) << " " << X(4) << " " << X(5) << endl;
+	cout << "Last Leica Pose: " << location[0] << " " << location[1] << " " << location[2] << endl;
 }
