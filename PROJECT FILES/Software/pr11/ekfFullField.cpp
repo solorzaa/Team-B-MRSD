@@ -100,7 +100,7 @@ double sumErrorY = 0;
 double sumErrorTheta = 0;
 
 /////  SETTINGS ////////
-bool leicaConnected = false;
+bool leicaConnected = true;
 bool dataOnly = false;
 bool verbose = false;
 bool imuConnected = false;
@@ -119,8 +119,8 @@ double wResolution = 0.02;
 const int wNumberOfEntries = (int) ( (wMax - wMin) / wResolution );
 
 //Path length and resolution settings
-double pathHorizon = 3; 	//Model Predictive Control will look ahead 1 sec to predict a path
-double timeStep = 0.3; 	//The resolution of the MPC path will be 0.1 seconds
+double pathHorizon = 3.5; 	//Model Predictive Control will look ahead 1 sec to predict a path
+double timeStep = 0.35; 	//The resolution of the MPC path will be 0.1 seconds
 int numPathPoints = (int) (pathHorizon / timeStep);
 
 double prevTime;
@@ -157,6 +157,7 @@ float previousRadius = 0;
 unsigned int paintGPIO = 44; // GPIO p8_12 (the row closest to paint)
 bool painting = false;
 double paintTime = 0;
+bool moving = false;
 
 ////////////////////////////////////////////
 //Function Declarations
@@ -330,6 +331,7 @@ int main(int argc, char *argv[])
 			printf("Need more data...");
 			usleep(100000);
 		}
+		previousRadius = 0;
 		testData = leicaStoF(full_string);
 		sphericalToPlanar(testData[2], testData[3], testData[4]);
 		cout << "I think I am at... " << location[0] << ", " << location[1] << endl;
@@ -349,7 +351,14 @@ int main(int argc, char *argv[])
 	}
 
 	// Fuck the water in the tank
-	sleep(2);
+	for(int iii=0; iii<10; iii++) {
+		if(leicaConnected) {
+			readPort(full_string);
+			testData = leicaStoF(full_string);
+			sphericalToPlanar(testData[2], testData[3], testData[4]);
+		}
+		sleep(.2);
+	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	//Kalman Filter
@@ -457,36 +466,42 @@ int main(int argc, char *argv[])
 		sendVelocityCommands(velocityCommands[0], velocityCommands[1]);
 		
 		double lagDistance = sqrt(pow((xGoal-absoluteX),2)+pow((yGoal-absoluteY),2));
-		double paintTuningStart = .85*lagDistance/desiredVelocity;
-		double paintTuningEnd = 1.6*lagDistance/desiredVelocity;
+		double paintTuningStart = .8*lagDistance/desiredVelocity;
+		double paintTuningEnd = 1.15*lagDistance/desiredVelocity;
 		int paintGoalStart;	
 		int paintGoalEnd;
 		desiredPathXY(currentTime-paintTuningStart,xGoal,yGoal,paintGoalStart);
 		desiredPathXY(currentTime-paintTuningEnd,xGoal,yGoal,paintGoalEnd);
 
 		if(paintConnected) {
-			if(painting) {
-				if(paintGoalEnd==1) {
-					gpio_set_value(paintGPIO, HIGH);
-					painting = true;
+			if(moving) {
+				if(painting) {
+					if(paintGoalEnd==1) {
+						gpio_set_value(paintGPIO, HIGH);
+						painting = true;
+					}
+					else {
+						if( (currentTime-paintTime) > 2.5 ) {
+							gpio_set_value(paintGPIO, LOW);
+							painting = false;
+						}
+					}
 				}
 				else {
-					if( (currentTime-paintTime) > 1 ) {
+					if(paintGoalStart==1) {
+						gpio_set_value(paintGPIO, HIGH);
+						painting = true;
+						paintTime = currentTime;
+					}
+					else {
 						gpio_set_value(paintGPIO, LOW);
-						painting = false;
+					painting = false;
 					}
 				}
 			}
 			else {
-				if(paintGoalStart==1) {
-					gpio_set_value(paintGPIO, HIGH);
-					painting = true;
-					paintTime = currentTime;
-				}
-				else {
-					gpio_set_value(paintGPIO, LOW);
-					painting = false;
-				}
+				gpio_set_value(paintGPIO, LOW);
+				painting = false;
 			}
 		}
 	}
@@ -631,6 +646,8 @@ bool getPose()
 	//Calculate the current angle of rotation for each wheel
 	rightDeltaPhi = (double) (currRightEncoder - prevRightEncoder) * 2 * M_PI/counts_per_revolution;
 	leftDeltaPhi = (double) (currLeftEncoder - prevLeftEncoder) * 2 * M_PI/counts_per_revolution;
+	if(rightDeltaPhi==0 && leftDeltaPhi==0) moving = false;
+	else moving = true;
 
 	double rightRPM = rightDeltaPhi/(2*M_PI)*60/diffTime;
 	double leftRPM = leftDeltaPhi/(2*M_PI)*60/diffTime;
@@ -944,8 +961,8 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	// Default Paint Setting
 	p=0;
 	// Settings
-	double fieldLength = 12; // 110 yards
-	double fieldWidth = 9; // 84 yards
+	double fieldLength = 16; // 110 yards
+	double fieldWidth = 11; // 84 yards
 	double cornerRadius = 3; // 5 feet
 	double startingDistance = 1; // 1 foot
 
@@ -1906,7 +1923,7 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
         	P = (F*P*F.transpose()) + Q;
 		
 		Eigen::MatrixXd temp(5,5);
-		temp = ( H*P*H.transpose() ) + Ra;
+		temp = ( H*P*H.transpose() ) + Ra.topLeftCorner(5,5);
         	K = (P*H.transpose())*temp.inverse();
         	
 		// State and Covariance Update
