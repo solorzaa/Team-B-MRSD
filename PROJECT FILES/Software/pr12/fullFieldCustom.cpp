@@ -114,9 +114,9 @@ double startingDistance = 1; // 1 foot
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
 double vMin = 0;
-double vMax = 50;
-double vResolution = 1;
-const int vNumberOfEntries = (int) ( (vMax-vMin) / vResolution );
+double vMax = 2*desiredVelocity;
+double vResolution = vMax*.02;
+int vNumberOfEntries = (int) ( (vMax - vMin) / vResolution );
 double wMin = -.5;
 double wMax = .5;
 double wResolution = 0.02;
@@ -536,7 +536,7 @@ bool parseCommandLine(int argc, char* argv[])
 {
     std::cout << argv[0] << std::endl;
 
-    if (argc != 4){
+    if (argc < 9){
 	cout << "Not all parameters were set explicitly" << endl;	
 	bool leicaConnected = true;        
 	bool imuConnected = false;
@@ -548,15 +548,24 @@ bool parseCommandLine(int argc, char* argv[])
 	double pathHorizon = 3.5; 	//Model Predictive Control will look ahead 1 sec to predict a path
     }
     else{
-        imuConnected = atof(argv[1]);
-        leicaConnected = atof(argv[2]);
-        paintConnected = atof(argv[3]);
-        desiredVelocity = atof(argv[4]);
-        fieldWidth = atof(argv[5]);
-        fieldLength = atof(argv[6]);
-        cornerRadius = atof(argv[7]);
-        pathHorizon = atof(argv[8]);
+        imuConnected = atof(argv[1]);		//Boolean
+        leicaConnected = atof(argv[2]);		//Boolean
+        paintConnected = atof(argv[3]);		//Boolean
+        desiredVelocity = atof(argv[4]);	//in/s
+        fieldWidth = atof(argv[5])*3;		//yards
+        fieldLength = atof(argv[6])*3;		//yards
+        cornerRadius = atof(argv[7])*3;		//yards
+        pathHorizon = atof(argv[8]);		//seconds
+
+	cout << "Args: " << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << " " << argv[6] << " " << argv[7] << " " << argv[8] << endl;
+
+	cout << "Args Real: " << imuConnected << " " << leicaConnected << " " << paintConnected << " " << desiredVelocity << " " << fieldWidth << " " << fieldLength << " " << cornerRadius << " " << pathHorizon << endl;
+
+	vMin = 0;
+	vMax = 2*desiredVelocity;
+	vResolution = vMax*.02;
     }
+    vNumberOfEntries = (int) ( (vMax - vMin) / vResolution );
 }
 
 /////////////////////////////////////////////////////////////////
