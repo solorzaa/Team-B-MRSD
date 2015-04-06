@@ -8,16 +8,6 @@
 #include <cstdlib>
 #include <cstdio>
 
-/*ITG3200*/
-#define ITG3200_ADDR 0x68
-#define ITG3200_SELF 0x0
-#define ITG3200_INT 0x1a
-#define ITG3200_XRH 0x1d /*2 byte Hight byte and Low byte*/
-#define ITG3200_XRL 0x1e
-#define ITG3200_YRH 0x1f /*2 byte Hight byte and Low byte*/
-#define ITG3200_YRL 0x20
-#define ITG3200_ZRH 0x21 /*2 byte Hight byte and Low byte*/
-#define ITG3200_ZRL 0x22 /*2 byte Hight byte and Low byte*/
 
 /*Magnetometer*/
  #define HMC5883L_I2C_ADDRESS                    0x1E
@@ -34,6 +24,20 @@
  #define HMC5883L_ID_REG_A     			 0x0A
 
 /* ......................................................................*/
+
+
+//added defines defination for the new code
+#define compass_address 0x1E       // The I2C address of the Magnetometer
+#define compass_XY_excitation 1160 // The magnetic field excitation in X and Y direction during Self Test (Calibration)
+#define compass_Z_excitation 1080  // The magnetic field excitation in Z direction during Self Test (Calibration)
+#define compass_rad2degree 57.3
+#define compass_cal_x_offset 116   // Manually calculated offset in X direction
+#define compass_cal_y_offset 225   // Manually calculated offset in Y direction
+#define compass_cal_x_gain 1.1     // Stored Gain offset at room temperature
+#define compass_cal_y_gain 1.12    // Stored Gain offset at room temperature
+
+///
+
 
 #define MAX_BUFFER_SIZE					64
 #define ITG3200_ROT_RAW_SENSITIVITY 14.375
@@ -58,13 +62,26 @@ public:
 	// Reads and returns a single byte from <DEVICE_ADDR> on the register <Reg_ADDR>
 	unsigned char Read_I2C_Byte(unsigned char DEVICE_ADDR,unsigned char Reg_ADDR);
 	
-	// Reads multipes byte from <DEVICE_ADDR> starting from the register address <Reg_ADDR>.
-	// Read the output from i2cptr->I2C_RD_Buf
-	unsigned char Read_Multi_Byte(unsigned char DEVICE_ADDR, unsigned char Reg_ADDR, size_t n);
-	unsigned char ReadB(unsigned char, unsigned char, unsigned char);
 	int twosc2int(int twoscomplimentdata);
-	float ITG3200_rot_conv(int rawdata);
-	float Itg3200calibrate(void);
+ 
+  //added for new code
+  float bearing;
+  float compass_x_scalled;
+  float compass_y_scalled;
+  float compass_z_scalled;
+  
+  float compass_x_offset, compass_y_offset, compass_z_offset;
+  float compass_x_gainError,compass_y_gainError,compass_z_gainError;
+  
+  int compass_debug;
+  
+  void compass_read_XYZdata(unsigned char DEVICE_ADDR);
+  void compass_offset_calibration(int select,unsigned char DEVICE_ADDR);
+  void compass_init(int gain, unsigned char DEVICE_ADDR);
+  void compass_scalled_reading(unsigned char DEVICE_ADDR);
+  void compass_heading(unsigned char DEVICE_ADDR);
+ // // // // //added for new code above, remvoed the extern keyword to make work	
 };
 #endif /* BEAGLEI2C.H */
+
 
