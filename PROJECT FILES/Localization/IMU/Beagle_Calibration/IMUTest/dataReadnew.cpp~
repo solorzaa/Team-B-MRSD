@@ -16,7 +16,7 @@ int compass_debug=0;
 int main(){
 	myI2C *i2cptr = new myI2C();
 
-	float compass_x_offset=0, compass_y_offset=0, 	   compass_z_offset=0,compass_gain_fact=1,compass_x_scalled,compass_y_scalled,compass_z_scalled;
+	float compass_x_offset=0, compass_y_offset=0, compass_z_offset=0,compass_gain_fact=1,compass_x_scalled,compass_y_scalled,compass_z_scalled;
 	float compass_x_gainError=1,compass_y_gainError=1,compass_z_gainError=1,bearing=0;
 	int compass_x=0,compass_y=0,compass_z=0;
 	int compass_debug=0;
