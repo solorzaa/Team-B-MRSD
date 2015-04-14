@@ -109,7 +109,7 @@ double desiredVelocity = 10; // 10 in/s
 double fieldLength = 16; // 110 yards
 double fieldWidth = 11; // 84 yards
 double cornerRadius = 3; // 5 feet
-double startingDistance = 1; // 1 foot
+double startingDistance = 3; // 1 foot
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
@@ -556,6 +556,7 @@ bool parseCommandLine(int argc, char* argv[])
         fieldLength = atof(argv[6])*3;		//yards
         cornerRadius = atof(argv[7])*3;		//yards
         pathHorizon = atof(argv[8]);		//seconds
+		//counts_per_revolution = atof(argv[9]);
 
 	cout << "Args: " << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << " " << argv[6] << " " << argv[7] << " " << argv[8] << endl;
 
@@ -1016,8 +1017,9 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double cornerKickRadius = 1./84.*fieldWidth;
 	double markLength = 1./84.*fieldWidth;
 
-	double t0 = startingDistance*12/desiredVelocity;
-	double t1 = t0 + fieldLength*12/desiredVelocity; 
+
+	double t0 = 2*startingDistance*12/desiredVelocity;
+	double t1 = t0 + fieldLength*12/desiredVelocity;
 	double t2 = t1 + cornerRadius*12/desiredVelocity;
 	double t3 = t2 + 3*M_PI/2*(cornerRadius+cornerKickRadius)*12/desiredVelocity;
 	double t4 = t3 + (cornerRadius+cornerKickRadius)*12/desiredVelocity;
@@ -1062,11 +1064,11 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t43 = t42 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
 	double t44 = t43 + cornerRadius*12/desiredVelocity;
 	double t45 = t44 + penaltyAreaLength*12/desiredVelocity;
-	double t46 = t45 + cornerRadius*12/desiredVelocity;
-	double t47 = t46 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t48 = t47 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*cornerRadius)*12/desiredVelocity;
-	double t49 = t48 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t50 = t49 + cornerRadius*12/desiredVelocity;
+	double t46 = t45 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t47 = t46 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t48 = t47 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12/desiredVelocity;
+	double t49 = t48 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t50 = t49 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
 	double t51 = t50 + penaltyBoxLength*12/desiredVelocity;
 	double t52 = t51 + cornerRadius*12/desiredVelocity;
 	double t53 = t52 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
@@ -1076,17 +1078,17 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t57 = t56 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
 	double t58 = t57 + cornerRadius*12/desiredVelocity;
 	double t59 = t58 + penaltyBoxLength*12/desiredVelocity;
-	double t60 = t59 + cornerRadius*12/desiredVelocity;
-	double t61 = t60 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t62 = t61 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*cornerRadius)*12/desiredVelocity;
-	double t63 = t62 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t64 = t63 + cornerRadius*12/desiredVelocity;
+	double t60 = t59 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t61 = t60 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t62 = t61 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12/desiredVelocity;
+	double t63 = t62 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t64 = t63 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
 	double t65 = t64 + penaltyAreaLength*12/desiredVelocity;
 	double t66 = t65 + cornerRadius*12/desiredVelocity;
 	double t67 = t66 + M_PI*cornerRadius*12/desiredVelocity;
 	double t68 = t67 + (penaltyAreaLength+cornerRadius-penaltyCenter)*12/desiredVelocity;
 	double t69 = t68 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t70 = t69 + (penaltyAreaWidth/2-4*cornerRadius-penaltyRadius)*12/desiredVelocity;
+	double t70 = t69 + (penaltyAreaWidth/2-penaltyRadius)*12/desiredVelocity;
 	double t71 = t70 + M_PI/2*cornerRadius*12/desiredVelocity;
 	double t72 = t71 + penaltyRadius*asin((penaltyAreaLength-penaltyCenter)/penaltyRadius)*12/desiredVelocity;
 	double t73 = t72 + 2*penaltyRadius*acos((penaltyAreaLength-penaltyCenter)/penaltyRadius)*12/desiredVelocity;
@@ -1097,11 +1099,11 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t78 = t77 + 2*M_PI*centerRadius*12/desiredVelocity;
 	double t79 = t78 + (fieldLength/2-penaltyBoxLength)*12/desiredVelocity;
 	double t80 = t79 + penaltyBoxLength*12/desiredVelocity;
-	double t81 = t80 + cornerRadius*12/desiredVelocity;
-	double t82 = t81 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t83 = t82 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*cornerRadius)*12/desiredVelocity;
-	double t84 = t83 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t85 = t84 + cornerRadius*12/desiredVelocity;
+	double t81 = t80 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t82 = t81 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t83 = t82 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12/desiredVelocity;
+	double t84 = t83 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t85 = t84 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
 	double t86 = t85 + penaltyAreaLength*12/desiredVelocity;
 	double t87 = t86 + cornerRadius*12/desiredVelocity;
 	double t88 = t87 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
@@ -1111,27 +1113,27 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t92 = t91 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
 	double t93 = t92 + cornerRadius*12/desiredVelocity;
 	double t94 = t93 + penaltyAreaLength*12/desiredVelocity;
-	double t95 = t94 + cornerRadius*12/desiredVelocity;
-	double t96 = t95 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t97 = t96 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*cornerRadius)*12/desiredVelocity;
-	double t98 = t97 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t99 = t98 + cornerRadius*12/desiredVelocity;
+	double t95 = t94 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t96 = t95 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t97 = t96 + (penaltyAreaWidth/2-penaltyBoxWidth/2-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12/desiredVelocity;
+	double t98 = t97 + M_PI/2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
+	double t99 = t98 + (penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12/desiredVelocity;
 	double t100 = t99 + penaltyBoxLength*12/desiredVelocity;
 	double t101 = t100 + cornerRadius*12/desiredVelocity;
 	double t102 = t101 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
 	double t103 = t102 + cornerRadius*12/desiredVelocity;
 	double t104 = t103 + penaltyBoxWidth*12/desiredVelocity;
 	double t105 = t104 + cornerRadius*12/desiredVelocity;
-	double t106 = t105 + M_PI*cornerRadius*12/desiredVelocity;
-	double t107 = t106 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t108 = t107 + (penaltyCenter-penaltyBoxLength-3*cornerRadius)*12/desiredVelocity;
+	double t106 = t105 + 3*M_PI/2*cornerRadius*12/desiredVelocity;
+	double t107 = t106 + (penaltyRadius-(penaltyBoxLength-cornerRadius))*12/desiredVelocity;
+	double t108 = t107 + 0;//(penaltyCenter-penaltyBoxLength-3*cornerRadius)*12/desiredVelocity;
 	double t109 = t108 + penaltyRadius*asin((penaltyAreaLength-penaltyCenter)/penaltyRadius)*12/desiredVelocity;
 	double t110 = t109 + 2*penaltyRadius*acos((penaltyAreaLength-penaltyCenter)/penaltyRadius)*12/desiredVelocity;
 	double t111 = t110 + penaltyRadius*asin((penaltyAreaLength-penaltyCenter)/penaltyRadius)*12/desiredVelocity;
 	double t112 = t111 + markLength/2*12/desiredVelocity;
-	double t113 = t112 + M_PI/2*cornerRadius*12/desiredVelocity;
-	double t114 = t113 + (centerRadius-2*cornerRadius)*12/desiredVelocity;
-	double t115 = t114 + M_PI/2*cornerRadius*12/desiredVelocity;
+	double t113 = t112 + M_PI/2*(penaltyBoxWidth/4)*12/desiredVelocity;
+	double t114 = t113 + (centerRadius-2*(penaltyBoxWidth/4))*12/desiredVelocity;
+	double t115 = t114 + M_PI/2*(penaltyBoxWidth/4)*12/desiredVelocity;
 	double t116 = t115 + markLength*12/desiredVelocity;
 	double t117 = t116 + (fieldLength/2-penaltyCenter-markLength)*12/desiredVelocity;
 	double t118 = t117 + markLength*12/desiredVelocity;
@@ -1139,19 +1141,19 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t120 = t119 + markLength*12/desiredVelocity;
 	double t121 = t120 + startingDistance*12/desiredVelocity;
 
-	if (t < t0) {
-        	x=0;
-		y=desiredVelocity*t;
-	        p=0;
+	if ( t < t0 ) {
+		x=0;
+		y=desiredVelocity*t*t/2/t0;
+		p=0;
 	}
 	else if ( t < t1 ) {
-        	x = 0;
-	        y = desiredVelocity*(t-t0)+desiredVelocity*t0;
-        	p=1;
+		x = 0;
+		y = desiredVelocity*(t-t0)+startingDistance*12;
+		p=1;
 	}
 	else if ( t < t2 ) {
 		x = 0;
-		y = desiredVelocity*(t-t1)+desiredVelocity*t1;
+		y = desiredVelocity*(t-t1)+(startingDistance+fieldLength)*12;
 		p=0;
 	}
 	else if ( t < t3 ) {
@@ -1217,7 +1219,7 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	else if ( t < t15 ) {
 		x = (cornerRadius+cornerKickRadius)*12*sin((t-t14)/(t15-t14)*3*M_PI/2)+(fieldWidth+cornerRadius+cornerKickRadius)*12;
 		y = -(cornerRadius+cornerKickRadius)*12*cos((t-t14)/(t15-t14)*3*M_PI/2)+(cornerRadius)*12+((startingDistance+fieldLength)*12);
-		p=0;
+ 		p=0;
 	}
 	else if ( t < t16 ) {
 		x = fieldWidth*12;
@@ -1375,23 +1377,23 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t47 ) {
-		x = -(cornerRadius*12)*cos((t-t46)/(t47-t46)*M_PI/2)+(fieldWidth/2-penaltyAreaWidth/2+cornerRadius)*12;
-		y = (cornerRadius*12)*sin((t-t46)/(t47-t46)*M_PI/2)+(startingDistance+fieldLength+cornerRadius)*12;
+		x = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t46)/(t47-t46)*M_PI/2)+(fieldWidth/2-penaltyAreaWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t46)/(t47-t46)*M_PI/2)+(startingDistance+fieldLength+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t48 ) {
-		x = (fieldWidth/2-penaltyAreaWidth/2+cornerRadius)*12+desiredVelocity*(t-t47);
-		y = (fieldLength+2*cornerRadius+startingDistance)*12;
+		x = (fieldWidth/2-penaltyAreaWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12+desiredVelocity*(t-t47);
+		y = (fieldLength+2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2+startingDistance)*12;
 		p=0;
 	}
 	else if ( t < t49 ) {
-		x = (cornerRadius*12)*sin((t-t48)/(t49-t48)*M_PI/2)+(fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12;
-		y = (cornerRadius*12)*cos((t-t48)/(t49-t48)*M_PI/2)+(fieldLength+cornerRadius+startingDistance)*12;
+		x = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t48)/(t49-t48)*M_PI/2)+(fieldWidth/2-penaltyBoxWidth/2-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t48)/(t49-t48)*M_PI/2)+(fieldLength+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2+startingDistance)*12;
 		p=0;
 	}
 	else if ( t < t50 ) {
 		x = (fieldWidth/2-penaltyBoxWidth/2)*12;
-		y = (startingDistance+fieldLength+cornerRadius)*12-desiredVelocity*(t-t49);
+		y = (startingDistance+fieldLength+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12-desiredVelocity*(t-t49);
 		p=0;
 	}
 	else if ( t < t51 ) {
@@ -1445,23 +1447,23 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t61 ) {
-		x = -(cornerRadius*12)*cos((t-t60)/(t61-t60)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2+cornerRadius)*12;
-		y = (cornerRadius*12)*sin((t-t60)/(t61-t60)*M_PI/2)+(startingDistance+fieldLength+cornerRadius)*12;
+		x = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t60)/(t61-t60)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t60)/(t61-t60)*M_PI/2)+(startingDistance+fieldLength+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t62 ) {
-		x = (fieldWidth/2+penaltyBoxWidth/2+cornerRadius)*12+desiredVelocity*(t-t61);
-		y = (fieldLength+startingDistance+2*cornerRadius)*12;
+		x = (fieldWidth/2+penaltyBoxWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12+desiredVelocity*(t-t61);
+		y = (fieldLength+startingDistance+2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t63 ) {
-		x = (cornerRadius*12)*sin((t-t62)/(t63-t62)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2-cornerRadius)*12;
-		y = (cornerRadius*12)*cos((t-t62)/(t63-t62)*M_PI/2)+(fieldLength+startingDistance+cornerRadius)*12;
+		x = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t62)/(t63-t62)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t62)/(t63-t62)*M_PI/2)+(fieldLength+startingDistance+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t64 ) {
 		x = (fieldWidth/2+penaltyAreaWidth/2)*12;
-		y = (fieldLength+startingDistance+cornerRadius)*12-desiredVelocity*(t-t63);
+		y = (fieldLength+startingDistance+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12-desiredVelocity*(t-t63);
 		p=0;
 	}
 	else if ( t < t65 ) {
@@ -1475,22 +1477,22 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p = 0;
 	}
 	else if ( t < t67 ) {
-		x = (cornerRadius*12)*cos((t-t66)/(t67-t66)*M_PI)+(fieldWidth/2+penaltyAreaWidth/2-cornerRadius)*12;
+		x = -(cornerRadius*12)*cos((t-t66)/(t67-t66)*M_PI)+(fieldWidth/2+penaltyAreaWidth/2+cornerRadius)*12;
 		y = -(cornerRadius*12)*sin((t-t66)/(t67-t66)*M_PI)+(startingDistance+fieldLength-penaltyAreaLength-cornerRadius)*12;
 		p = 0;
 	}
 	else if ( t < t68 ) {
-		x = (fieldWidth/2+penaltyAreaWidth/2-2*cornerRadius)*12;
+		x = (fieldWidth/2+penaltyAreaWidth/2+2*cornerRadius)*12;
 		y = (startingDistance+fieldLength-penaltyAreaLength-cornerRadius)*12+desiredVelocity*(t-t67);
 		p=0;
 	}
 	else if ( t < t69 ) {
-		x = (cornerRadius*12)*cos((t-t68)/(t69-t68)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2-3*cornerRadius)*12;
+		x = (cornerRadius*12)*cos((t-t68)/(t69-t68)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2+cornerRadius)*12;
 		y = (cornerRadius*12)*sin((t-t68)/(t69-t68)*M_PI/2)+(startingDistance+fieldLength-penaltyCenter)*12;
 		p=0;
 	}
 	else if ( t < t70 ) {
-		x = (fieldWidth/2+penaltyAreaWidth/2-3*cornerRadius)*12-desiredVelocity*(t-t69);
+		x = (fieldWidth/2+penaltyAreaWidth/2+cornerRadius)*12-desiredVelocity*(t-t69);
 		y = (startingDistance+fieldLength-penaltyCenter+cornerRadius)*12;
 		p=0;
 	}
@@ -1550,23 +1552,23 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t82 ) {
-		x = (cornerRadius*12)*cos((t-t81)/(t82-t81)*M_PI/2)+(fieldWidth/2-centerRadius-cornerRadius)*12;
-		y = -(cornerRadius*12)*sin((t-t81)/(t82-t81)*M_PI/2)+(startingDistance-cornerRadius)*12;
+		x = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t81)/(t82-t81)*M_PI/2)+(fieldWidth/2-centerRadius-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t81)/(t82-t81)*M_PI/2)+(startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t83 ) {
-		x = (fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12-desiredVelocity*(t-t82);
-		y = (startingDistance-2*cornerRadius)*12;
+		x = (fieldWidth/2-penaltyBoxWidth/2-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12-desiredVelocity*(t-t82);
+		y = (startingDistance-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t84 ) {
-		x = -(cornerRadius*12)*sin((t-t83)/(t84-t83)*M_PI/2)+(fieldWidth/2-penaltyAreaWidth/2+cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t83)/(t84-t83)*M_PI/2)+(startingDistance-cornerRadius)*12;
+		x = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t83)/(t84-t83)*M_PI/2)+(fieldWidth/2-penaltyAreaWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t83)/(t84-t83)*M_PI/2)+(startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t85 ) {
 		x = (fieldWidth/2-penaltyAreaWidth/2)*12;
-		y = (startingDistance-cornerRadius)*12+desiredVelocity*(t-t84);
+		y = (startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12+desiredVelocity*(t-t84);
 		p=0;
 	}
 	else if ( t < t86 ) {
@@ -1620,23 +1622,23 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t96 ) {
-		x = (cornerRadius*12)*cos((t-t95)/(t96-t95)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2-cornerRadius)*12;
-		y = -(cornerRadius*12)*sin((t-t95)/(t96-t95)*M_PI/2)+(startingDistance-cornerRadius)*12;
+		x = ((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t95)/(t96-t95)*M_PI/2)+(fieldWidth/2+penaltyAreaWidth/2-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t95)/(t96-t95)*M_PI/2)+(startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t97 ) {
-		x = (fieldWidth/2+penaltyAreaWidth/2-cornerRadius)*12-desiredVelocity*(t-t96);
-		y = (startingDistance-2*cornerRadius)*12;
+		x = (fieldWidth/2+penaltyAreaWidth/2-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12-desiredVelocity*(t-t96);
+		y = (startingDistance-2*(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t98 ) {
-		x = -(cornerRadius*12)*sin((t-t97)/(t98-t97)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2+cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t97)/(t98-t97)*M_PI/2)+(startingDistance-cornerRadius)*12;
+		x = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*sin((t-t97)/(t98-t97)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2+(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
+		y = -((penaltyAreaWidth/2-penaltyBoxWidth/2)/2*12)*cos((t-t97)/(t98-t97)*M_PI/2)+(startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12;
 		p=0;
 	}
 	else if ( t < t99 ) {
 		x = (fieldWidth/2+penaltyBoxWidth/2)*12;
-		y = (startingDistance-cornerRadius)*12+desiredVelocity*(t-t98);
+		y = (startingDistance-(penaltyAreaWidth/2-penaltyBoxWidth/2)/2)*12+desiredVelocity*(t-t98);
 		p=0;
 	}
 	else if ( t < t100 ) {
@@ -1670,13 +1672,13 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t106 ) {
-		x = -(cornerRadius*12)*sin((t-t105)/(t106-t105)*M_PI)+(fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t105)/(t106-t105)*M_PI)+(startingDistance+penaltyBoxLength+cornerRadius)*12;
+		x = -(cornerRadius*12)*sin((t-t105)/(t106-t105)*3*M_PI/2)+(fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12;
+		y = (cornerRadius*12)*cos((t-t105)/(t106-t105)*3*M_PI/2)+(startingDistance+penaltyBoxLength-cornerRadius)*12;
 		p=0;
 	}
 	else if ( t < t107 ) {
-		x = (cornerRadius*12)*sin((t-t106)/(t107-t106)*M_PI/2)+(fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t106)/(t107-t106)*M_PI/2)+(startingDistance+penaltyBoxLength+3*cornerRadius)*12;
+		x = (fieldWidth/2-penaltyBoxWidth/2)*12;//(cornerRadius*12)*sin((t-t106)/(t107-t106)*M_PI/2)+(fieldWidth/2-penaltyBoxWidth/2-cornerRadius)*12;
+		y = (startingDistance+penaltyBoxLength-cornerRadius)*12+desiredVelocity*(t-t106);//-(cornerRadius*12)*cos((t-t106)/(t107-t106)*M_PI/2)+(startingDistance+penaltyBoxLength+3*cornerRadius)*12;
 		p=0;
 	}
 	else if ( t < t108 ) {
@@ -1705,18 +1707,18 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		p=0;
 	}
 	else if ( t < t113 ) {
-		x = (cornerRadius*12)*cos((t-t112)/(t113-t112)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2-cornerRadius)*12;
-		y = -(cornerRadius*12)*sin((t-t112)/(t113-t112)*M_PI/2)+(startingDistance+penaltyCenter-markLength/2)*12;
+		x = ((penaltyBoxWidth/4)*12)*cos((t-t112)/(t113-t112)*M_PI/2)+(fieldWidth/2+penaltyBoxWidth/2-(penaltyBoxWidth/4))*12;
+		y = -((penaltyBoxWidth/4)*12)*sin((t-t112)/(t113-t112)*M_PI/2)+(startingDistance+penaltyCenter-markLength/2)*12;
 		p=0;
 	}
 	else if ( t < t114 ) {
-		x = (fieldWidth/2+penaltyBoxWidth/2-cornerRadius)*12-desiredVelocity*(t-t113);
-		y = (penaltyCenter+startingDistance-markLength/2-cornerRadius)*12;
+		x = (fieldWidth/2+penaltyBoxWidth/2-(penaltyBoxWidth/4))*12-desiredVelocity*(t-t113);
+		y = (penaltyCenter+startingDistance-markLength/2-(penaltyBoxWidth/4))*12;
 		p=0;
 	}
 	else if ( t < t115 ) {
-		x = -(cornerRadius*12)*sin((t-t114)/(t115-t114)*M_PI/2)+(fieldWidth/2+cornerRadius)*12;
-		y = -(cornerRadius*12)*cos((t-t114)/(t115-t114)*M_PI/2)+(startingDistance+penaltyCenter-markLength/2)*12;
+		x = -((penaltyBoxWidth/4)*12)*sin((t-t114)/(t115-t114)*M_PI/2)+(fieldWidth/2+(penaltyBoxWidth/4))*12;
+		y = -((penaltyBoxWidth/4)*12)*cos((t-t114)/(t115-t114)*M_PI/2)+(startingDistance+penaltyCenter-markLength/2)*12;
 		p=0;
 	}
 	else if ( t < t116 ) {
@@ -1937,7 +1939,7 @@ bool calibrateLeica(char* dataString, float leicaTimeStamp)
 	testData = leicaStoF(dataString);
 	sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-	while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<30) {
+	while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<50) {
 
 		sendVelocityCommands(10,0);
 
