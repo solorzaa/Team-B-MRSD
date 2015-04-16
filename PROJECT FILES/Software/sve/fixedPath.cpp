@@ -105,11 +105,12 @@ bool dataOnly = false;
 bool verbose = false;
 bool imuConnected = false;
 bool paintConnected = true;
-double desiredVelocity = 10; // 10 in/s
-double fieldLength = 16; // 110 yards
-double fieldWidth = 11; // 84 yards
+double desiredVelocity = 12; // 10 in/s
+double fieldLength = 90; // 110 yards
+double fieldWidth = 60; // 84 yards
 double cornerRadius = 3; // 5 feet
 double startingDistance = 3; // 1 foot
+double rateCorrection = 1.0;
 
 ////////Model Predictive Control Parameters///////////////////////////////
 //Look Up Table Settings
@@ -360,7 +361,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Fuck the water in the tank
-	for(int iii=0; iii<10; iii++) {
+	for(int iii=0; iii<20; iii++) {
 		if(leicaConnected) {
 			readPort(full_string);
 			testData = leicaStoF(full_string);
@@ -399,8 +400,12 @@ int main(int argc, char *argv[])
 	//R << 0.0959, 0.0616,
 	//	 0.0616, 0.0750; 
 	// Changed to .01 from .1
-	Ra << .0286, .0295, 0, 0, 0, 0,
-	     .0295, .0328, 0, 0, 0, 0,
+	/*Ra << .09 .003
+	      .003 .09;*/
+	// Ra << .0286 .0295 
+	//       .0295 .0328
+	Ra << .09, .003, 0, 0, 0, 0,
+	     .003, .09, 0, 0, 0, 0,
 	         0,  0, 20, -.0812, -.0001, 0,
 		 0,  0, -.0812, 20, -.0016, 0,
 		 0,  0, -.0001,  -.0016, .01, 0,
@@ -556,15 +561,15 @@ bool parseCommandLine(int argc, char* argv[])
         fieldLength = atof(argv[6])*3;		//yards
         cornerRadius = atof(argv[7])*3;		//yards
         pathHorizon = atof(argv[8]);		//seconds
-		//counts_per_revolution = atof(argv[9]);
+		rateCorrection = atof(argv[9]);     //fixes speed
 
-	cout << "Args: " << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << " " << argv[6] << " " << argv[7] << " " << argv[8] << endl;
+	cout << "Args: " << argv[1] << " " << argv[2] << " " << argv[3] << " " << argv[4] << " " << argv[5] << " " << argv[6] << " " << argv[7] << " " << argv[8] << " " << argv[9] << endl;
 
-	cout << "Args Real: " << imuConnected << " " << leicaConnected << " " << paintConnected << " " << desiredVelocity << " " << fieldWidth << " " << fieldLength << " " << cornerRadius << " " << pathHorizon << endl;
+	cout << "Args Real: " << imuConnected << " " << leicaConnected << " " << paintConnected << " " << desiredVelocity << " " << fieldWidth << " " << fieldLength << " " << cornerRadius << " " << pathHorizon << " " << rateCorrection << endl;
 
 	vMin = 0;
 	vMax = 4*desiredVelocity;
-	vResolution = vMax*.02;
+	vResolution = vMax*.04;
     }
     vNumberOfEntries = (int) ( (vMax - vMin) / vResolution );
 }
@@ -858,7 +863,7 @@ vector<float> leicaStoF(char* recievedData){
 	if(verbose) cout<< "The vector: ";
 	for(vector<float>::const_iterator i = leicaData.begin(); i!= leicaData.end(); ++i)
 		cout<< *i << ' ';
-	if(verbose) cout<<endl;
+	cout<<endl;
 
 	return leicaData;
 }
@@ -1018,7 +1023,9 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double markLength = 1./84.*fieldWidth;
 
 
-	double t0 = 2*startingDistance*12/desiredVelocity;
+	double tStart = 0;
+	double t0 = tStart + startingDistance*12/desiredVelocity;
+	//double t0 = tStart + 2*startingDistance*12/desiredVelocity;
 	double t1 = t0 + fieldLength*12/desiredVelocity;
 	double t2 = t1 + cornerRadius*12/desiredVelocity;
 	double t3 = t2 + 3*M_PI/2*(cornerRadius+cornerKickRadius)*12/desiredVelocity;
@@ -1141,9 +1148,15 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double t120 = t119 + markLength*12/desiredVelocity;
 	double t121 = t120 + startingDistance*12/desiredVelocity;
 
-	if ( t < t0 ) {
+	if ( t < tStart ) {
 		x=0;
-		y=desiredVelocity*t*t/2/t0;
+		y=0;
+		p=0;
+	}
+	else if ( t < t0 ) {
+		x=0;
+		//y=desiredVelocity*t*t/2/t0;
+		y=desiredVelocity*t;
 		p=0;
 	}
 	else if ( t < t1 ) {
@@ -1750,6 +1763,7 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 		x = (fieldWidth/2)*12;
 		y = (startingDistance+fieldLength-penaltyCenter+markLength)*12;
 		p=0;
+		return false;
 	}
 }
 
@@ -1839,12 +1853,13 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 			//retried error for current path
 			errorCurrent = getPathError(projectedPaths[i][j], goalPath, _numPathPoints);
 			//set this path error as the minimum if its less than the current minimum
+			//if((errorCurrent < errorMin) || (i==0 && j==0)){
+			
 			if((errorCurrent < errorMin) || (i==0 && j==0)){
 				errorMin = errorCurrent;
 				_vMinIndex = i;
 				_wMinIndex = j;
 			}
-
 		}
 		//cout << endl;
 	}
@@ -1859,7 +1874,9 @@ double*  getOptimalVelocities(Pose*** projectedPaths, int _vNumberOfEntries, int
 	
 	//convert the index values to the corresponding velocity commands and return them
 	velocities[0] =  vMin + (_vMinIndex * vResolution);
-	velocities[1] = ( wMin + (_wMinIndex * wResolution) ) * 2;		
+	//velocities[1] = ( wMin + (_wMinIndex * wResolution) ) * 2;		
+	velocities[1] = ( wMin + (_wMinIndex * wResolution) );		
+	cout << "Minimum Error: " << getPathError(projectedPaths[_vMinIndex][_wMinIndex], goalPath, _numPathPoints) << endl;
 
 	return velocities;
 
@@ -1873,8 +1890,8 @@ bool sendVelocityCommands(double linearVelocity, double angularVelocity)
 {
 
 //Find the RPM of each wheel that will give the desired linear and angular velocity
-double rightWheel_RPM = RPM_Constant * 30/M_PI*( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
-double leftWheel_RPM = RPM_Constant * 30/M_PI*( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
+double rightWheel_RPM = rateCorrection*RPM_Constant * 30/M_PI*( linearVelocity + angularVelocity * botRadius ) / wheelRadius;
+double leftWheel_RPM = rateCorrection*RPM_Constant * 30/M_PI*( linearVelocity - angularVelocity * botRadius ) / wheelRadius;
 
 cout << "rightSent_RPM:" << rightWheel_RPM << endl;
 cout << "leftSent_RPM:" << leftWheel_RPM << endl;
@@ -1939,14 +1956,14 @@ bool calibrateLeica(char* dataString, float leicaTimeStamp)
 	testData = leicaStoF(dataString);
 	sphericalToPlanar(testData[2], testData[3], testData[4]);
 
-	while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<50) {
+	while(sqrt(pow((location[0]-calibrateTheta[0]),2)+pow((location[1]-calibrateTheta[1]),2))<40) {
 
 		sendVelocityCommands(10,0);
 
 		// Get 2nd point to calibrate theta
 		cout << "Waiting for 2nd point " << endl;
 		while(readPort(dataString)==0) {	
-			sendVelocityCommands(10,0);
+			sendVelocityCommands(8,0);
 			cout << "Calibrating Theta" << endl;
 			usleep(10000);
 		}
@@ -2204,6 +2221,7 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 
 		// Print updated state
 		cout << "X = " << endl << X << endl;
+		cout << "P = " << endl << P << endl;
 		
 		// Declare no new IMU data
 		newIMUData = false;
