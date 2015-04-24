@@ -92,6 +92,11 @@ double absoluteY = 0;
 double absoluteTheta = 0;
 int prevRightEncoder;
 int prevLeftEncoder;
+double prevLeftDeltaPhi = 0;
+double prevRightDeltaPhi = 0;
+double leftNegativeVelocityCounter = 0;
+double rightNegativeVelocityCounter = 0;
+
 vector<float> testData;
 
 double pathTime;
@@ -157,6 +162,7 @@ Eigen::MatrixXd F(6,6);
 
 // LEICA BLIP
 float previousRadius = 0;
+int leicaTimeout = 0;
 
 // Painting Port
 unsigned int paintGPIO = 44; // GPIO p8_12 (the row closest to paint)
@@ -352,22 +358,23 @@ int main(int argc, char *argv[])
 	absoluteY = 0;
 	absoluteTheta = 0;
 
-	if(!dataOnly) {	
-		// Initialize the encoders
-		readAbsoluteEncoderCount(prevLeftEncoder, 2); 
-		readAbsoluteEncoderCount(prevRightEncoder, 1);		
-		prevTime = getUnixTime();
-		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
-	}
 
 	// Fuck the water in the tank
-	for(int iii=0; iii<20; iii++) {
+	for(int iii=0; iii<0; iii++) {
 		if(leicaConnected) {
 			readPort(full_string);
 			testData = leicaStoF(full_string);
 			sphericalToPlanar(testData[2], testData[3], testData[4]);
 		}
 		sleep(.2);
+	}
+	
+	if(!dataOnly) {	
+		// Initialize the encoders
+		readAbsoluteEncoderCount(prevLeftEncoder, 2); 
+		readAbsoluteEncoderCount(prevRightEncoder, 1);		
+		prevTime = getUnixTime();
+		cout << "Encoder at beginning: "<< prevLeftEncoder<<", "<<prevRightEncoder<<endl;
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -518,6 +525,10 @@ int main(int argc, char *argv[])
 				painting = false;
 			}
 		}
+		
+		// CHANGE: 4-20-15
+		// Check to see if leica has been lost for more than 10 iterations
+		//if (leicaTimeout>10) break;
 	}
 
 	//Stop the bot
@@ -528,6 +539,10 @@ int main(int argc, char *argv[])
 		// Disconnect roboteq
 		device.Disconnect();
 	}
+
+	// Turn off the pump before finishing
+	// CHANGE: 4-20-15
+	gpio_set_value(paintGPIO, LOW);
 
 	cout << "program exited completely" << endl;
 	return 0;
@@ -701,6 +716,27 @@ bool getPose()
 
 	double rightRPM = rightDeltaPhi/(2*M_PI)*60/diffTime;
 	double leftRPM = leftDeltaPhi/(2*M_PI)*60/diffTime;
+
+	// Discard Strange Wheel Velocity Measurements
+	// CHANGE: 4-20-15 added || > 5
+	if(rightDeltaPhi<0 || rightDeltaPhi>5){
+		rightNegativeVelocityCounter++;
+		cout << "rightNegativeVelocityCounter: " << rightNegativeVelocityCounter  << " at "  << currentTime << " seconds"  << endl;
+		cout << "rightNegativeVelocity: " << rightDeltaPhi  << endl;
+		rightDeltaPhi = prevRightDeltaPhi;
+	}
+	else{
+		prevRightDeltaPhi = rightDeltaPhi;
+	}
+	if(leftDeltaPhi<0 || leftDeltaPhi>5){
+		leftNegativeVelocityCounter++;
+		cout << "leftNegativeVelocityCounter: " << leftNegativeVelocityCounter << " at " << currentTime  << " seconds"  << endl;
+		cout << "leftNegativeVelocity: " << leftDeltaPhi  << endl;
+		leftDeltaPhi = prevLeftDeltaPhi;
+	}
+	else{
+		prevLeftDeltaPhi = leftDeltaPhi;	
+	}
 	
 	cout << "Wheel Velocities: " << rightDeltaPhi/diffTime << " " << leftDeltaPhi/diffTime << endl;
 
@@ -881,8 +917,12 @@ bool sphericalToPlanar(float horAngle, float verAngle, float radius){
 	//cout << yOrigin << endl;
 
 	// Leica Blip
-	if(radius==previousRadius)
+	if(radius==previousRadius) {
+		// CHANGE: 4-20-15
+		leicaTimeout++;
 		return false;
+	}
+	leicaTimeout = 0;
 	previousRadius = radius;
 
 	if(verbose) cout<<"no transformation x: "<< ((radius*cos(horAngle)*cos(verAngle-M_PI/2)*METERS_TO_INCHES))<<endl;
@@ -1019,8 +1059,9 @@ bool desiredPathXY(double t, double & x, double & y, int & p) {
 	double penaltyCenter = 12./84.*fieldWidth;
 	double penaltyBoxWidth = 20./84.*fieldWidth;
 	double penaltyBoxLength = 6./84.*fieldWidth;
-	double cornerKickRadius = 1./84.*fieldWidth;
-	double markLength = 1./84.*fieldWidth;
+	double cornerKickRadius = 4./84.*fieldWidth;
+	// CHANGE: 4-20-15
+	double markLength = .1/84.*fieldWidth;
 
 
 	double tStart = 0;
@@ -2077,6 +2118,11 @@ void runKalman(double rightDeltaPhi, double leftDeltaPhi)
 	     0, 0, 0, 1, 0, 0,
 	     0, 0, 0, 0, 1, 0,
 	     0, 0, 0, 0, 0, 1;
+	// CHANGE: 4-20-15
+	if(sqrt(pow(location[1]-X(1),2)+pow(location[0]-X(0),2))>(10*3*12)) {
+		newLeicaData = false;
+		cout << " Ignored crazy leica data " << endl;
+	}
 
 	//Kalman Filter for Leica Data
 	if (newLeicaData && !newIMUData) {
